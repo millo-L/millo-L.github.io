@@ -1,3 +1,4 @@
+import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
 import Styled from "styled-components"
 import { mediaQuery } from "../../lib/styles/media"
@@ -12,9 +13,9 @@ const Wrapper = Styled.div`
     }
 `
 
-interface PostCardGridProps {}
+interface PostCardGridProps { }
 
-const PostCardGrid = ({}: PostCardGridProps) => {
+const PostCardGrid = ({ }: PostCardGridProps) => {
     const dummyPosts: Array<PartialPostType> = [
         {
             id: "1",
@@ -25,8 +26,7 @@ const PostCardGrid = ({}: PostCardGridProps) => {
             url_slug: "",
             is_private: false,
             released_at: "2021-02-01 13:02:12",
-            updated_at: "",
-            comments_count: 0,
+            updated_at: ""
         },
         {
             id: "2",
@@ -37,8 +37,7 @@ const PostCardGrid = ({}: PostCardGridProps) => {
             url_slug: "",
             is_private: false,
             released_at: "2021-02-01 13:02:12",
-            updated_at: "",
-            comments_count: 0,
+            updated_at: ""
         },
         {
             id: "3",
@@ -49,8 +48,7 @@ const PostCardGrid = ({}: PostCardGridProps) => {
             url_slug: "",
             is_private: false,
             released_at: "2021-02-01 13:02:12",
-            updated_at: "2021-02-19 23:00:08",
-            comments_count: 0,
+            updated_at: "2021-02-19 23:00:08"
         },
         {
             id: "4",
@@ -61,8 +59,7 @@ const PostCardGrid = ({}: PostCardGridProps) => {
             url_slug: "",
             is_private: false,
             released_at: "2021-02-01 13:02:12",
-            updated_at: "2021-02-19 23:00:08",
-            comments_count: 0,
+            updated_at: "2021-02-19 23:00:08"
         },
         {
             id: "5",
@@ -73,8 +70,7 @@ const PostCardGrid = ({}: PostCardGridProps) => {
             url_slug: "",
             is_private: false,
             released_at: "2021-02-01 13:02:12",
-            updated_at: "2021-02-19 23:00:08",
-            comments_count: 0,
+            updated_at: "2021-02-19 23:00:08"
         },
         {
             id: "6",
@@ -85,8 +81,7 @@ const PostCardGrid = ({}: PostCardGridProps) => {
             url_slug: "",
             is_private: false,
             released_at: "2021-02-01 13:02:12",
-            updated_at: "2021-02-19 23:00:08",
-            comments_count: 0,
+            updated_at: "2021-02-19 23:00:08"
         },
         {
             id: "7",
@@ -97,8 +92,7 @@ const PostCardGrid = ({}: PostCardGridProps) => {
             url_slug: "",
             is_private: false,
             released_at: "2021-02-01 13:02:12",
-            updated_at: "",
-            comments_count: 0,
+            updated_at: ""
         },
         {
             id: "11",
@@ -109,8 +103,7 @@ const PostCardGrid = ({}: PostCardGridProps) => {
             url_slug: "",
             is_private: false,
             released_at: "2021-02-01 13:02:12",
-            updated_at: "",
-            comments_count: 0,
+            updated_at: ""
         },
         {
             id: "12",
@@ -121,8 +114,7 @@ const PostCardGrid = ({}: PostCardGridProps) => {
             url_slug: "",
             is_private: false,
             released_at: "2021-02-01 13:02:12",
-            updated_at: "",
-            comments_count: 0,
+            updated_at: ""
         },
         {
             id: "13",
@@ -133,8 +125,7 @@ const PostCardGrid = ({}: PostCardGridProps) => {
             url_slug: "",
             is_private: false,
             released_at: "2021-02-01 13:02:12",
-            updated_at: "2021-02-19 23:00:08",
-            comments_count: 0,
+            updated_at: "2021-02-19 23:00:08"
         },
         {
             id: "14",
@@ -145,8 +136,7 @@ const PostCardGrid = ({}: PostCardGridProps) => {
             url_slug: "",
             is_private: false,
             released_at: "2021-02-01 13:02:12",
-            updated_at: "2021-02-19 23:00:08",
-            comments_count: 0,
+            updated_at: "2021-02-19 23:00:08"
         },
         {
             id: "15",
@@ -157,8 +147,7 @@ const PostCardGrid = ({}: PostCardGridProps) => {
             url_slug: "",
             is_private: false,
             released_at: "2021-02-01 13:02:12",
-            updated_at: "2021-02-19 23:00:08",
-            comments_count: 0,
+            updated_at: "2021-02-19 23:00:08"
         },
         {
             id: "16",
@@ -169,8 +158,7 @@ const PostCardGrid = ({}: PostCardGridProps) => {
             url_slug: "",
             is_private: false,
             released_at: "2021-02-01 13:02:12",
-            updated_at: "2021-02-19 23:00:08",
-            comments_count: 0,
+            updated_at: "2021-02-19 23:00:08"
         },
         {
             id: "17",
@@ -181,8 +169,7 @@ const PostCardGrid = ({}: PostCardGridProps) => {
             url_slug: "",
             is_private: false,
             released_at: "2021-02-01 13:02:12",
-            updated_at: "",
-            comments_count: 0,
+            updated_at: ""
         },
         {
             id: "21",
@@ -193,8 +180,7 @@ const PostCardGrid = ({}: PostCardGridProps) => {
             url_slug: "",
             is_private: false,
             released_at: "2021-02-01 13:02:12",
-            updated_at: "",
-            comments_count: 0,
+            updated_at: ""
         },
         {
             id: "22",
@@ -205,8 +191,7 @@ const PostCardGrid = ({}: PostCardGridProps) => {
             url_slug: "",
             is_private: false,
             released_at: "2021-02-01 13:02:12",
-            updated_at: "",
-            comments_count: 0,
+            updated_at: ""
         },
         {
             id: "23",
@@ -217,8 +202,7 @@ const PostCardGrid = ({}: PostCardGridProps) => {
             url_slug: "",
             is_private: false,
             released_at: "2021-02-01 13:02:12",
-            updated_at: "2021-02-19 23:00:08",
-            comments_count: 0,
+            updated_at: "2021-02-19 23:00:08"
         },
         {
             id: "24",
@@ -229,8 +213,7 @@ const PostCardGrid = ({}: PostCardGridProps) => {
             url_slug: "",
             is_private: false,
             released_at: "2021-02-01 13:02:12",
-            updated_at: "2021-02-19 23:00:08",
-            comments_count: 0,
+            updated_at: "2021-02-19 23:00:08"
         },
         {
             id: "25",
@@ -241,8 +224,7 @@ const PostCardGrid = ({}: PostCardGridProps) => {
             url_slug: "",
             is_private: false,
             released_at: "2021-02-01 13:02:12",
-            updated_at: "2021-02-19 23:00:08",
-            comments_count: 0,
+            updated_at: "2021-02-19 23:00:08"
         },
         {
             id: "26",
@@ -253,8 +235,7 @@ const PostCardGrid = ({}: PostCardGridProps) => {
             url_slug: "",
             is_private: false,
             released_at: "2021-02-01 13:02:12",
-            updated_at: "2021-02-19 23:00:08",
-            comments_count: 0,
+            updated_at: "2021-02-19 23:00:08"
         },
         {
             id: "27",
@@ -265,8 +246,7 @@ const PostCardGrid = ({}: PostCardGridProps) => {
             url_slug: "",
             is_private: false,
             released_at: "2021-02-01 13:02:12",
-            updated_at: "",
-            comments_count: 0,
+            updated_at: ""
         },
     ]
 

@@ -76,8 +76,8 @@ const Content = Styled.div<{ clamp: boolean }>`
         font-size: 0.875rem;
         line-height: 1.5;
         ${props =>
-            props.clamp &&
-            css`
+        props.clamp &&
+        css`
                 height: 3.9375rem;
                 display: -webkit-box;
                 -webkit-line-clamp: 3;
@@ -86,8 +86,8 @@ const Content = Styled.div<{ clamp: boolean }>`
                 text-overflow: ellipsis;
             `}
         /* ${props =>
-            !props.clamp &&
-            css`
+        !props.clamp &&
+        css`
                 height: 15.875rem;
             `} */
 
@@ -98,10 +98,6 @@ const Content = Styled.div<{ clamp: boolean }>`
         font-size: 0.75rem;
         line-height: 1.5;
         color: ${palette.gray[6]};
-        .separator {
-            margin-left: 0.25rem;
-            margin-right: 0.25rem;
-        }
     }
 
 `
@@ -115,7 +111,6 @@ export type PartialPostType = {
     is_private: boolean
     released_at: string
     updated_at: string
-    comments_count: number
 }
 
 interface PostCardProps {
@@ -126,7 +121,7 @@ const PostCard = ({ post }: PostCardProps) => {
     return (
         <Wrapper>
             {post.image && (
-                <StyledLink to="/">
+                <StyledLink to="">
                     <RatioImage
                         widthRatio={1.916}
                         heightRatio={1}
@@ -135,7 +130,7 @@ const PostCard = ({ post }: PostCardProps) => {
                 </StyledLink>
             )}
             <Content clamp={post.image === ""}>
-                <StyledLink to="/">
+                <StyledLink to="">
                     <h4>{post.title}</h4>
                     <div className="description-wrapper">
                         <p>
@@ -146,8 +141,6 @@ const PostCard = ({ post }: PostCardProps) => {
                 </StyledLink>
                 <div className="sub-info">
                     <span>{formatDate(post.released_at)}</span>
-                    <span className="separator">·</span>
-                    <span>{post.comments_count}개의 댓글</span>
                     {post.updated_at && (
                         <>
                             <br />

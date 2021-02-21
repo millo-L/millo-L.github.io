@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react"
 import Styled, { css } from "styled-components"
-import { useLocation, Link } from "@reach/router"
-import {} from "gatsby"
+import { } from "gatsby"
 import palette from "../../lib/styles/palette"
 import { MdFace } from "react-icons/md"
 import { GiOpenBook } from "react-icons/gi"
@@ -11,20 +10,12 @@ import { getScrollTop } from "../../lib/styles/utils"
 import { BsPencilSquare } from "react-icons/bs"
 
 interface HomeTabProps {
-    setUser: boolean
+    setUser: boolean;
+    page: number;
+    onClick: (index: number) => void;
 }
 
-const indicatorPosition = (pathname: string) => {
-    if (pathname === "/series") return "33.5%"
-    else if (pathname === "/about") return "67%"
-    else return "0%"
-}
-
-const HomeTab = ({ setUser }: HomeTabProps) => {
-    const location = useLocation()
-
-    const isRecent = indicatorPosition(location.pathname)
-
+const HomeTab = ({ setUser, page, onClick }: HomeTabProps) => {
     const [visible, setVisible] = useState<boolean>(false)
 
     /*
@@ -44,7 +35,7 @@ const HomeTab = ({ setUser }: HomeTabProps) => {
     */
 
     const springStyle = useSpring({
-        left: isRecent,
+        left: `${33.5 * page}%`,
         config: {
             friction: 16,
             tension: 160,
@@ -63,18 +54,18 @@ const HomeTab = ({ setUser }: HomeTabProps) => {
                 <span>millo</span>
             </UserWrapper>
             <InnerWrapper>
-                <Link to="/">
+                <div className={`tab ${page === 0 ? 'active' : ''}`} onClick={() => onClick(0)}>
                     <BsPencilSquare />
                     게시글
-                </Link>
-                <Link to="/series">
+                </div>
+                <div className={`tab ${page === 1 ? 'active' : ''}`} onClick={() => onClick(1)}>
                     <GiOpenBook />
                     시리즈
-                </Link>
-                <Link to="/about">
+                </div>
+                <div className={`tab ${page === 2 ? 'active' : ''}`} onClick={() => onClick(2)}>
                     <MdFace />
                     me
-                </Link>
+                </div>
                 <Indicator style={springStyle} />
             </InnerWrapper>
             {/*<MobileMore ref={moreButtonRef}>
@@ -140,7 +131,7 @@ const InnerWrapper = Styled.div`
     }
     ${mediaQuery(767)} {
     }
-    a {
+    .tab {
         width: 7rem;
         display: flex;
         align-items: center;
@@ -149,6 +140,7 @@ const InnerWrapper = Styled.div`
         text-decoration: none;
         color: ${palette.gray[6]};
         height: 3rem;
+        cursor: pointer;
 
         svg {
             font-size: 1.5rem;

@@ -63,7 +63,7 @@ const openNewBrowser = (type: 'github' | 'notion' | 'email') => {
     window.open(link, '_blank');
 }
 
-interface SimpleProfileProps {
+interface SimpleHeaderProfileProps {
 }
 
 export const SimpleHeaderProfile = () => {
@@ -128,9 +128,13 @@ const SimpleBodyProfileWrapper = Styled.div`
     }
 `;
 
-export const SimpleBodyProfile = () => {
+interface SimpleBodyProfileProps {
+    style?: React.CSSProperties;
+}
+
+export const SimpleBodyProfile = ({ style }: SimpleBodyProfileProps) => {
     return (
-        <SimpleBodyProfileWrapper>
+        <SimpleBodyProfileWrapper style={style}>
             <img src='../images/profile.jpg' />
             <div className="info-wrapper">
                 <span>millo</span>
