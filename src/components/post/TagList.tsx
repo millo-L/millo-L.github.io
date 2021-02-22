@@ -8,6 +8,7 @@ const TagItemWrapper = Styled.div`
     color: ${palette.indigo[8]};
     border-radius: 0.5rem;
     margin-right: 1rem;
+    margin-bottom: 0.5rem;
     cursor: pointer;
     &:hover {
         background-color: ${palette.gray[2]};

@@ -8,13 +8,13 @@ import media from '../../lib/styles/media';
 import HeaderLanguage from './HeaderLanguage';
 import HeaderLogo from './HeaderLogo';
 import HeaderUserMenu from './HeaderUserMenu';
-import { SimpleHeaderProfile } from '../common/SimpleProfile';
+import SimpleProfile from '../common/SimpleProfile';
 
 interface HeaderProps {
 
 }
 
-const Header = ({}: HeaderProps) => {
+const Header = ({ }: HeaderProps) => {
     const [userMenuVisible, toggleUserMenu] = useToggle(false);
     const [language, setLanguage] = useState<string>('한국어');
     const ref = useRef<HTMLDivElement>(null);
@@ -32,21 +32,21 @@ const Header = ({}: HeaderProps) => {
                 }}
             >
                 <HeaderLogo />
-                    <Right>
-                        <SearchButton to="/search">
-                            <BsSearch style={{}} />
-                        </SearchButton>
-                        <div ref={ref}>
-                            <HeaderLanguage language={language} onClick={toggleUserMenu} />
-                        </div>
-                        <HeaderUserMenu
-                            onClose={onOutsideClick}
-                            visible={userMenuVisible}
-                        />
-                    </Right>
+                <Right>
+                    <SearchButton to="/search">
+                        <BsSearch style={{}} />
+                    </SearchButton>
+                    <div ref={ref}>
+                        <HeaderLanguage language={language} onClick={toggleUserMenu} />
+                    </div>
+                    <HeaderUserMenu
+                        onClose={onOutsideClick}
+                        visible={userMenuVisible}
+                    />
+                </Right>
             </Inner>
 
-            <SimpleHeaderProfile />
+            <SimpleProfile type='header' />
         </Wrapper>
     );
 }

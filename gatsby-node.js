@@ -3,7 +3,7 @@ const path = require(`path`)
 exports.createPages = async ({ actions, graphql, reporter }) => {
     const { createPage } = actions
 
-    const postTemplate = path.resolve(`src/pages/PostPage.tsx`)
+    const postTemplate = path.resolve(`src/components/post/PostPage.tsx`)
 
     const result = await graphql(`
         {
@@ -28,6 +28,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
         createPage({
             path: node.frontmatter.path,
             component: postTemplate,
+            context: {}, // additional data can be passed via context
         })
     })
 }

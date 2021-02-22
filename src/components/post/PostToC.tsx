@@ -9,20 +9,27 @@ const ToCWrapper = Styled.div`
 
     padding: 0.5rem;
     padding-right: 1rem;
+    padding-left: 0;
     order: 1;
     top: 10rem;
     margin-left: 4rem;
     position: sticky;
-    height: 10rem;
+    height: 20rem;
     overflow-y: auto;
 
     ${media.custom(1440)} {
         display: none;
     }
+    ul:first-child {
+        padding-left: 1rem;
+        border-left: 2px solid ${palette.indigo[4]};
+    }
     ul {
         list-style: none;
         margin: 0;
         li {
+            
+            border: none;
             margin-bottom: 4px;
             p {
                 margin: 0;
@@ -56,7 +63,7 @@ const PostToC = ({ tableOfContents }: PostToCProps) => {
     useEffect(() => {
         const post = document.querySelector("#content-container")
         const headings = Array.from(
-            post.querySelectorAll("h1,h2,h3")
+            post.querySelectorAll("h1,h2")
         ).filter((h: any) => h.id)
         const toc = document.querySelector("#toc-container")
         console.log(headings);

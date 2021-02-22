@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react"
 import Styled, { css } from "styled-components"
-import { } from "gatsby"
 import palette from "../../lib/styles/palette"
 import { MdFace } from "react-icons/md"
 import { GiOpenBook } from "react-icons/gi"
@@ -16,6 +15,11 @@ interface HomeTabProps {
 }
 
 const HomeTab = ({ setUser, page, onClick }: HomeTabProps) => {
+    useEffect(() => {
+        if (typeof window === 'undefined' || !window.document) {
+            return;
+        }
+    }, []);
     const [visible, setVisible] = useState<boolean>(false)
 
     /*

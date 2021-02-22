@@ -5,6 +5,7 @@ import { mediaQuery } from "../../lib/styles/media"
 import palette from "../../lib/styles/palette"
 import { ellipsis, formatDate } from "../../lib/styles/utils"
 import RatioImage from "./RatioImage"
+import { FluidObject } from 'gatsby-image';
 
 const Wrapper = Styled.div`
     width: 20rem;
@@ -16,7 +17,6 @@ const Wrapper = Styled.div`
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    cursor: pointer;
     ${mediaQuery(1919)} {
         width: calc(33% - 1.8125rem);
     }
@@ -103,14 +103,13 @@ const Content = Styled.div<{ clamp: boolean }>`
 `
 
 export type PartialPostType = {
-    id: string
+    path: string
     title: string
-    short_description: string
-    image: string
-    url_slug: string
-    is_private: boolean
+    description: string
+    image: FluidObject | FluidObject[]
     released_at: string
     updated_at: string
+    lang: 'ko' | 'en'
 }
 
 interface PostCardProps {
@@ -121,33 +120,35 @@ const PostCard = ({ post }: PostCardProps) => {
     return (
         <Wrapper>
             {post.image && (
-                <StyledLink to="">
+                <StyledLink to={`${post.path}`}>
                     <RatioImage
-                        widthRatio={1.916}
+                        widthRatio={2}
                         heightRatio={1}
-                        src={post.image}
+                        fluid={post.image}
                     />
                 </StyledLink>
             )}
-            <Content clamp={post.image === ""}>
-                <StyledLink to="">
+            <Content clamp={!post.image}>
+                <StyledLink to={`${post.path}`}>
                     <h4>{post.title}</h4>
                     <div className="description-wrapper">
                         <p>
-                            {post.short_description.replace(/&#x3A;/g, ":")}
-                            {post.short_description.length === 150 && "..."}
+                            {post.description.replace(/&#x3A;/g, ":")}
+                            {post.description.length === 150 && "..."}
                         </p>
                     </div>
                 </StyledLink>
-                <div className="sub-info">
-                    <span>{formatDate(post.released_at)}</span>
-                    {post.updated_at && (
-                        <>
-                            <br />
-                            <span>{formatDate(post.updated_at)} 수정됨</span>
-                        </>
-                    )}
-                </div>
+                <StyledLink to={`${post.path}`}>
+                    <div className="sub-info">
+                        <span>{formatDate(post.released_at)}</span>
+                        {post.updated_at && (
+                            <>
+                                <br />
+                                <span>{formatDate(post.updated_at)} 수정됨</span>
+                            </>
+                        )}
+                    </div>
+                </StyledLink>
             </Content>
         </Wrapper>
     )

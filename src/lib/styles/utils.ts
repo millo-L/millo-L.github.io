@@ -37,7 +37,9 @@ export const formatDate = (date: string): string => {
 }
 
 export const getScrollTop = () => {
-    if (!document) return 0
+    if (typeof window === "undefined" || !window.document) {
+        return
+    }
     if (!document.body) return 0
     const scrollTop = document.documentElement
         ? document.documentElement.scrollTop || document.body.scrollTop

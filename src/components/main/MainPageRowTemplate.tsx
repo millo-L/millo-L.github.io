@@ -12,10 +12,11 @@ const Wrapper = Styled.div`
 
 interface MainPageRowTemplateProps {
     children: React.ReactNode
+    style?: React.CSSProperties;
 }
 
-const MainPageRowTemplate = ({ children }: MainPageRowTemplateProps) => {
-    return <Wrapper>{children}</Wrapper>
+const MainPageRowTemplate = ({ children, style }: MainPageRowTemplateProps) => {
+    return <Wrapper style={style}>{children}</Wrapper>
 }
 
 export default MainPageRowTemplate

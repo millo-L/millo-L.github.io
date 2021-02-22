@@ -1,7 +1,9 @@
 import { Link } from 'gatsby';
 import React, { useCallback } from 'react';
 import Styled from 'styled-components';
+import { categoryMap } from '../../lib/styles/category';
 import media from '../../lib/styles/media';
+import { formatDate } from '../../lib/styles/utils';
 import TagList from './TagList';
 
 type PostType = {
@@ -48,6 +50,7 @@ const PostViewerWrapper = Styled.div`
 const PostContentWrapper = Styled.div`
     width: 100%;
     margin: 0;
+    word-break: break-all;
 `;
 
 interface PostViewerProps {
@@ -64,10 +67,15 @@ const PostViewer = ({ post }: PostViewerProps) => {
 
     return (
         <PostViewerWrapper>
-            {category && <Link className="category" to={`/search?category=${category}`}>[{category}]</Link>}
+            {category &&
+                <Link className="category" to={`/?category=${category}`}>{
+                    categoryMap[category]
+                        ? <img src={categoryMap[category].src} />
+                        : [{ category }]
+                }</Link>}
             <h1 className="title">{title}</h1>
-            <p className="date" >게시: {released_at}</p>
-            {updated_at && <p className="date" >수정: {updated_at}</p>}
+            <p className="date" >게시: {formatDate(released_at)}</p>
+            {updated_at && <p className="date" >수정: {formatDate(updated_at)}</p>}
             {tags && <TagList tags={tags} onClick={onClickTag} />}
             <PostContentWrapper id="content-container" dangerouslySetInnerHTML={{ __html: html }} />
         </PostViewerWrapper>
