@@ -1,8 +1,16 @@
 import React from 'react';
-import Styled from 'styled-components';
+import Styled, { createGlobalStyle } from 'styled-components';
+import '../css/typography.css';
+
+const BackgroundStyle = createGlobalStyle`
+    body {
+        background-color: white;
+        font-family: "ELAND", serif;
+    }
+`;
 
 const PostTemplateWrapper = Styled.div`
-    background-color: white;
+    font-family: "ELAND", serif;
 `;
 
 interface PostTemplateProps {
@@ -12,9 +20,12 @@ interface PostTemplateProps {
 
 const PostTemplate = ({ children }: PostTemplateProps) => {
     return (
-        <PostTemplateWrapper>
-            {children}
-        </PostTemplateWrapper>
+        <>
+            <BackgroundStyle />
+            <PostTemplateWrapper>
+                {children}
+            </PostTemplateWrapper>
+        </>
     );
 }
 

@@ -43,7 +43,7 @@ const CategoryList = ({ }: CategoryListProps) => {
                     index === 0 ?
                         <Link to="/" key={index} >
                             <img className="category-img"
-                                src={category.src} />
+                                src={category.src} key={index} />
                         </Link>
                         : <></>
                 )
