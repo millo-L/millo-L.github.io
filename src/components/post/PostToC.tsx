@@ -14,8 +14,9 @@ const ToCWrapper = Styled.div`
     top: 10rem;
     margin-left: 4rem;
     position: sticky;
-    height: 20rem;
+    height: 30rem;
     overflow-y: auto;
+    word-break: break-all;
 
     ${media.custom(1440)} {
         display: none;
@@ -63,7 +64,7 @@ const PostToC = ({ tableOfContents }: PostToCProps) => {
     useEffect(() => {
         const post = document.querySelector("#content-container")
         const headings = Array.from(
-            post.querySelectorAll("h1,h2")
+            post.querySelectorAll("h1, h2")
         ).filter((h: any) => h.id)
         const toc = document.querySelector("#toc-container")
 

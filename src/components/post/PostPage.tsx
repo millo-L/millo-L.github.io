@@ -44,7 +44,7 @@ export const pageQuery = graphql`
     markdownRemark(frontmatter: { path: { eq: $path } }) {
       html
       id
-      tableOfContents(absolute: false, maxDepth: 6, heading: null)
+      tableOfContents(absolute: false, maxDepth: 2, heading: null)
       frontmatter {
         path
         author
