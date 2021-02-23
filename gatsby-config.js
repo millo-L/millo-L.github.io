@@ -82,5 +82,11 @@ module.exports = {
                 shortname: `millo-l`,
             },
         },
+        {
+            resolve: "gatsby-plugin-apollo",
+            options: {
+                uri: "https://example.com/graphql",
+            },
+        },
     ],
 }

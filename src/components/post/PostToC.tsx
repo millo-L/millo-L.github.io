@@ -6,7 +6,7 @@ import ScrollSpy from "./ScrollSpy"
 
 const ToCWrapper = Styled.div`
     transition: 0.125s all ease-in;
-
+    width: 20%;
     padding: 0.5rem;
     padding-right: 1rem;
     padding-left: 0;
@@ -66,8 +66,7 @@ const PostToC = ({ tableOfContents }: PostToCProps) => {
             post.querySelectorAll("h1,h2")
         ).filter((h: any) => h.id)
         const toc = document.querySelector("#toc-container")
-        console.log(headings);
-        console.log(toc);
+
         new ScrollSpy(toc as HTMLElement, headings as HTMLElement[]);
     }, [])
 

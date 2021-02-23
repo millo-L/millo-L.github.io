@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import { graphql, Link, useStaticQuery } from 'gatsby';
+import Img from 'gatsby-image';
 import Styled from 'styled-components';
 import media from '../../lib/styles/media';
 
@@ -12,12 +13,12 @@ const HeaderLogoWrapper = Styled.div`
 
 const VelogLogoLink = Styled(Link)`
     color: inherit;
-    img {
+    .header-logo {
         margin-right: 1rem;
         width: 3rem;
         height: 3rem;
         display: block;
-        ${media.custom(944)} {
+        ${media.custom(1056)} {
             width: 2.5rem;
             height: 2.5rem;
             margin-right: 0.75rem;
@@ -26,10 +27,24 @@ const VelogLogoLink = Styled(Link)`
 `;
 
 const HeaderLogo = () => {
+    const data = useStaticQuery(graphql`
+        {
+            file(relativePath: {eq: "logo.png"}) {
+                childImageSharp {
+                    fluid {
+                        ...GatsbyImageSharpFluid
+                    }
+                }
+            }
+        }
+    `);
+
+    if (!data.file) return <div></div>;
+
     return (
         <HeaderLogoWrapper>
             <VelogLogoLink to="/">
-                <img src='../images/logo.png' />
+                <Img className="header-logo" fluid={data.file.childImageSharp.fluid} />
             </VelogLogoLink>
         </HeaderLogoWrapper>
     )

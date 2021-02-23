@@ -24,15 +24,15 @@ const PostPage = ({ data }: PostPageProps) => {
       <Header />
       <MainResponsive style={{ marginTop: "2rem" }} >
         <MainPageRowTemplate style={{ marginBottom: "5rem" }}>
-          <SimpleProfile style={{ marginTop: "0.5rem" }} type='body' />
+          <SimpleProfile style={{ marginTop: "0.5rem" }} type='body' categoryVisible={true} />
           <PostViewer post={{ ...markdownRemark.frontmatter, html: markdownRemark.html }} />
           <PostToC tableOfContents={markdownRemark.tableOfContents} />
         </MainPageRowTemplate>
-        {/*<PostComment
+        <PostComment
           title={markdownRemark.frontmatter.title}
           id={markdownRemark.id}
           path={markdownRemark.frontmatter.path}
-        />*/}
+        />
         <Footer />
       </MainResponsive>
     </PostTemplate>

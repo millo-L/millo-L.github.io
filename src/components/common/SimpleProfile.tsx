@@ -2,12 +2,10 @@ import React from 'react';
 import Styled, { css } from 'styled-components';
 import { mediaQuery } from '../../lib/styles/media';
 import MainResponsive from '../main/MainResponsive';
-import { SiNotion } from 'react-icons/si';
-import { AiFillGithub } from 'react-icons/ai';
-import { MdEmail } from 'react-icons/md';
 import Img from "gatsby-image"
 import { graphql, useStaticQuery } from 'gatsby';
 import CategoryList from './CategoryList';
+import ProfileIcons from './ProfileIcons';
 
 const SimpleProfileWrapper = Styled(MainResponsive) <{ type: 'header' | 'body' }>`
     ${props =>
@@ -98,32 +96,23 @@ const SimpleProfileWrapper = Styled(MainResponsive) <{ type: 'header' | 'body' }
                     justify-content: space-between;
                     flex-direction: row;
                     margin-top: 0.3rem;
+                    svg {
+                        width: 30%;
+                        cursor: pointer;
+                    }
                 }
-            }
-
-            svg {
-                width: 30%;
-                cursor: pointer;
             }
         `
     }
 `;
 
-const openNewBrowser = (type: 'github' | 'notion' | 'email') => {
-    let link: string;
-    if (type === 'github') link = 'https://github.com/millo-L';
-    else if (type === 'notion') link = 'https://www.notion.so/Seungmin-Lee-706a5c55276c4ff58f1ff87d433bb4fb';
-    else link = 'mailto:seungmin4755@gmail.com';
-
-    window.open(link, '_blank');
-}
-
 interface SimpleProfileProps {
     type: 'header' | 'body';
+    categoryVisible: boolean;
     style?: React.CSSProperties;
 }
 
-const SimpleProfile = ({ type, style }: SimpleProfileProps) => {
+const SimpleProfile = ({ type, categoryVisible, style }: SimpleProfileProps) => {
     const data = useStaticQuery(graphql`
         {    
             file(relativePath: {eq: "profile.jpg"}) {
@@ -142,13 +131,9 @@ const SimpleProfile = ({ type, style }: SimpleProfileProps) => {
             <Img className="profile-img" fluid={data.file.childImageSharp.fluid} />
             <div className="info-wrapper">
                 <span>millo</span>
-                <div className="icon-wrapper">
-                    <AiFillGithub onClick={() => openNewBrowser('github')} />
-                    <SiNotion onClick={() => openNewBrowser('notion')} />
-                    <MdEmail onClick={() => openNewBrowser('email')} />
-                </div>
+                <ProfileIcons className="icon-wrapper" />
             </div>
-            <CategoryList />
+            <CategoryList visible={categoryVisible} />
         </SimpleProfileWrapper>
     );
 }

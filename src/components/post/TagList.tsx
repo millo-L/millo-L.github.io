@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 import Styled from 'styled-components';
+import media from '../../lib/styles/media';
 import palette from '../../lib/styles/palette';
 
 const TagItemWrapper = Styled.div`
@@ -12,6 +13,10 @@ const TagItemWrapper = Styled.div`
     cursor: pointer;
     &:hover {
         background-color: ${palette.gray[2]};
+    }
+    
+    ${media.custom(1056)} {
+        font-size: 0.8rem;
     }
 `;
 

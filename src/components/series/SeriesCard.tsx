@@ -4,11 +4,11 @@ import Styled, { css } from "styled-components"
 import { mediaQuery } from "../../lib/styles/media"
 import palette from "../../lib/styles/palette"
 import { ellipsis, formatDate } from "../../lib/styles/utils"
-import RatioImage from "./RatioImage"
+import RatioImage from "../common/RatioImage"
 import { FluidObject } from 'gatsby-image';
 
 const Wrapper = Styled.div`
-    width: 20rem;
+    width: 42rem;
     background: white;
     border-radius: 4px;
     box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.04);
@@ -18,12 +18,6 @@ const Wrapper = Styled.div`
     display: flex;
     flex-direction: column;
     ${mediaQuery(1919)} {
-        width: calc(33% - 1.8125rem);
-    }
-    ${mediaQuery(1440)} {
-        width: calc(33% - 1.9rem);
-    }
-    ${mediaQuery(1056)} {
         width: calc(50% - 2rem);
     }
     ${mediaQuery(767)} {
@@ -98,55 +92,47 @@ const Content = Styled.div<{ clamp: boolean }>`
         font-size: 0.75rem;
         line-height: 1.5;
         color: ${palette.gray[6]};
+        .separator {
+            margin-left: 0.25rem;
+            margin-right: 0.25rem;
+        }
     }
 
 `
 
-export type PartialPostType = {
+export type SeriesType = {
     path: string
     title: string
-    description: string
     image: FluidObject | FluidObject[]
-    released_at: string
     updated_at: string
-    lang: 'ko' | 'en'
+    totalCount: number
 }
 
-interface PostCardProps {
-    post: PartialPostType
+interface SeriesCardProps {
+    series: SeriesType
 }
 
-const PostCard = ({ post }: PostCardProps) => {
+const SeriesCard = ({ series }: SeriesCardProps) => {
     return (
         <Wrapper>
-            {post.image && (
-                <StyledLink to={`${post.path}`}>
+            {series.image && (
+                <StyledLink to={`${series.path}`}>
                     <RatioImage
                         widthRatio={2}
                         heightRatio={1}
-                        fluid={post.image}
+                        fluid={series.image}
                     />
                 </StyledLink>
             )}
-            <Content clamp={!post.image}>
-                <StyledLink to={`${post.path}`}>
-                    <h4>{post.title}</h4>
-                    <div className="description-wrapper">
-                        <p>
-                            {post.description.replace(/&#x3A;/g, ":")}
-                            {post.description.length === 150 && "..."}
-                        </p>
-                    </div>
+            <Content clamp={!series.image}>
+                <StyledLink to={`${series.path}`}>
+                    <h4>{series.title}</h4>
                 </StyledLink>
-                <StyledLink to={`${post.path}`}>
+                <StyledLink to={`${series.path}`}>
                     <div className="sub-info">
-                        <span>{formatDate(post.released_at)}</span>
-                        {post.updated_at && (
-                            <>
-                                <br />
-                                <span>{formatDate(post.updated_at)} 수정됨</span>
-                            </>
-                        )}
+                        <span>{series.totalCount}개의 포스트</span>
+                        <span className="separator">·</span>
+                        <span>마지막 업데이트 {formatDate(series.updated_at)}</span>
                     </div>
                 </StyledLink>
             </Content>
@@ -154,4 +140,4 @@ const PostCard = ({ post }: PostCardProps) => {
     )
 }
 
-export default PostCard
+export default SeriesCard

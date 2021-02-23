@@ -34,16 +34,27 @@ const PostViewerWrapper = Styled.div`
         &:hover {
             text-decoration: underline;
         }
+
+        
+        ${media.custom(1056)} {
+            font-size: 1rem;
+        }
     }
 
     .title {
         margin-top: 0;
         font-size: 3rem;
+        ${media.custom(1056)} {
+            font-size: 2.2rem;
+        }
     }
 
     .date {
         line-height: 0.8;
         color: gray;
+        ${media.custom(1056)} {
+            font-size: 0.8rem;
+        }
     }
 `;
 
