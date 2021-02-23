@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { memo, useEffect } from "react"
 import Styled from 'styled-components';
 import media from "../../lib/styles/media";
 import palette from "../../lib/styles/palette";
@@ -79,4 +79,4 @@ const PostToC = ({ tableOfContents }: PostToCProps) => {
     )
 }
 
-export default PostToC;
+export default memo(PostToC);

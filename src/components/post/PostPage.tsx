@@ -1,5 +1,5 @@
 import { graphql } from 'gatsby';
-import React from 'react';
+import React, { memo } from 'react';
 import Footer from '../base/Footer';
 import Header from '../base/Header';
 import SimpleProfile from '../common/SimpleProfile';
@@ -9,6 +9,7 @@ import PostTemplate from '../post/PostTemplate';
 import PostToC from '../post/PostToC';
 import PostViewer from '../post/PostViewer';
 import PostComment from './PostComment';
+import Utterances from './Utterances';
 
 interface PostPageProps {
   data: any;
@@ -28,11 +29,12 @@ const PostPage = ({ data }: PostPageProps) => {
           <PostViewer post={{ ...markdownRemark.frontmatter, html: markdownRemark.html }} />
           <PostToC tableOfContents={markdownRemark.tableOfContents} />
         </MainPageRowTemplate>
-        <PostComment
+        {/*<PostComment
           title={markdownRemark.frontmatter.title}
           id={markdownRemark.id}
           path={markdownRemark.frontmatter.path}
-        />
+        />*/}
+        <Utterances />
         <Footer />
       </MainResponsive>
     </PostTemplate>

@@ -1,5 +1,5 @@
 import { graphql, useStaticQuery } from "gatsby"
-import React, { useCallback } from "react"
+import React, { memo, useCallback } from "react"
 import { reshapePost } from "../../lib/posts/reshape"
 import { PartialPostType } from "./PostCard"
 import PostCardGrid from "./PostCardGrid"
@@ -10,7 +10,7 @@ export type PostsPageProps = {
 const PostsPage = ({ }: PostsPageProps) => {
     const data = useStaticQuery(graphql`
         {
-            allMarkdownRemark(filter: {frontmatter: {is_private: {eq: false}}}) {
+            allMarkdownRemark(sort: {fields: frontmatter___released_at, order: DESC}) {
                 edges {
                     node {
                         id
@@ -41,4 +41,4 @@ const PostsPage = ({ }: PostsPageProps) => {
     return <PostCardGrid posts={reshapePost(allMarkdownRemark)} />
 }
 
-export default PostsPage
+export default memo(PostsPage)

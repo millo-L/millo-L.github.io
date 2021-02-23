@@ -1,4 +1,4 @@
-import React from "react"
+import React, { memo } from "react"
 import Styled from "styled-components"
 import { mediaQuery } from "../../lib/styles/media"
 import PostCard, { PartialPostType } from "./PostCard"
@@ -29,4 +29,4 @@ const PostCardGrid = ({ posts }: PostCardGridProps) => {
 
 
 
-export default PostCardGrid
+export default memo(PostCardGrid)

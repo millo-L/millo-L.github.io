@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Styled from 'styled-components';
 import { mediaQuery } from '../../lib/styles/media';
 import SeriesCard, { SeriesType } from './SeriesCard';
@@ -27,4 +27,4 @@ const SeriesCardGrid = ({ seriesList }: SeriseCardGridProps) => {
     );
 }
 
-export default SeriesCardGrid;
+export default memo(SeriesCardGrid);

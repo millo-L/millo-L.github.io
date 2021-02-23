@@ -109,7 +109,7 @@ const PostContentWrapper = Styled.div`
             line-height: 1.7;
         }
 
-        p {
+        h4, p {
             margin: 0;
             font-size: 1.2rem;
             ${media.custom(767)} {
@@ -121,6 +121,13 @@ const PostContentWrapper = Styled.div`
 
     pre, code {
         font-size: 1.1rem;
+        ${media.custom(767)} {
+            font-size: 1rem;
+        }
+    }
+
+    img {
+        width: 100%;
     }
 `;
 

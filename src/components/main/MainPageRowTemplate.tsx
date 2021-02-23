@@ -1,4 +1,4 @@
-import React from "react"
+import React, { memo } from "react"
 import Styled from "styled-components"
 
 const Wrapper = Styled.div`
@@ -19,4 +19,4 @@ const MainPageRowTemplate = ({ children, style }: MainPageRowTemplateProps) => {
     return <Wrapper style={style}>{children}</Wrapper>
 }
 
-export default MainPageRowTemplate
+export default memo(MainPageRowTemplate)

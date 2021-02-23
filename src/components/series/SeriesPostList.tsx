@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Styled from 'styled-components';
 import media, { mediaQuery } from '../../lib/styles/media';
 import palette from '../../lib/styles/palette';
@@ -63,4 +63,4 @@ const SeriesPostList = ({ posts, series }: SeriesPostListProps) => {
     );
 }
 
-export default SeriesPostList;
+export default memo(SeriesPostList);

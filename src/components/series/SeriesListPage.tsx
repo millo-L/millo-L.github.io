@@ -1,5 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import React, { useCallback } from 'react';
+import React, { memo, useCallback } from 'react';
 import { SeriesType } from './SeriesCard';
 import SeriesCardGrid from './SeriesCardGrid';
 
@@ -53,4 +53,4 @@ const SeriesListPage = () => {
     return <SeriesCardGrid seriesList={reshapeSeries()} />;
 }
 
-export default SeriesListPage;
+export default memo(SeriesListPage);

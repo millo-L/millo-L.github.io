@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Styled, { css } from 'styled-components';
 import { mediaQuery } from '../../lib/styles/media';
 import MainResponsive from '../main/MainResponsive';
@@ -138,4 +138,4 @@ const SimpleProfile = ({ type, categoryVisible, style }: SimpleProfileProps) => 
     );
 }
 
-export default SimpleProfile;
+export default memo(SimpleProfile);

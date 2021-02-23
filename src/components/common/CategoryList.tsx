@@ -1,5 +1,5 @@
 import { Link } from 'gatsby';
-import React from 'react';
+import React, { memo } from 'react';
 import Styled, { css } from 'styled-components';
 import { categoryList } from '../../lib/styles/category';
 import { mediaQuery } from '../../lib/styles/media';
@@ -63,4 +63,4 @@ const CategoryList = ({ visible }: CategoryListProps) => {
     );
 }
 
-export default CategoryList;
+export default memo(CategoryList);

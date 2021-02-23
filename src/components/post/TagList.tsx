@@ -10,9 +10,9 @@ const TagItemWrapper = Styled.div`
     border-radius: 0.5rem;
     margin-right: 1rem;
     margin-bottom: 0.5rem;
-    cursor: pointer;
+    // cursor: pointer;
     &:hover {
-        background-color: ${palette.gray[2]};
+        // background-color: ${palette.gray[2]};
     }
     
     ${media.custom(1056)} {

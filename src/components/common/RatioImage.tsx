@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Styled from 'styled-components';
 import Img, { FluidObject } from 'gatsby-image';
 
@@ -41,4 +41,4 @@ const RatioImage = ({
     );
 };
 
-export default RatioImage;
+export default memo(RatioImage);

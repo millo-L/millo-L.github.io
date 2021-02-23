@@ -1,29 +1,30 @@
 ---
 author: millo
-title: WebRTC 이론 정리하기
+title: WebRTC 구현하기(1:1 P2P)
 category: webrtc
-path: /webrtc/2
+path: /webrtc/3
 layout: post
-released_at: 2020-12-22 17:00
-updated_at: 2020-12-22 17:01
-image: ../images/webrtc.png
+released_at: 2020-12-25 17:00
+updated_at: 2020-12-26 17:01
+image: ../../../images/webrtc.png
 series: WebRTC 이론부터 실전까지
-slug: WebRTC 이론 정리하기
+slug: WebRTC 1:1 P2P 구현하기
 lang: ko
 tags:
-    - ICE
-    - SDP
-    - STUN
-    - TURN
     - WebRTC
-    - NAT
+    - P2P
+    - Mesh
+    - SignalingServer
+    - nodejs
+    - reactjs
+    - typescript
 is_private: false
-description: WebRTC 이론 정리하기
+description: WebRTC의 이론을 기반으로 1:1 P2P 실시간 영상 송수신을 구현해보자.
 ---
 
 # 1. 서론
 
-이전까지의 포스트에서는 WebRTC가 어떤 기술을 사용하고 개발자가 상황에 따라 어떤 서버를 같이 개발해야 하는지에 대해 알아봤다. 드디어 기다리고 기다리던 구현의 시간이다. 오늘의 목표는 ReactJS와 Typescript를 이용한 Client 1:1(P2P) WebRTC 구현과 node.js를 이용한 Signaling Server를 구현하는 것이다. 만약 이 말이 이해가 잘 되지 않는다면 [이전의 포스트](https://velog.io/@seung3837/WebRTC-%EA%B5%AC%ED%98%84-%EB%B0%A9%EC%8B%9D)를 보고오기 바란다. 또한, 본 게시물은 ReactJS, Typescript 그리고 node.js를 설명하기 위한 글이 아니므로 WebRTC 구현을 위한 코드에만 초점을 맞춰서 설명하도록 하겠다.
+이전까지의 포스트에서는 WebRTC가 어떤 기술을 사용하고 개발자가 상황에 따라 어떤 서버를 같이 개발해야 하는지에 대해 알아봤다. 드디어 기다리고 기다리던 구현의 시간이다. 오늘의 목표는 ReactJS와 Typescript를 이용한 Client 1:1(P2P) WebRTC 구현과 node.js를 이용한 Signaling Server를 구현하는 것이다. 만약 이 말이 이해가 잘 되지 않는다면 [이전의 포스트](https://millo-L.github.io/webrtc/2)를 보고오기 바란다. 또한, 본 게시물은 ReactJS, Typescript 그리고 node.js를 설명하기 위한 글이 아니므로 WebRTC 구현을 위한 코드에만 초점을 맞춰서 설명하도록 하겠다.
 
 # 2. 데이터 용어 정리
 
@@ -52,7 +53,7 @@ description: WebRTC 이론 정리하기
     -   noise reduction and suppression
     -   image 'cleaning'.
 
-![](https://images.velog.io/images/seung3837/post/7b56260e-b7aa-4959-8b44-bb7d2b2574d6/webrtcArchitecture.png)
+![](../../../images/2020/12/webrtc-3/webrtcArchitecture.png)
 
 ### PS. 사실 RTCDataChannel이라는 (영상, 오디오 외의) 실시간 데이터를 전송하는 방식이 있는 데 실시간 영상 송수신과는 별도의 기술이라 혹시나 원하시는 분이 계시면 나중에 포스팅하겠습니다.
 
@@ -62,19 +63,19 @@ description: WebRTC 이론 정리하기
 
 아래의 그림은 오늘 우리가 구현할 방식을 간략하게 나타낸 것이다. 그림에서는 Caller와 Callee라는 표현으로 카카오톡의 보이스톡이나 페이스톡을 연상시키는 방식을 나타내고 있다. Caller가 Signaling 서버를 통해 자신의 SessionDescription을 보내면 Callee도 마찬가지로 Signaling 서버를 통해 자신의 SessionDescription을 보낸다. 그 외에도 ICECandidate를 Signaling 서버를 통해 주고 받으며 peer 간 연결을 완료하고 Caller와 Callee 간에 Media 데이터를 주고 받는다.
 
-![](https://images.velog.io/images/seung3837/post/8dd40b77-f8ea-41bf-ac30-f4fd632c2190/jsep.png)
+![](../../../images/2020/12/webrtc-3/jsep.png)
 
 ## 3-2. STUN 서버 동작
 
 아래의 그림에서는 STUN 서버를 통해 자신의 Public Address를 알아내고 접근 가능한 지 여부(Symmetric NAT 제한 여부)를 알아낸다. 다른 부분은 위의 그림 설명과 동일하다. Relay server란 TURN 서버를 나타내는 것으로 Symmetric NAT 제한을 우회하는 방식이다. 이 방식은 오버헤드가 발생하므로 대안이 없을 경우에만 사용해야 한다.
 
-![](https://images.velog.io/images/seung3837/post/e1bf8b2b-7e5c-4d2e-b594-88d9b11d843d/stun.png)
+![](../../../images/2020/12/webrtc-3/stun.png)
 
 ## 3-3. 연결 후 데이터 흐름
 
 아래의 그림은 peer 연결이 완료됐을 때 peer간의 데이터 흐름을 보여준 것으로 만약 TURN 서버가 필요하지 않다면(Symmetric NAT 제한이 걸리지 않는 다면) Relay server 없이 peer 간의 통신이 이루어지고, 만약 TURN 서버가 필요하다면(Symmetric NAT 제한이 걸렸다면) 모든 peer들에게 서로가 주고 받는 데이터를 TURN 서버에 같이 전달해야한다.
 
-![](https://images.velog.io/images/seung3837/post/88b4e4a8-13e3-44b4-baf5-8ce4115437e5/dataPathways.png)
+![](../../../images/2020/12/webrtc-3/dataPathways.png)
 
 ## 3-4. 주고 받는 Signal 데이터
 
@@ -96,7 +97,7 @@ description: WebRTC 이론 정리하기
 
 위의 설명은 주고 받는 Signal에 대한 설명으로 사실 코드를 구현할 때에는 신경쓸 부분이 더 있다.
 
-![](https://images.velog.io/images/seung3837/post/661be158-3d09-4a11-b270-879d0a0da92b/webrtc.jpg)
+![](../../../images/2020/12/webrtc-3/webrtc.jpg)
 
 # 4. 실제 코드
 
@@ -397,11 +398,9 @@ return (
 코로나 사태로 인해 크리스마스를 가족 외에 다른 사람과 만나지 못하고 지내다보니 시간이 많이 남아 하루 종일 덧붙일 자료를 찾으며 이 포스팅을 썼다. 처음에는 간단하게 쓸 생각이었지만 쓰다보니 정확한 정보를 포스팅하고 싶은 욕심에 자료를 많이 찾아보다보니 시간이 어느덧 몇 시간이 지나버렸다. 가족들과 즐거운 저녁식사와 작은 축하 파티를 하고 보낸 소소하고 행복한 크리스마스다. 어쩌다보니 신세한탄을 하게 되버렸는 데...
 일단 이 코드들은 정말 간단하게 WebRTC를 1:1 P2P형식 연결을 해본 결과물이다. 물론 나는 위에서 적어놓은 주석처럼 코드의 실행순서를 정확히 이해하지 않고 도전을 하다보니 엄청나게 많은 디버깅과 시간을 쏟아서 결국 성공하게 됐고, 성공을 하고 나니 더욱 이해가 잘 가는 신기한 공부 순서를 경험했다. 어쩔때는 머리로 이해하는 것보다 몸이 먼저 나서는 게 나은 건가 싶기도 하다. 나는 그렇게 시간을 많이 쏟았지만 다른 분들은 시간을 좀 아끼셨으면 좋겠다는 마음에 이 포스팅을 쓴다. 물론 미래의 나도 쓸 일이 있다면 좋겠다.
 
-물론 이게 다지만 혹시나 전체 코드 구성이 궁금하시거나 직접 실행해보고 싶으신 분들은 https://github.com/Seung3837/Typescript-ReactJS-WebRTC-1-1-P2P 에서 clone해서 사용하시면 됩니다.
+# [GitHub]
 
-# 6. Next Post is...
-
--   [React.js with Typescript로 1:N peer to peer WebRTC 구현하기](https://velog.io/@seung3837/WebRTC-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B01N-P2P)
+-   https://github.com/Seung3837/Typescript-ReactJS-WebRTC-1-1-P2P
 
 # [참고]
 

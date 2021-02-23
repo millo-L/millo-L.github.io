@@ -1,4 +1,4 @@
-import React from "react"
+import React, { memo } from "react"
 import { Link } from "gatsby"
 import Styled, { css } from "styled-components"
 import { mediaQuery } from "../../lib/styles/media"
@@ -154,4 +154,4 @@ const PostCard = ({ post }: PostCardProps) => {
     )
 }
 
-export default PostCard
+export default memo(PostCard)

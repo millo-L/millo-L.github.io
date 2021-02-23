@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { memo, useCallback, useRef, useState } from 'react';
 import Styled from 'styled-components';
 import useToggle from '../../lib/hooks/useToggle';
 import { BsSearch } from 'react-icons/bs';
@@ -33,9 +33,9 @@ const Header = ({ }: HeaderProps) => {
             >
                 <HeaderLogo />
                 <Right>
-                    <SearchButton to="/search">
+                    {/*<SearchButton to="/search">
                         <BsSearch style={{}} />
-                    </SearchButton>
+                    </SearchButton>*/}
                     <div ref={ref}>
                         <HeaderLanguage language={language} onClick={toggleUserMenu} />
                     </div>
@@ -46,7 +46,7 @@ const Header = ({ }: HeaderProps) => {
                 </Right>
             </Inner>
 
-            <SimpleProfile type='header' />
+            <SimpleProfile type='header' categoryVisible={false} />
         </Wrapper>
     );
 }
@@ -96,4 +96,4 @@ const SearchButton = Styled(Link)`
     margin-right: 0.75rem;
 `;
 
-export default Header;
+export default memo(Header);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Styled from 'styled-components';
 import { SiNotion } from 'react-icons/si';
 import { AiFillGithub } from 'react-icons/ai';
@@ -30,4 +30,4 @@ const ProfileIcons = ({ className }: ProfileIconsProps) => {
     );
 }
 
-export default ProfileIcons;
+export default memo(ProfileIcons);

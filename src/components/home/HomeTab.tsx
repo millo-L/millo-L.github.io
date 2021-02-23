@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { memo, useEffect, useState } from "react"
 import Styled, { css } from "styled-components"
 import palette from "../../lib/styles/palette"
 import { MdFace } from "react-icons/md"
@@ -173,4 +173,4 @@ const Indicator = Styled(animated.div)`
     background: ${palette.indigo[8]};
 `
 
-export default HomeTab
+export default memo(HomeTab)

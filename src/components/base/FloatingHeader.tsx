@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
 import Styled from 'styled-components';
 import { getScrollTop } from '../../lib/styles/utils';
 import HomeTab from '../home/HomeTab';
@@ -105,4 +105,4 @@ const FloatingHeader = ({ page, onClick }: FloatingHeaderProps) => {
     );
 }
 
-export default FloatingHeader;
+export default memo(FloatingHeader);

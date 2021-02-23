@@ -1,5 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import React, { useCallback } from 'react';
+import React, { memo, useCallback } from 'react';
 import queryString from 'query-string';
 import { useLocation } from '@reach/router';
 import { reshapePost } from '../../lib/posts/reshape';
@@ -60,4 +60,4 @@ const SeriesPostListPage = ({ order }: SeriesPostListPageProps) => {
 
 }
 
-export default SeriesPostListPage;
+export default memo(SeriesPostListPage);

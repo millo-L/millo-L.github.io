@@ -43,7 +43,7 @@ description: WebRTC 이론 정리하기
 -   peer간의 직접 연결을 막는 등의 라우터의 제한을 결정하는 프로토콜 (현재 **다른 peer가 접근 가능하지 여부** 결정)
 -   클라이언트는 인터넷을 통해 **클라이언트의 Public Address**와 **라우터의 NAT 뒤에 있는 클라이언트가 접근 가능한지에 대한 답변**을 STUN서버에 요청한다.
 
-![](https://images.velog.io/images/seung3837/post/c9e7972f-96fa-423c-a001-fc631d82a0f0/webrtc-stun.png)
+![](../../../images/2020/12/webrtc-1/webrtc-stun.png)
 
 ## 2-3. NAT(Network Address Transilation)
 
@@ -59,19 +59,13 @@ description: WebRTC 이론 정리하기
 -   이를 위해 **TURN 서버와 연결**을 한 후 **모든 peer들에게 저 서버에 모든 패킷을 보내고 다시 나(TURN서버)에게 전달**해달라고 해야 한다.
 -   명백히 **오버헤드가 발생**하므로 이 방법은 다른 **대안이 없을 경우만 사용**해야 한다.
 
-![](https://images.velog.io/images/seung3837/post/ff184453-7eb6-4bd5-945f-36df91cf6763/webrtc-turn.png)
+![](../../../images/2020/12/webrtc-1/webrtc-turn.png)
 
 -   #### SDP(Session Description Protocol)
     -   해상도나 형식, 코덱, 암호화등의 멀티미디어 컨텐츠의 연결을 설명하기 위한 표준이다.
     -   두 개의 peer가 다른 한쪽이 **데이터가 전송되고 있다는 것을 알게 해준다.**
     -   기본적으로 미디어 컨텐츠 자체가 아닌 **컨텐츠에 대한 메타데이터 설명**이다.
     -   **기술적으로 보자면 SDP 는 프로토콜이 아니다.** 그러나 데이터 포멧은 **디바이스간의 미디어를 공유하기 위한 연결을 설명하기 위해 사용**한다.
-
-# 3. Next Post is...
-
--   [WebRTC의 구현 방식(P2P, SFU, MCU)](https://velog.io/@seung3837/WebRTC-%EA%B5%AC%ED%98%84-%EB%B0%A9%EC%8B%9D)
--   [React.js with Typescript로 1:1 peer to peer WebRTC 구현하기](https://velog.io/@seung3837/WebRTC-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B011-P2P)
--   [React.js with Typescript로 1:N peer to peer WebRTC 구현하기](https://velog.io/@seung3837/WebRTC-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B01N-P2P)
 
 # [참고]
 

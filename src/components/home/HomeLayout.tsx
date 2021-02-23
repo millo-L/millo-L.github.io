@@ -1,4 +1,4 @@
-import React from "react"
+import React, { memo } from "react"
 import styled from "styled-components"
 import media from "../../lib/styles/media"
 
@@ -27,4 +27,4 @@ const Main = styled.main`
     flex: 1;
 `
 
-export default HomeLayout
+export default memo(HomeLayout)

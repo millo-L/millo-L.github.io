@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Styled, { css } from 'styled-components';
 import Img from 'gatsby-image';
 import media, { mediaQuery } from '../../lib/styles/media';
@@ -128,4 +128,4 @@ const SeriesPost = ({ post, index }: SeriesPost) => {
     );
 }
 
-export default SeriesPost;
+export default memo(SeriesPost);
