@@ -2,13 +2,11 @@
 author: millo
 title: WebRTC 구현하기(1:1 P2P)
 category: webrtc
-path: /webrtc/3
 layout: post
 released_at: 2020-12-25 17:00
 updated_at: 2020-12-26 17:01
 image: ../../../images/webrtc.png
 series: WebRTC 이론부터 실전까지
-slug: WebRTC 1:1 P2P 구현하기
 lang: ko
 tags:
     - WebRTC

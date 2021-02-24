@@ -2,13 +2,11 @@
 author: millo
 title: WebRTC 이론 정리하기
 category: webrtc
-path: /webrtc/1
 layout: post
 released_at: 2020-12-22 17:00
 updated_at: 2020-12-22 17:01
 image: ../../../images/webrtc.png
 series: WebRTC 이론부터 실전까지
-slug: WebRTC 이론 정리하기
 lang: ko
 tags:
     - ICE
@@ -18,7 +16,7 @@ tags:
     - WebRTC
     - NAT
 is_private: false
-description: WebRTC 이론 정리하기
+description: WebRTC 이론 정리하기. ICE, SDP, STUN, TURN, NAT 등에 대해 알아보자.
 ---
 
 # 1. WebRTC란 무엇일까?

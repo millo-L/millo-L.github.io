@@ -29,7 +29,6 @@ const SeriesPostListPage = ({ order }: SeriesPostListPageProps) => {
                             node {
                                 id
                                 frontmatter {
-                                    path
                                     released_at
                                     updated_at
                                     title
@@ -42,6 +41,9 @@ const SeriesPostListPage = ({ order }: SeriesPostListPageProps) => {
                                         }
                                     }
                                     lang
+                                }
+                                fields {
+                                    slug
                                 }
                             }
                         }

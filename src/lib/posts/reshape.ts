@@ -7,7 +7,7 @@ export const reshapePost = (allMarkdownRemark: any) => {
     edges.map(edge => {
         const obj = edge.node.frontmatter
         let post: PartialPostType = {
-            path: obj.path,
+            path: edge.node.fields.slug,
             title: obj.title,
             description: obj.description,
             released_at: obj.released_at,

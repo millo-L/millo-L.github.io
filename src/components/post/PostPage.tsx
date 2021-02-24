@@ -8,6 +8,7 @@ import MainResponsive from '../main/MainResponsive';
 import PostTemplate from '../post/PostTemplate';
 import PostToC from '../post/PostToC';
 import PostViewer from '../post/PostViewer';
+import SEO from '../SEO';
 import PostComment from './PostComment';
 import Utterances from './Utterances';
 
@@ -16,12 +17,20 @@ interface PostPageProps {
 }
 
 const PostPage = ({ data }: PostPageProps) => {
-  const { markdownRemark } = data
+  const { markdownRemark, site } = data
 
-  if (!markdownRemark) return <div></div>;
+  if (!(markdownRemark && site)) return <div></div>;
 
   return (
     <PostTemplate>
+      <SEO
+        title={markdownRemark.frontmatter.title}
+        description={markdownRemark.frontmatter.description}
+        date={markdownRemark.frontmatter.released_at}
+        url={site.siteMetadata.siteUrl + markdownRemark.fields.slug}
+        image={markdownRemark.frontmatter.image.childImageSharp.fluid.src}
+        lang={markdownRemark.frontmatter.lang}
+      />
       <Header />
       <MainResponsive style={{ marginTop: "2rem" }} >
         <MainPageRowTemplate style={{ marginBottom: "5rem" }}>
@@ -42,19 +51,35 @@ const PostPage = ({ data }: PostPageProps) => {
 }
 
 export const pageQuery = graphql`
-  query($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
+  query($slug: String!) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       id
       tableOfContents(absolute: false, maxDepth: 2, heading: null)
       frontmatter {
-        path
         author
+        description
         category
         released_at(formatString: "YYYY-MM-DD")
         updated_at(formatString: "YYYY-MM-DD")
         tags
         title
+        lang
+        image {
+            childImageSharp {
+                fluid {
+                    ...GatsbyImageSharpFluid
+                }
+            }
+        }
+      }
+      fields {
+        slug
+      }
+    }
+    site {
+      siteMetadata {
+        siteUrl
       }
     }
   }

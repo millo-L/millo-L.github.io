@@ -15,6 +15,7 @@ import '../components/css/typography.css';
 import SeriesListPage from "../components/series/SeriesListPage"
 import queryString from 'query-string';
 import { useLocation } from '@reach/router';
+import SEO from "../components/SEO"
 
 const indexPage = (page: number) => {
     if (page === 0) return <PostListPage />;
@@ -37,6 +38,7 @@ const HomePage = () => {
 
     return (
         <MainTemplate>
+            <SEO title="홈" />
             <Header />
             <FloatingHeader page={page} onClick={onClick} />
             <MainResponsive>

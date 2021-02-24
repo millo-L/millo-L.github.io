@@ -1,6 +1,19 @@
 import React, { createRef, useLayoutEffect } from 'react';
+import Styled from 'styled-components';
+import { mediaQuery } from '../../lib/styles/media';
 
 const src = 'https://utteranc.es/client.js';
+
+const Wrapper = Styled.div`
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+
+    
+    ${mediaQuery(1056)} {
+        width: 100%;
+    }
+`;
 
 interface IUtterancesProps {
 }
@@ -28,7 +41,7 @@ const Utterances = React.memo(({ }: IUtterancesProps) => {
         containerRef.current.appendChild(utterances);
     }, []);
 
-    return <div ref={containerRef} />;
+    return <Wrapper ref={containerRef} />;
 });
 
 Utterances.displayName = 'Utterances';

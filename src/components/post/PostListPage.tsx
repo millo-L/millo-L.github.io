@@ -22,12 +22,14 @@ const PostsPage = ({ }: PostsPageProps) => {
                                     }
                                 }
                             }
-                            path
                             title
                             released_at
                             updated_at
                             description
                             lang
+                        }
+                        fields {
+                            slug
                         }
                     }
                 }

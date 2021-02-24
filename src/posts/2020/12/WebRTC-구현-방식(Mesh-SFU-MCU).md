@@ -1,14 +1,12 @@
 ---
 author: millo
-title: WebRTC 구현 방식
+title: WebRTC 구현 방식(Mesh/P2P, SFU, MCU)
 category: webrtc
-path: /webrtc/2
 layout: post
 released_at: 2020-12-24 17:00
 updated_at: 2020-12-25 17:01
 image: ../../../images/webrtc.png
 series: WebRTC 이론부터 실전까지
-slug: WebRTC 서버 종류
 lang: ko
 tags:
     - WebRTC
