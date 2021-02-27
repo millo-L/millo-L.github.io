@@ -1,6 +1,5 @@
 import React, { memo } from 'react';
-import Styled, { css } from 'styled-components';
-import Img from 'gatsby-image';
+import Styled from 'styled-components';
 import media, { mediaQuery } from '../../lib/styles/media';
 import { PartialPostType } from '../post/PostCard';
 import { ellipsis, formatDate } from '../../lib/styles/utils';
@@ -114,11 +113,11 @@ const SeriesPost = ({ post, index }: SeriesPost) => {
                 </StyledLink>
                 <StyledLink to={`${post.path}`}>
                     <div className="sub-info">
-                        <span>{formatDate(post.released_at)}</span>
+                        <span>{formatDate(post.released_at, post.lang)}</span>
                         {post.updated_at && (
                             <>
                                 <br />
-                                <span>{formatDate(post.updated_at)} 수정됨</span>
+                                <span>{post.lang === 'ko' ? '수정: ' : 'Last edited at '}{formatDate(post.updated_at, post.lang)}</span>
                             </>
                         )}
                     </div>

@@ -5,7 +5,7 @@ category: webrtc
 layout: post
 released_at: 2020-12-24 17:00
 updated_at: 2020-12-25 17:01
-image: ../../../images/webrtc.png
+image: ../../../../images/webrtc.png
 series: WebRTC 이론부터 실전까지
 lang: ko
 tags:
@@ -16,6 +16,8 @@ tags:
     - P2P
     - SFU
 is_private: false
+translation: /WebRTC-implementation-method(Mesh-SFU-MCU)/
+translation_series: /WebRTC-theory-to-practice
 description: WebRTC를 구현하기 위한 서버의 종류에 대해 알아보자. (Mesh/P2P, SFU, MCU)
 ---
 
@@ -29,7 +31,7 @@ P2P 연결을 완성시키기 위해서는 개발자가 peer간의 offer와 answ
 # 2. 서버의 종류
 
 WebRTC를 위해 개발자가 구현할 수 있는 서버는 크게 세 종류가 있다. Signaling, SFU 그리고 MCU이다. 그렇다면 하나씩 알아보도록 하자.
-![](../../../images/2020/12/webrtc-2/webrtc-server.png)
+![](../../../../images/2020/12/webrtc-server.png)
 
 ## 2-1. Signaling 서버(위 그림의 Mesh)
 

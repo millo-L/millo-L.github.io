@@ -21,10 +21,11 @@ const Wrapper = Styled.div`
 
 interface FloatingHeaderProps {
     page: number;
+    lang: string;
     onClick: (index: number) => void;
 };
 
-const FloatingHeader = ({ page, onClick }: FloatingHeaderProps) => {
+const FloatingHeader = ({ page, lang, onClick }: FloatingHeaderProps) => {
     const [visible, setVisible] = useState<boolean>(false);
     const wrapperRef = useRef<HTMLDivElement>(null);
     const [height, setHeight] = useState<number>(0);
@@ -98,7 +99,7 @@ const FloatingHeader = ({ page, onClick }: FloatingHeaderProps) => {
         >
             <div className="tab-wrapper">
                 <MainResponsive>
-                    <HomeTab setUser={true} page={page} onClick={onClick} />
+                    <HomeTab setUser={true} page={page} lang={lang} onClick={onClick} />
                 </MainResponsive>
             </div>
         </Wrapper>

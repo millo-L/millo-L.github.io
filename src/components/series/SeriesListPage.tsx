@@ -1,12 +1,16 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import React, { memo, useCallback } from 'react';
-import { SeriesType } from './SeriesCard';
+import React, { memo } from 'react';
+import { filterByLanguage, reshapeSeries } from '../../lib/list/reshape';
 import SeriesCardGrid from './SeriesCardGrid';
 
-const SeriesListPage = () => {
+interface SeriesListPageProps {
+    lang: string;
+}
+
+const SeriesListPage = ({ lang }: SeriesListPageProps) => {
     const data = useStaticQuery(graphql`
         {
-            allMarkdownRemark(limit: 2000, filter: {frontmatter: {lang: {eq: "ko"}}}, sort: {order: ASC, fields: frontmatter___released_at}) {
+            allMarkdownRemark(sort: {order: DESC, fields: frontmatter___released_at}, filter: {frontmatter: {series: {ne: "none"}}}) {
                 group(field: frontmatter___series, limit: 1) {
                     fieldValue
                     totalCount
@@ -20,6 +24,7 @@ const SeriesListPage = () => {
                                 }
                             }
                             released_at
+                            lang
                         }
                     }
                 }
@@ -27,30 +32,10 @@ const SeriesListPage = () => {
         }
     `);
 
-    if (!data.allMarkdownRemark) return <div></div>;
     const { allMarkdownRemark } = data;
+    if (!allMarkdownRemark) return <div></div>;
 
-    const reshapeSeries = useCallback(() => {
-        let seriesList: Array<SeriesType> = [];
-        const { group } = allMarkdownRemark;
-        let len = group.length;
-
-        for (let i = 0; i < len; i++) {
-            const obj = group[i].nodes[0].frontmatter;
-            let series: SeriesType = {
-                path: `/series?name=${group[i].fieldValue.replace(/ /gi, '-')}`,
-                title: group[i].fieldValue,
-                image: obj.image ? obj.image.childImageSharp.fluid : null,
-                updated_at: obj.released_at,
-                totalCount: group[i].totalCount
-            }
-            seriesList.push(series);
-        }
-
-        return seriesList;
-    }, [allMarkdownRemark]);
-
-    return <SeriesCardGrid seriesList={reshapeSeries()} />;
+    return <SeriesCardGrid seriesList={filterByLanguage(reshapeSeries(allMarkdownRemark), lang)} />;
 }
 
 export default memo(SeriesListPage);

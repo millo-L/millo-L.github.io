@@ -5,6 +5,8 @@ import { categoryMap } from '../../lib/styles/category';
 import media from '../../lib/styles/media';
 import palette from '../../lib/styles/palette';
 import { formatDate } from '../../lib/styles/utils';
+import PostSeriesList, { PartialSeriesType } from './PostSeriesList';
+import PrevNextPost from './PrevNextPost';
 import TagList from './TagList';
 
 type PostType = {
@@ -19,6 +21,7 @@ type PostType = {
 const PostViewerWrapper = Styled.div`
     width: 60%;
     margin-left: 0;
+    max-width: 972px;
 
     ${media.custom(1440)} {
         width: 80%;
@@ -92,37 +95,37 @@ const PostContentWrapper = Styled.div`
     }
 
     p {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         line-height: 1.8;
         ${media.custom(767)} {
-            font-size: 1.05rem;
+            font-size: 0.9rem;
             line-height: 1.7;
         }
     }
 
     li {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         line-height: 2;
 
         ${media.custom(767)} {
-            font-size: 1.05rem;
+            font-size: 0.9rem;
             line-height: 1.7;
         }
 
         h4, p {
             margin: 0;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             ${media.custom(767)} {
-                font-size: 1.05rem;
+                font-size: 0.9rem;
                 line-height: 1.7;
             }
         }
     }
 
     pre, code {
-        font-size: 1.1rem;
+        font-size: 1rem;
         ${media.custom(767)} {
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
     }
 
@@ -133,10 +136,13 @@ const PostContentWrapper = Styled.div`
 
 interface PostViewerProps {
     post: PostType;
+    series: string;
+    seriesList: Array<PartialSeriesType>;
+    lang: string;
 }
 
 
-const PostViewer = ({ post }: PostViewerProps) => {
+const PostViewer = ({ post, series, seriesList, lang }: PostViewerProps) => {
     const { html, title, released_at, updated_at, category, tags } = post;
 
     const onClickTag = useCallback((tag: string) => {
@@ -146,16 +152,18 @@ const PostViewer = ({ post }: PostViewerProps) => {
     return (
         <PostViewerWrapper>
             {category &&
-                <Link className="category" to={`/?category=${category}`}>{
+                <Link className="category" to={lang === 'ko' ? `/?category=${category}` : `/en?category=${category}`}>{
                     categoryMap[category]
                         ? <img src={categoryMap[category].src} />
                         : [{ category }]
                 }</Link>}
             <h1 className="title">{title}</h1>
-            <p className="date" >게시: {formatDate(released_at)}</p>
-            {updated_at && <p className="date" >수정: {formatDate(updated_at)}</p>}
+            <p className="date" >{lang === 'ko' ? '게시: ' : ''}{formatDate(released_at, lang)}</p>
+            {updated_at && <p className="date" >{lang === 'ko' ? '수정: ' : 'Last edited at '}{formatDate(updated_at, lang)}</p>}
             {tags && <TagList tags={tags} onClick={onClickTag} />}
+            {series !== 'none' && <PostSeriesList series={series} seriesList={seriesList} nowPostTitle={title} lang={lang} />}
             <PostContentWrapper id="content-container" dangerouslySetInnerHTML={{ __html: html }} />
+            <PrevNextPost nowPostTitle={title} seriesList={seriesList} lang={lang} />
         </PostViewerWrapper>
     );
 }

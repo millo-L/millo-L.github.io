@@ -5,7 +5,7 @@ category: webrtc
 layout: post
 released_at: 2020-12-25 17:00
 updated_at: 2020-12-26 17:01
-image: ../../../images/webrtc.png
+image: ../../../../images/webrtc.png
 series: WebRTC 이론부터 실전까지
 lang: ko
 tags:
@@ -17,12 +17,14 @@ tags:
     - reactjs
     - typescript
 is_private: false
+translation: /Implementing-WebRTC-using-ReactJS-and-Typescript(1-1-P2P)/
+translation_series: /WebRTC-theory-to-practice
 description: WebRTC의 이론을 기반으로 1:1 P2P 실시간 영상 송수신을 구현해보자.
 ---
 
 # 1. 서론
 
-이전까지의 포스트에서는 WebRTC가 어떤 기술을 사용하고 개발자가 상황에 따라 어떤 서버를 같이 개발해야 하는지에 대해 알아봤다. 드디어 기다리고 기다리던 구현의 시간이다. 오늘의 목표는 ReactJS와 Typescript를 이용한 Client 1:1(P2P) WebRTC 구현과 node.js를 이용한 Signaling Server를 구현하는 것이다. 만약 이 말이 이해가 잘 되지 않는다면 [이전의 포스트](https://millo-L.github.io/webrtc/2)를 보고오기 바란다. 또한, 본 게시물은 ReactJS, Typescript 그리고 node.js를 설명하기 위한 글이 아니므로 WebRTC 구현을 위한 코드에만 초점을 맞춰서 설명하도록 하겠다.
+이전까지의 포스트에서는 WebRTC가 어떤 기술을 사용하고 개발자가 상황에 따라 어떤 서버를 같이 개발해야 하는지에 대해 알아봤다. 드디어 기다리고 기다리던 구현의 시간이다. 오늘의 목표는 ReactJS와 Typescript를 이용한 Client 1:1(P2P) WebRTC 구현과 node.js를 이용한 Signaling Server를 구현하는 것이다. 만약 이 말이 이해가 잘 되지 않는다면 [이전의 포스트](<https://millo-l.github.io/WebRTC-%EA%B5%AC%ED%98%84-%EB%B0%A9%EC%8B%9D(Mesh-SFU-MCU)>)를 보고오기 바란다. 또한, 본 게시물은 ReactJS, Typescript 그리고 node.js를 설명하기 위한 글이 아니므로 WebRTC 구현을 위한 코드에만 초점을 맞춰서 설명하도록 하겠다.
 
 # 2. 데이터 용어 정리
 
@@ -51,7 +53,7 @@ description: WebRTC의 이론을 기반으로 1:1 P2P 실시간 영상 송수신
     -   noise reduction and suppression
     -   image 'cleaning'.
 
-![](../../../images/2020/12/webrtc-3/webrtcArchitecture.png)
+![](../../../../images/2020/12/webrtcArchitecture.png)
 
 ### PS. 사실 RTCDataChannel이라는 (영상, 오디오 외의) 실시간 데이터를 전송하는 방식이 있는 데 실시간 영상 송수신과는 별도의 기술이라 혹시나 원하시는 분이 계시면 나중에 포스팅하겠습니다.
 
@@ -61,19 +63,19 @@ description: WebRTC의 이론을 기반으로 1:1 P2P 실시간 영상 송수신
 
 아래의 그림은 오늘 우리가 구현할 방식을 간략하게 나타낸 것이다. 그림에서는 Caller와 Callee라는 표현으로 카카오톡의 보이스톡이나 페이스톡을 연상시키는 방식을 나타내고 있다. Caller가 Signaling 서버를 통해 자신의 SessionDescription을 보내면 Callee도 마찬가지로 Signaling 서버를 통해 자신의 SessionDescription을 보낸다. 그 외에도 ICECandidate를 Signaling 서버를 통해 주고 받으며 peer 간 연결을 완료하고 Caller와 Callee 간에 Media 데이터를 주고 받는다.
 
-![](../../../images/2020/12/webrtc-3/jsep.png)
+![](../../../../images/2020/12/jsep.png)
 
 ## 3-2. STUN 서버 동작
 
 아래의 그림에서는 STUN 서버를 통해 자신의 Public Address를 알아내고 접근 가능한 지 여부(Symmetric NAT 제한 여부)를 알아낸다. 다른 부분은 위의 그림 설명과 동일하다. Relay server란 TURN 서버를 나타내는 것으로 Symmetric NAT 제한을 우회하는 방식이다. 이 방식은 오버헤드가 발생하므로 대안이 없을 경우에만 사용해야 한다.
 
-![](../../../images/2020/12/webrtc-3/stun.png)
+![](../../../../images/2020/12/stun.png)
 
 ## 3-3. 연결 후 데이터 흐름
 
 아래의 그림은 peer 연결이 완료됐을 때 peer간의 데이터 흐름을 보여준 것으로 만약 TURN 서버가 필요하지 않다면(Symmetric NAT 제한이 걸리지 않는 다면) Relay server 없이 peer 간의 통신이 이루어지고, 만약 TURN 서버가 필요하다면(Symmetric NAT 제한이 걸렸다면) 모든 peer들에게 서로가 주고 받는 데이터를 TURN 서버에 같이 전달해야한다.
 
-![](../../../images/2020/12/webrtc-3/dataPathways.png)
+![](../../../../images/2020/12/dataPathways.png)
 
 ## 3-4. 주고 받는 Signal 데이터
 
@@ -95,7 +97,7 @@ description: WebRTC의 이론을 기반으로 1:1 P2P 실시간 영상 송수신
 
 위의 설명은 주고 받는 Signal에 대한 설명으로 사실 코드를 구현할 때에는 신경쓸 부분이 더 있다.
 
-![](../../../images/2020/12/webrtc-3/webrtc.jpg)
+![](../../../../images/2020/12/webrtc.jpg)
 
 # 4. 실제 코드
 
@@ -398,7 +400,7 @@ return (
 
 # [GitHub]
 
--   https://github.com/Seung3837/Typescript-ReactJS-WebRTC-1-1-P2P
+-   https://github.com/millo-L/Typescript-ReactJS-WebRTC-1-1-P2P
 
 # [참고]
 

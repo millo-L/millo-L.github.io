@@ -51,57 +51,57 @@ export const categoryMap: {
 
 export const categoryList = [
     {
-        category: "webrtc",
+        name: "webrtc",
         src:
             "https://img.shields.io/badge/WebRTC-333333?style=flat-square&logo=WebRTC&logoColor=white",
     },
     {
-        category: "gatsby",
+        name: "gatsby",
         src:
             "https://img.shields.io/badge/Gatsby-663399?style=flat-square&logo=Gatsby&logoColor=white",
     },
     {
-        category: "nodejs",
+        name: "nodejs",
         src:
             "https://img.shields.io/badge/NodeJS-339933?style=flat-square&logo=Node.js&logoColor=white",
     },
     {
-        category: "typescript",
+        name: "typescript",
         src:
             "https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=TypeScript&logoColor=white",
     },
     {
-        category: "react",
+        name: "react",
         src:
             "https://img.shields.io/badge/ReactJS-61DAFB?style=flat-square&logo=React&logoColor=white",
     },
     {
-        category: "docker",
+        name: "docker",
         src:
             "https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=Docker&logoColor=white",
     },
     {
-        category: "go",
+        name: "go",
         src:
             "https://img.shields.io/badge/Go-00ADD8?style=flat-square&logo=Go&logoColor=white",
     },
     {
-        category: "redis",
+        name: "redis",
         src:
             "https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=Redis&logoColor=white",
     },
     {
-        category: "jenkins",
+        name: "jenkins",
         src:
             "https://img.shields.io/badge/Jenkins-D24939?style=flat-square&logo=Jenkins&logoColor=white",
     },
     {
-        category: "nginx",
+        name: "nginx",
         src:
             "https://img.shields.io/badge/NGINX-269539?style=flat-square&logo=NGINX&logoColor=white",
     },
     {
-        category: "mysql",
+        name: "mysql",
         src:
             "https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=MySQL&logoColor=white",
     },

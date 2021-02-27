@@ -31,7 +31,7 @@ const TagListWrapper = Styled.div`
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
 `;
 
 interface TagListWrapper {

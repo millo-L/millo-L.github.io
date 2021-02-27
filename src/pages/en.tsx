@@ -22,8 +22,8 @@ createGlobalStyle`
 `;
 
 const indexPage = (page: number) => {
-    if (page === 0) return <PostListPage lang="ko" />;
-    else if (page === 1) return <SeriesListPage lang="ko" />;
+    if (page === 0) return <PostListPage lang="en" />;
+    else if (page === 1) return <SeriesListPage lang="en" />;
     else return <div></div>;
 }
 
@@ -41,13 +41,16 @@ const HomePage = () => {
 
     return (
         <MainTemplate>
-            <SEO title="홈" />
-            <Header lang="ko" ko_to="#" en_to="/en" />
-            <FloatingHeader page={page} onClick={onClick} lang="ko" />
+            <SEO
+                title="Home"
+                lang="en"
+            />
+            <Header lang="en" ko_to="/" en_to="#" />
+            <FloatingHeader page={page} lang="en" onClick={onClick} />
             <MainResponsive>
-                <HomeTab page={page} setUser={false} onClick={onClick} lang="ko" />
+                <HomeTab page={page} setUser={false} onClick={onClick} lang="en" />
                 <MainPageRowTemplate>
-                    <SimpleProfile type="body" categoryVisible={categoryVisible} lang="ko" />
+                    <SimpleProfile type="body" categoryVisible={categoryVisible} lang="en" />
                     <HomeLayout>
                         {indexPage(page)}
                     </HomeLayout>

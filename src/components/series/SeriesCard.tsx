@@ -106,6 +106,7 @@ export type SeriesType = {
     image: FluidObject | FluidObject[]
     updated_at: string
     totalCount: number
+    lang: string
 }
 
 interface SeriesCardProps {
@@ -130,9 +131,9 @@ const SeriesCard = ({ series }: SeriesCardProps) => {
                 </StyledLink>
                 <StyledLink to={`${series.path}`}>
                     <div className="sub-info">
-                        <span>{series.totalCount}개의 포스트</span>
+                        <span>{series.totalCount}{series.lang === 'ko' ? '개의 포스트' : ' posts'}</span>
                         <span className="separator">·</span>
-                        <span>마지막 업데이트 {formatDate(series.updated_at)}</span>
+                        <span>{series.lang === 'ko' ? '마지막 업데이트' : 'Last edited at'} {formatDate(series.updated_at, series.lang)}</span>
                     </div>
                 </StyledLink>
             </Content>

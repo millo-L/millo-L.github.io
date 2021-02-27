@@ -109,10 +109,11 @@ const SimpleProfileWrapper = Styled(MainResponsive) <{ type: 'header' | 'body' }
 interface SimpleProfileProps {
     type: 'header' | 'body';
     categoryVisible: boolean;
+    lang: string;
     style?: React.CSSProperties;
 }
 
-const SimpleProfile = ({ type, categoryVisible, style }: SimpleProfileProps) => {
+const SimpleProfile = ({ type, categoryVisible, lang, style }: SimpleProfileProps) => {
     const data = useStaticQuery(graphql`
         {    
             file(relativePath: {eq: "profile.jpg"}) {
@@ -133,7 +134,7 @@ const SimpleProfile = ({ type, categoryVisible, style }: SimpleProfileProps) => 
                 <span>millo</span>
                 <ProfileIcons className="icon-wrapper" />
             </div>
-            <CategoryList visible={categoryVisible} />
+            <CategoryList visible={categoryVisible} lang={lang} />
         </SimpleProfileWrapper>
     );
 }

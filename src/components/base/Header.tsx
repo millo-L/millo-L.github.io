@@ -11,12 +11,13 @@ import HeaderUserMenu from './HeaderUserMenu';
 import SimpleProfile from '../common/SimpleProfile';
 
 interface HeaderProps {
-
+    lang: string;
+    ko_to?: string;
+    en_to?: string;
 }
 
-const Header = ({ }: HeaderProps) => {
+const Header = ({ lang, ko_to, en_to }: HeaderProps) => {
     const [userMenuVisible, toggleUserMenu] = useToggle(false);
-    const [language, setLanguage] = useState<string>('한국어');
     const ref = useRef<HTMLDivElement>(null);
 
     const onOutsideClick = useCallback((e: React.MouseEvent) => {
@@ -31,22 +32,27 @@ const Header = ({ }: HeaderProps) => {
                 style={{
                 }}
             >
-                <HeaderLogo />
+                <HeaderLogo lang={lang} />
                 <Right>
                     {/*<SearchButton to="/search">
                         <BsSearch style={{}} />
                     </SearchButton>*/}
                     <div ref={ref}>
-                        <HeaderLanguage language={language} onClick={toggleUserMenu} />
+                        <HeaderLanguage
+                            language={lang === 'ko' ? '한국어' : 'English'}
+                            onClick={toggleUserMenu}
+                        />
                     </div>
                     <HeaderUserMenu
                         onClose={onOutsideClick}
                         visible={userMenuVisible}
+                        ko_to={ko_to}
+                        en_to={en_to}
                     />
                 </Right>
             </Inner>
 
-            <SimpleProfile type='header' categoryVisible={false} />
+            <SimpleProfile type='header' categoryVisible={false} lang={lang} />
         </Wrapper>
     );
 }

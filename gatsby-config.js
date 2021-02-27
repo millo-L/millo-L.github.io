@@ -9,12 +9,10 @@ module.exports = {
     siteMetadata: {
         title: "millo's tech blog",
         author: "millo",
-        description: `It is a blog that keeps records of various IT technologies.`,
+        description: `millo's tech blog`,
         siteUrl: `https://millo-L.github.io`,
     },
     plugins: [
-        `gatsby-plugin-sharp`,
-        `gatsby-transformer-sharp`,
         {
             resolve: `gatsby-source-filesystem`,
             options: {
@@ -22,27 +20,8 @@ module.exports = {
                 path: `${__dirname}/src/images`,
             },
         },
-        {
-            resolve: `gatsby-plugin-styled-components`,
-            options: {
-                // Add any options here
-            },
-        },
-        {
-            resolve: `gatsby-plugin-typescript`,
-            options: {
-                isTSX: true, // defaults to false
-                jsxPragma: `jsx`, // defaults to "React"
-                allExtensions: true, // defaults to false
-            },
-        },
-        {
-            resolve: `gatsby-source-filesystem`,
-            options: {
-                name: `markdown-pages`,
-                path: `${__dirname}/src/posts`,
-            },
-        },
+        `gatsby-plugin-sharp`,
+        `gatsby-transformer-sharp`,
         {
             resolve: `gatsby-transformer-remark`,
             options: {
@@ -72,26 +51,35 @@ module.exports = {
                 ],
             },
         },
+        {
+            resolve: `gatsby-plugin-typescript`,
+            options: {
+                isTSX: true, // defaults to false
+                jsxPragma: `jsx`, // defaults to "React"
+                allExtensions: true, // defaults to false
+            },
+        },
+        {
+            resolve: `gatsby-plugin-styled-components`,
+            options: {
+                // Add any options here
+            },
+        },
         `gatsby-plugin-react-helmet`,
         `gatsby-plugin-sitemap`,
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                name: `markdown-pages`,
+                path: `${__dirname}/src/posts`,
+            },
+        },
         {
             resolve: "gatsby-plugin-robots-txt",
             options: {
                 host: "https://millo-L.github.io",
                 sitemap: "https://millo-L.github.io/sitemap.xml",
                 policy: [{ userAgent: "*", allow: "/" }],
-            },
-        },
-        {
-            resolve: `gatsby-plugin-disqus`,
-            options: {
-                shortname: `millo-l`,
-            },
-        },
-        {
-            resolve: "gatsby-plugin-apollo",
-            options: {
-                uri: "https://example.com/graphql",
             },
         },
         {

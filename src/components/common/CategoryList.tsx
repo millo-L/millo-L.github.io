@@ -43,20 +43,20 @@ const CategoryListWrapper = Styled.div<{ visible: boolean }>`
 
 interface CategoryListProps {
     visible: boolean;
+    lang: string;
+    selectedCategory?: string;
 }
 
-const CategoryList = ({ visible }: CategoryListProps) => {
+const CategoryList = ({ visible, lang, selectedCategory }: CategoryListProps) => {
     return (
         <CategoryListWrapper visible={visible}>
             <p>Categories</p>
-            {categoryList.map((category, index) => {
+            {categoryList.filter((category, idx) => idx < 2).map((category, index) => {
                 return (
-                    index === 0 ?
-                        <Link to="/" key={index} >
-                            <img className="category-img"
-                                src={category.src} />
-                        </Link>
-                        : <div key={index}></div>
+                    <Link to={lang === 'ko' ? `/?category=${category.name}` : `/en?category=${category.name}`} key={index} >
+                        <img className="category-img"
+                            src={category.src} />
+                    </Link>
                 )
             })}
         </CategoryListWrapper>

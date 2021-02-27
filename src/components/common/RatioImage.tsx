@@ -5,7 +5,6 @@ import Img, { FluidObject } from 'gatsby-image';
 const RatioImageBlock = Styled.div`
     width: 100%;
     max-height: 100%;
-    position: relative;
     display: flex;
     align-items: center;
     .ratio-img {

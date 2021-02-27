@@ -26,7 +26,11 @@ const VelogLogoLink = Styled(Link)`
     }
 `;
 
-const HeaderLogo = () => {
+interface HeaderLogoProps {
+    lang: string;
+}
+
+const HeaderLogo = ({ lang }: HeaderLogoProps) => {
     const data = useStaticQuery(graphql`
         {
             file(relativePath: {eq: "logo.png"}) {
@@ -43,7 +47,7 @@ const HeaderLogo = () => {
 
     return (
         <HeaderLogoWrapper>
-            <VelogLogoLink to="/">
+            <VelogLogoLink to={lang === 'ko' ? '/' : '/en'}>
                 <Img className="header-logo" fluid={data.file.childImageSharp.fluid} />
             </VelogLogoLink>
         </HeaderLogoWrapper>

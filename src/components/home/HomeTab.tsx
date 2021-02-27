@@ -7,20 +7,37 @@ import { useSpring, animated } from "react-spring"
 import { mediaQuery } from "../../lib/styles/media"
 import { getScrollTop } from "../../lib/styles/utils"
 import { BsPencilSquare } from "react-icons/bs"
+import { graphql, useStaticQuery } from "gatsby"
+import Img from 'gatsby-image';
 
 interface HomeTabProps {
     setUser: boolean;
     page: number;
+    lang: string;
     onClick: (index: number) => void;
 }
 
-const HomeTab = ({ setUser, page, onClick }: HomeTabProps) => {
+const HomeTab = ({ setUser, page, lang, onClick }: HomeTabProps) => {
     useEffect(() => {
         if (typeof window === 'undefined' || !window.document) {
             return;
         }
     }, []);
     const [visible, setVisible] = useState<boolean>(false)
+
+
+    const data = useStaticQuery(graphql`
+        {    
+            file(relativePath: {eq: "profile.jpg"}) {
+                id
+                childImageSharp {
+                    fluid(maxWidth: 460) {
+                        ...GatsbyImageSharpFluid
+                    }
+                }
+            }
+        }
+    `);
 
     /*
     const [extra, toggle] = useToggle(false);
@@ -54,17 +71,17 @@ const HomeTab = ({ setUser, page, onClick }: HomeTabProps) => {
     return (
         <Wrapper>
             <UserWrapper visible={visible && setUser}>
-                <img src="../images/profile.jpg" />
+                <Img className="small-profile-img" fluid={data.file.childImageSharp.fluid} />
                 <span>millo</span>
             </UserWrapper>
             <InnerWrapper>
                 <div className={`tab ${page === 0 ? 'active' : ''}`} onClick={() => onClick(0)}>
                     <BsPencilSquare />
-                    게시글
+                    {lang === 'ko' ? '게시글' : 'Posts'}
                 </div>
                 <div className={`tab ${page === 1 ? 'active' : ''}`} onClick={() => onClick(1)}>
                     <GiOpenBook />
-                    시리즈
+                    {lang === 'ko' ? '시리즈' : 'Series'}
                 </div>
                 <div className={`tab ${page === 2 ? 'active' : ''}`} onClick={() => onClick(2)}>
                     <MdFace />
@@ -112,7 +129,7 @@ const UserWrapper = Styled.div<{ visible: boolean }>`
         display: none;
     }
 
-    img {
+    .small-profile-img {
         width: 2.5rem;
         height: 2.5rem;
         margin-right: 1rem;

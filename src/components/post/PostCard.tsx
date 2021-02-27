@@ -110,6 +110,7 @@ export type PartialPostType = {
     released_at: string
     updated_at: string
     lang: 'ko' | 'en'
+    category: string
 }
 
 interface PostCardProps {
@@ -140,11 +141,11 @@ const PostCard = ({ post }: PostCardProps) => {
                 </StyledLink>
                 <StyledLink to={`${post.path}`}>
                     <div className="sub-info">
-                        <span>{formatDate(post.released_at)}</span>
+                        <span>{formatDate(post.released_at, post.lang)}</span>
                         {post.updated_at && (
                             <>
                                 <br />
-                                <span>{formatDate(post.updated_at)} 수정됨</span>
+                                <span>{post.lang === 'ko' ? '수정: ' : 'Last edited at'} {formatDate(post.updated_at, post.lang)}</span>
                             </>
                         )}
                     </div>

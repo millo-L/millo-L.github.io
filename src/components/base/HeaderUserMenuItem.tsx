@@ -4,7 +4,6 @@ import { Link } from 'gatsby';
 import palette from '../../lib/styles/palette';
 
 const HeaderUserMenuItemWrapper = Styled.div`
-    color: ${palette.gray[9]};
     padding: 0.75rem 1rem;
     width: 4rem;
     line-height: 1.5;
@@ -17,19 +16,20 @@ const HeaderUserMenuItemWrapper = Styled.div`
 `;
 
 interface HeaderUserMenuItemProps {
-    to?: string;
+    to: string;
     children: React.ReactNode;
-    onClick?: () => void;
 }
 
 const HeaderUserMenuItem = ({
+    to,
     children,
-    onClick,
 }: HeaderUserMenuItemProps) => {
     return (
-        <HeaderUserMenuItemWrapper onClick={onClick}>
-            {children}
-        </HeaderUserMenuItemWrapper>
+        <Link to={to} style={{ textDecoration: 'none', color: palette.gray[9] }}>
+            <HeaderUserMenuItemWrapper>
+                {children}
+            </HeaderUserMenuItemWrapper>
+        </Link>
     );
 }
 

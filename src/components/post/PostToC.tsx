@@ -40,7 +40,7 @@ const ToCWrapper = Styled.div`
     a {
         text-decoration: none;
         color: ${palette.gray[4]};
-        font-size: 1rem;
+        font-size: 0.9rem;
         &:hover,
         &:focus {
             color: ${palette.indigo[4]};

@@ -1,13 +1,17 @@
 import { graphql, useStaticQuery } from "gatsby"
-import React, { memo, useCallback } from "react"
-import { reshapePost } from "../../lib/posts/reshape"
-import { PartialPostType } from "./PostCard"
+import React, { memo } from "react"
+import { filterByCategory, filterByLanguage, reshapePost } from "../../lib/list/reshape"
 import PostCardGrid from "./PostCardGrid"
+import queryString from 'query-string';
+import { useLocation } from '@reach/router';
 
-export type PostsPageProps = {
+interface PostsPageProps {
+    lang: string;
 }
 
-const PostsPage = ({ }: PostsPageProps) => {
+const PostsPage = ({ lang }: PostsPageProps) => {
+    const location = useLocation();
+    const query = (location.search && queryString.parse(location.search));
     const data = useStaticQuery(graphql`
         {
             allMarkdownRemark(sort: {fields: frontmatter___released_at, order: DESC}) {
@@ -27,6 +31,7 @@ const PostsPage = ({ }: PostsPageProps) => {
                             updated_at
                             description
                             lang
+                            category
                         }
                         fields {
                             slug
@@ -40,7 +45,7 @@ const PostsPage = ({ }: PostsPageProps) => {
     if (!data.allMarkdownRemark) return <div></div>;
     const { allMarkdownRemark } = data;
 
-    return <PostCardGrid posts={reshapePost(allMarkdownRemark)} />
+    return <PostCardGrid posts={query.category ? filterByCategory(filterByLanguage(reshapePost(allMarkdownRemark), lang), (query.category as string)) : filterByLanguage(reshapePost(allMarkdownRemark), lang)} />
 }
 
 export default memo(PostsPage)

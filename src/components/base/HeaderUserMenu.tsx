@@ -28,21 +28,25 @@ const HeaderUserMenuWrapper = Styled.div`
 interface HeaderUserMenuProps {
     onClose: (e: React.MouseEvent) => void;
     visible: boolean;
+    ko_to?: string;
+    en_to?: string;
 }
 
 const HeaderUserMenu = ({
     onClose,
     visible,
+    ko_to,
+    en_to,
 }: HeaderUserMenuProps) => {
     if (!visible) return null;
     return (
         <OutsideClickHandler onOutsideClick={onClose}>
             <HeaderUserMenuWrapper onClick={onClose}>
                 <div className="menu-wrapper">
-                    <HeaderUserMenuItem>
+                    <HeaderUserMenuItem to={ko_to ? ko_to : '#'}>
                         한국어
                     </HeaderUserMenuItem>
-                    <HeaderUserMenuItem >English</HeaderUserMenuItem>
+                    <HeaderUserMenuItem to={en_to ? en_to : '#'}>English</HeaderUserMenuItem>
                 </div>
             </HeaderUserMenuWrapper>
         </OutsideClickHandler>

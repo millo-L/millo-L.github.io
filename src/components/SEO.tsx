@@ -34,7 +34,7 @@ const SEO = (p: P) => {
     )
 
     const description = p.description || site.siteMetadata.description
-    const defaultImage = `${site.siteMetadata.siteUrl}/images/logo.jpg`
+    const defaultImage = `${site.siteMetadata.siteUrl}/images/logo.png`
     const image = p.image
         ? p.image?.startsWith(site.siteMetadata.siteUrl)
             ? p.image

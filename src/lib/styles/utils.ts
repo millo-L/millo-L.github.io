@@ -2,6 +2,7 @@ import { css } from "styled-components"
 import distanceInWordsToNow from "date-fns/formatDistanceToNow"
 import format from "date-fns/format"
 import koLocale from "date-fns/locale/ko"
+import enLocale from "date-fns/locale/en-US"
 
 export const ellipsis = css`
     text-overflow: ellipsis;
@@ -16,10 +17,33 @@ export const customFont = css`
     arial, 나눔고딕, 'Nanum Gothic', 돋움; */
 `
 
-export const formatDate = (date: string): string => {
+export const formatDate = (date: string, lang: string): string => {
     const d = new Date(date)
     const now = Date.now()
     const diff = now - new Date(date).getTime()
+
+    if (lang === "en") {
+        if (diff < 1000 * 60 * 5) {
+            return "A few minutes ago"
+        }
+        if (diff < 1000 * 60 * 60 * 24) {
+            return distanceInWordsToNow(d, {
+                addSuffix: true,
+                locale: enLocale,
+            })
+        }
+        if (diff < 1000 * 60 * 60 * 36) {
+            return "Yesterday"
+        }
+        if (diff < 1000 * 60 * 60 * 24 * 7) {
+            return distanceInWordsToNow(d, {
+                addSuffix: true,
+                locale: enLocale,
+            })
+        }
+        return d.toDateString()
+    }
+
     // less than 5 minutes
     if (diff < 1000 * 60 * 5) {
         return "방금 전"

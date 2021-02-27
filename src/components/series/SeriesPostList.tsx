@@ -38,7 +38,7 @@ const Wrapper = Styled.div`
             ${media.custom(1056)} {
                 font-size: 1rem;
                 border-bottom: 3px solid ${palette.indigo[7]};
-                width: 2.9rem;
+                width: 3rem;
             }
         }
     }
@@ -46,14 +46,14 @@ const Wrapper = Styled.div`
 interface SeriesPostListProps {
     posts: Array<PartialPostType>;
     series: string;
+    lang: string;
 }
 
-const SeriesPostList = ({ posts, series }: SeriesPostListProps) => {
-    console.log(posts);
+const SeriesPostList = ({ posts, series, lang }: SeriesPostListProps) => {
     return (
         <Wrapper>
             <div className="series-header">
-                <h3>시리즈</h3>
+                <h3>{lang === 'ko' ? '시리즈' : 'Series'}</h3>
                 <h1>{series}</h1>
             </div>
             {posts.map((post, index) => (
