@@ -190,7 +190,7 @@ data-styled.g28[id="PostViewer__PostContentWrapper-sc-1vcgubz-1"]{content:"cIdEK
 data-styled.g29[id="Utterances__Wrapper-sc-1m6k9q3-0"]{content:"lhumdt,"}/*!sc*/
 @-webkit-keyframes frVAfx{0%{-webkit-transform:translateX(0px);-ms-transform:translateX(0px);transform:translateX(0px);}50%{-webkit-transform:translateX(8px);-ms-transform:translateX(8px);transform:translateX(8px);}100%{-webkit-transform:translateX(0px);-ms-transform:translateX(0px);transform:translateX(0px);}}/*!sc*/
 @keyframes frVAfx{0%{-webkit-transform:translateX(0px);-ms-transform:translateX(0px);transform:translateX(0px);}50%{-webkit-transform:translateX(8px);-ms-transform:translateX(8px);transform:translateX(8px);}100%{-webkit-transform:translateX(0px);-ms-transform:translateX(0px);transform:translateX(0px);}}/*!sc*/
-data-styled.g55[id="sc-keyframes-frVAfx"]{content:"frVAfx,"}/*!sc*/
+data-styled.g54[id="sc-keyframes-frVAfx"]{content:"frVAfx,"}/*!sc*/
 </style><title data-react-helmet="true">[Docker] docker-copmose node.js, mysql 연동 | millo&#x27;s tech blog</title><meta data-react-helmet="true" property="og:locale" content="ko_KR"/><meta data-react-helmet="true" property="og:locale:alternate" content="en_US"/><meta data-react-helmet="true" property="og:site_name" content="millo&#x27;s tech blog"/><meta data-react-helmet="true" property="description" content="docker-compose로 node.js와 mysql을 연동해보자."/><meta data-react-helmet="true" property="og:url" content="https://millo-L.github.io/docket-compose-nodejs-mysql-연동/"/><meta data-react-helmet="true" property="og:title" content="[Docker] docker-copmose node.js, mysql 연동"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:description" content="docker-compose로 node.js와 mysql을 연동해보자."/><meta data-react-helmet="true" property="og:image" content="https://millo-L.github.io/static/bb8e5ba3597380023a854295c990e919/ee604/docker.png"/><meta data-react-helmet="true" property="article:published_time" content="2020-12-24"/><script data-react-helmet="true" type="application/ld+json">
         {
           "@context": "http://schema.org",
@@ -305,10 +305,10 @@ web와 db가 서버를 거치지 않고 통신하는 경우가 없다는 이유�
 <p>위의 파일 경로에서 server/docker-entrypoint.sh 파일의 코드를 보자.
 dockerize라는 프로그램은 도커 컨테이너의 실행순서를 결정해줄 수 있는 프로그램이다.
 이로 인해 db 컨테이너의 구동을 확인하고 server를 실행시킬 수 있다.</p>
-<div class="gatsby-highlight" data-language="sh"><pre class="language-sh"><code class="language-sh">echo &quot;wait db server&quot;
+<div class="gatsby-highlight" data-language="shell"><pre class="language-shell"><code class="language-shell"><span class="token builtin class-name">echo</span> <span class="token string">"wait db server"</span>
 dockerize -wait tcp://db:3306 -timeout 20s
 
-echo &quot;start node server&quot;
+<span class="token builtin class-name">echo</span> <span class="token string">"start node server"</span>
 nodemon ./dist/</code></pre></div>
 <p>위의 쉘 스크립트 파일을 server의 Dockerfile에서 구동시키면 db서버의 연결이 가능할 때까지 기다리고 node.js server가 실행된다.</p>
 <p>server Dockerfile의 코드를 보자.</p>
@@ -335,9 +335,9 @@ nodemon ./dist/</code></pre></div>
 
 <span class="token keyword">EXPOSE</span> 8080</code></pre></div>
 <p>아래 코드는 dockerize를 설치하는 작업이다.</p>
-<div class="gatsby-highlight" data-language="sh"><pre class="language-sh"><code class="language-sh">ENV DOCKERIZE_VERSION v0.2.0
-RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
-    &amp;&amp; tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz</code></pre></div>
+<div class="gatsby-highlight" data-language="shell"><pre class="language-shell"><code class="language-shell">ENV DOCKERIZE_VERSION v0.2.0
+RUN <span class="token function">wget</span> https://github.com/jwilder/dockerize/releases/download/<span class="token variable">$DOCKERIZE_VERSION</span>/dockerize-linux-amd64-<span class="token variable">$DOCKERIZE_VERSION</span>.tar.gz <span class="token punctuation">\</span>
+    <span class="token operator">&amp;&amp;</span> <span class="token function">tar</span> -C /usr/local/bin -xzvf dockerize-linux-amd64-<span class="token variable">$DOCKERIZE_VERSION</span>.tar.gz</code></pre></div>
 <p>이렇게 코드를 짜면 server와 db 간의 network 연결과 connection 모두 작동된다.</p>
 <h1 id="3-느낀-점" style="position:relative;"><a href="#3-%EB%8A%90%EB%82%80-%EC%A0%90" aria-label="3 느낀 점 permalink" class="anchor-header before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3. 느낀 점</h1>
 <p>항상 느끼지만 코딩이란 건 오류를 해결해가는 과정인 것 같다. 2일 동안 이 문제로 끙끙거렸는 데, 항상 그렇듯 해결하고 나니 홀가분해지고 뿌듯함이 느껴진다. 혹시 똑같은 문제로 고통 받고 계시다면 이 글이 조금이나마 도움이 됐으면 한다.</p>
