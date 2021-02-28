@@ -71,14 +71,14 @@ export const categoryMap: {
 
 export const categoryList = [
     {
+        name: "nodejs",
+        src:
+            "https://img.shields.io/badge/NodeJS-339933?style=flat-square&logo=Node.js&logoColor=white",
+    },
+    {
         name: "webrtc",
         src:
             "https://img.shields.io/badge/WebRTC-333333?style=flat-square&logo=WebRTC&logoColor=white",
-    },
-    {
-        name: "gatsby",
-        src:
-            "https://img.shields.io/badge/Gatsby-663399?style=flat-square&logo=Gatsby&logoColor=white",
     },
     {
         name: "javascript",
@@ -101,14 +101,19 @@ export const categoryList = [
             "https://img.shields.io/badge/OpenSource-3DA639?style=flat-square&logo=Open-Source-Initiative&logoColor=white",
     },
     {
+        name: "nginx",
+        src:
+            "https://img.shields.io/badge/NGINX-269539?style=flat-square&logo=NGINX&logoColor=white",
+    },
+    {
+        name: "gatsby",
+        src:
+            "https://img.shields.io/badge/Gatsby-663399?style=flat-square&logo=Gatsby&logoColor=white",
+    },
+    {
         name: "raspberrypi",
         src:
             "https://img.shields.io/badge/Raspberry-C51A4A?style=flat-square&logo=Raspberry-Pi&logoColor=white",
-    },
-    {
-        name: "anaconda",
-        src:
-            "https://img.shields.io/badge/Anaconda-44A833?style=flat-square&logo=Anaconda&logoColor=white",
     },
     {
         name: "python",
@@ -116,9 +121,9 @@ export const categoryList = [
             "https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=Python&logoColor=white",
     },
     {
-        name: "nodejs",
+        name: "anaconda",
         src:
-            "https://img.shields.io/badge/NodeJS-339933?style=flat-square&logo=Node.js&logoColor=white",
+            "https://img.shields.io/badge/Anaconda-44A833?style=flat-square&logo=Anaconda&logoColor=white",
     },
     {
         name: "typescript",
@@ -139,11 +144,6 @@ export const categoryList = [
         name: "jenkins",
         src:
             "https://img.shields.io/badge/Jenkins-D24939?style=flat-square&logo=Jenkins&logoColor=white",
-    },
-    {
-        name: "nginx",
-        src:
-            "https://img.shields.io/badge/NGINX-269539?style=flat-square&logo=NGINX&logoColor=white",
     },
     {
         name: "mysql",

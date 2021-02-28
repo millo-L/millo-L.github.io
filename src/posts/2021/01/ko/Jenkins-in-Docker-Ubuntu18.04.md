@@ -1,6 +1,6 @@
 ---
 author: millo
-title: Jenkins in Docker(Ubuntu18.04)
+title: "[Docker] Jenkins in Docker(Ubuntu18.04)"
 category: docker
 layout: post
 released_at: 2021-01-18 17:00

@@ -1,6 +1,6 @@
 ---
 author: millo
-title: Troubleshooting Gatsby build error "document is not defined"
+title: '[Gatsby] Troubleshooting build error "document is not defined"'
 category: gatsby
 layout: post
 released_at: 2021-02-27 09:20

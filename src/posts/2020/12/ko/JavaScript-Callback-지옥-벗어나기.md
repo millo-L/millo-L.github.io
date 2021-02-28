@@ -1,6 +1,6 @@
 ---
 author: millo
-title: JavaScript Callback 지옥 벗어나기
+title: "[JavaScript] Callback 지옥 벗어나기"
 category: javascript
 layout: post
 released_at: 2020-12-28 17:00

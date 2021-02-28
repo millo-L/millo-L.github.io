@@ -1,6 +1,6 @@
 ---
 author: millo
-title: docker-copmose node.js, mysql 연동
+title: "[Docker] docker-copmose node.js, mysql 연동"
 category: docker
 layout: post
 released_at: 2020-12-24 17:00

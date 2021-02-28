@@ -1,6 +1,6 @@
 ---
 author: millo
-title: Raspberry pi에 OpenCV4 설치하기
+title: "[Raspberry pi] OpenCV4 설치하기"
 category: raspberrypi
 layout: post
 released_at: 2021-01-25 17:00

@@ -61,7 +61,7 @@ const CategoryList = ({ visible, lang, selectedCategory }: CategoryListProps) =>
         <CategoryListWrapper visible={visible}>
             <p>Categories</p>
             <div className="img-wrapper">
-                {categoryList.filter((category, idx) => idx < 9).map((category, index) => {
+                {categoryList.filter((category, idx) => idx < 11).map((category, index) => {
                     return (
                         <Link to={lang === 'ko' ? `/?category=${category.name}` : `/en?category=${category.name}`} key={index} >
                             <img className="category-img"

@@ -1,6 +1,6 @@
 ---
 author: millo
-title: 간단한 Anaconda 가상 환경 관리하기
+title: "[Anaconda] 간단한 Anaconda 가상 환경 관리하기"
 category: anaconda
 layout: post
 released_at: 2021-01-26 17:00
@@ -18,7 +18,7 @@ translation_series: none
 description: python 개발을 편리하게 해주는 Anaconda 가상 환경을 관리 명령어에 대해 알아보자.
 ---
 
-> **기본 전제 사항**<br/>
+> **전제 조건** <br/>
 > 당연히 Python과 Anaconda는 깔려있다고 가정한다.<br/>
 > 혹시나 둘 중 하나가 깔려있지 않다면, 아래에 첨부한 각각의 링크에 접속해서 다운로드하기 바란다. <br/> https://www.python.org/downloads/ <br/> https://docs.anaconda.com/anaconda/install/ <br/>
 

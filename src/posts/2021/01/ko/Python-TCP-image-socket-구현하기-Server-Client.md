@@ -1,6 +1,6 @@
 ---
 author: millo
-title: Python TCP image socket 구현하기(Server, Client)
+title: "[Python] TCP image socket 구현하기(Server, Client)"
 category: python
 layout: post
 released_at: 2021-01-27 17:00

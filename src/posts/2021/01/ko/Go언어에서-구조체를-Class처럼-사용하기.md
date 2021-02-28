@@ -1,6 +1,6 @@
 ---
 author: millo
-title: Go언어에서 구조체를 Class처럼 사용하기
+title: "[Go] 구조체를 Class처럼 사용하기"
 category: go
 layout: post
 released_at: 2021-01-20 17:00
