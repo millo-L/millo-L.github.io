@@ -48,6 +48,8 @@ const Content = Styled.div<{ clamp: boolean }>`
     display: flex;
     flex: 1;
     flex-direction: column;
+    background-color: white;
+    z-index: 3;
     h4 {
         font-size: 1rem;
         margin: 0;
@@ -122,6 +124,7 @@ const SeriesCard = ({ series }: SeriesCardProps) => {
                         widthRatio={2}
                         heightRatio={1}
                         fluid={series.image}
+                        style={{ maxHeight: '16rem' }}
                     />
                 </StyledLink>
             )}

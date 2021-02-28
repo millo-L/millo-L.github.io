@@ -44,8 +44,22 @@ const SeriesPostListPage = ({ data }: SeriesPostListPageProps) => {
             />
             <Header
                 lang={allMarkdownRemark.edges[0].node.frontmatter.lang}
-                ko_to={allMarkdownRemark.edges[0].node.frontmatter.lang === 'ko' ? '#' : '/series' + allMarkdownRemark.edges[0].node.frontmatter.translation_series}
-                en_to={allMarkdownRemark.edges[0].node.frontmatter.lang === 'en' ? '#' : '/series' + allMarkdownRemark.edges[0].node.frontmatter.translation_series}
+                ko_to={
+                    allMarkdownRemark.edges[0].node.frontmatter.lang === 'ko'
+                        ? '#'
+                        : (
+                            allMarkdownRemark.edges[0].node.frontmatter.translation_series !== 'none'
+                                ? '/series' + allMarkdownRemark.edges[0].node.frontmatter.translation_series
+                                : '#'
+                        )}
+                en_to={
+                    allMarkdownRemark.edges[0].node.frontmatter.lang === 'en'
+                        ? '#'
+                        : (
+                            allMarkdownRemark.edges[0].node.frontmatter.translation_series !== 'none'
+                                ? '/series' + allMarkdownRemark.edges[0].node.frontmatter.translation_series
+                                : '#'
+                        )}
             />
             <MainResponsive>
                 <SeriesPostList

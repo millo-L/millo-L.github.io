@@ -99,6 +99,7 @@ const SeriesPost = ({ post, index }: SeriesPost) => {
                         widthRatio={2}
                         heightRatio={1}
                         fluid={post.image}
+                        style={{ maxHeight: "100%" }}
                     />
                 </StyledLink>
             )}

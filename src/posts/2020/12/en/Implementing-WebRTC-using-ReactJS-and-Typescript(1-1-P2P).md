@@ -5,16 +5,17 @@ category: webrtc
 layout: post
 released_at: 2020-12-25 17:00
 updated_at: 2020-12-26 17:01
-image: ../../../../images/webrtc.png
+image: ../../../../images/category/webrtc.png
 series: WebRTC theory to practice
 lang: en
 tags:
-    - ICE
-    - SDP
-    - STUN
-    - TURN
     - WebRTC
-    - NAT
+    - P2P
+    - Mesh
+    - SignalingServer
+    - nodejs
+    - reactjs
+    - typescript
 is_private: false
 translation: /WebRTC-구현하기-1-1-P2P/
 translation_series: /WebRTC-이론부터-실전까지

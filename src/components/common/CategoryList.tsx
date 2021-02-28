@@ -9,7 +9,7 @@ const CategoryListWrapper = Styled.div<{ visible: boolean }>`
     margin-top: 2.5rem;
     border-top: 1px solid ${palette.gray[3]};
     padding-top: 1.5rem;
-    width: 80%;
+    width: 12rem;
 
     ${props =>
         props.visible
@@ -24,11 +24,20 @@ const CategoryListWrapper = Styled.div<{ visible: boolean }>`
         margin-bottom: 1.5rem;
     }
 
+    .img-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        justify-content: space-between;
+        align-items: space-between;
+    }
+
     .category-img {
         height: 1.5rem;
-        max-width: 5rem;
+        max-width: 5.2rem;
         margin: 0;
-        margin-right: 1rem;
         border-radius: 0;
     }
 
@@ -51,14 +60,16 @@ const CategoryList = ({ visible, lang, selectedCategory }: CategoryListProps) =>
     return (
         <CategoryListWrapper visible={visible}>
             <p>Categories</p>
-            {categoryList.filter((category, idx) => idx < 2).map((category, index) => {
-                return (
-                    <Link to={lang === 'ko' ? `/?category=${category.name}` : `/en?category=${category.name}`} key={index} >
-                        <img className="category-img"
-                            src={category.src} />
-                    </Link>
-                )
-            })}
+            <div className="img-wrapper">
+                {categoryList.filter((category, idx) => idx < 9).map((category, index) => {
+                    return (
+                        <Link to={lang === 'ko' ? `/?category=${category.name}` : `/en?category=${category.name}`} key={index} >
+                            <img className="category-img"
+                                src={category.src} />
+                        </Link>
+                    )
+                })}
+            </div>
         </CategoryListWrapper>
     );
 }

@@ -124,13 +124,87 @@ const PostContentWrapper = Styled.div`
 
     pre, code {
         font-size: 1rem;
+        margin-bottom: 2rem;
         ${media.custom(767)} {
             font-size: 0.9rem;
+            margin-bottom: 1.5rem;
         }
+    }
+
+    pre {
+        border-radius: 3px;
     }
 
     img {
         width: 100%;
+    }
+
+    table {
+        white-space: normal;
+        max-width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+        line-height: 1.5;
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        margin: 20px 0;
+    }
+    table thead th {
+        min-width: 60px;
+        max-width: 150px;
+        padding: 10px;
+        font-weight: bold;
+        vertical-align: top;
+        color: #fff;
+        background: ${palette.indigo[6]};
+        margin: 20px 10px;
+    }
+    table tbody th {
+        max-width: 150px;
+        padding: 10px;
+    }
+    table td {
+        max-width: 350px;
+        padding: 10px;
+        vertical-align: top;
+    }
+    table tr:nth-child(even) {
+        background: ${palette.indigo[0]};
+    }
+    th {
+        font-size: 0.9rem;
+        ${media.custom(767)} {
+            font-size: 0.8rem;
+        }
+    }
+    td {
+        font-size: 0.9rem;
+        ${media.custom(767)} {
+            font-size: 0.8rem;
+        }
+    }
+
+    hr {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+        ${media.custom(767)} {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+    }
+
+    blockquote {
+        background-color: ${palette.gray[0]};
+        width: 100%;
+        margin: 0;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        border-left: 4px solid ${palette.indigo[5]};
+
+        p {
+            margin-left: 2rem;
+            margin-right: 2rem;
+        }
     }
 `;
 
@@ -155,7 +229,7 @@ const PostViewer = ({ post, series, seriesList, lang }: PostViewerProps) => {
                 <Link className="category" to={lang === 'ko' ? `/?category=${category}` : `/en?category=${category}`}>{
                     categoryMap[category]
                         ? <img src={categoryMap[category].src} />
-                        : [{ category }]
+                        : `[${category}]`
                 }</Link>}
             <h1 className="title">{title}</h1>
             <p className="date" >{lang === 'ko' ? '게시: ' : ''}{formatDate(released_at, lang)}</p>

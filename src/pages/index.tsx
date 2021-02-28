@@ -41,7 +41,7 @@ const HomePage = () => {
 
     return (
         <MainTemplate>
-            <SEO title="홈" />
+            <SEO title="Home" />
             <Header lang="ko" ko_to="#" en_to="/en" />
             <FloatingHeader page={page} onClick={onClick} lang="ko" />
             <MainResponsive>

@@ -5,7 +5,7 @@ category: gatsby
 layout: post
 released_at: 2021-02-27 09:01
 updated_at:
-image: ../../../../images/gatsby.jpg
+image: ../../../../images/category/gatsby.jpg
 series: none
 lang: ko
 tags:

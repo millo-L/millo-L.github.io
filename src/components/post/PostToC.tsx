@@ -14,7 +14,7 @@ const ToCWrapper = Styled.div`
     top: 10rem;
     margin-left: 4rem;
     position: sticky;
-    height: 30rem;
+    height: 40rem;
     overflow-y: auto;
     word-break: break-all;
 
