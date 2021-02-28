@@ -10,6 +10,7 @@ const CategoryListWrapper = Styled.div<{ visible: boolean }>`
     border-top: 1px solid ${palette.gray[3]};
     padding-top: 1.5rem;
     width: 12rem;
+    min-width: 12rem;
 
     ${props =>
         props.visible
@@ -36,7 +37,7 @@ const CategoryListWrapper = Styled.div<{ visible: boolean }>`
 
     .category-img {
         height: 1.5rem;
-        max-width: 5.2rem;
+        max-width: 5.5rem;
         margin: 0;
         border-radius: 0;
     }
@@ -61,7 +62,7 @@ const CategoryList = ({ visible, lang, selectedCategory }: CategoryListProps) =>
         <CategoryListWrapper visible={visible}>
             <p>Categories</p>
             <div className="img-wrapper">
-                {categoryList.filter((category, idx) => idx < 11).map((category, index) => {
+                {categoryList.filter((category, idx) => idx < 13).map((category, index) => {
                     return (
                         <Link to={lang === 'ko' ? `/?category=${category.name}` : `/en?category=${category.name}`} key={index} >
                             <img className="category-img"

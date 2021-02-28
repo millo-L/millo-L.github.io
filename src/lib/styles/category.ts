@@ -67,6 +67,13 @@ export const categoryMap: {
         src:
             "https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=Python&logoColor=white",
     },
+    network: {
+        src: "https://img.shields.io/badge/Network-F96702?style=flat-square",
+    },
+    reactnative: {
+        src:
+            "https://img.shields.io/badge/ReactNative-61DAFB?style=flat-square&logo=React&logoColor=white",
+    },
 }
 
 export const categoryList = [
@@ -81,6 +88,10 @@ export const categoryList = [
             "https://img.shields.io/badge/WebRTC-333333?style=flat-square&logo=WebRTC&logoColor=white",
     },
     {
+        name: "network",
+        src: "https://img.shields.io/badge/Network-F96702?style=flat-square",
+    },
+    {
         name: "javascript",
         src:
             "https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=black",
@@ -89,6 +100,11 @@ export const categoryList = [
         name: "docker",
         src:
             "https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=Docker&logoColor=white",
+    },
+    {
+        name: "reactnative",
+        src:
+            "https://img.shields.io/badge/ReactNative-61DAFB?style=flat-square&logo=React&logoColor=white",
     },
     {
         name: "go",

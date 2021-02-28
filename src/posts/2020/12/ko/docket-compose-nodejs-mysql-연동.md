@@ -128,7 +128,7 @@ networks:
 dockerize라는 프로그램은 도커 컨테이너의 실행순서를 결정해줄 수 있는 프로그램이다.
 이로 인해 db 컨테이너의 구동을 확인하고 server를 실행시킬 수 있다.
 
-```sh
+```shell
 echo "wait db server"
 dockerize -wait tcp://db:3306 -timeout 20s
 
@@ -167,7 +167,7 @@ EXPOSE 8080
 
 아래 코드는 dockerize를 설치하는 작업이다.
 
-```sh
+```shell
 ENV DOCKERIZE_VERSION v0.2.0
 RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
     && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
