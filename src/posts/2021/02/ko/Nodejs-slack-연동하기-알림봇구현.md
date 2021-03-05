@@ -5,7 +5,7 @@ category: nodejs
 layout: post
 released_at: 2021-02-08 13:00
 updated_at:
-image: ../../../../images/category/nodejs.jpg
+image: ../../../../images/2021/02/slack.png
 series: none
 lang: ko
 tags:

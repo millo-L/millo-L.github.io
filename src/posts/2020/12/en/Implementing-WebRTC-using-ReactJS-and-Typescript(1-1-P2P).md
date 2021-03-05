@@ -88,7 +88,7 @@ The above explanation is about the signals that are sent and received. In fact, 
 
 ## Signaling Server(Node.js)
 
-### Note: You must use socket.io version=2.3.0.
+> **Note** <br /> You must use socket.io version=2.3.0.
 
 ```js
 let users = {};
@@ -152,7 +152,7 @@ As explained previously, Signaling Server only helps the connection between WebR
 
 ## Client(ReactJS, Typescript)
 
-### Note: you must use socket.io-client version=2.3.0, @types/socket.io-client version=1.4.34.
+> **Note** <br /> You must use socket.io-client version=2.3.0, @types/socket.io-client version=1.4.34.
 
 ### Variables to use in the client
 

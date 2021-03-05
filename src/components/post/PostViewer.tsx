@@ -84,13 +84,16 @@ const PostContentWrapper = Styled.div`
     }
 
     h2 {
-        margin-top: 0rem;
-    }
-
-    h3 {
         margin-top: 3rem;
         ${media.custom(767)} {
             margin-top: 2rem;
+        }
+    }
+
+    h3 {
+        margin-top: 2rem;
+        ${media.custom(767)} {
+            margin-top: 1rem;
         }
     }
 

@@ -1,13 +1,13 @@
 ---
 author: millo
-title: WebRTC 구현하기(1:N SFU)
+title: Implementing WebRTC using ReactJS and Typescript (1:N SFU)
 category: webrtc
 layout: post
-released_at: 2021-01-15 17:00
+released_at: 2021-03-05 14:42
 updated_at:
 image: ../../../../images/category/webrtc.png
-series: WebRTC 이론부터 실전까지
-lang: ko
+series: WebRTC theory to practice
+lang: en
 tags:
     - WebRTC
     - SFU
@@ -16,45 +16,45 @@ tags:
     - reactjs
     - typescript
 is_private: false
-translation: /Implementing-WebRTC-using-ReactJS-and-Typescript(1-N-SFU)/
-translation_series: /WebRTC-theory-to-practice
-description: WebRTC의 이론을 기반으로 1:N SFU 미디어 서버를 만들어 실시간 영상 송수신을 구현해보자.
+translation: /WebRTC-구현하기-1-N-SFU/
+translation_series: /WebRTC-이론부터-실전까지
+description: Based on the theory of WebRTC, let's implement 1:N SFU real-time video transmission.
 ---
 
-# 1. 서론
+# 1. Introduction
 
-지난 시간에는 [WebRTC를 이용한 1:N P2P 통신](https://millo-l.github.io/WebRTC-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0-1-N-P2P/)에 대해서 포스팅했다. SFU 방식에 대해 포스팅을 할까말까 고민을 했는 데 그래도 하는 게 낫지 않을까 싶어 이렇게 글을 남긴다. SFU는 Media Server의 한 종류로 그에 대한 설명은 [여기](<https://millo-l.github.io/WebRTC-%EA%B5%AC%ED%98%84-%EB%B0%A9%EC%8B%9D(Mesh-SFU-MCU)/>)를 눌러 지난 포스팅을 확인해보기 바란다. 미디어 서버는 [Kurento](https://www.kurento.org/)와 [mediasoup](https://mediasoup.org/documentation/) 등을 이용하여 상용화 단계에서 사용한다. 하지만 글쓴이는 이론을 바탕으로 미디어 서버, 그 중 SFU 서버를 구성해보고자 했다. 이론적인 설명은 기존의 포스팅에서 다뤘으니 위의 여기 링크를 눌러 확인해보기 바란다. 이론적인 바탕은 모두 안다고 가정하고 구현에 대한 포스팅을 작성해보겠다.
+Last time, I posted for [1:N P2P communication using WebRTC](<https://millo-l.github.io/Implementing-WebRTC-using-ReactJS-and-Typescript(1-N-P2P)/>). I thought about posting about the SFU method or not, but I thought it would be better to do it. SFU is a type of Media Server, so please click [here](<https://millo-l.github.io/WebRTC-implementation-method(Mesh-SFU-MCU)/>) to check the past posting. Media servers are used during commercialization using [Kurento](https://www.kurento.org/) and [mediasoup](https://mediasoup.org/documentation/). However, based on his theory, I wanted to organize an SFU server among media servers. The theoretical explanation was covered in the existing post, so please check the link here above. Assuming that you know all the theoretical backgrounds, I will write a post about the implementation.
 
-# 2. 실제 코드
+# 2. Code
 
-## 2-1. SFU Server(Node.js)
+## SFU Server(Node.js)
 
-### 주의할 점: socket.io version=2.3.0을 사용하셔야 합니다.
+> **Note** <br /> You must use socket.io version=2.3.0.
 
-### 1. 변수 설명
+### 1. Variable Description
 
 -   receiverPCs
     -   role
-        -   접속한 user의 MediaStream을 받기 위한 RTCPeerConnection을 저장
+        -   Save RTCPeerConnection to receive MediaStream of connected user
     -   format
-        -   receiverPCs[접속한 user의 socketID] = RTCPeerConnection 변수
+        -   receiverPCs[socketID of the user connected user] = RTCPeerConnection
 -   senderPCs
     -   role
-        -   한 user에게 자신을 제외한 다른 user의 MediaStream을 보내기 위한 RTCPeerConnection을 저장
+        -   Save RTCPeerConnection to send one user MediaStream of another user except yourself
     -   format
-        -   senderPCs[보내지는 MediaStream의 user socketID] = [{id: 받는 user의 socketID, pc: MediaStream을 보내기 위한 RTCPeerConnection}, ...]
+        -   senderPCs[socketID of user sending MediaStream] = [{id: socketID of user receiving MediaStream, pc: RTCPeerConnection for sending MediaStream}, ...]
         -   senderPCs[socketID] = Array<{id: string, pc: RTCPeerConnection}>
 -   users
     -   role
-        -   receiverPCs에서 연결된 RTCPeerConnection을 통해 받은 MediaStream을 user의 socketID와 함께 저장
+        -   Save MediaStream received via RTCPeerConnection connected from receiverPCs with user's socketID
     -   format
-        -   users[roomID] = [{id: MediaStream 보내는 user의 socketID, stream: user가 RTCPeerConnection을 통해 보내는 MedaiStream}]
+        -   users[roomID] = [{id: socketID of user sending MediaStream, stream: MedaiStream sent by user via RTCPeerConnection}]
         -   users[roomID] = Array<{id: string, stream: MediaStream}>
 -   socketToRoom
     -   role
-        -   user가 어떤 room에 속해 있는 지 저장
+        -   Save which room the user belongs to
     -   format
-        -   socketToRoom[socketID] = user가 속해 있는 roomID
+        -   socketToRoom[socketID] = Room ID to which user belongs
 
 ```js
 let receiverPCs = {}
@@ -67,10 +67,10 @@ let socketToRoom = {}
 
 -   joinRoom
     -   data
-        -   id: room에 들어온 user의 socket id
+        -   id: Socket ID of the user joining the room
         -   room: room id
     -   role
-        -   기존에 room에 들어와 자신의 MediaStream을 서버에게 전송하고 있는 user들의 socket id 목록을 지금 들어온 user에게 전송
+        -   Send a list of socket id of users who are already in the room and sending their MediaStream to the server to the user who is now in.
 
 ```js
 socket.on("joinRoom", data => {
@@ -85,13 +85,13 @@ socket.on("joinRoom", data => {
 
 -   senderOffer
     -   data
-        -   senderSocketID: 자신의 MediaStream 데이터를 서버로 보내는 RTCPeerConnection의 offer를 보낸 user의 socket id
-        -   roomID: user가 소속되고자 하는 roomID
-        -   sdp: offer를 보내는 user의 RTCSessionDescription
+        -   senderSocketID: socket id of user who sent the offer of RTCPeerConnection that sends his MediaStream data to server
+        -   roomID: Room ID to which user wants to belong
+        -   sdp: RTCSessionDescription of user sending offer
     -   role
-        -   user의 MediaStream을 받을 RTCPeerConnection의 offer를 서버가 받고 answer을 보냄
+        -   Server received the offer of RTCPeerConnection to receive user's MediaStream and sent answer
 
-#### 주의할 점: createAnswer에서 offerToReceiveAudio, offerToReceiveVideo를 모두 true로 두는 것은 user로 부터 audio와 video stream을 모두 받아와야 하기 때문이다.
+> **Caution** <br /> The reason why createAnswer keeps both of **offerToReceiveAudio** and **offerToReceiveVideo** true is that they must receive both audio and video streams from users.
 
 ```js
 socket.on("senderOffer", async data => {
@@ -118,10 +118,10 @@ socket.on("senderOffer", async data => {
 
 -   senderCandidate
     -   data
-        -   senderSocketID: 자신의 MediaStream 데이터를 서버로 보내는 RTCPeerConnection의 candidate를 보낸 user의 socket id
-        -   candidate: user의 RTCIceCandidate
+        -   senderSocketID: Socket id of user who sent the candidate of RTCPeerConnection that sends his MediaStream data to the server
+        -   candidate: RTCIceCandidate of user
     -   role
-        -   해당 user가 offer를 보낼 때 저장해놓은 RTCPeerConnection에 RTCIceCandidate를 추가
+        -   Add RTCIceCandidate to the RTCPeerConnection saved when the user sends an off
 
 ```js
 socket.on("senderCandidate", async data => {
@@ -136,14 +136,14 @@ socket.on("senderCandidate", async data => {
 
 -   receiverOffer
     -   data
-        -   receiverSocketID: senderSocketID를 socket id로 가지는 user의 MediaStream을 받기 위한 RTCPeerConnection의 offer를 보낸 user의 socket id
-        -   senderSocketID: 서버로 자신의 MediaStream을 보내기 위한 RTCPeerConnection이 연결되어 있는 user의 socket id
-        -   roomID: receiverSocketID와 senderSocketID가 모두 소속된 room ID
-        -   sdp: offer를 보내는 user의 RTCSessionDescription
+        -   receiverSocketID: Socket id of user who sent an offer of RTCPeerConnection to receive MediaStream of user who has senderSocketID as socket id
+        -   senderSocketID: socket id of user with RTCPeerConnection to send their MediaStream to server
+        -   roomID: Room ID to which both receiverSocketID and senderSocketID belong
+        -   sdp: RTCSessionDescription of user sending offer
     -   role
-        -   receiverSocketID를 socket id로 가지는 user가 senderSocketID를 socket id로 가지는 user의 MediaStream을 받기 위한 RTCPeerConnection의 offer를 서버가 받고 answer을 보냄
+        -   User who has reciverSocketID as socketid receives an offer of RTCPeerConnection to receive MediaStream of user who has senderSocketID as socketid, and sends an answer
 
-#### 주의할 점: createAnswer에서 offerToReceiveAudio, offerToReceiveVideo를 모두 false로 두는 것은 user로 부터 audio와 video stream을 받지 않기 때문이다. (지금 생성한 RTCPeerConnection은 기존에 있던 user의 stream을 보내기 위한 연결이다.)
+> **Caution** <br /> The reason why createAnswer has false versions of both **offerToReceiveAudio** and **offerToReceiveVideo** is that they do not receive audio and video streams from users.(The RTCPeerConnection you created now is a connection to send a stream of existing users.)
 
 ```js
 socket.on("receiverOffer", async data => {
@@ -172,11 +172,11 @@ socket.on("receiverOffer", async data => {
 
 -   receiverCandidate
     -   data
-        -   receiverSocketID: senderSocketID를 socket id로 가지는 user의 MediaStream을 받기 위한 RTCPeerConnection의 offer를 보낸 user의 socket id
-        -   senderSocketID: 서버로 자신의 MediaStream을 보내기 위한 RTCPeerConnection이 연결되어 있는 user의 socket id
-        -   candidate: receiverSocketID를 socket id로 가지는 user의 RTCIceCandidate
+        -   Socket id of user who sent an offfer of RTCPeerConnection to receive MediaStream of user who has senderSocketID as socket id
+        -   senderSocketID: socket id of user with RTCPeerConnection to send their MediaStream to server
+        -   candidate: RTCIceCandidate of user who has reciverSocketID as socket id
     -   role
-        -   receiverSocketID를 socket id로 가지는 user가 offer를 보낼 때 저장해놓은 RTCPeerConnection에 RTCIceCandidate를 추가
+        -   Add RTCIceCandidate to RTCPeerConnection saved when user with reciverSocketID as socketid
 
 ```js
 socket.on("receiverCandidate", async data => {
@@ -195,7 +195,7 @@ socket.on("receiverCandidate", async data => {
 
 -   disconnect
     -   role
-        -   disconnect된 user와 연결되어 있는 모든 RTCPeerConnection 및 MedaiStream을 해제
+        -   Turn off all RTCPeerConnection and MedaiStream associated with disconnected users
 
 ```js
 socket.on("disconnect", () => {
@@ -213,14 +213,14 @@ socket.on("disconnect", () => {
 })
 ```
 
-### 3. 함수 설명
+### 3. Function description
 
 -   isIncluded
     -   parameter
-        -   array: 배열
+        -   array: Array
         -   id: string
     -   role
-        -   배열 내의 Dictionary 중 id가 일치하는 것이 존재하는 지 여부 반환
+        -   Returns if any of the Dictionaries in the array have an id match
 
 ```js
 const isIncluded = (array, id) => {
@@ -238,7 +238,7 @@ const isIncluded = (array, id) => {
         -   socket: socketio.Socket
         -   roomID: string
     -   role
-        -   user의 socketID를 key로 한 receiverPCs의 value로 새로 생성한 pc를 저장하고 그 pc를 통해 user의 MediaStream을 전달받는 이벤트 생성
+        -   Save the newly created pc as the value of reciverPCs with user's socketID as key and create an event to receive user's MediaStream through that pc
 
 ```js
 const createReceiverPeerConnection = (socketID, socket, roomID) => {
@@ -288,7 +288,7 @@ const createReceiverPeerConnection = (socketID, socket, roomID) => {
         -   socket: socketio.Socket
         -   roomID: string
     -   role
-        -   senderSocketID를 socket id로 가진 user의 MediaStream을 receiverSockerID를 socket id 로 가진 user에게 전달하기 위한 RTCPeerConnection을 생성하고 해당 RTCPeerConnection에 senderSocketID user의 videotrack, audiotrack을 추가한다.
+        -   It creates an RTCPeerConnection to deliver the user's MediaStream with the senderSocketID to the user with the receiverSockerID, and adds the video track and audio track of the senderSocketID user to the corresponding RTCPeerConnection.
 
 ```js
 const createSenderPeerConnection = (
@@ -334,7 +334,7 @@ const createSenderPeerConnection = (
         -   socketID: string
         -   roomID: string
     -   role
-        -   자신을 제외하고 room ID에 포함된 모든 유저의 socket id 배열을 반환
+        -   Returns an array of socket id for all users in the room ID except for themselves
 
 ```js
 const getOtherUsersInRoom = (socketID, roomID) => {
@@ -357,7 +357,7 @@ const getOtherUsersInRoom = (socketID, roomID) => {
         -   socketID: string
         -   roomID: string
     -   role
-        -   user의 정보가 포함된 목록에서 user를 제거한다.
+        -   Remove the user from the list containing the user's information.
 
 ```js
 const deleteUser = (socketID, roomID) => {
@@ -376,7 +376,7 @@ const deleteUser = (socketID, roomID) => {
     -   parameter
         -   socketID: string
     -   role
-        -   socketID user가 자신의 MediaStream을 보내기 위해 연결한 RTCPeerConnection을 닫고, 목록에서 삭제한다.
+        -   Close the RTCPeerConnection that the socketID user connected to send his MediaStream, and delete it from the list.
 
 ```js
 const closeRecevierPC = socketID => {
@@ -391,7 +391,7 @@ const closeRecevierPC = socketID => {
     -   parameter
         -   socketID: string
     -   role
-        -   socketID user의 MediaStream을 다른 user에게 전송하기 위해 연결 중이던 모든 RTCPeerConnection을 닫고, 목록에서 삭제한다.
+        -   Close all RTCPeerConnections that were connected to send MediaStream of socketID user to other users, and delete them from the list.
 
 ```js
 const closeSenderPCs = socketID => {
@@ -414,18 +414,18 @@ const closeSenderPCs = socketID => {
 }
 ```
 
-## 2-2. Client(ReactJS, Typescript)
+## Client(ReactJS, Typescript)
 
-### 주의할 점: socket.io-client version=2.3.0, @types/socket.io-client version=1.4.34을 사용하셔야 합니다.
+> **Note** <br /> You must use socket.io-client version=2.3.0, @types/socket.io-client version=1.4.34.
 
-### 1. 변수 설명
+### 1. Variables to use in the client
 
--   socket: 서버와 통신할 소켓 (SocketIOClient.Socket)
--   users: 상대방의 데이터(socket id, MediaStream) 배열
--   localVideoRef: 자신의 MediaStream을 출력할 video 태그의 ref
--   sendPC: 자신의 MediaStream을 서버에게 전송할 RTCPeerConnection
--   receivePCs: 같은 room에 참가한 다른 user들의 MediaStream을 서버에서 전송받을 RTCPeerConnection 목록 (receivePCs[socket id] = pc 형식)
--   pc_config: RTCPeerConnection 생성 시의 setting
+-   socket: Sockets to communicate with the server (SocketIOClient.Socket)
+-   users: Array of users' data (socket id, MediaStream)
+-   localVideoRef: ref of the video tag on which you want to print your MediaStream
+-   sendPC: RTCPeerConnection to send your MediaStream to the server
+-   receivePCs: List of RTCPeerConnections to receive MediaStream from other users in the same room from the server (receivePCs[socket id] = RTCPeerConnection)
+-   pc_config: RTCPeerConnection setting
 
 ```tsx
 const [socket, setSocket] = useState<SocketIOClient.Socket>()
@@ -454,9 +454,9 @@ const pc_config = {
 
 -   userEnter
     -   data
-        -   id: 같은 room에 참가하고 자신의 MediaStream을 전송할 RTCPeerConnection을 서버와 연결한 user의 socket id
+        -   id: The socket id of the user who joined the same room and connected the RTCPeerConnection to which his MediaStream will be sent to the server.
     -   role
-        -   해당 user의 MediaStream을 받을 RTCPeerConnection을 생성하고 서버로 offer를 보냄
+        -   Generated RTCPeerConnection to receive MediaStream for that user and sent afer to the server
 
 ```tsx
 newSocket.on("userEnter", (data: { id: string }) => {
@@ -466,9 +466,9 @@ newSocket.on("userEnter", (data: { id: string }) => {
 
 -   allUsers
     -   data
-        -   users: 기존에 방에 참가해서 자신의 MediaStream을 전송할 RTCPeerConnection을 서버와 연결한 user들의 socket id 배열
+        -   users: Array socket id of users who connect RTCPeerConnection to the server to send their MediaStream to the existing room
     -   role
-        -   해당 user들의 MediaStream을 받을 RTCPeerConnection을 생성하고 서버로 offer를 보냄
+        -   Generated RTCPeerConnection to receive MediaStream from those users and sent an offer to the server
 
 ```tsx
 newSocket.on("allUsers", (data: { users: Array<{ id: string }> }) => {
@@ -481,9 +481,9 @@ newSocket.on("allUsers", (data: { users: Array<{ id: string }> }) => {
 
 -   userExit
     -   data
-        -   id: disconnect된 user의 socket id
+        -   id: socket id of disconnected user
     -   role
-        -   해당 user의 MediaStream을 받기 위해 연결한 RTCPeerConnection을 닫고, 목록에서 삭제
+        -   Close the RTCPeerConnection that you connected to receive MediaStream for that user, and delete it from the list
 
 ```tsx
 newSocket.on("userExit", (data: { id: string }) => {
@@ -495,9 +495,9 @@ newSocket.on("userExit", (data: { id: string }) => {
 
 -   getSenderAnswer
     -   data
-        -   sdp: 자신의 MediaStream을 서버로 보내기 위해 offer를 보낸 RTCPeerConnection에 대한 answer로 온 RTCSessionDescription
+        -   sdp: RTCSessionDescription received as an answer to the RTCPeerConnection that sent an offfer to send its MediaStream to the server
     -   role
-        -   해당 RTCPeerConnection의 remoteDescription으로 sdp를 지정
+        -   Specify sdp as the remoteDescription of the corresponding RTCPeerConnection
 
 ```tsx
 newSocket.on(
@@ -516,9 +516,9 @@ newSocket.on(
 
 -   getSenderCandidate
     -   data
-        -   candidate: 자신의 MediaStream을 서버로 보내기 위한 RTCPeerConnection을 위해 서버에서 보낸 RTCIceCandidate
+        -   candidate: RTCIceCandidate sent by the server for RTCPeerConnection to send its MediaStream to the server
     -   role
-        -   해당 RTCPeerConneciton에 RTCIceCandidate 추가
+        -   Add RTCIceCandidate to the corresponding RTCPeerConneciton.
 
 ```tsx
 newSocket.on(
@@ -536,10 +536,10 @@ newSocket.on(
 
 -   getReceiverAnswer
     -   data
-        -   id: 전송받을 MediaStream의 주인인 user의 socket id
-        -   sdp: 전송받을 MediaStream의 RTCPeerConenction의 offer에 대한 answer로 온 RTCSessionDescription
+        -   id: socket id of user, owner of MediaStream to be sent
+        -   sdp: RTCSessionDescription sent to Answer for the offer of RTCPeerConnection in MediaStream to be sent
     -   role
-        -   해당 RTCPeerConnection의 remoteDescription으로 sdp를 지정
+        -   Specify sdp as the remoteDescription of the corresponding RTCPeerConnection
 
 ```tsx
 newSocket.on(
@@ -557,10 +557,10 @@ newSocket.on(
 
 -   getReceiverCandidate
     -   data
-        -   id: 전송받을 MediaStream의 주인인 user의 socket id
-        -   candidate: 전송받을 MediaStream의 RTCPeerConenction을 위해 서버에서 보낸 RTCIceCandidate
+        -   id: socket id of user, owner of MediaStream to be sent
+        -   candidate: RTCIceCandidate sent from server for RTCPeerConnection of MediaStream to be sent
     -   role
-        -   해당 RTCPeerConneciton에 RTCIceCandidate 추가
+        -   Add RTCIceCandidate to the corresponding RTCPeerConneciton.
 
 ```tsx
 newSocket.on(
@@ -577,11 +577,11 @@ newSocket.on(
 )
 ```
 
-### 3. MediaStream 설정
+### 3. MediaStream Settings
 
--   navigator.mediaDevices.getUserMedia() 함수를 호출해서 자신의 MediaStream을 얻고 localVideoRef에 등록한다.
--   자신의 MediaStream을 전송할 RTCPeerConnection을 생성하고 서버에게 offer를 보낸다.
--   자신이 room에 참가했다고 서버에 알린다. (이후에 allUsers socket 이벤트로 답이 온다.)
+-   Call the navigator.mediaDevices.getUserMedia() function to obtain your own MediaStream and register it with localVideoRef.
+-   Create an RTCPeerConnection to transfer your MediaStream and send an offer to the server.
+-   The server informs the server that he has participated in the room. (Afterwards, the answer will be given to the allUsersocket event.)
 
 ```tsx
 navigator.mediaDevices
@@ -610,14 +610,14 @@ navigator.mediaDevices
     })
 ```
 
-### 4. 함수 설명
+### 4. Function Description
 
 -   createReceivePC
     -   parameter
         -   id: string
         -   newSocket: SocketIOClient.Socket
     -   role
-        -   room에 참가한 다른 user들의 MediaStream을 받을 RTCPeerConnection을 생성하고 서버에 offer를 보냄
+        -   Created RTCPeerConnection to receive MediaStream from other users in the room and sent an offer to the server
 
 ```tsx
 const createReceivePC = (id: string, newSocket: SocketIOClient.Socket) => {
@@ -634,11 +634,11 @@ const createReceivePC = (id: string, newSocket: SocketIOClient.Socket) => {
     -   parameter
         -   newSocket: SocketIOClient.Socket
     -   role
-        -   자신의 MediaStream을 서버에게 보낼 RTCPeerConnection의 offer를 생성
-        -   RTCSessionDescription을 해당 RTCPeerConnection의 localDescription에 지정
-        -   RTCSessionDescription을 소켓을 통해 서버로 전송
+        -   Create an offer of RTCPeerConnection to send your MediaStream to the server
+        -   Specifies RTCSessionDescription in the localDescription of the corresponding RTCPeerConnection.
+        -   Send RTCSessionDescription via socket to server
 
-#### 주의할 점: 자신의 MediaStream을 보내기 위한 RTCPeerConnection이므로 offerToReceiveAudio, offerToReceiveVideo는 모두 false로 둔다.
+> **Caution** <br /> Since RTCPeerConnection is for sending your MediaStream, leave both **offerToReceiveAudio** and **offerToReceiveVideo** as false.
 
 ```tsx
 const createSenderOffer = async (newSocket: SocketIOClient.Socket) => {
@@ -666,11 +666,11 @@ const createSenderOffer = async (newSocket: SocketIOClient.Socket) => {
         -   newSocket: SocketIOClient.Socket
         -   senderSocketID: string
     -   role
-        -   senderSocketID user의 MediaStream을 전송받을 RTCPeerConnection의 offer를 생성
-        -   RTCSessionDescription을 해당 RTCPeerConnection의 localDescription에 지정
-        -   RTCSessionDescription을 소켓을 통해 서버로 전송
+        -   Create an offer for RTCPeerConnection to receive MediaStream from senderSocketID user
+        -   Specifies RTCSessionDescription in the localDescription of the corresponding RTCPeerConnection.
+        -   Send RTCSessionDescription via socket to server
 
-#### 주의할 점: 다른 user의 MediaStream을 받기 위한 RTCPeerConnection이므로 offerToReceiveAudio, offerToReceiveVideo는 모두 true로 둬야한다.
+> **Caution** <br /> Since RTCPeerConnection is intended to receive MediaStream from other users, both **offerToReceiveAudio** and **offerToReceiveVideo** should be true.
 
 ```tsx
 const createReceiverOffer = async (
@@ -702,13 +702,13 @@ const createReceiverOffer = async (
         -   newSocket: SocketIOClient.Socket
         -   localStream: MediaStream
     -   role
-        -   자신의 MediaStream을 서버로 보내기 위한 RTCPeerConnection을 생성하고 localStream을 등록
+        -   Create an RTCPeerConnection to send your MediaStream to the server and register localStream
         -   onicecandidate
-            -   offer 또는 answer signal을 생성한 후부터 본인의 RTCIceCandidate 정보 이벤트가 발생
-            -   본인의 RTCIceCandidate 정보를 Socket을 통해 서버로 전송
+            -   Your RTCIceCandidate information event occurred after you created the offer or answer signal.
+            -   Send your RTCIceCandidate information to the server via Socket
         -   oniceconnectionstatechange
-            -   ICE connection 상태가 변경됐을 때의 log
-        -   생성된 RTCPeerConnection 반환
+            -   Log when ICE connection status is changed
+        -   Return generated RTCPeerConnection
 
 ```tsx
 const createSenderPeerConnection = (
@@ -749,17 +749,17 @@ const createSenderPeerConnection = (
         -   socketID: string
         -   newSocket: SocketIOClient.Socket
     -   role
-        -   socketID user의 MediaStream을 받기 위한 RTCPeerConnection 생성
-        -   receivePCs 변수에 key-value 형식으로 생성한 RTCPeerConnection 저장
+        -   Create RTCPeerConnection to receive MediaStream from socketID user
+        -   Store RTCPeerConnection created in key-value format in receivePCs variable
         -   onicecandidate
-            -   offer 또는 answer signal을 생성한 후부터 본인의 RTCIceCandidate 정보 이벤트가 발생
-            -   본인의 RTCIceCandidate 정보를 Socket을 통해 서버로 전송
+            -   Your RTCIceCandidate information event occurred after you created the offer or answer signal.
+            -   Send your RTCIceCandidate information to the server via Socket
         -   oniceconnectionstatechange
-            -   ICE connection 상태가 변경됐을 때의 log
+            -   Log when ICE connection status is changed
         -   ontrack
-            -   상대방의 RTCSessionDescription을 본인의 RTCPeerConnection에서의 remoteSessionDescription으로 지정하면 상대방의 track 데이터에 대한 이벤트가 발생
-            -   users 변수에 stream을 등록
-        -   생성된 RTCPeerConnection 반환
+            -   Specifying other users' RTCSessionDescription as remoteSessionDescription in their RTCPeerConnection results in an event about the other user's track data.
+            -   register stream in users variable
+        -   Return generated RTCPeerConnection
 
 ```tsx
 const createReceiverPeerConnection = (
@@ -801,11 +801,11 @@ const createReceiverPeerConnection = (
 }
 ```
 
-### 5. 본인과 상대방의 video 렌더링
+### 5. Video rendering of yourself and your opponent
 
--   IWebRTCUser: users 저장에 사용했던 인터페이스
--   Props: Video 태그에 사용되는 props
--   Video: 상대방의 video를 출력할 컴포넌트
+-   IWebRTCUser: Interface used to store users
+-   Props: Props used for Video Tags
+-   Video: Component to print video of the other party
 
 ```tsx
 interface IWebRTCUser {
@@ -857,15 +857,11 @@ return (
 )
 ```
 
-# 3. 느낀 점
-
-미디어 서버를 처음으로 개발해보니 생각보다 부하가 엄청나다는 걸 처음 알았다. 물론 테스트 자체를 Client와 Server가 나의 한 PC에서 실행되다 보니 부하가 기하급수적으로 증가하는 걸 알고는 있지만, 미디어 서버를 구현하려면 돈이 많아야 되구나.. 라는 걸 다시금 느꼈다. 처음부터 SFU 서버까지 구현해보리라 생각하고 시작한 포스팅은 아니었지만 구현하다보니 이것저것 호기심이 생겨서 더더 해보자 하다보니 이렇게 구현하게 됐다. 구현 중 큰 어려움은 없었지만 createOffer, createAnswer 시에 offerToReceiveAudio, offerToReceiveVideo 속성에 대한 잘못된 이해로 고생을 좀 했다. 다른 사람들은 이런 고생을 안 했으면 좋겠단 마음으로 주의할 점에 꼼꼼히 기록해놨다. MCU 서버를 구현해볼지 안 할지는 사실 잘 모르겠다. 해보고 싶긴 한데 시간이 날지가 의문이기 때문에... 혹여나 누군가 요청한다면 도전해볼 의향은 있다. 다만, 미디어 서버 자체를 상용화해서 사용하는 경우에는 위의 서론에서 말한대로 [Kurento](https://www.kurento.org/)나 [mediasoup](https://mediasoup.org/documentation/) 등을 이용하는 것으로 알고 있으므로 직접 개발하는 것이 목적이 아닌 상용화가 목적이라면 저 두 사이트를 방문해서 공식문서를 기반으로 개발하기를 권장한다.
-
 # [GitHub]
 
 -   https://github.com/millo-L/Typescript-ReactJS-WebRTC-1-N-SFU
 
-# [참고]
+# [References]
 
--   https://millo-l.github.io/WebRTC-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0-1-N-P2P/
--   https://millo-l.github.io/WebRTC-%EA%B5%AC%ED%98%84-%EB%B0%A9%EC%8B%9D(Mesh-SFU-MCU)/
+-   https://millo-l.github.io/Implementing-WebRTC-using-ReactJS-and-Typescript(1-N-P2P)/
+-   https://millo-l.github.io/WebRTC-implementation-method(Mesh-SFU-MCU)/

@@ -16,7 +16,7 @@ tags:
     - Media Server
     - Signaling Server
 is_private: false
-translation:
+translation: /WebRTC-Performance-Comparison-(P2P-vs-SFU)/
 translation_series: /WebRTC-theory-to-practice
 description: WebRTC의 이론을 기반으로 만든 1:N P2P vs SFU 성능비교를 해보자.
 ---

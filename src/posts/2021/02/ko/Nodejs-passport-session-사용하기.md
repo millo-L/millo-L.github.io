@@ -5,7 +5,7 @@ category: nodejs
 layout: post
 released_at: 2021-02-01 15:00
 updated_at:
-image: ../../../../images/category/nodejs.jpg
+image: ../../../../images/2021/02/passport.png
 series: Authentication 방식 정리하기
 lang: ko
 tags:

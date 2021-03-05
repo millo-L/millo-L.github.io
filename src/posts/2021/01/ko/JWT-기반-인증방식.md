@@ -5,7 +5,7 @@ category: network
 layout: post
 released_at: 2021-01-31 14:00
 updated_at:
-image: ../../../../images/category/network.jpg
+image: ../../../../images/2021/02/jwt.jpg
 series: Authentication 방식 정리하기
 lang: ko
 tags:

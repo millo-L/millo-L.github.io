@@ -1,79 +1,79 @@
 ---
 author: millo
-title: WebRTC 구현하기(1:N P2P)
+title: Implementing WebRTC using ReactJS and Typescript (1:N P2P)
 category: webrtc
 layout: post
-released_at: 2020-12-31 17:00
+released_at: 2021-03-05 13:00
 updated_at:
 image: ../../../../images/category/webrtc.png
-series: WebRTC 이론부터 실전까지
-lang: ko
+series: WebRTC theory to practice
+lang: en
 tags:
     - WebRTC
     - P2P
     - Mesh
-    - Signaling Server
+    - SignalingServer
     - nodejs
     - reactjs
     - typescript
 is_private: false
-translation: /Implementing-WebRTC-using-ReactJS-and-Typescript(1-N-P2P)/
-translation_series: /WebRTC-theory-to-practice
-description: WebRTC의 이론을 기반으로 1:N P2P 실시간 영상 송수신을 구현해보자.
+translation: /WebRTC-구현하기-1-N-P2P/
+translation_series: /WebRTC-이론부터-실전까지
+description: Based on the theory of WebRTC, let's implement 1:N P2P real-time video transmission.
 ---
 
-# 1. 서론
+# 1. Introduction
 
-지난 시간에는 [WebRTC를 이용한 1:1 P2P 통신](https://millo-l.github.io/WebRTC-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0-1-1-P2P/)에 대해서 포스팅했다. 이번 포스팅은 저번 포스팅에서 설명한 개념은 안다고 가정하고 작성할 예정이기 때문에 혹시나 이 글을 먼저 본다면 이전 글을 다 읽고 오기를 추천한다. 1:N 연결이라고 해도 이전에 구현했던 1:1연결과 같은 P2P 연결(Signaling 서버 형식)을 구현할 것이기 때문에 크게 다른 점은 없다. 동적으로 연결되고 종료되는 일련의 과정을 설명하는 데 집중하도록 하겠다.
+Last time, I posted about [1:1 P2P communication using WebRTC](<https://millo-l.github.io/Implementing-WebRTC-using-ReactJS-and-Typescript(1-1-P2P)/>). This posting is supposed to be written assuming that you know the concept described in the previous posting, so if you see this article first, I recommend you to read [the previous article](<https://millo-l.github.io/Implementing-WebRTC-using-ReactJS-and-Typescript(1-1-P2P)/>). These two are quite similar because even a 1:N connection would implement the same P2P connection (Signaling Server format) as the 1:1 connection previously. We will focus on explaining a series of dynamically connected and terminated processes.
 
-# 2. 구현 방식
+# 2. Implementation method
 
-## 2-1. 1:1 연결과의 공통점
+## What do 1:1 and 1:N connections have in common?
 
-화상 회의를 진행하는 상대방이 한 명에서 여러 명으로 변하긴 하지만 **P2P(peer to peer)라는 점에서는 동일**하다. 1:1 연결과 동일하게 Signaling 서버를 구성해서 상대방과의 통신을 연결한 후 부터는 서버가 관여하지 않고 Peer 간 통신만 이루어질 것이다.
+Although the other party who has a video conference changes from one person to several people, they are all the same in that they are all peer-to-peer (P2P). A 1:N connection, like a 1:1 connection, consists of a Signaling server to connect communications with the other party, and from then on the server is not involved and only communicates between Peers.
 
-## 2-2. 1:1 연결과의 차이점
+## What is the difference between 1:1 and 1:N connection?
 
-1:N 연결은 저번 시간에 했던 1:1 연결과는 다르게 **RTCPeerConnection을 화상 회의에 참여하는 수만큼** 가지고 있어야 한다. 따라서 과부하가 매우 심하므로 4, 5명 정도와 테스트를 진행하는 것을 권장한다. 이 과부하에 대한 설명도 [지난 포스트](<https://millo-l.github.io/WebRTC-%EA%B5%AC%ED%98%84-%EB%B0%A9%EC%8B%9D(Mesh-SFU-MCU)/>)를 참고하길 바란다.
+The 1:N connection must have as many RTCPeerConnection as participating in a video conference, unlike the 1:1 connection we made last time. Therefore, it is recommended to conduct the test with 4 or 5 people because the overload is very severe. Please refer to [the previous post](<https://millo-l.github.io/WebRTC-implementation-method(Mesh-SFU-MCU)>) for explanation of this overload.
 
-# 3. 실제 코드
+# 3. Code
 
-## 3-1. Signaling Server(Node.js)
+## Signaling Server(Node.js)
 
-### 주의할 점: socket.io version=2.3.0을 사용하셔야합니다.
+> **Note** <br /> You must use socket.io version=2.3.0.
 
-### 1. socket 이벤트
+### 1. Socket event
 
 -   connection
-    -   지난 포스트와 동일
+    -   Same as last post
 -   join_room
-    -   지난 포스트와 동일
+    -   Same as last post
 -   offer
     -   data
-        -   offerSendID: offer를 보내는 user의 socket id
-        -   offerSendEmail: offer를 보내는 user의 email
-        -   sdp: offer를 보내는 user의 RTCSessionDescription
-        -   offerReceiveID: offer를 받을 user의 socket id
+        -   offerSendID: socket id of user sending offfer
+        -   offerSendEmail: email of user sending offfer
+        -   sdp: RTCSessionDescription of user sending offfer
+        -   offerReceiveID: socket id of the user to receive an offfer
     -   role
-        -   offer를 받아야하는 receiver에게 offer를 보내는 sender의 socket id, email, sdp를 보낸다.
+        -   Send socket id, email, and sdp of the sender that sends the offer to the receiver who needs to receive the offer.
 -   answer
     -   data
-        -   answerSendID: answer를 보내는 user의 socket id
-        -   sdp: answer를 보내는 user의 RTCSessionDescription
-        -   answerReceiveID: answer를 받을 user의 socket id
+        -   answerSendID: socket id of user sending answer
+        -   sdp: RTCSessionDescription of user sending answer
+        -   answerReceiveID: socket id of the user to receive an answer
     -   role
-        -   answer를 받아야하는 receiver에게 answer를 보내는 sender의 socket id, email, sdp를 보낸다.
+        -   Send socket id, email, and sdp of the sender that sends the answer to the receiver who needs to receive the answer.
 -   candidate
     -   data
-        -   candidateSendID: candidate를 보내는 user의 socket id
-        -   candidate: sender의 RTCIceCandidate
-        -   candidateReceiveID: candidate를 받는 user의 socket id
+        -   candidateSendID: socket id of user sending RTCIceCandidate
+        -   candidate: RTCIceCandidate of sender
+        -   candidateReceiveID: socket id of the user to receive an candidate
     -   role
-        -   candidate를 받아야하는 receiver에게 sender의 socket id, candidate를 보낸다.
+        -   Send socket id, cadidate of the sender to the receiver who needs to receive the cadidate.
 -   disconnection
-    -   지난 포스트와 동일
+    -   Same as last post
 
-### 1:1 연결에서는 상대방이 한 명 밖에 없기 때문에 offer, answer, candidate를 주고 받는 이벤트에서 socket id를 함께 보낼 필요가 없었다. 하지만 1:N 연결에서는 같은 방에 여러 명이 존재하기 때문에 어떤 user에게 데이터를 전달할지는 중요한 부분이다.
+### Because there was only one opponent in the 1:1 connection, there was no need to send socket id together in events that exchanged offer, answer, and cadidate. However, because there are several people in the same room in the 1:N connection, it is an important part of which user the data will be delivered.
 
 ```js
 let users = {}
@@ -146,17 +146,17 @@ io.on("connection", socket => {
 })
 ```
 
-## 3-2. Client(ReactJS, Typescript)
+## Client(ReactJS, Typescript)
 
-### 주의할 점: socket.io-client version=2.3.0, @types/socket.io-client version=1.4.34을 사용하셔야 합니다.
+> **Note** <br /> You must use socket.io-client version=2.3.0, @types/socket.io-client version=1.4.34.
 
-### 1. Client에서 사용할 변수들
+### 1. Variables to use in the client
 
--   socket: 지난 포스트와 동일
--   users: 상대방의 데이터(socket id, email, MediaStream) 배열
--   localVideoRef: 지난 포스트와 동일
--   pcs: 상대방의 RTCPeerConnection 저장할 Dictionary 변수 (pcs[socket.id] = RTCPeerConnection 형태로 저장)
--   pc_config: 지난 포스트와 동일
+-   socket: Same as last post
+-   users: array of counterparties' data (socket id, email, MediaStream)
+-   localVideoRef: Same as last post
+-   pcs: Dictionary variable to store the opponent's RTCPeerConnection ({pcs[socket.id] = RTCPeerConnection} format)
+-   pc_config: Same as last post
 
 ```ts
 const [socket, setSocket] = useState<SocketIOClient.Socket>()
@@ -180,23 +180,23 @@ const pc_config = {
 }
 ```
 
-### 2. Socket 수신 이벤트
+### 2. Socket event
 
 -   all_users
-    -   자신을 제외한 같은 방의 모든 user 목록을 받아온다.
-    -   user들마다 createPeerConnection 함수를 호출해서 각각의 RTCPeerConnection을 생성한다.
-    -   해당 user를 위해 생성한 RTCPeerConneciton을 통해 createOffer 함수를 호출하고 해당 user에게만 offer signal을 보낸다.
+    -   Get a list of all users in the same room except yourself.
+    -   Each user invokes the createPeerConnection function to generate each RTCPeerConnection.
+    -   Call the createOffer function via RTCPeerConneciton created for that user and send an offer signal only to that user.
 -   getOffer
-    -   offer를 보낸 user와의 통신을 위해 createPeerConnection 함수를 호출해서 RTCPeerConnection을 생성한다.
-    -   해당 user를 위해 생성한 RTCPeerConnection의 remoteDescription를 해당 user에게서 전달 받은 sdp로 설정한다.
-    -   createAnswer 함수를 호출하고 해당 user에게 answer signal을 보낸다.
+    -   The createPeerConnection function is called to generatePeerConnection for communication with the user who sent the offer.
+    -   Set the remoteDescription of the RTCPeerConnection generated for that user to the sdp received from that user.
+    -   Call the createAnswer function and send an answer signal to the user.
 -   getAnswer
-    -   answer을 보낸 user를 위해 생성해놓은 RTCPeerConnection의 remoteDescription를 answer을 보낸 user의 sdp로 설정한다.
+    -   Set the remoteDescription of RTCPeerConnection, which was created for the user who sent answer, to sdp of the user who sent answer.
 -   getCandidate
-    -   candidate를 보낸 user를 위해 생성해놓은 RTCPeerConnection에 받은 RTCIceCandidate를 추가한다.
+    -   Add the received RTCIceCandidate to the RTCPeerConnection created for the user who sent the cadidate.
 -   user_exit
-    -   pcs Dictionary에서 해당 user의 RTCPeerConnection을 삭제한다.
-    -   users에서 해당 user의 데이터를 삭제한다.
+    -   Delete the user's RTCPeerConnection from the pcs Dictionary.
+    -   In users array, delete the data for that user.
 
 ```ts
 let newSocket = io.connect("http://localhost:8080")
@@ -312,10 +312,10 @@ newSocket.on("user_exit", (data: { id: string }) => {
 setSocket(newSocket)
 ```
 
-### 3. MediaStream 설정
+### 3. MediaStream Settings
 
--   navigator.mediaDevices.getUserMedia() 함수를 호출해서 자신의 MediaStream을 얻고 localVideoRef에 등록한다.
--   방에 참가했다고 Signaling Server에 알린다. (이후에 all_users 이벤트로 답이 온다.)
+-   Call the navigator.mediaDevices.getUserMedia() function to obtain your own MediaStream and register it with localVideoRef.
+-   Signaling Server will be notified that you have joined the room. (The answer will then be given to the all_users event.)
 
 ```ts
 navigator.mediaDevices
@@ -338,18 +338,18 @@ navigator.mediaDevices
     })
 ```
 
-### 4. 상대방을 위한 RTCPeerConnection 생성
+### 4. Create an RTCPeerConnection for the other party
 
--   특정 user를 위한 PeerConnection 생성하고 localStream을 RTCPeerConnection에 등록한다.
--   pcs 변수에 socket.id-RTCPeerConnection의 key-value 형태로 저장
+-   Create a PeerConnection for a specific user and register localStream with RTCPeerConnection.
+-   Store in pcs variable in key-value form socket.id-RTCPeerConnection
 -   onicecandidate
-    -   offer 또는 answer signal을 생성한 후부터 본인의 icecadidate 정보 이벤트가 발생한다.
-    -   offer 또는 answer를 보냈던 상대방에게 본인의 icecandidate 정보를 Signaling Server를 통해 보낸다.
+    -   After creating an offer or answer signal, your icecandidate information event occurs.
+    -   Send your icecandidate information through the Signaling Server to the person who sent the offer or answer.
 -   oniceconnectionstatechange
-    -   ICE connection 상태가 변경됐을 때의 log
+    connection status is changed
 -   ontrack
-    -   상대방의 RTCSessionDescription을 본인의 RTCPeerConnection에서의 remoteSessionDescription으로 지정하면 상대방의 track 데이터에 대한 이벤트가 발생한다.
-    -   상대방의 user 데이터에 stream을 등록한다.
+    -   If the other person's RTCSessionDescription is specified as a remoteSessionDescription in his RTCPeerConnection, an event about the other person's track data will occur.
+    -   Register other party's stream with the other party's user data in users array.
 
 ```ts
 const createPeerConnection = (
@@ -405,11 +405,11 @@ const createPeerConnection = (
 }
 ```
 
-### 5. 본인과 상대방의 video 렌더링
+### 5. Video rendering of yourself and your opponent
 
--   IWebRTCUser: users 저장에 사용했던 인터페이스
--   Props: Video 태그에 사용되는 props
--   Video: 상대방의 video를 출력할 컴포넌트
+-   IWebRTCUser: Interface used to store users
+-   Props: Props used for Video Tags
+-   Video: Component to print video of the other party
 
 ```tsx
 interface IWebRTCUser {
@@ -461,14 +461,11 @@ return (
 )
 ```
 
-# 4. 느낀 점
-
-1:1 구현 포스팅은 크리스마스에 했는 데, 1:N은 12월 31일 올해의 마지막 날에 하게 됐다. 흠... 코로나가 얼른 끝나버렸으면 좋겠다. 1:1 구현을 하고 나서 WebRTC P2P에 대한 이해를 하고 나니 구현에 큰 어려움은 없었다. 다만 setUsers useState를 이용하는 데 실수를 해서 몇 시간을 뭐가 잘못됐는 지 헤매다가 결국 발견하고 허탈함을 느꼈다. 하지만 구현이 완료되고 나니 그런 허탈함보다 훨씬 큰 만족감이 왔다. 역시 나는 개발자랑 잘 맞는 것 같다. Nginx, 무료 도메인과 letsencrypt를 사용한 https 통신을 구현하고 주변 지인들과 테스트를 해본 결과 로컬이 아니어도 무리 없이 잘 진행됐다. 다만 이미 알고있었다시피 5명 정도가 되니까 클라이언트에서 무리가 가는 게 느껴졌다. 원래 구현하고 포스팅하고자 했던 내용은 여기까지이다. 계획을 마무리하니 뿌듯함이 느껴진다. 다음은 어떤 포스팅을 해볼까 고민중이다. 일단은 클라이언트 과부하에 대한 SFU 서버도 구현해볼 예정이다. 만약 구현이 완료되면 포스팅을 더 해보도록 하겠다. 어쩌다보니 WebRTC 개발자가 된 것 같은 기분이... 하지만 이 포스트가 많은 사람들에게 도움이 된다면 안 할 이유가 없을 것 같다.
-
 # [GitHub]
 
 -   https://github.com/millo-L/Typescript-ReactJS-WebRTC-1-N-P2P
 
-# [참고]
+# [References]
 
--   https://millo-l.github.io/WebRTC-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0-1-1-P2P/
+-   https://millo-l.github.io/Implementing-WebRTC-using-ReactJS-and-Typescript(1-1-P2P)/
+-   https://millo-l.github.io/WebRTC-implementation-method(Mesh-SFU-MCU)/

@@ -1,6 +1,6 @@
 ---
 author: millo
-title: '[Gatsby] Troubleshooting build error "document is not defined"'
+title: "[Gatsby] Troubleshooting build error 'document is not defined'"
 category: gatsby
 layout: post
 released_at: 2021-02-27 09:20
@@ -31,5 +31,20 @@ In terms of the code,
 ```tsx
 if (typeof window === "undefined" || !window.document) {
     return
+}
+```
+
+In my case, I used it as below.
+
+```tsx
+const getScrollTop = () => {
+    if (typeof window === "undefined" || !window.document) {
+        return
+    }
+    if (!document.body) return 0
+    const scrollTop = document.documentElement
+        ? document.documentElement.scrollTop || document.body.scrollTop
+        : document.body.scrollTop
+    return scrollTop
 }
 ```

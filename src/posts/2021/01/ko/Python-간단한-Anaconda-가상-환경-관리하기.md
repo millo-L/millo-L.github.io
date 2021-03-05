@@ -1,7 +1,7 @@
 ---
 author: millo
-title: "[Anaconda] 간단한 Anaconda 가상 환경 관리하기"
-category: anaconda
+title: "[Python] 간단한 Anaconda 가상 환경 관리하기"
+category: python
 layout: post
 released_at: 2021-01-26 17:00
 updated_at:
@@ -9,6 +9,7 @@ image: ../../../../images/category/anaconda.png
 series: none
 lang: ko
 tags:
+    - python
     - anaconda
     - env
     - python

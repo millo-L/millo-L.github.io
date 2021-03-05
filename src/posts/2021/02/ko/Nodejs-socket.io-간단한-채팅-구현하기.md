@@ -5,7 +5,7 @@ category: nodejs
 layout: post
 released_at: 2021-02-04 13:00
 updated_at:
-image: ../../../../images/category/nodejs.jpg
+image: ../../../../images/2021/02/socketio.png
 series: none
 lang: ko
 tags:

@@ -33,3 +33,18 @@ if (typeof window === "undefined" || !window.document) {
     return
 }
 ```
+
+나의 경우 아래와 같이 사용했다.
+
+```tsx
+const getScrollTop = () => {
+    if (typeof window === "undefined" || !window.document) {
+        return 0
+    }
+    if (!document.body) return 0
+    const scrollTop = document.documentElement
+        ? document.documentElement.scrollTop || document.body.scrollTop
+        : document.body.scrollTop
+    return scrollTop
+}
+```

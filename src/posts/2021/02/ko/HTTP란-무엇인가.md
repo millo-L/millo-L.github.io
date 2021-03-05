@@ -5,7 +5,7 @@ category: network
 layout: post
 released_at: 2021-02-11 13:00
 updated_at:
-image: ../../../../images/category/network.jpg
+image: ../../../../images/2021/02/http.png
 series: none
 lang: ko
 tags:
@@ -33,14 +33,11 @@ description: 우리에게 매우 친숙하지만 제대로 알고 있진 못한 
 
 # 3. HTTP의 동작 방식
 
-> **클라이언트** <br />
-> &nbsp;서버에게 요청을 보내는 리소스 사용자 ex) 웹 브라우저, 모바일 애플리케이션, IoT 등 <br />
-> **서버** <br />
-> &nbsp;클라이언트에게 요청에 대한 응답을 제공하는 리소스 관리자
+> **클라이언트** <br /> > &nbsp;서버에게 요청을 보내는 리소스 사용자 ex) 웹 브라우저, 모바일 애플리케이션, IoT 등 <br /> > **서버** <br /> > &nbsp;클라이언트에게 요청에 대한 응답을 제공하는 리소스 관리자
 
 클라이언트(웹 브라우저, 모바일 등)가 브라우저를 통해서 어떠한 서비스를 URI를 통해 서버에 요청(Request)하면 서버에서는 해당 요청에 대한 결과를 응답(Response)하는 형태로 동작한다.
 
-![](../../../../images/2021/02/http.png)
+![](../../../../images/2021/02/http-flow.png)
 
 # 4. HTTP 요청 메서드
 

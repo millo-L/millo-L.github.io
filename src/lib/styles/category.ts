@@ -117,6 +117,11 @@ export const categoryList = [
             "https://img.shields.io/badge/OpenSource-3DA639?style=flat-square&logo=Open-Source-Initiative&logoColor=white",
     },
     {
+        name: "typescript",
+        src:
+            "https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=TypeScript&logoColor=white",
+    },
+    {
         name: "nginx",
         src:
             "https://img.shields.io/badge/NGINX-269539?style=flat-square&logo=NGINX&logoColor=white",
@@ -140,11 +145,6 @@ export const categoryList = [
         name: "anaconda",
         src:
             "https://img.shields.io/badge/Anaconda-44A833?style=flat-square&logo=Anaconda&logoColor=white",
-    },
-    {
-        name: "typescript",
-        src:
-            "https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=TypeScript&logoColor=white",
     },
     {
         name: "react",
