@@ -24,10 +24,8 @@
 <url> <loc>https://millo-L.github.io/Session-기반-인증방식/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/Ubuntu-18.04에서-letsencrypt-HTTPS-환경구축/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/오픈소스-라이선스-고지-방법/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://millo-L.github.io/WebRTC-구현하기-1-N-SFU/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/오픈소스-라이선스-종류/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/오픈소스-라이선스란-무엇인가/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://millo-L.github.io/Implementing-WebRTC-using-ReactJS-and-Typescript(1-1-P2P)/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/WebRTC-implementation-method(Mesh-SFU-MCU)/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/Nodejs-express-session-사용하기/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/ReactNative-배경-이미지-크기-자동으로-맞추기/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -35,12 +33,12 @@
 <url> <loc>https://millo-L.github.io/WebRTC-구현-방식(Mesh-SFU-MCU)/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/WebRTC-구현하기-1-1-P2P/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/WebRTC-이론-정리하기/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://millo-L.github.io/WebRTC-구현하기-1-N-P2P/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/WebRTC-성능비교-P2P-vs-SFU/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/About-WebRTC/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/Nodejs-socket.io-간단한-채팅-구현하기/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/Difference-between-URI-and-URL/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/OAuth2.0-기반-인증방식/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://millo-L.github.io/WebRTC-구현하기-1-N-P2P/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/HTTP란-무엇인가/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/Nodejs-JWT-사용하기/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/ReactNative-커스텀-로딩-애니메이션-스크린-구현하기/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -48,9 +46,12 @@
 <url> <loc>https://millo-L.github.io/Nodejs-passport-session-사용하기/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/Python-Ubuntu18.04에서-jupyter-notebook-사용하기/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/Nodejs-passport-Google-OAuth-2.0-로그인-사용하기/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://millo-L.github.io/Implementing-WebRTC-using-ReactJS-and-Typescript(1-1-P2P)/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/Python-간단한-Anaconda-가상-환경-관리하기/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/SOAP-정리하기/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/Implementing-WebRTC-using-ReactJS-and-Typescript(1-N-P2P)/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://millo-L.github.io/WebRTC-구현하기-1-N-SFU/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://millo-L.github.io/Implementing-WebRTC-using-ReactJS-and-Typescript(1-N-SFU)/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/ReactNative-Dimensions.get-window와-Dimentsions.get-screen의-차이점/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/ReactNative-Bottom-tab-bar-특정-화면에서-안-보이게-설정하기/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/ReactNative-특정-화면에서-화면-고정하기/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
