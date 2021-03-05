@@ -4,6 +4,8 @@
 <url> <loc>https://millo-L.github.io/Nodejs-slack-연동하기-알림봇구현/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/Typescript-mongodb-method-statics-사용하기/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/Typescript-mongoose-methods-statics/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://millo-L.github.io/Troubleshooting-Gatsby-build-error-document-is-not-defined/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://millo-L.github.io/Gatsby-build-error-document-is-not-defined-해결방법/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/Go언어에서-구조체를-Class처럼-사용하기/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/JavaScript-Date-객체-사용하기/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/Jenkins-in-Docker-Ubuntu18.04/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -25,10 +27,8 @@
 <url> <loc>https://millo-L.github.io/WebRTC-구현하기-1-N-SFU/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/오픈소스-라이선스-종류/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/오픈소스-라이선스란-무엇인가/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://millo-L.github.io/Troubleshooting-Gatsby-build-error-document-is-not-defined/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/Implementing-WebRTC-using-ReactJS-and-Typescript(1-1-P2P)/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/WebRTC-implementation-method(Mesh-SFU-MCU)/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://millo-L.github.io/Gatsby-build-error-document-is-not-defined-해결방법/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/Nodejs-express-session-사용하기/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/ReactNative-배경-이미지-크기-자동으로-맞추기/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/JavaScript-Callback-지옥-벗어나기/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
