@@ -17,7 +17,7 @@ tags:
     - reactjs
     - typescript
 is_private: false
-translation: /Implementing-WebRTC-using-ReactJS-and-Typescript(1-N-P2P)/
+translation: /Implementing-WebRTC-using-ReactJS-and-Typescript-1-N-P2P/
 translation_series: /WebRTC-theory-to-practice
 description: WebRTC의 이론을 기반으로 1:N P2P 실시간 영상 송수신을 구현해보자.
 ---

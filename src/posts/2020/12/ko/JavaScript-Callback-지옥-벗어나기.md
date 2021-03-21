@@ -13,7 +13,7 @@ tags:
     - async/await
     - promise
 is_private: false
-translation:
+translation: /JavaScript-Get-out-of-Callback-hell/
 translation_series: none
 description: javascript callback 지옥에서 벗어나기 위해 promise와 async/await를 사용해보자.
 ---

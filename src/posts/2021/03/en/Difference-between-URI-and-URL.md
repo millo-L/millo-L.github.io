@@ -13,7 +13,7 @@ tags:
     - URI
     - URL and URI
 is_private: false
-translation:
+translation: /URI와-URL의-차이점/
 translation_series: none
 description: What's the difference between a URL and a URI? Let's find out when and what to use.
 ---

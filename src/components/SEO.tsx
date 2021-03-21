@@ -30,8 +30,7 @@ const SEO = (p: P) => {
                 }
             }
         }
-    `
-    )
+    `)
 
     const description = p.description || site.siteMetadata.description
     const defaultImage = `${site.siteMetadata.siteUrl}/images/logo.png`
@@ -111,9 +110,22 @@ const SEO = (p: P) => {
         `}</script>
             )}
             <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js"></script>
-            <script data-ad-client="ca-pub-3926462216067158" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <script data-ad-client="pub-3926462216067158" async src="https://pagead2.googlesyndication.com/
-pagead/js/adsbygoogle.js"></script>
+            <script
+                data-ad-client="ca-pub-3926462216067158"
+                async
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+            ></script>
+            <script
+                data-ad-client="pub-3926462216067158"
+                async
+                src="https://pagead2.googlesyndication.com/
+pagead/js/adsbygoogle.js"
+            ></script>
+            <script
+                async
+                custom-element="amp-auto-ads"
+                src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"
+            ></script>
         </Helmet>
     )
 }

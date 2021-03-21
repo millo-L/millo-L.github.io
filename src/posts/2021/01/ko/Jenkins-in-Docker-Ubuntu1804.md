@@ -13,7 +13,7 @@ tags:
     - jenkins
     - ubuntu
 is_private: false
-translation:
+translation: /jenkins-in-docker-ubuntu/
 translation_series: none
 description: Docker in Docker로 jenkins docker를 만들어 CI/CD 환경을 만들어보자.
 ---

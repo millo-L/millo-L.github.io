@@ -16,7 +16,7 @@ tags:
     - P2P
     - SFU
 is_private: false
-translation: /WebRTC-구현-방식(Mesh-SFU-MCU)/
+translation: /WebRTC-구현-방식-Mesh-SFU-MCU/
 translation_series: /WebRTC-이론부터-실전까지
 description: Let's learn about the types of servers to implement WebRTC. (Mesh/P2P, SFU, MCU)
 ---

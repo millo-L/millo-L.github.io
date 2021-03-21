@@ -1,6 +1,6 @@
 ---
 author: millo
-title: "[Gatsby] Troubleshooting build error 'document is not defined'"
+title: "[Gatsby] Troubleshooting document is not defined build error"
 category: gatsby
 layout: post
 released_at: 2021-02-27 09:20
@@ -15,12 +15,12 @@ tags:
 is_private: false
 translation: /Gatsby-build-error-document-is-not-defined-해결방법
 translation_series: none
-description: Troubleshooting Gatsby build error "document is not defined".
+description: "Troubleshooting Gatsby document is not defined build error."
 ---
 
 # 1. Introduction
 
-Recently, when I moved from "Tistory" to Gatsby, I started developing blogs using Gatsby for the first time, and there were many difficulties. One of the most annoying issue was the "document is not defined" build error. I would like to share the solution I found for people who face the same problem as me.
+Recently, when I moved from Tistory to Gatsby, I started developing blogs using Gatsby for the first time, and there were many difficulties. One of the most annoying issue was the "document is not defined" build error. I would like to share the solution I found for people who face the same problem as me.
 
 # 2. Solution
 

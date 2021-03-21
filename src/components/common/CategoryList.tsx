@@ -1,9 +1,9 @@
-import { Link } from 'gatsby';
-import React, { memo } from 'react';
-import Styled, { css } from 'styled-components';
-import { categoryList } from '../../lib/styles/category';
-import { mediaQuery } from '../../lib/styles/media';
-import palette from '../../lib/styles/palette';
+import { graphql, Link, useStaticQuery } from "gatsby"
+import React, { memo } from "react"
+import Styled, { css } from "styled-components"
+import { categoryList, enCategoryList } from "../../lib/styles/category"
+import { mediaQuery } from "../../lib/styles/media"
+import palette from "../../lib/styles/palette"
 
 const CategoryListWrapper = Styled.div<{ visible: boolean }>`
     margin-top: 2.5rem;
@@ -15,8 +15,9 @@ const CategoryListWrapper = Styled.div<{ visible: boolean }>`
     ${props =>
         props.visible
             ? css``
-            : css` display: none; `
-    }
+            : css`
+                  display: none;
+              `}
 
     p {
         margin: 0;
@@ -49,30 +50,57 @@ const CategoryListWrapper = Styled.div<{ visible: boolean }>`
     ${mediaQuery(1056)} {
         display: none;
     }
-`;
+`
 
 interface CategoryListProps {
-    visible: boolean;
-    lang: string;
-    selectedCategory?: string;
+    visible: boolean
+    lang: string
+    selectedCategory?: string
 }
 
-const CategoryList = ({ visible, lang, selectedCategory }: CategoryListProps) => {
+const CategoryList = ({
+    visible,
+    lang,
+    selectedCategory,
+}: CategoryListProps) => {
     return (
         <CategoryListWrapper visible={visible}>
             <p>Categories</p>
             <div className="img-wrapper">
-                {categoryList.filter((category, idx) => idx < 13).map((category, index) => {
-                    return (
-                        <Link to={lang === 'ko' ? `/?category=${category.name}` : `/en?category=${category.name}`} key={index} >
-                            <img className="category-img"
-                                src={category.src} />
-                        </Link>
-                    )
-                })}
+                {lang === "ko"
+                    ? categoryList
+                          .filter((category, idx) => idx < 13)
+                          .map((category, index) => {
+                              return (
+                                  <Link
+                                      to={`/?category=${category.name}`}
+                                      key={index}
+                                  >
+                                      <img
+                                          className="category-img"
+                                          src={category.src}
+                                      />
+                                  </Link>
+                              )
+                          })
+                    : enCategoryList
+                          .filter((category, idx) => idx < 7)
+                          .map((category, index) => {
+                              return (
+                                  <Link
+                                      to={`/en?category=${category.name}`}
+                                      key={index}
+                                  >
+                                      <img
+                                          className="category-img"
+                                          src={category.src}
+                                      />
+                                  </Link>
+                              )
+                          })}
             </div>
         </CategoryListWrapper>
-    );
+    )
 }
 
-export default memo(CategoryList);
+export default memo(CategoryList)

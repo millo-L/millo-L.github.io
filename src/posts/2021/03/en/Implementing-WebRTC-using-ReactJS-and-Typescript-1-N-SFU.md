@@ -91,7 +91,7 @@ socket.on("joinRoom", data => {
     -   role
         -   Server received the offer of RTCPeerConnection to receive user's MediaStream and sent answer
 
-> **Caution** <br /> The reason why createAnswer keeps both of **offerToReceiveAudio** and **offerToReceiveVideo** true is that they must receive both audio and video streams from users.
+> **Note** <br /> The reason why createAnswer keeps both of **offerToReceiveAudio** and **offerToReceiveVideo** true is that they must receive both audio and video streams from users.
 
 ```js
 socket.on("senderOffer", async data => {
@@ -143,7 +143,7 @@ socket.on("senderCandidate", async data => {
     -   role
         -   User who has reciverSocketID as socketid receives an offer of RTCPeerConnection to receive MediaStream of user who has senderSocketID as socketid, and sends an answer
 
-> **Caution** <br /> The reason why createAnswer has false versions of both **offerToReceiveAudio** and **offerToReceiveVideo** is that they do not receive audio and video streams from users.(The RTCPeerConnection you created now is a connection to send a stream of existing users.)
+> **Note** <br /> The reason why createAnswer has false versions of both **offerToReceiveAudio** and **offerToReceiveVideo** is that they do not receive audio and video streams from users.(The RTCPeerConnection you created now is a connection to send a stream of existing users.)
 
 ```js
 socket.on("receiverOffer", async data => {
@@ -638,7 +638,7 @@ const createReceivePC = (id: string, newSocket: SocketIOClient.Socket) => {
         -   Specifies RTCSessionDescription in the localDescription of the corresponding RTCPeerConnection.
         -   Send RTCSessionDescription via socket to server
 
-> **Caution** <br /> Since RTCPeerConnection is for sending your MediaStream, leave both **offerToReceiveAudio** and **offerToReceiveVideo** as false.
+> **Note** <br /> Since RTCPeerConnection is for sending your MediaStream, leave both **offerToReceiveAudio** and **offerToReceiveVideo** as false.
 
 ```tsx
 const createSenderOffer = async (newSocket: SocketIOClient.Socket) => {
@@ -670,7 +670,7 @@ const createSenderOffer = async (newSocket: SocketIOClient.Socket) => {
         -   Specifies RTCSessionDescription in the localDescription of the corresponding RTCPeerConnection.
         -   Send RTCSessionDescription via socket to server
 
-> **Caution** <br /> Since RTCPeerConnection is intended to receive MediaStream from other users, both **offerToReceiveAudio** and **offerToReceiveVideo** should be true.
+> **Note** <br /> Since RTCPeerConnection is intended to receive MediaStream from other users, both **offerToReceiveAudio** and **offerToReceiveVideo** should be true.
 
 ```tsx
 const createReceiverOffer = async (

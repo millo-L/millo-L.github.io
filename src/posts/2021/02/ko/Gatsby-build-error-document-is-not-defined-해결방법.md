@@ -1,6 +1,6 @@
 ---
 author: millo
-title: '[Gatsby] build error "document is not defined" 해결 방법'
+title: "[Gatsby] document is not defined build error 해결 방법"
 category: gatsby
 layout: post
 released_at: 2021-02-27 09:01
@@ -15,7 +15,7 @@ tags:
 is_private: false
 translation: /Troubleshooting-Gatsby-build-error-document-is-not-defined
 translation_series: none
-description: Gatsby build error "document is not defined" 해결하기.
+description: "Gatsby  document is not defined build error 해결하기."
 ---
 
 # 1. 서론

@@ -15,7 +15,7 @@ tags:
     - Embedding
     - Receiver
 is_private: false
-translation:
+translation: /Using-struct-as-class-in-golang/
 translation_series: none
 description: Go언어의 구조체를 객체 지향 언어의 Class처럼 사용해보자.
 ---
