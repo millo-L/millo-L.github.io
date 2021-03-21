@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 <url> <loc>https://millo-L.github.io/Install-Opencv-4-on-Raspberry-Pi-4/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://millo-L.github.io/Nodejs-socketio-간단한-채팅-구현하기/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/Go언어에서-구조체를-Class처럼-사용하기/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/JavaScript-Date-객체-사용하기/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/Jenkins-in-Docker-Ubuntu1804/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -50,7 +51,6 @@
 <url> <loc>https://millo-L.github.io/Nodejs-slack-연동하기-알림봇구현/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/Nodejs-passport-session-사용하기/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/Nodejs-PBKDF2-비밀번호-암호화하기/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://millo-L.github.io/Nodejs-socket.io-간단한-채팅-구현하기/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/OAuth2-기반-인증방식/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/Python-Ubuntu1804에서-jupyter-notebook-사용하기/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/ReactNative-Bottom-tab-bar-특정-화면에서-안-보이게-설정하기/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
