@@ -71,6 +71,10 @@
 <url> <loc>https://millo-L.github.io/series/WebRTC-theory-to-practice</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/series/WebRTC-이론부터-실전까지</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/series/오픈소스-라이선스</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://millo-L.github.io/en/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://millo-L.github.io/about/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://millo-L.github.io/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://millo-L.github.io/series/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://millo-L.github.io/en/about/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://millo-L.github.io/en/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://millo-L.github.io/en/series/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 </urlset>
