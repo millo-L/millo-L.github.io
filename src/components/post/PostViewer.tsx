@@ -1,22 +1,23 @@
-import { Link } from 'gatsby';
-import React, { useCallback } from 'react';
-import Styled from 'styled-components';
-import { categoryMap } from '../../lib/styles/category';
-import media from '../../lib/styles/media';
-import palette from '../../lib/styles/palette';
-import { formatDate } from '../../lib/styles/utils';
-import PostSeriesList, { PartialSeriesType } from './PostSeriesList';
-import PrevNextPost from './PrevNextPost';
-import TagList from './TagList';
+import { Link } from "gatsby"
+import React, { useCallback } from "react"
+import Styled from "styled-components"
+import { categoryMap } from "../../lib/styles/category"
+import media from "../../lib/styles/media"
+import palette from "../../lib/styles/palette"
+import { formatDate } from "../../lib/styles/utils"
+import Adsense from "../common/Adsense"
+import PostSeriesList, { PartialSeriesType } from "./PostSeriesList"
+import PrevNextPost from "./PrevNextPost"
+import TagList from "./TagList"
 
 type PostType = {
-    author: string;
-    category: string;
-    title: string;
-    tags: Array<string>;
-    released_at: string;
-    updated_at: string;
-    html: string;
+    author: string
+    category: string
+    title: string
+    tags: Array<string>
+    released_at: string
+    updated_at: string
+    html: string
 }
 const PostViewerWrapper = Styled.div`
     width: 60%;
@@ -60,7 +61,11 @@ const PostViewerWrapper = Styled.div`
             font-size: 0.8rem;
         }
     }
-`;
+
+    .adsense-block {
+        width: 100%;
+    }
+`
 
 const PostContentWrapper = Styled.div`
     width: 100%;
@@ -209,40 +214,101 @@ const PostContentWrapper = Styled.div`
             margin-right: 2rem;
         }
     }
-`;
+`
 
 interface PostViewerProps {
-    post: PostType;
-    series: string;
-    seriesList: Array<PartialSeriesType>;
-    lang: string;
+    post: PostType
+    series: string
+    seriesList: Array<PartialSeriesType>
+    lang: string
 }
 
-
 const PostViewer = ({ post, series, seriesList, lang }: PostViewerProps) => {
-    const { html, title, released_at, updated_at, category, tags } = post;
+    const { html, title, released_at, updated_at, category, tags } = post
 
-    const onClickTag = useCallback((tag: string) => {
-
-    }, [tags]);
+    const onClickTag = useCallback((tag: string) => {}, [tags])
 
     return (
         <PostViewerWrapper>
-            {category &&
-                <Link className="category" to={lang === 'ko' ? `/?category=${category}` : `/en?category=${category}`}>{
-                    categoryMap[category]
-                        ? <img src={categoryMap[category].src} />
-                        : `[${category}]`
-                }</Link>}
+            {category && (
+                <Link
+                    className="category"
+                    to={
+                        lang === "ko"
+                            ? `/?category=${category}`
+                            : `/en?category=${category}`
+                    }
+                >
+                    {categoryMap[category] ? (
+                        <img src={categoryMap[category].src} />
+                    ) : (
+                        `[${category}]`
+                    )}
+                </Link>
+            )}
             <h1 className="title">{title}</h1>
-            <p className="date" >{lang === 'ko' ? '게시: ' : ''}{formatDate(released_at, lang)}</p>
-            {updated_at && <p className="date" >{lang === 'ko' ? '수정: ' : 'Last edited at '}{formatDate(updated_at, lang)}</p>}
+            <p className="date">
+                {lang === "ko" ? "게시: " : ""}
+                {formatDate(released_at, lang)}
+            </p>
+            {updated_at && (
+                <p className="date">
+                    {lang === "ko" ? "수정: " : "Last edited at "}
+                    {formatDate(updated_at, lang)}
+                </p>
+            )}
             {tags && <TagList tags={tags} onClick={onClickTag} />}
-            {series !== 'none' && <PostSeriesList series={series} seriesList={seriesList} nowPostTitle={title} lang={lang} />}
-            <PostContentWrapper id="content-container" dangerouslySetInnerHTML={{ __html: html }} />
-            <PrevNextPost nowPostTitle={title} seriesList={seriesList} lang={lang} />
+            {/*<div className="adsense-block">
+                <Adsense
+                    style={{ display: "block" }}
+                    adClient="ca-pub-3926462216067158"
+                    adSlot="6763105273"
+                    adFormat="auto"
+                    fullWidthResponsive="true"
+                />
+            </div>*/}
+            {series !== "none" && (
+                <PostSeriesList
+                    series={series}
+                    seriesList={seriesList}
+                    nowPostTitle={title}
+                    lang={lang}
+                />
+            )}
+            <PostContentWrapper
+                id="content-container"
+                dangerouslySetInnerHTML={{ __html: html }}
+            />
+            <Adsense
+                style={{ display: "block", textAlign: "center" }}
+                adClient="ca-pub-3926462216067158"
+                adSlot="6864119577"
+                adFormat="fluid"
+                adLayout="in-article"
+            />
+            {/*<Adsense
+                style={{ display: "block", textAlign: "center" }}
+                adClient="ca-pub-3926462216067158"
+                adSlot="6864119577"
+                adFormat="fluid"
+                adLayout="in-article"
+            />
+            <div className="adsense-block">
+                <Adsense
+                    style={{ display: "block" }}
+                    adClient="ca-pub-3926462216067158"
+                    adSlot="6407882052"
+                    adFormat="auto"
+                    fullWidthResponsive="true"
+                />
+            </div>*/}
+            <PrevNextPost
+                nowPostTitle={title}
+                seriesList={seriesList}
+                lang={lang}
+            />
         </PostViewerWrapper>
-    );
+    )
 }
 
-export default PostViewer;
+export default PostViewer

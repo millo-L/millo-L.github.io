@@ -24,7 +24,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
     const result = await graphql(`
         {
-            allMarkdownRemark {
+            allMarkdownRemark(
+                filter: { frontmatter: { is_private: { eq: false } } }
+            ) {
                 edges {
                     node {
                         fields {

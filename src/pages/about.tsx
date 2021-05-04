@@ -8,8 +8,6 @@ import HomeTab from "../components/home/HomeTab"
 import MainPageRowTemplate from "../components/main/MainPageRowTemplate"
 import MainResponsive from "../components/main/MainResponsive"
 import MainTemplate from "../components/main/MainTemplate"
-import PostListPage from "../components/post/PostListPage"
-import SeriesListPage from "../components/series/SeriesListPage"
 import queryString from "query-string"
 import { useLocation } from "@reach/router"
 import SEO from "../components/SEO"
@@ -26,7 +24,7 @@ const HomePage = () => {
     const location = useLocation()
     const series = location.search && queryString.parse(location.search)
 
-    const [page, setPage] = useState<number>(0)
+    const [page, setPage] = useState<number>(2)
     const [categoryVisible, setCategoryVisible] = useState<boolean>(true)
     const onClick = useCallback((index: number) => {
         setPage(index)
@@ -36,8 +34,8 @@ const HomePage = () => {
 
     return (
         <MainTemplate>
-            <SEO title="Home" />
-            <Header lang="ko" ko_to="#" en_to="/en" />
+            <SEO title="About" />
+            <Header lang="ko" ko_to="#" en_to="/en/about" />
             <FloatingHeader page={page} lang="ko" />
             <MainResponsive>
                 <HomeTab page={page} setUser={false} lang="ko" />
@@ -48,7 +46,15 @@ const HomePage = () => {
                         lang="ko"
                     />
                     <HomeLayout>
-                        <PostListPage lang="ko" />
+                        <div>
+                            <Adsense
+                                style={{ display: "block" }}
+                                adClient="ca-pub-3926462216067158"
+                                adSlot="4768153869"
+                                adFormat="auto"
+                                fullWidthResponsive="true"
+                            />
+                        </div>
                     </HomeLayout>
                 </MainPageRowTemplate>
             </MainResponsive>

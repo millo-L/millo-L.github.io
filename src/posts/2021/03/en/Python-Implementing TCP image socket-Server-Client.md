@@ -1,13 +1,13 @@
 ---
 author: millo
-title: "[Python] TCP image socket 구현하기(Server, Client)"
+title: "[Python] Implementing TCP image socket(Server, Client)"
 category: python
 layout: post
-released_at: 2021-01-27 17:00
+released_at: 2021-03-21 19:39
 updated_at:
 image: ../../../../images/category/python.png
 series: none
-lang: ko
+lang: en
 tags:
     - python
     - OpenCV
@@ -15,18 +15,18 @@ tags:
     - socket
     - TCP
 is_private: false
-translation: /Python-Implementing TCP image socket-Server-Client/
+translation: /Python-TCP-image-socket-구현하기-Server-Client/
 translation_series: none
-description: python에서 TCP socket을 사용한 이미지 송수신을 구현해보자.
+description: Let's implement image sending and receiving using TCP socket in python.
 ---
 
-# 1. 서론
+# 1. Introdution
 
-작년에 진행한 [교차로 보행자 안전 알리미 프로젝트](https://www.youtube.com/watch?v=AuWtMnEUwC8&t=1s)에서 Raspberry pi4와 인공지능 서버 사이의 TCP image socket을 구현했다. 실시간 영상 및 비디오 영상을 OpenCV를 사용하여 프레임 단위로 송수신하는 socket을 구현했다. 만약 Raspberry pi를 이용한다면 OpenCV 설치법이 좀 복잡해서 [이 포스팅](https://millo-L.github.io/Raspberry-pi%EC%97%90-OpenCV4-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/)을 참고하길 바란다.
+I implemented a TCP image socket between Raspberry pi 4 and an artificial intelligence server in [an intersection pedestrian safety notification project](https://www.youtube.com/watch?v=AuWtMnEUwC8&t=1s) last year. We implement a socket that sends and receives real-time and video images on a per-frame basis using OpenCV. If you use Raspberry Pi, the OpenCV installation method is a bit complicated, so please refer to [here](https://millo-L.github.io/Raspberry-pi%EC%97%90-OpenCV4-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0/).
 
 # 2. TCP image socket Server
 
-TCP socket으로 이미지를 송수신할 때 가장 중요한 것은 클라이언트에서 서버로 해당 이미지 데이터의 크기를 같이 보내는 것이다. TCP socket을 사용해서 한 번에 보낼 수 있는 데이터의 크기는 제한되어 있으므로 이미지 데이터를 string으로 변환해서 보낼 때 이 크기가 얼마나 큰 지가 중요하다. 따라서, 이미지의 크기를 먼저 받고 그 크기만큼만 socket에서 데이터를 받아서 다시 이미지 데이터의 형태로 변환해야 한다.
+When sending and receiving images with TCP socket, the most important thing is to send the same size of the image data from the client to the server. Since the size of the data that can be sent at once using TCP socket is limited, it is important to convert the image data to string and send it. Therefore, it is necessary to receive the size of the image first and receive data from the socket only that size and convert it back to the form of image data.
 
 ```python
 class ServerSocket:
@@ -91,9 +91,9 @@ if __name__ == "__main__":
 
 # 3. TCP image socket Client
 
-## 3-1. cam 송신
+## 3-1. Sending images(Client)
 
-Client에서는 Server에 이미지 데이터를 전송할 때 해당 이미지 데이터의 크기 정보를 같이 넘겨줘야 한다.
+When sending image data to the server, the Client must hand over the size information of the image data together.
 
 ```python
 class ClientSocket:
@@ -159,9 +159,9 @@ if __name__ == "__main__":
     main()
 ```
 
-## 3-2. local video 송신
+## 3-2. Sending local video
 
-Client에서는 Server에 이미지 데이터를 전송할 때 해당 이미지 데이터의 크기 정보를 같이 넘겨줘야 한다.
+When sending image data to the server, the Client must hand over the size information of the image data together.
 
 ```python
 class ClientVideoSocket:

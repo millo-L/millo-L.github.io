@@ -5,7 +5,7 @@ import { mediaQuery } from "../../lib/styles/media"
 import palette from "../../lib/styles/palette"
 import { ellipsis, formatDate } from "../../lib/styles/utils"
 import RatioImage from "../common/RatioImage"
-import { FluidObject } from 'gatsby-image';
+import { FluidObject } from "gatsby-image"
 
 const Wrapper = Styled.div`
     width: 20rem;
@@ -78,8 +78,8 @@ const Content = Styled.div<{ clamp: boolean }>`
         font-size: 0.875rem;
         line-height: 1.5;
         ${props =>
-        props.clamp &&
-        css`
+            props.clamp &&
+            css`
                 height: 3.9375rem;
                 display: -webkit-box;
                 -webkit-line-clamp: 3;
@@ -88,8 +88,8 @@ const Content = Styled.div<{ clamp: boolean }>`
                 text-overflow: ellipsis;
             `}
         /* ${props =>
-        !props.clamp &&
-        css`
+            !props.clamp &&
+            css`
                 height: 15.875rem;
             `} */
 
@@ -111,7 +111,7 @@ export type PartialPostType = {
     image: FluidObject | FluidObject[]
     released_at: string
     updated_at: string
-    lang: 'ko' | 'en'
+    lang: "ko" | "en"
     category: string
 }
 
@@ -147,7 +147,12 @@ const PostCard = ({ post }: PostCardProps) => {
                         {post.updated_at && (
                             <>
                                 <br />
-                                <span>{post.lang === 'ko' ? '수정: ' : 'Last edited at'} {formatDate(post.updated_at, post.lang)}</span>
+                                <span>
+                                    {post.lang === "ko"
+                                        ? "수정: "
+                                        : "Last edited at"}{" "}
+                                    {formatDate(post.updated_at, post.lang)}
+                                </span>
                             </>
                         )}
                     </div>

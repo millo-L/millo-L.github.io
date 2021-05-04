@@ -204,6 +204,16 @@ export const enCategoryList = [
             "https://img.shields.io/badge/Go-00ADD8?style=flat-square&logo=Go&logoColor=white",
     },
     {
+        name: "raspberrypi",
+        src:
+            "https://img.shields.io/badge/Raspberry-C51A4A?style=flat-square&logo=Raspberry-Pi&logoColor=white",
+    },
+    {
+        name: "python",
+        src:
+            "https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=Python&logoColor=white",
+    },
+    {
         name: "nodejs",
         src:
             "https://img.shields.io/badge/NodeJS-339933?style=flat-square&logo=Node.js&logoColor=white",
@@ -227,11 +237,6 @@ export const enCategoryList = [
         name: "raspberrypi",
         src:
             "https://img.shields.io/badge/Raspberry-C51A4A?style=flat-square&logo=Raspberry-Pi&logoColor=white",
-    },
-    {
-        name: "python",
-        src:
-            "https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=Python&logoColor=white",
     },
     {
         name: "anaconda",

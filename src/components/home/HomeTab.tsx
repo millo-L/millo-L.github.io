@@ -7,28 +7,26 @@ import { useSpring, animated } from "react-spring"
 import { mediaQuery } from "../../lib/styles/media"
 import { getScrollTop } from "../../lib/styles/utils"
 import { BsPencilSquare } from "react-icons/bs"
-import { graphql, useStaticQuery } from "gatsby"
-import Img from 'gatsby-image';
+import { graphql, Link, useStaticQuery } from "gatsby"
+import Img from "gatsby-image"
 
 interface HomeTabProps {
-    setUser: boolean;
-    page: number;
-    lang: string;
-    onClick: (index: number) => void;
+    setUser: boolean
+    page: number
+    lang: string
 }
 
-const HomeTab = ({ setUser, page, lang, onClick }: HomeTabProps) => {
+const HomeTab = ({ setUser, page, lang }: HomeTabProps) => {
     useEffect(() => {
-        if (typeof window === 'undefined' || !window.document) {
-            return;
+        if (typeof window === "undefined" || !window.document) {
+            return
         }
-    }, []);
+    }, [])
     const [visible, setVisible] = useState<boolean>(false)
 
-
     const data = useStaticQuery(graphql`
-        {    
-            file(relativePath: {eq: "profile.jpg"}) {
+        {
+            file(relativePath: { eq: "profile.jpg" }) {
                 id
                 childImageSharp {
                     fluid(maxWidth: 460) {
@@ -37,7 +35,7 @@ const HomeTab = ({ setUser, page, lang, onClick }: HomeTabProps) => {
                 }
             }
         }
-    `);
+    `)
 
     /*
     const [extra, toggle] = useToggle(false);
@@ -71,22 +69,40 @@ const HomeTab = ({ setUser, page, lang, onClick }: HomeTabProps) => {
     return (
         <Wrapper>
             <UserWrapper visible={visible && setUser}>
-                <Img className="small-profile-img" fluid={data.file.childImageSharp.fluid} />
+                <Img
+                    className="small-profile-img"
+                    fluid={data.file.childImageSharp.fluid}
+                />
                 <span>millo</span>
             </UserWrapper>
             <InnerWrapper>
-                <div className={`tab ${page === 0 ? 'active' : ''}`} onClick={() => onClick(0)}>
-                    <BsPencilSquare />
-                    {lang === 'ko' ? '게시글' : 'Posts'}
-                </div>
-                <div className={`tab ${page === 1 ? 'active' : ''}`} onClick={() => onClick(1)}>
-                    <GiOpenBook />
-                    {lang === 'ko' ? '시리즈' : 'Series'}
-                </div>
-                <div className={`tab ${page === 2 ? 'active' : ''}`} onClick={() => onClick(2)}>
-                    <MdFace />
-                    me
-                </div>
+                <Link
+                    to={lang === "ko" ? "/" : "/en"}
+                    style={{ textDecoration: "none" }}
+                >
+                    <div className={`tab ${page === 0 ? "active" : ""}`}>
+                        <BsPencilSquare />
+                        {lang === "ko" ? "게시글" : "Posts"}
+                    </div>
+                </Link>
+                <Link
+                    to={lang === "ko" ? "/series" : "/en/series"}
+                    style={{ textDecoration: "none" }}
+                >
+                    <div className={`tab ${page === 1 ? "active" : ""}`}>
+                        <GiOpenBook />
+                        {lang === "ko" ? "시리즈" : "Series"}
+                    </div>
+                </Link>
+                <Link
+                    to={lang === "ko" ? "/about" : "/en/about"}
+                    style={{ textDecoration: "none" }}
+                >
+                    <div className={`tab ${page === 2 ? "active" : ""}`}>
+                        <MdFace />
+                        me
+                    </div>
+                </Link>
                 <Indicator style={springStyle} />
             </InnerWrapper>
             {/*<MobileMore ref={moreButtonRef}>
