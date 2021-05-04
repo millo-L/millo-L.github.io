@@ -5,7 +5,7 @@ category: typescript
 layout: post
 released_at: 2021-03-02 22:24
 updated_at:
-image: ../../../../images/2021/03/typescript.png
+image: ../../../../images/category/typescript.png
 series: none
 lang: ko
 tags:
