@@ -15,7 +15,7 @@ tags:
 is_private: false
 translation:
 translation_series: none
-description: react native 앱에 facebook sdk을 적용해보자.
+description: react native 앱에 Firbase Analytics를 적용해보자.
 ---
 
 # 1. 서론
@@ -86,9 +86,28 @@ ios/{ProjectName}/AppDelegate.m 파일을 수정한다.
 ...
 ```
 
+### 3. Podfile 수정하기
+
+pod 'Firebase/Analytics' 부분을 추가해준다.
+
+```python
+target '{ProjectName}' do
+
+  ...
+
+  # 이 부분 추가
+  pod 'Firebase/Analytics'
+
+  ...
+
+end
+
+...
+```
+
 여기까지 진행하면 [react-native-firebase 공식 홈페이지](https://rnfirebase.io/)에 나와있는 모든 설정을 진행한 것이다.
 
-### 3. DebugView 설정하기
+### 4. DebugView 설정하기
 
 Firbase Analytics는 약 30분 ~ 1시간 동안 취합한 데이터를 보여준다. 하지만 개발 중에는 그렇게까지 시간을 소요할 수 없으므로 DebugView를 사용한다. 아래의 이미지를 순서대로 따라하고, -FIRDebugEnabled를 추가해주면된다. 이렇게 개발된 부분의 확인은 Firebase Analytics의 DebugView 메뉴에서 확인할 수 있다.
 
@@ -98,7 +117,7 @@ Firbase Analytics는 약 30분 ~ 1시간 동안 취합한 데이터를 보여준
 
 ![](../../../../images/2021/06/firebase_ios_debugview_3.jpeg)
 
-### 4. 테스트하기
+### 5. 테스트하기
 
 제대로 실행되는지 테스트해보자!
 
