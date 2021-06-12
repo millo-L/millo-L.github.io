@@ -28,7 +28,7 @@ description: react native 앱에 facebook sdk을 적용해보자.
 > typescript 3.8.3 <br />
 > @types/react-native 0.63.2 <br />
 
-추후에 이 포스팅을 보는 분들은 아래의 내용이 다소 차이가 생길 수 있으니 유의해주세요!
+추후에 이 포스팅을 보는 분들은 아래의 내용이 다소 차이가 생길 수 있으니 유의하기 바란다.
 
 # 2. 필수 모듈 설치 및 필수 파일 다운로드
 
@@ -59,7 +59,7 @@ cd ios && pod install
 ios/{ProjectName}/AppDelegate.m 파일을 수정한다.
 여기서 주의할 점은 <span style="color:red">**추가하는 모든 헤더들은 반드시 #ifdef FB_SONARKIT_ENABLED 위에 존재해야 한다**</span>는 것이다. 그렇지 않으면 빌드 시에 헤더 파일이 제대로 임포트되지 않는다. 이 점은 꼭 유의하기 바란다.
 
-```plist
+```cpp
 ...
 
 // 헤더 임포트
@@ -98,7 +98,7 @@ Firbase Analytics는 약 30분 ~ 1시간 동안 취합한 데이터를 보여준
 
 ![](../../../../images/2021/06/firebase_ios_debugview_3.jpeg)
 
-### 테스트하기
+### 4. 테스트하기
 
 제대로 실행되는지 테스트해보자!
 
@@ -116,7 +116,7 @@ npx react-native run-ios
 
 ### 2. build.gradle 설정
 
-```gradle
+```java
 // android/build.gradle 경로
 
 buildscript {
@@ -133,7 +133,7 @@ buildscript {
 ...
 ```
 
-```gradle
+```java
 // android/app/build.gradle 경로
 
 apply plugin: 'com.android.application'
