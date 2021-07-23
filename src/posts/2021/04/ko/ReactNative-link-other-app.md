@@ -23,7 +23,7 @@ description: react native에서 다른 앱(play store, instagram 등)을 실행�
 
 아래의 화면은 Antodo개발 1.0 초기 버전의 설정 페이지다. 어플을 개발하고 배포하고 나면 앱 리뷰 남기기와 앱 인스타그램 등의 타 어플을 바로 열 수 있는 코드가 필요하다. 처음에는 방법을 몰라서 webview로 띄웠는 데 너무 불편해서 1.0.2 버전에서 방법을 찾고 수정했다. 생각보다 간단하니 잘 따라오기 바란다.
 
-![](../../../../images/2021/04/linking.jpg)
+![](../../../../images/2021/04/linking.png)
 
 # 2. 방법
 
@@ -38,7 +38,7 @@ description: react native에서 다른 앱(play store, instagram 등)을 실행�
 
 아래의 코드를 추가한다. app store, instagram, twitter를 필요한 경우만 각각 info.plist에 추가한다.
 
-```plist
+```xml
 ...
 
 <key>LSApplicationQueriesSchemes</key>
