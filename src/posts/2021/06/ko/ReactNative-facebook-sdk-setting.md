@@ -4,7 +4,7 @@ title: "[React Native] Facebook SDK(react-native-fbsdk) 적용하기"
 category: reactnative
 layout: post
 released_at: 2021-06-10 23:45
-updated_at:
+updated_at: 2021-07-23 12:39
 image: ../../../../images/category/reactnative.png
 series: none
 lang: ko
@@ -43,7 +43,7 @@ cd ios && pod install
 
 ### 1. Info.plist 설정
 
-아래의 코드를 삽입해준다. {APP-ID}에는 facebook sdk의 app id를 입력하고, {APP-Name}에는 등록시 입력한 앱의 이름을 입력하면 된다.
+아래의 코드를 삽입해준다. {APP-ID}에는 facebook sdk의 app id를 입력하고, {APP-Name}에는 등록시 입력한 앱의 이름을 입력하면 된다. {CLIENT-TOKEN} 부분은 페이스북 SDK App Dashboard의 `Settings > Advanced > Client Token`에서 확인할 수 있다.
 
 ```xml
 ...
@@ -60,7 +60,7 @@ cd ios && pod install
 <key>FacebookAppID</key>
 <string>{APP-ID}</string>
 <key>FacebookClientToken</key>
-<string>{APP-NAME}</string>
+<string>{CLIENT-TOKEN}</string>
 <key>FacebookDisplayName</key>
 <string>{APP-NAME}</string>
 <key>LSApplicationQueriesSchemes</key>
@@ -202,7 +202,7 @@ android/app/res/values/strings.xml에 아래의 코드를 추가한다.
 
 ```xml
 <string name="facebook_app_id">Facebook App ID</string>
-<string name="facebook_client_token">Facebook Client ID</string>
+<string name="facebook_client_token">Facebook Client Token</string>
 ```
 
 ### 3. AndroidManifest.xml 설정
@@ -222,7 +222,7 @@ android/app/manifests/AndroidManifest.xml에 아래의 코드를 추가한다. P
     <meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/facebook_client_token"/>
     <provider android:authorities="com.facebook.app.FacebookContentProvider{APP-ID}"
           android:name="com.facebook.FacebookContentProvider"
-          android:exported="true" /
+          android:exported="true" />
     ...
 </application>
 
