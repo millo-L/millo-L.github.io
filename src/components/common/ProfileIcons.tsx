@@ -12,7 +12,7 @@ const openNewBrowser = (type: "github" | "notion" | "email") => {
     if (type === "github") link = "https://github.com/millo-L"
     else if (type === "notion")
         link =
-            "https://www.notion.so/millo-L-github-io-Blog-2021-02-present-d4577375d9914554a9a16600c0914237"
+            "https://www.notion.so/Seungmin-Lee-706a5c55276c4ff58f1ff87d433bb4fb"
     else link = "mailto:seungmin3837@gmail.com"
 
     window.open(link, "_blank")
