@@ -36,6 +36,25 @@ const CategoryListWrapper = Styled.div<{ visible: boolean }>`
         align-items: space-between;
     }
 
+    .whole-category {
+        height: 1.8rem;
+        width: 90%;
+        margin-left: 5%;
+        margin-bottom: 10px;
+        border: 1px solid #5c7cfa;
+        font-size: 11pt;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        -webkit-transition: background-color 0.5s;
+        transition: background-color 0.5s;
+        color: #5c7cfa;
+        &:hover {
+            color: white;
+            background-color: #5c7cfa;
+        }
+    }
+
     .category-img {
         height: 1.5rem;
         max-width: 5.5rem;
@@ -66,10 +85,18 @@ const CategoryList = ({
     return (
         <CategoryListWrapper visible={visible}>
             <p>Categories</p>
+            <Link
+                to={lang === "ko" ? "/" : "/en"}
+                style={{ textDecoration: "none" }}
+            >
+                <div className="whole-category">
+                    {lang === "ko" ? "전체 보기" : "All Posts"}
+                </div>
+            </Link>
             <div className="img-wrapper">
                 {lang === "ko"
                     ? categoryList
-                          .filter((category, idx) => idx < 13)
+                          .filter((category, idx) => idx < 14)
                           .map((category, index) => {
                               return (
                                   <Link
