@@ -3,7 +3,7 @@ author: millo
 title: "[React Native] CodePush를 이용한 앱 업데이트"
 category: reactnative
 layout: post
-released_at: 2021-07-29 19:30
+released_at: 2021-07-29 21:25
 updated_at:
 image: ../../../../images/category/reactnative.png
 series: none
@@ -216,6 +216,8 @@ export default CodePush(App);
 
 # 6. 배포하기
 
+당연한 얘기지만 CodePush로 배포를 하기 위해서는 CodePush가 설치된 버전으로 App store와 Play store 심사를 통과해야한다. 간단한 기기 테스트를 원한다면, internal test를 진행해보기를 권장한다.
+
 배포하는 방법은 매우 간단하다. javascript 부분만 업데이트 시키기 때문에 빌드도 필요하지 않다. 대신 유료가 아닌 경우 테스트를 빡세게 하고 배포하길 바란다.
 
 [공식 문서](https://docs.microsoft.com/ko-kr/appcenter/distribution/codepush/cli)에서 appcenter-cli 관련 많은 기능(롤백, 릴리즈 삭제 등)들을 확인할 수 있다.
@@ -228,3 +230,11 @@ appcenter codepush release-react -a <ownerName>/<appName> -d Staging
 # appcenter codepush release-react -a flashh/Antodo-android -d Staging
 # appcenter codepush release-react -a flashh/Antodo-ios -d Staging
 ```
+
+# [참고]
+
+-   https://appcenter.ms/
+-   https://github.com/microsoft/react-native-code-push#plugin-usage
+-   https://github.com/microsoft/react-native-code-push/blob/master/docs/setup-ios.md
+-   https://github.com/microsoft/react-native-code-push/blob/master/docs/setup-android.md
+-   https://docs.microsoft.com/ko-kr/appcenter/distribution/codepush/cli
