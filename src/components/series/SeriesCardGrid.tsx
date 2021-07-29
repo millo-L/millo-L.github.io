@@ -24,15 +24,6 @@ interface SeriseCardGridProps {
 const SeriesCardGrid = ({ seriesList }: SeriseCardGridProps) => {
     return (
         <Wrapper>
-            <div className="adsense-block">
-                <Adsense
-                    style={{ display: "block" }}
-                    adClient="ca-pub-3926462216067158"
-                    adSlot="1239423651"
-                    adFormat="auto"
-                    fullWidthResponsive="true"
-                />
-            </div>
             {seriesList.map((series, index) => (
                 <SeriesCard series={series} key={index} />
             ))}

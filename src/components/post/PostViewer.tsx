@@ -258,15 +258,6 @@ const PostViewer = ({ post, series, seriesList, lang }: PostViewerProps) => {
                 </p>
             )}
             {tags && <TagList tags={tags} onClick={onClickTag} />}
-            {/*<div className="adsense-block">
-                <Adsense
-                    style={{ display: "block" }}
-                    adClient="ca-pub-3926462216067158"
-                    adSlot="6763105273"
-                    adFormat="auto"
-                    fullWidthResponsive="true"
-                />
-            </div>*/}
             {series !== "none" && (
                 <PostSeriesList
                     series={series}
@@ -279,29 +270,6 @@ const PostViewer = ({ post, series, seriesList, lang }: PostViewerProps) => {
                 id="content-container"
                 dangerouslySetInnerHTML={{ __html: html }}
             />
-            <Adsense
-                style={{ display: "block", textAlign: "center" }}
-                adClient="ca-pub-3926462216067158"
-                adSlot="6864119577"
-                adFormat="fluid"
-                adLayout="in-article"
-            />
-            {/*<Adsense
-                style={{ display: "block", textAlign: "center" }}
-                adClient="ca-pub-3926462216067158"
-                adSlot="6864119577"
-                adFormat="fluid"
-                adLayout="in-article"
-            />
-            <div className="adsense-block">
-                <Adsense
-                    style={{ display: "block" }}
-                    adClient="ca-pub-3926462216067158"
-                    adSlot="6407882052"
-                    adFormat="auto"
-                    fullWidthResponsive="true"
-                />
-            </div>*/}
             <PrevNextPost
                 nowPostTitle={title}
                 seriesList={seriesList}

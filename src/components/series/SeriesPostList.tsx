@@ -57,14 +57,6 @@ const SeriesPostList = ({ posts, series, lang }: SeriesPostListProps) => {
                 <h3>{lang === "ko" ? "시리즈" : "Series"}</h3>
                 <h1>{series}</h1>
             </div>
-
-            <Adsense
-                style={{ display: "block" }}
-                adClient="ca-pub-3926462216067158"
-                adSlot="2564307139"
-                adFormat="fluid"
-                adLayout="-6o+ci+43-j+3"
-            />
             {posts.map((post, index) => (
                 <SeriesPost post={post} index={index} key={index} />
             ))}

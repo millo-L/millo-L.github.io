@@ -9,12 +9,10 @@ import MainPageRowTemplate from "../components/main/MainPageRowTemplate"
 import MainResponsive from "../components/main/MainResponsive"
 import MainTemplate from "../components/main/MainTemplate"
 import PostListPage from "../components/post/PostListPage"
-import SeriesListPage from "../components/series/SeriesListPage"
 import queryString from "query-string"
 import { useLocation } from "@reach/router"
 import SEO from "../components/SEO"
 import "../components/css/typography.css"
-import Adsense from "../components/common/Adsense"
 
 createGlobalStyle`
     body {

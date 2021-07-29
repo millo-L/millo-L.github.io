@@ -12,7 +12,6 @@ import queryString from "query-string"
 import { useLocation } from "@reach/router"
 import SEO from "../components/SEO"
 import "../components/css/typography.css"
-import Adsense from "../components/common/Adsense"
 
 createGlobalStyle`
     body {
@@ -46,15 +45,7 @@ const HomePage = () => {
                         lang="ko"
                     />
                     <HomeLayout>
-                        <div>
-                            <Adsense
-                                style={{ display: "block" }}
-                                adClient="ca-pub-3926462216067158"
-                                adSlot="4768153869"
-                                adFormat="auto"
-                                fullWidthResponsive="true"
-                            />
-                        </div>
+                        <div></div>
                     </HomeLayout>
                 </MainPageRowTemplate>
             </MainResponsive>

@@ -24,22 +24,6 @@ interface PostCardGridProps {
 const PostCardGrid = ({ posts }: PostCardGridProps) => {
     return (
         <Wrapper>
-            {/*<div className="adsense-block">
-                <Adsense
-                    style={{ display: "block" }}
-                    adClient="ca-pub-3926462216067158"
-                    adSlot="5178668661"
-                    adFormat="auto"
-                    fullWidthResponsive="true"
-                />
-            </div>*/}
-            <Adsense
-                style={{ display: "block" }}
-                adClient="ca-pub-3926462216067158"
-                adSlot="2707777362"
-                adFormat="fluid"
-                adLayout="7b+db+1c+f+3o"
-            />
             {posts.map((post, index) => (
                 <PostCard post={post} key={index} />
             ))}
