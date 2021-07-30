@@ -111,7 +111,7 @@ const CategoryList = ({
                               )
                           })
                     : enCategoryList
-                          .filter((category, idx) => idx < 10)
+                          .filter((category, idx) => idx < 12)
                           .map((category, index) => {
                               return (
                                   <Link

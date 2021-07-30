@@ -228,6 +228,11 @@ export const enCategoryList = [
             "https://img.shields.io/badge/NodeJS-339933?style=flat-square&logo=Node.js&logoColor=white",
     },
     {
+        name: "android",
+        src:
+            "https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=Android&logoColor=white",
+    },
+    {
         name: "reactnative",
         src:
             "https://img.shields.io/badge/ReactNative-61DAFB?style=flat-square&logo=React&logoColor=white",
