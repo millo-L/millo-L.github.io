@@ -78,7 +78,7 @@ iOS 앱을 배포하기 위한 설정이므로 1번을 선택했다. (tvOS는 iO
 
 글쓴이는 테스트 배포만을 위한 기능을 추가할 것이므로 여러 가지 설정들은 [dev.yakuza](https://dev-yakuza.posstree.com/ko/react-native/fastlane/)님이 쓰신 글을 참고하길 바란다. dev.yakuza님이 작성하신 updateVersion을 그대로 가져와서 사용했다. updateVersion 함수를 사용하게 되면 자동으로 Info.plist의 버전을 올려줘서 번거로움을 덜 수 있다.
 
-```
+```ruby
 default_platform(:ios)
 
 platform :ios do
@@ -251,7 +251,7 @@ iOS 설정에서와 동일하게 `Appfile`은 배포에 관련한 정보가 담�
 
 이번에도 dev.yakuza님의 내부 테스트 배포와 버전 업데이트를 사용했다. 자세한 설명은 [dev.yakuza](https://dev-yakuza.posstree.com/ko/react-native/fastlane/)를 방문하기 바란다.
 
-```
+```ruby
 default_platform(:android)
 
 platform :android do
@@ -407,3 +407,9 @@ npm run beta:android
 
 npm run beta
 ```
+
+# [참고]
+
+-   https://fastlane.tools/
+-   https://docs.fastlane.tools/
+-   https://dev-yakuza.posstree.com/ko/react-native/fastlane/
