@@ -4,7 +4,7 @@ title: "[React Native] Fastlane match를 사용한 iOS 인증서 동기화"
 category: reactnative
 layout: post
 released_at: 2021-08-08 20:35
-updated_at:
+updated_at: 2021-08-09 12:30
 image: ../../../../images/category/reactnative.png
 series: React Native 배포 자동화
 lang: ko
@@ -149,6 +149,41 @@ fastlane match appstore
 ## 3-7. Xcode 확인
 
 Xcode의 `Signing & Capabilities`에서 Provisioning Profile을 `match ... your packagename`로 설정하면 된다.
+
+## 3-8. Fastfile 수정
+
+지난 번 포스팅에서는 로컬에 존재하는 인증서와 Provisioning profile을 사용해서 인증을 진행했다. 하지만 Matchfile을 사용하기로 했으니 이제 Fastlane의 설정도 변경해야 한다.
+
+```ruby
+# 기존 코드
+# 지난 포스팅에서 적었던 일반적인 방식
+  desc "Push a new beta build to TestFlight"
+  lane :beta do |options|
+    cert
+    sigh(force: true)
+    updateVersion(options)
+
+    increment_build_number(xcodeproj: "DoctorIApp.xcodeproj")
+    build_app(workspace: "DoctorIApp.xcworkspace", scheme: "DoctorIApp")
+    upload_to_testflight
+  end
+
+# 수정된 코드
+  desc "Push a new beta build to TestFlight"
+  lane :beta do |options|
+    sync_code_signing(
+      type: "appstore",
+      app_identifier: 'com.friggs.DoctorI',
+      readonly: true
+    )
+    updateVersion(options)
+
+    increment_build_number(xcodeproj: "DoctorIApp.xcodeproj")
+    build_app(workspace: "DoctorIApp.xcworkspace", scheme: "DoctorIApp")
+    upload_to_testflight
+  end
+
+```
 
 # 4. 팀원들에게 인증서 공유
 
