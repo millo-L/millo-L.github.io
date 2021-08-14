@@ -1,8 +1,8 @@
-import React, { useCallback } from 'react';
-import Styled from 'styled-components';
-import { mediaQuery } from '../../lib/styles/media';
-import { PartialSeriesType } from './PostSeriesList';
-import PrevNextPostItem from './PrevNextPostItem';
+import React, { useCallback } from "react";
+import Styled from "styled-components";
+import { mediaQuery } from "../../lib/styles/media";
+import { PartialSeriesType } from "./PostSeriesList";
+import PrevNextPostItem from "./PrevNextPostItem";
 
 const Wrapper = Styled.div`
     width: 100%;
@@ -28,14 +28,17 @@ const ItemWrapper = Styled.div`
     }
 `;
 
-
 interface PrevNextPostProps {
     nowPostTitle: string;
     seriesList: Array<PartialSeriesType>;
     lang: string;
 }
 
-const PrevNextPost = ({ nowPostTitle, seriesList, lang }: PrevNextPostProps) => {
+const PrevNextPost = ({
+    nowPostTitle,
+    seriesList,
+    lang,
+}: PrevNextPostProps) => {
     const len = seriesList.length;
 
     const nowPageIndex = useCallback(() => {
@@ -50,13 +53,21 @@ const PrevNextPost = ({ nowPostTitle, seriesList, lang }: PrevNextPostProps) => 
     return (
         <Wrapper>
             <ItemWrapper>
-                <PrevNextPostItem seriesPost={index > 0 ? seriesList[index - 1] : null} right={false} lang={lang} />
+                <PrevNextPostItem
+                    seriesPost={index > 0 ? seriesList[index - 1] : null}
+                    right={false}
+                    lang={lang}
+                />
             </ItemWrapper>
             <ItemWrapper>
-                <PrevNextPostItem seriesPost={index < len - 1 ? seriesList[index + 1] : null} right={true} lang={lang} />
+                <PrevNextPostItem
+                    seriesPost={index < len - 1 ? seriesList[index + 1] : null}
+                    right={true}
+                    lang={lang}
+                />
             </ItemWrapper>
         </Wrapper>
     );
-}
+};
 
 export default PrevNextPost;

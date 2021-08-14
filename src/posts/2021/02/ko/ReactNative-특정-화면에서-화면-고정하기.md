@@ -36,39 +36,39 @@ description: React native에서 특정 화면에서 화면 회전이 되지 않�
 **반드시 useEffect 내에서 return () => {}을 사용해서 이벤트들을 제거해야 한다. 그렇지 않으면 다른 페이지에서도 lock이 적용된다.**
 
 ```tsx
-import React, { useEffect, useState } from "react"
-import Styled from "styled-components/native"
+import React, { useEffect, useState } from "react";
+import Styled from "styled-components/native";
 
-import Orientation from "react-native-orientation"
+import Orientation from "react-native-orientation";
 
 const Container = Styled.SafeAreaView`
    padding-left: 10px;
    padding-right: 10px;
    background-color: white;
    flex: 1;
-`
+`;
 
 const MathProblem = () => {
     useEffect(() => {
-        Orientation.lockToLandscapeLeft()
-        Orientation.addOrientationListener(onOrientationDidChange)
+        Orientation.lockToLandscapeLeft();
+        Orientation.addOrientationListener(onOrientationDidChange);
 
         return () => {
-            Orientation.unlockAllOrientations()
-            Orientation.removeOrientationListener(onOrientationDidChange)
-        }
-    }, [])
+            Orientation.unlockAllOrientations();
+            Orientation.removeOrientationListener(onOrientationDidChange);
+        };
+    }, []);
 
     const onOrientationDidChange = (orientation: any) => {
         if (orientation === "PORTRAIT") {
-            Orientation.lockToLandscapeLeft()
+            Orientation.lockToLandscapeLeft();
         }
-    }
+    };
 
-    return <Container></Container>
-}
+    return <Container></Container>;
+};
 
-export default MathProblem
+export default MathProblem;
 ```
 
 # [참고]

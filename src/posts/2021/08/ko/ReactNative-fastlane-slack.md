@@ -48,7 +48,7 @@ before_all 전처리 함수를 통해서 모든 단계 시작 전 환경변수�
 
 ```ruby
   before_all do
-    ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
+    ENV["SLACK_URL"] = "https://hooks.slack.com/services/your/url"
   end
 ```
 
@@ -109,7 +109,7 @@ default_platform(:ios)
 
 platform :ios do
   before_all do
-    ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
+    ENV["SLACK_URL"] = "https://hooks.slack.com/services/your/url"
   end
 
   after_all do |lane|

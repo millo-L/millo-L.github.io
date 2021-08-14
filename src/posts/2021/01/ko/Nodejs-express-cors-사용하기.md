@@ -56,23 +56,23 @@ npm install http express cors
 ```js
 // index.js
 
-const http = require("http")
-const express = require("express")
-const app = express()
-const server = createServer(app)
-const cors = require("cors")
+const http = require("http");
+const express = require("express");
+const app = express();
+const server = createServer(app);
+const cors = require("cors");
 
-const PORT = 8080
+const PORT = 8080;
 
-app.use(cors())
+app.use(cors());
 
 app.get("/", (req, res) => {
-    res.send("Hello, World!")
-})
+    res.send("Hello, World!");
+});
 
 server.listen(PORT, () => {
-    console.log(`Server running on ${PORT}`)
-})
+    console.log(`Server running on ${PORT}`);
+});
 ```
 
 ## 3-2. 특정 도메인에만 허용하기
@@ -82,28 +82,28 @@ server.listen(PORT, () => {
 ```js
 // index.js
 
-const http = require("http")
-const express = require("express")
-const app = express()
-const server = createServer(app)
-const cors = require("cors")
+const http = require("http");
+const express = require("express");
+const app = express();
+const server = createServer(app);
+const cors = require("cors");
 
-const PORT = 8080
+const PORT = 8080;
 
 let corsOptions = {
     origin: "https://www.domain.com",
     credentials: true,
-}
+};
 
-app.use(cors(corsOptions))
+app.use(cors(corsOptions));
 
 app.get("/", (req, res) => {
-    res.send("Hello, World!")
-})
+    res.send("Hello, World!");
+});
 
 server.listen(PORT, () => {
-    console.log(`Server running on ${PORT}`)
-})
+    console.log(`Server running on ${PORT}`);
+});
 ```
 
 # [참고]

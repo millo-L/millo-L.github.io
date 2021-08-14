@@ -1,7 +1,7 @@
-import React from 'react';
-import Styled from 'styled-components';
-import palette from '../../lib/styles/palette';
-import ProfileIcons from '../common/ProfileIcons';
+import React from "react";
+import Styled from "styled-components";
+import palette from "../../lib/styles/palette";
+import ProfileIcons from "../common/ProfileIcons";
 
 const FooterWrapper = Styled.div`
     display: flex;
@@ -38,6 +38,6 @@ const Footer = () => {
             <ProfileIcons className="icon-wrapper" />
         </FooterWrapper>
     );
-}
+};
 
 export default Footer;

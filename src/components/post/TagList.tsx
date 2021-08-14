@@ -1,7 +1,7 @@
-import React, { memo } from 'react';
-import Styled from 'styled-components';
-import media from '../../lib/styles/media';
-import palette from '../../lib/styles/palette';
+import React, { memo } from "react";
+import Styled from "styled-components";
+import media from "../../lib/styles/media";
+import palette from "../../lib/styles/palette";
 
 const TagItemWrapper = Styled.div`
     padding: 0.5rem 1rem;
@@ -25,7 +25,9 @@ interface TagItemProps {
     onClick: (tag: string) => void;
 }
 
-const TagItem = memo(({ tag, onClick }: TagItemProps) => <TagItemWrapper onClick={() => onClick(tag)}>{tag}</TagItemWrapper>);
+const TagItem = memo(({ tag, onClick }: TagItemProps) => (
+    <TagItemWrapper onClick={() => onClick(tag)}>{tag}</TagItemWrapper>
+));
 
 const TagListWrapper = Styled.div`
     width: 100%;
@@ -43,7 +45,7 @@ const TagList = ({ tags, onClick }: TagListWrapper) => {
     return (
         <TagListWrapper>
             {tags.map((tag, index) => {
-                return <TagItem tag={tag} key={index} onClick={onClick} />
+                return <TagItem tag={tag} key={index} onClick={onClick} />;
             })}
         </TagListWrapper>
     );

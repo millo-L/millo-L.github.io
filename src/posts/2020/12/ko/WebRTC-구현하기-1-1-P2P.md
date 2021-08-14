@@ -106,9 +106,9 @@ description: WebRTC의 이론을 기반으로 1:1 P2P 실시간 영상 송수신
 ### 주의할 점: socket.io version=2.3.0을 사용하셔야 합니다.
 
 ```js
-let users = {}
-let socketToRoom = {}
-const maximum = 2
+let users = {};
+let socketToRoom = {};
+const maximum = 2;
 
 io.on("connection", socket => {
     // 1:1 에서는 이런 식으로 구현하지 않아도 되지만 글쓴이는 1:N을 먼저 구현해서 이 형태로 남겨뒀습니다.
@@ -117,78 +117,78 @@ io.on("connection", socket => {
         // user[room]에는 room에 있는 사용자들이 배열 형태로 저장된다.
         // room이 존재한다면
         if (users[data.room]) {
-            const length = users[data.room].length
+            const length = users[data.room].length;
             // 최대 인원을 충족시켰으면 더 이상 접속 불가
             if (length === maximum) {
-                socket.to(socket.id).emit("room_full")
-                return
+                socket.to(socket.id).emit("room_full");
+                return;
             }
             // 인원이 최대 인원보다 적으면 접속 가능
-            users[data.room].push({ id: socket.id, email: data.email })
+            users[data.room].push({ id: socket.id, email: data.email });
         } else {
             // room이 존재하지 않는다면 새로 생성
-            users[data.room] = [{ id: socket.id, email: data.email }]
+            users[data.room] = [{ id: socket.id, email: data.email }];
         }
         // 해당 소켓이 어느 room에 속해있는 지 알기 위해 저장
-        socketToRoom[socket.id] = data.room
+        socketToRoom[socket.id] = data.room;
 
-        socket.join(data.room)
-        console.log(`[${socketToRoom[socket.id]}]: ${socket.id} enter`)
+        socket.join(data.room);
+        console.log(`[${socketToRoom[socket.id]}]: ${socket.id} enter`);
 
         // 본인을 제외한 같은 room의 user array
         const usersInThisRoom = users[data.room].filter(
             user => user.id !== socket.id
-        )
+        );
 
-        console.log(usersInThisRoom)
+        console.log(usersInThisRoom);
 
         // 본인에게 해당 user array를 전송
         // 새로 접속하는 user가 이미 방에 있는 user들에게 offer(signal)를 보내기 위해
-        io.sockets.to(socket.id).emit("all_users", usersInThisRoom)
-    })
+        io.sockets.to(socket.id).emit("all_users", usersInThisRoom);
+    });
 
     // 다른 user들에게 offer를 보냄 (자신의 RTCSessionDescription)
     socket.on("offer", sdp => {
-        console.log("offer: " + socket.id)
+        console.log("offer: " + socket.id);
         // room에는 두 명 밖에 없으므로 broadcast 사용해서 전달
         // 여러 명 있는 처리는 다음 포스트 1:N에서...
-        socket.broadcast.emit("getOffer", sdp)
-    })
+        socket.broadcast.emit("getOffer", sdp);
+    });
 
     // offer를 보낸 user에게 answer을 보냄 (자신의 RTCSessionDescription)
     socket.on("answer", sdp => {
-        console.log("answer: " + socket.id)
+        console.log("answer: " + socket.id);
         // room에는 두 명 밖에 없으므로 broadcast 사용해서 전달
         // 여러 명 있는 처리는 다음 포스트 1:N에서...
-        socket.broadcast.emit("getAnswer", sdp)
-    })
+        socket.broadcast.emit("getAnswer", sdp);
+    });
 
     // 자신의 ICECandidate 정보를 signal(offer 또는 answer)을 주고 받은 상대에게 전달
     socket.on("candidate", candidate => {
-        console.log("candidate: " + socket.id)
+        console.log("candidate: " + socket.id);
         // room에는 두 명 밖에 없으므로 broadcast 사용해서 전달
         // 여러 명 있는 처리는 다음 포스트 1:N에서...
-        socket.broadcast.emit("getCandidate", candidate)
-    })
+        socket.broadcast.emit("getCandidate", candidate);
+    });
 
     // user가 연결이 끊겼을 때 처리
     socket.on("disconnect", () => {
-        console.log(`[${socketToRoom[socket.id]}]: ${socket.id} exit`)
+        console.log(`[${socketToRoom[socket.id]}]: ${socket.id} exit`);
         // disconnect한 user가 포함된 roomID
-        const roomID = socketToRoom[socket.id]
+        const roomID = socketToRoom[socket.id];
         // room에 포함된 유저
-        let room = users[roomID]
+        let room = users[roomID];
         // room이 존재한다면(user들이 포함된)
         if (room) {
             // disconnect user를 제외
-            room = room.filter(user => user.id !== socket.id)
-            users[roomID] = room
+            room = room.filter(user => user.id !== socket.id);
+            users[roomID] = room;
         }
         // 어떤 user가 나갔는 지 room의 다른 user들에게 통보
-        socket.broadcast.to(room).emit("user_exit", { id: socket.id })
-        console.log(users)
-    })
-})
+        socket.broadcast.to(room).emit("user_exit", { id: socket.id });
+        console.log(users);
+    });
+});
 ```
 
 ### 이전에 설명했던 대로 Signaling Server는 WebRTC의 peer간의 연결을 도와줄 뿐 서버의 부하가 없습니다. 따라서, 매우 간단하게 서버가 구성됩니다.
@@ -206,11 +206,11 @@ io.on("connection", socket => {
 -   pc_config: RTCPeerConnection을 생성할 때의 config
 
 ```ts
-const [pc, setPc] = useState<RTCPeerConnection>()
-const [socket, setSocket] = useState<SocketIOClient.Socket>()
+const [pc, setPc] = useState<RTCPeerConnection>();
+const [socket, setSocket] = useState<SocketIOClient.Socket>();
 
-let localVideoRef = useRef<HTMLVideoElement>(null)
-let remoteVideoRef = useRef<HTMLVideoElement>(null)
+let localVideoRef = useRef<HTMLVideoElement>(null);
+let remoteVideoRef = useRef<HTMLVideoElement>(null);
 
 const pc_config = {
     iceServers: [
@@ -223,7 +223,7 @@ const pc_config = {
             urls: "stun:stun.l.google.com:19302",
         },
     ],
-}
+};
 ```
 
 #### 2. Socket 수신 이벤트
@@ -240,36 +240,36 @@ const pc_config = {
     -   본인 RTCPeerConnection의 IceCandidate로 상대방의 RTCIceCandidate를 설정한다.
 
 ```ts
-let newSocket = io.connect("http://localhost:8080")
-let newPC = new RTCPeerConnection(pc_config)
+let newSocket = io.connect("http://localhost:8080");
+let newPC = new RTCPeerConnection(pc_config);
 
 newSocket.on("all_users", (allUsers: Array<{ id: string; email: string }>) => {
-    let len = allUsers.length
+    let len = allUsers.length;
     if (len > 0) {
-        createOffer()
+        createOffer();
     }
-})
+});
 
 newSocket.on("getOffer", (sdp: RTCSessionDescription) => {
     //console.log(sdp);
-    console.log("get offer")
-    createAnswer(sdp)
-})
+    console.log("get offer");
+    createAnswer(sdp);
+});
 
 newSocket.on("getAnswer", (sdp: RTCSessionDescription) => {
-    console.log("get answer")
-    newPC.setRemoteDescription(new RTCSessionDescription(sdp))
+    console.log("get answer");
+    newPC.setRemoteDescription(new RTCSessionDescription(sdp));
     //console.log(sdp);
-})
+});
 
 newSocket.on("getCandidate", (candidate: RTCIceCandidateInit) => {
     newPC.addIceCandidate(new RTCIceCandidate(candidate)).then(() => {
-        console.log("candidate add success")
-    })
-})
+        console.log("candidate add success");
+    });
+});
 
-setSocket(newSocket)
-setPc(newPC)
+setSocket(newSocket);
+setPc(newPC);
 ```
 
 ### 3. MediaStream 설정 및 RTCPeerConnection 이벤트
@@ -290,53 +290,56 @@ navigator.mediaDevices
         audio: true,
     })
     .then(stream => {
-        if (localVideoRef.current) localVideoRef.current.srcObject = stream
+        if (localVideoRef.current) localVideoRef.current.srcObject = stream;
 
         // 자신의 video, audio track을 모두 자신의 RTCPeerConnection에 등록한다.
         stream.getTracks().forEach(track => {
-            newPC.addTrack(track, stream)
-        })
+            newPC.addTrack(track, stream);
+        });
         newPC.onicecandidate = e => {
             if (e.candidate) {
-                console.log("onicecandidate")
-                newSocket.emit("candidate", e.candidate)
+                console.log("onicecandidate");
+                newSocket.emit("candidate", e.candidate);
             }
-        }
+        };
         newPC.oniceconnectionstatechange = e => {
-            console.log(e)
-        }
+            console.log(e);
+        };
 
         newPC.ontrack = ev => {
-            console.log("add remotetrack success")
+            console.log("add remotetrack success");
             if (remoteVideoRef.current)
-                remoteVideoRef.current.srcObject = ev.streams[0]
-        }
+                remoteVideoRef.current.srcObject = ev.streams[0];
+        };
 
         // 자신의 video, audio track을 모두 자신의 RTCPeerConnection에 등록한 후에 room에 접속했다고 Signaling Server에 알린다.
         // 왜냐하면 offer or answer을 주고받을 때의 RTCSessionDescription에 해당 video, audio track에 대한 정보가 담겨 있기 때문에
         // 순서를 어기면 상대방의 MediaStream을 받을 수 없음
-        newSocket.emit("join_room", { room: "1234", email: "sample@naver.com" })
+        newSocket.emit("join_room", {
+            room: "1234",
+            email: "sample@naver.com",
+        });
     })
     .catch(error => {
-        console.log(`getUserMedia error: ${error}`)
-    })
+        console.log(`getUserMedia error: ${error}`);
+    });
 ```
 
 ### 4. 상대방에게 offer signal 전달
 
 ```ts
 const createOffer = () => {
-    console.log("create offer")
+    console.log("create offer");
     newPC
         .createOffer({ offerToReceiveAudio: true, offerToReceiveVideo: true })
         .then(sdp => {
-            newPC.setLocalDescription(new RTCSessionDescription(sdp))
-            newSocket.emit("offer", sdp)
+            newPC.setLocalDescription(new RTCSessionDescription(sdp));
+            newSocket.emit("offer", sdp);
         })
         .catch(error => {
-            console.log(error)
-        })
-}
+            console.log(error);
+        });
+};
 ```
 
 ### 5. 상대방에게 answer signal 전달
@@ -344,22 +347,22 @@ const createOffer = () => {
 ```ts
 const createAnswer = (sdp: RTCSessionDescription) => {
     newPC.setRemoteDescription(new RTCSessionDescription(sdp)).then(() => {
-        console.log("answer set remote description success")
+        console.log("answer set remote description success");
         newPC
             .createAnswer({
                 offerToReceiveVideo: true,
                 offerToReceiveAudio: true,
             })
             .then(sdp1 => {
-                console.log("create answer")
-                newPC.setLocalDescription(new RTCSessionDescription(sdp1))
-                newSocket.emit("answer", sdp1)
+                console.log("create answer");
+                newPC.setLocalDescription(new RTCSessionDescription(sdp1));
+                newSocket.emit("answer", sdp1);
             })
             .catch(error => {
-                console.log(error)
-            })
-    })
-}
+                console.log(error);
+            });
+    });
+};
 ```
 
 ### 6. 본인과 상대방의 video 렌더링
@@ -390,7 +393,7 @@ return (
             autoPlay
         ></video>
     </div>
-)
+);
 ```
 
 # 5. 느낀 점

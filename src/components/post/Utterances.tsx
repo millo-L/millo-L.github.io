@@ -1,8 +1,8 @@
-import React, { createRef, useLayoutEffect } from "react"
-import Styled from "styled-components"
-import { mediaQuery } from "../../lib/styles/media"
+import React, { createRef, useLayoutEffect } from "react";
+import Styled from "styled-components";
+import { mediaQuery } from "../../lib/styles/media";
 
-const src = "https://utteranc.es/client.js"
+const src = "https://utteranc.es/client.js";
 
 const Wrapper = Styled.div`
     width: 60%;
@@ -13,15 +13,15 @@ const Wrapper = Styled.div`
     ${mediaQuery(1056)} {
         width: 100%;
     }
-`
+`;
 
 interface IUtterancesProps {}
 
 const Utterances = React.memo(({}: IUtterancesProps) => {
-    const containerRef = createRef<HTMLDivElement>()
+    const containerRef = createRef<HTMLDivElement>();
 
     useLayoutEffect(() => {
-        const utterances = document.createElement("script")
+        const utterances = document.createElement("script");
 
         const attributes = {
             src,
@@ -31,18 +31,18 @@ const Utterances = React.memo(({}: IUtterancesProps) => {
             theme: "github-light",
             crossOrigin: "anonymous",
             async: "true",
-        }
+        };
 
         Object.entries(attributes).forEach(([key, value]) => {
-            utterances.setAttribute(key, value)
-        })
+            utterances.setAttribute(key, value);
+        });
 
-        containerRef.current.appendChild(utterances)
-    }, [])
+        containerRef.current.appendChild(utterances);
+    }, []);
 
-    return <Wrapper ref={containerRef} />
-})
+    return <Wrapper ref={containerRef} />;
+});
 
-Utterances.displayName = "Utterances"
+Utterances.displayName = "Utterances";
 
-export default Utterances
+export default Utterances;

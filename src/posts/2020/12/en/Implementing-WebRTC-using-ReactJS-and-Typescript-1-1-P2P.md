@@ -157,11 +157,11 @@ As explained previously, Signaling Server only helps the connection between WebR
 ### Variables to use in the client
 
 ```tsx
-const [pc, setPc] = useState<RTCPeerConnection>()
-const [socket, setSocket] = useState<SocketIOClient.Socket>()
+const [pc, setPc] = useState<RTCPeerConnection>();
+const [socket, setSocket] = useState<SocketIOClient.Socket>();
 
-let localVideoRef = useRef<HTMLVideoElement>(null)
-let remoteVideoRef = useRef<HTMLVideoElement>(null)
+let localVideoRef = useRef<HTMLVideoElement>(null);
+let remoteVideoRef = useRef<HTMLVideoElement>(null);
 
 const pc_config = {
     iceServers: [
@@ -174,42 +174,42 @@ const pc_config = {
             urls: "stun:stun.l.google.com:19302",
         },
     ],
-}
+};
 ```
 
 ### Socket event
 
 ```tsx
-let newSocket = io.connect("http://localhost:8080")
-let newPC = new RTCPeerConnection(pc_config)
+let newSocket = io.connect("http://localhost:8080");
+let newPC = new RTCPeerConnection(pc_config);
 
 newSocket.on("all_users", (allUsers: Array<{ id: string; email: string }>) => {
-    let len = allUsers.length
+    let len = allUsers.length;
     if (len > 0) {
-        createOffer()
+        createOffer();
     }
-})
+});
 
 newSocket.on("getOffer", (sdp: RTCSessionDescription) => {
     //console.log(sdp);
-    console.log("get offer")
-    createAnswer(sdp)
-})
+    console.log("get offer");
+    createAnswer(sdp);
+});
 
 newSocket.on("getAnswer", (sdp: RTCSessionDescription) => {
-    console.log("get answer")
-    newPC.setRemoteDescription(new RTCSessionDescription(sdp))
+    console.log("get answer");
+    newPC.setRemoteDescription(new RTCSessionDescription(sdp));
     //console.log(sdp);
-})
+});
 
 newSocket.on("getCandidate", (candidate: RTCIceCandidateInit) => {
     newPC.addIceCandidate(new RTCIceCandidate(candidate)).then(() => {
-        console.log("candidate add success")
-    })
-})
+        console.log("candidate add success");
+    });
+});
 
-setSocket(newSocket)
-setPc(newPC)
+setSocket(newSocket);
+setPc(newPC);
 ```
 
 ### MediaStream setup and RTCPeerConnection event
@@ -221,49 +221,52 @@ navigator.mediaDevices
         audio: true,
     })
     .then(stream => {
-        if (localVideoRef.current) localVideoRef.current.srcObject = stream
+        if (localVideoRef.current) localVideoRef.current.srcObject = stream;
 
         stream.getTracks().forEach(track => {
-            newPC.addTrack(track, stream)
-        })
+            newPC.addTrack(track, stream);
+        });
         newPC.onicecandidate = e => {
             if (e.candidate) {
-                console.log("onicecandidate")
-                newSocket.emit("candidate", e.candidate)
+                console.log("onicecandidate");
+                newSocket.emit("candidate", e.candidate);
             }
-        }
+        };
         newPC.oniceconnectionstatechange = e => {
-            console.log(e)
-        }
+            console.log(e);
+        };
 
         newPC.ontrack = ev => {
-            console.log("add remotetrack success")
+            console.log("add remotetrack success");
             if (remoteVideoRef.current)
-                remoteVideoRef.current.srcObject = ev.streams[0]
-        }
+                remoteVideoRef.current.srcObject = ev.streams[0];
+        };
 
-        newSocket.emit("join_room", { room: "1234", email: "sample@naver.com" })
+        newSocket.emit("join_room", {
+            room: "1234",
+            email: "sample@naver.com",
+        });
     })
     .catch(error => {
-        console.log(`getUserMedia error: ${error}`)
-    })
+        console.log(`getUserMedia error: ${error}`);
+    });
 ```
 
 ### Send offer signal to other peer
 
 ```tsx
 const createOffer = () => {
-    console.log("create offer")
+    console.log("create offer");
     newPC
         .createOffer({ offerToReceiveAudio: true, offerToReceiveVideo: true })
         .then(sdp => {
-            newPC.setLocalDescription(new RTCSessionDescription(sdp))
-            newSocket.emit("offer", sdp)
+            newPC.setLocalDescription(new RTCSessionDescription(sdp));
+            newSocket.emit("offer", sdp);
         })
         .catch(error => {
-            console.log(error)
-        })
-}
+            console.log(error);
+        });
+};
 ```
 
 ### Send answer signal to other peer
@@ -271,22 +274,22 @@ const createOffer = () => {
 ```tsx
 const createAnswer = (sdp: RTCSessionDescription) => {
     newPC.setRemoteDescription(new RTCSessionDescription(sdp)).then(() => {
-        console.log("answer set remote description success")
+        console.log("answer set remote description success");
         newPC
             .createAnswer({
                 offerToReceiveVideo: true,
                 offerToReceiveAudio: true,
             })
             .then(sdp1 => {
-                console.log("create answer")
-                newPC.setLocalDescription(new RTCSessionDescription(sdp1))
-                newSocket.emit("answer", sdp1)
+                console.log("create answer");
+                newPC.setLocalDescription(new RTCSessionDescription(sdp1));
+                newSocket.emit("answer", sdp1);
             })
             .catch(error => {
-                console.log(error)
-            })
-    })
-}
+                console.log(error);
+            });
+    });
+};
 ```
 
 ### Video rendering of yourself and the other user’s
@@ -317,7 +320,7 @@ return (
             autoPlay
         ></video>
     </div>
-)
+);
 ```
 
 # [GitHub]

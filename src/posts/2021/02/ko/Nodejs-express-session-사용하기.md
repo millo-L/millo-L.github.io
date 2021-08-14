@@ -57,14 +57,14 @@ npm install http express express-session memorystore session-file-store mysql ex
 ```js
 // memory-session.js
 
-const http = require("http")
-const express = require("express")
-const session = require("express-session")
-const MemoryStore = require("memorystore")(session)
+const http = require("http");
+const express = require("express");
+const session = require("express-session");
+const MemoryStore = require("memorystore")(session);
 
-const app = express()
-const server = http.createServer(app)
-const PORT = 8080
+const app = express();
+const server = http.createServer(app);
+const PORT = 8080;
 
 app.use(
     session({
@@ -76,22 +76,22 @@ app.use(
         }),
         cookie: { maxAge: 86400000 },
     })
-)
+);
 
 app.get("/", (req, res) => {
-    console.log(req.session)
+    console.log(req.session);
     if (req.session.num === undefined) {
-        req.session.num = 1
+        req.session.num = 1;
     } else {
-        req.session.num += 1
+        req.session.num += 1;
     }
 
-    res.send(`View: ${req.session.num}`)
-})
+    res.send(`View: ${req.session.num}`);
+});
 
 server.listen(PORT, () => {
-    console.log(`Server running on ${PORT}`)
-})
+    console.log(`Server running on ${PORT}`);
+});
 ```
 
 # 4. File session store
@@ -102,14 +102,14 @@ server.listen(PORT, () => {
 ```js
 // file-session.js
 
-const http = require("http")
-const express = require("express")
-const session = require("express-session")
-const FileStore = require("session-file-store")(session)
+const http = require("http");
+const express = require("express");
+const session = require("express-session");
+const FileStore = require("session-file-store")(session);
 
-const app = express()
-const server = http.createServer(app)
-const PORT = 8080
+const app = express();
+const server = http.createServer(app);
+const PORT = 8080;
 
 app.use(
     session({
@@ -118,22 +118,22 @@ app.use(
         saveUninitialized: true,
         store: new FileStore(),
     })
-)
+);
 
 app.get("/", (req, res) => {
-    console.log(req.session)
+    console.log(req.session);
     if (req.session.num === undefined) {
-        req.session.num = 1
+        req.session.num = 1;
     } else {
-        req.session.num += 1
+        req.session.num += 1;
     }
 
-    res.send(`View: ${req.session.num}`)
-})
+    res.send(`View: ${req.session.num}`);
+});
 
 server.listen(PORT, () => {
-    console.log(`Server running on ${PORT}`)
-})
+    console.log(`Server running on ${PORT}`);
+});
 ```
 
 # 5. MySQL session store
@@ -205,16 +205,16 @@ node.js 서버를 작성해보자. user의 id, pw는 임시로 생성한 것이�
 ```js
 // db-session.js
 
-const http = require("http")
-const express = require("express")
-const session = require("express-session")
-const fs = require("fs")
-const bodyParser = require("body-parser")
+const http = require("http");
+const express = require("express");
+const session = require("express-session");
+const fs = require("fs");
+const bodyParser = require("body-parser");
 
-const app = (module.exports = express())
-const server = http.createServer(app)
-const MySQLStore = require("express-mysql-session")(session)
-const PORT = 8080
+const app = (module.exports = express());
+const server = http.createServer(app);
+const MySQLStore = require("express-mysql-session")(session);
+const PORT = 8080;
 
 const options = {
     host: "localhost",
@@ -222,9 +222,9 @@ const options = {
     user: "root",
     password: "root",
     database: "session_test",
-}
+};
 
-const sessionStore = new MySQLStore(options)
+const sessionStore = new MySQLStore(options);
 
 app.use(
     session({
@@ -233,86 +233,86 @@ app.use(
         resave: false,
         saveUninitialized: false,
     })
-)
-app.use(bodyParser.urlencoded({ extended: false }))
+);
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // login 페이지
 app.get("/login", (req, res) => {
-    if (req.session.user !== undefined) return res.redirect("/")
+    if (req.session.user !== undefined) return res.redirect("/");
 
     fs.readFile("./webpage/login.html", (error, data) => {
         if (error) {
-            console.log(error)
-            return res.status(500).send("<h1>500 error</h1>")
+            console.log(error);
+            return res.status(500).send("<h1>500 error</h1>");
         }
-        res.writeHead(200, { "Content-Type": "text/html" })
-        res.end(data)
-    })
-})
+        res.writeHead(200, { "Content-Type": "text/html" });
+        res.end(data);
+    });
+});
 
 // 임시 user
 const users = [
     { id: "hello", pw: "world" },
     { id: "good", pw: "bye" },
-]
+];
 
 // id, pw 체크
 const login = (id, pw) => {
-    let len = users.length
+    let len = users.length;
 
     for (let i = 0; i < len; i++) {
-        if (id === users[i].id && pw === users[i].pw) return id
+        if (id === users[i].id && pw === users[i].pw) return id;
     }
 
-    return ""
-}
+    return "";
+};
 
 // login 요청
 app.post("/login", (req, res) => {
-    let id = req.body.id
-    let pw = req.body.pw
+    let id = req.body.id;
+    let pw = req.body.pw;
 
-    let user = login(id, pw)
-    if (user === "") return res.redirect("/login")
+    let user = login(id, pw);
+    if (user === "") return res.redirect("/login");
 
-    req.session.user = user
+    req.session.user = user;
     req.session.save(err => {
         if (err) {
-            console.log(err)
-            return res.status(500).send("<h1>500 error</h1>")
+            console.log(err);
+            return res.status(500).send("<h1>500 error</h1>");
         }
-        res.redirect("/")
-    })
-})
+        res.redirect("/");
+    });
+});
 
 // main 페이지
 app.get("/", (req, res) => {
-    if (req.session.user === undefined) return res.redirect("/login")
+    if (req.session.user === undefined) return res.redirect("/login");
 
     fs.readFile("./webpage/main.html", (error, data) => {
         if (error) {
-            console.log(error)
-            return res.status(500).send("<h1>500 error</h1>")
+            console.log(error);
+            return res.status(500).send("<h1>500 error</h1>");
         }
-        res.writeHead(200, { "Content-Type": "text/html" })
-        res.end(data)
-    })
-})
+        res.writeHead(200, { "Content-Type": "text/html" });
+        res.end(data);
+    });
+});
 
 // logout 요청
 app.get("/logout", (req, res) => {
     req.session.destroy(err => {
         if (err) {
-            console.log(error)
-            return res.status(500).send("<h1>500 error</h1>")
+            console.log(error);
+            return res.status(500).send("<h1>500 error</h1>");
         }
-        res.redirect("/")
-    })
-})
+        res.redirect("/");
+    });
+});
 
 server.listen(PORT, () => {
-    console.log(`Server running on ${PORT}`)
-})
+    console.log(`Server running on ${PORT}`);
+});
 ```
 
 # [참고]

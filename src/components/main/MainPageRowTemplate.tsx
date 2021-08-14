@@ -1,5 +1,5 @@
-import React, { memo } from "react"
-import Styled from "styled-components"
+import React, { memo } from "react";
+import Styled from "styled-components";
 
 const Wrapper = Styled.div`
     width: 100%;
@@ -8,15 +8,15 @@ const Wrapper = Styled.div`
     display: flex;
     flex-direction: row;
     
-`
+`;
 
 interface MainPageRowTemplateProps {
-    children: React.ReactNode
+    children: React.ReactNode;
     style?: React.CSSProperties;
 }
 
 const MainPageRowTemplate = ({ children, style }: MainPageRowTemplateProps) => {
-    return <Wrapper style={style}>{children}</Wrapper>
-}
+    return <Wrapper style={style}>{children}</Wrapper>;
+};
 
-export default memo(MainPageRowTemplate)
+export default memo(MainPageRowTemplate);

@@ -1,7 +1,7 @@
-import React, { memo } from 'react';
-import Styled from 'styled-components';
-import Img, { FluidObject } from 'gatsby-image';
-import { mediaQuery } from '../../lib/styles/media';
+import React, { memo } from "react";
+import Styled from "styled-components";
+import Img, { FluidObject } from "gatsby-image";
+import { mediaQuery } from "../../lib/styles/media";
 
 const RatioImageBlock = Styled.div`
     width: 100%;
@@ -38,7 +38,7 @@ const RatioImage = ({
     widthRatio,
     heightRatio,
     fluid,
-    style
+    style,
 }: RatioImageProps) => {
     const paddingTop = `${(heightRatio / widthRatio) * 100}%`;
 

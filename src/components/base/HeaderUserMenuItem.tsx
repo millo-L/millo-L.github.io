@@ -1,7 +1,7 @@
-import React from 'react';
-import Styled from 'styled-components';
-import { Link } from 'gatsby';
-import palette from '../../lib/styles/palette';
+import React from "react";
+import Styled from "styled-components";
+import { Link } from "gatsby";
+import palette from "../../lib/styles/palette";
 
 const HeaderUserMenuItemWrapper = Styled.div`
     padding: 0.75rem 1rem;
@@ -20,17 +20,15 @@ interface HeaderUserMenuItemProps {
     children: React.ReactNode;
 }
 
-const HeaderUserMenuItem = ({
-    to,
-    children,
-}: HeaderUserMenuItemProps) => {
+const HeaderUserMenuItem = ({ to, children }: HeaderUserMenuItemProps) => {
     return (
-        <Link to={to} style={{ textDecoration: 'none', color: palette.gray[9] }}>
-            <HeaderUserMenuItemWrapper>
-                {children}
-            </HeaderUserMenuItemWrapper>
+        <Link
+            to={to}
+            style={{ textDecoration: "none", color: palette.gray[9] }}
+        >
+            <HeaderUserMenuItemWrapper>{children}</HeaderUserMenuItemWrapper>
         </Link>
     );
-}
+};
 
 export default HeaderUserMenuItem;

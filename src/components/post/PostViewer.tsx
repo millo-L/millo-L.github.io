@@ -1,24 +1,24 @@
-import { Link } from "gatsby"
-import React, { useCallback } from "react"
-import Styled from "styled-components"
-import { categoryMap } from "../../lib/styles/category"
-import media from "../../lib/styles/media"
-import palette from "../../lib/styles/palette"
-import { formatDate } from "../../lib/styles/utils"
-import Adsense from "../common/Adsense"
-import PostSeriesList, { PartialSeriesType } from "./PostSeriesList"
-import PrevNextPost from "./PrevNextPost"
-import TagList from "./TagList"
+import { Link } from "gatsby";
+import React, { useCallback } from "react";
+import Styled from "styled-components";
+import { categoryMap } from "../../lib/styles/category";
+import media from "../../lib/styles/media";
+import palette from "../../lib/styles/palette";
+import { formatDate } from "../../lib/styles/utils";
+import Adsense from "../common/Adsense";
+import PostSeriesList, { PartialSeriesType } from "./PostSeriesList";
+import PrevNextPost from "./PrevNextPost";
+import TagList from "./TagList";
 
 type PostType = {
-    author: string
-    category: string
-    title: string
-    tags: Array<string>
-    released_at: string
-    updated_at: string
-    html: string
-}
+    author: string;
+    category: string;
+    title: string;
+    tags: Array<string>;
+    released_at: string;
+    updated_at: string;
+    html: string;
+};
 const PostViewerWrapper = Styled.div`
     width: 60%;
     margin-left: 0;
@@ -65,7 +65,7 @@ const PostViewerWrapper = Styled.div`
     .adsense-block {
         width: 100%;
     }
-`
+`;
 
 const PostContentWrapper = Styled.div`
     width: 100%;
@@ -214,19 +214,19 @@ const PostContentWrapper = Styled.div`
             margin-right: 2rem;
         }
     }
-`
+`;
 
 interface PostViewerProps {
-    post: PostType
-    series: string
-    seriesList: Array<PartialSeriesType>
-    lang: string
+    post: PostType;
+    series: string;
+    seriesList: Array<PartialSeriesType>;
+    lang: string;
 }
 
 const PostViewer = ({ post, series, seriesList, lang }: PostViewerProps) => {
-    const { html, title, released_at, updated_at, category, tags } = post
+    const { html, title, released_at, updated_at, category, tags } = post;
 
-    const onClickTag = useCallback((tag: string) => {}, [tags])
+    const onClickTag = useCallback((tag: string) => {}, [tags]);
 
     return (
         <PostViewerWrapper>
@@ -276,7 +276,7 @@ const PostViewer = ({ post, series, seriesList, lang }: PostViewerProps) => {
                 lang={lang}
             />
         </PostViewerWrapper>
-    )
-}
+    );
+};
 
-export default PostViewer
+export default PostViewer;

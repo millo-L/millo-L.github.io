@@ -109,18 +109,18 @@ npm install http express express-session express-mysql-session body-parser passp
 ```js
 // index.js
 
-const http = require("http")
-const express = require("express")
-const bodyParser = require("body-parser")
-const session = require("express-session")
-const MySQLStore = require("express-mysql-session")(session)
-const fs = require("fs")
+const http = require("http");
+const express = require("express");
+const bodyParser = require("body-parser");
+const session = require("express-session");
+const MySQLStore = require("express-mysql-session")(session);
+const fs = require("fs");
 const passport = require("passport"),
-    LocalStrategy = require("passport-local").Strategy
+    LocalStrategy = require("passport-local").Strategy;
 
-const app = express()
-const server = http.createServer(app)
-const PORT = 8080
+const app = express();
+const server = http.createServer(app);
+const PORT = 8080;
 
 const options = {
     host: "localhost",
@@ -128,9 +128,9 @@ const options = {
     user: "root",
     password: "1q2w3e4r!@",
     database: "session_test",
-}
+};
 
-const sessionStore = new MySQLStore(options)
+const sessionStore = new MySQLStore(options);
 
 app.use(
     session({
@@ -139,50 +139,50 @@ app.use(
         resave: false,
         saveUninitialized: false,
     })
-)
-app.use(bodyParser.urlencoded({ extended: false }))
+);
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // passport 초기화 및 session 연결
-app.use(passport.initialize())
-app.use(passport.session())
+app.use(passport.initialize());
+app.use(passport.session());
 
 // login이 최초로 성공했을 때만 호출되는 함수
 // done(null, user.id)로 세션을 초기화 한다.
 passport.serializeUser(function (user, done) {
-    done(null, user.id)
-})
+    done(null, user.id);
+});
 
 // 사용자가 페이지를 방문할 때마다 호출되는 함수
 // done(null, id)로 사용자의 정보를 각 request의 user 변수에 넣어준다.
 passport.deserializeUser(function (id, done) {
-    done(null, id)
-})
+    done(null, id);
+});
 
 // 임시 id, pw 배열
 const users = [
     { id: "hello", pw: "world" },
     { id: "good", pw: "bye" },
-]
+];
 
 // 입력된 id가 존재하는 지 여부와 위치 반환 함수
 const findIndexByID = id => {
-    let len = users.length
+    let len = users.length;
 
     for (let i = 0; i < len; i++) {
-        if (users[i].id === id) return i
+        if (users[i].id === id) return i;
     }
 
-    return -1
-}
+    return -1;
+};
 
 // id, pw login 함수
 const login = (id, pw) => {
-    let index = findIndexByID(id)
+    let index = findIndexByID(id);
 
-    if (index === -1) return -1
-    if (users[index].pw === pw) return 1
-    return 0
-}
+    if (index === -1) return -1;
+    if (users[index].pw === pw) return 1;
+    return 0;
+};
 
 // local login 전략을 세우는 함수
 // client에서 전송되는 변수의 이름이 각각 id, pw이므로
@@ -197,16 +197,16 @@ passport.use(
             passwordField: "pw",
         },
         function (username, password, done) {
-            let result = login(username, password)
+            let result = login(username, password);
 
             if (result === -1)
-                return done(null, false, { message: "Incorrect username." })
+                return done(null, false, { message: "Incorrect username." });
             else if (result === 0)
-                return done(null, false, { message: "Incorrect password." })
-            else return done(null, { id: username })
+                return done(null, false, { message: "Incorrect password." });
+            else return done(null, { id: username });
         }
     )
-)
+);
 
 // login 요청이 들어왔을 때 성공시 / 로, 실패시 /login 으로 리다이렉트
 app.post(
@@ -215,44 +215,44 @@ app.post(
         successRedirect: "/",
         failureRedirect: "/login",
     })
-)
+);
 
 // login 페이지
 app.get("/login", (req, res) => {
-    if (req.user) return res.redirect("/")
+    if (req.user) return res.redirect("/");
     fs.readFile("./webpage/login.html", (error, data) => {
         if (error) {
-            console.log(error)
-            return res.status(500).send("<h1>500 error</h1>")
+            console.log(error);
+            return res.status(500).send("<h1>500 error</h1>");
         }
-        res.writeHead(200, { "Content-Type": "text/html" })
-        res.end(data)
-    })
-})
+        res.writeHead(200, { "Content-Type": "text/html" });
+        res.end(data);
+    });
+});
 
 // main 페이지
 app.get("/", (req, res) => {
-    if (!req.user) return res.redirect("/login")
+    if (!req.user) return res.redirect("/login");
     fs.readFile("./webpage/main.html", (error, data) => {
         if (error) {
-            console.log(error)
-            return res.status(500).send("<h1>500 error</h1>")
+            console.log(error);
+            return res.status(500).send("<h1>500 error</h1>");
         }
-        res.writeHead(200, { "Content-Type": "text/html" })
-        res.end(data)
-    })
-})
+        res.writeHead(200, { "Content-Type": "text/html" });
+        res.end(data);
+    });
+});
 
 // logout
 // passport의 내장함수인 logout() 호출
 app.get("/logout", (req, res) => {
-    req.logout()
-    res.redirect("/login")
-})
+    req.logout();
+    res.redirect("/login");
+});
 
 server.listen(PORT, () => {
-    console.log(`Server running on ${PORT}`)
-})
+    console.log(`Server running on ${PORT}`);
+});
 ```
 
 # [참고]

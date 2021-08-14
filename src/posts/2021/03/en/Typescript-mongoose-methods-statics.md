@@ -35,44 +35,44 @@ Overall, a model containing the variables and methods and statistics used by mon
 ```ts
 // user.ts
 
-import mongoose, { Schema, Document, Model } from "mongoose"
-import bcrypt from "bcrypt"
+import mongoose, { Schema, Document, Model } from "mongoose";
+import bcrypt from "bcrypt";
 
 interface IUser {
-    username: string
-    hashedPassword: string
+    username: string;
+    hashedPassword: string;
 }
 
 interface IUserDocument extends IUser, Document {
-    setPassword: (password: string) => Promise<void>
-    checkPassword: (password: string) => Promise<boolean>
+    setPassword: (password: string) => Promise<void>;
+    checkPassword: (password: string) => Promise<boolean>;
 }
 
 interface IUserModel extends Model<IUserDocument> {
-    findByUsername: (username: string) => Promise<IUserDocument>
+    findByUsername: (username: string) => Promise<IUserDocument>;
 }
 
 const UserSchema: Schema<IUserDocument> = new Schema({
     username: { type: String, required: true },
     hashedPassword: { type: String, required: true },
-})
+});
 
 UserSchema.methods.setPassword = async function (password: string) {
-    const hash = await bcrypt.hash(password, 10)
-    this.hashedPassword = hash
-}
+    const hash = await bcrypt.hash(password, 10);
+    this.hashedPassword = hash;
+};
 
 UserSchema.methods.checkPassword = async function (password: string) {
-    const result = await bcrypt.compare(password, this.hashedPassword)
-    return result
-}
+    const result = await bcrypt.compare(password, this.hashedPassword);
+    return result;
+};
 
 UserSchema.statics.findByUsername = function (username: string) {
-    return this.findOne({ username })
-}
+    return this.findOne({ username });
+};
 
-const User = mongoose.model<IUserDocument, IUserModel>("User", UserSchema)
-export default User
+const User = mongoose.model<IUserDocument, IUserModel>("User", UserSchema);
+export default User;
 ```
 
 ## 2-2. Variable interface to use in the model
@@ -81,8 +81,8 @@ The following interface specifies the name and data type of variables to be used
 
 ```ts
 interface IUser {
-    username: string
-    hashedPassword: string
+    username: string;
+    hashedPassword: string;
 }
 ```
 
@@ -106,24 +106,24 @@ It then creates a mongoose schema based on the interface.
 
 ```ts
 interface IUserDocument extends IUser, Document {
-    setPassword: (password: string) => Promise<void>
-    checkPassword: (password: string) => Promise<boolean>
+    setPassword: (password: string) => Promise<void>;
+    checkPassword: (password: string) => Promise<boolean>;
 }
 
 const UserSchema: Schema<IUserDocument> = new Schema({
     username: { type: String, required: true },
     hashedPassword: { type: String, required: true },
-})
+});
 
 UserSchema.methods.setPassword = async function (password: string) {
-    const hash = await bcrypt.hash(password, 10)
-    this.hashedPassword = hash
-}
+    const hash = await bcrypt.hash(password, 10);
+    this.hashedPassword = hash;
+};
 
 UserSchema.methods.checkPassword = async function (password: string) {
-    const result = await bcrypt.compare(password, this.hashedPassword)
-    return result
-}
+    const result = await bcrypt.compare(password, this.hashedPassword);
+    return result;
+};
 ```
 
 ## 2-4. Statics interface for model use
@@ -132,10 +132,10 @@ The interface below extends the interface, including the above variables, method
 
 ```ts
 interface IUserModel extends Model<IUserDocument> {
-    findByUsername: (username: string) => Promise<IUserDocument>
+    findByUsername: (username: string) => Promise<IUserDocument>;
 }
 
 UserSchema.statics.findByUsername = function (username: string) {
-    return this.findOne({ username })
-}
+    return this.findOne({ username });
+};
 ```

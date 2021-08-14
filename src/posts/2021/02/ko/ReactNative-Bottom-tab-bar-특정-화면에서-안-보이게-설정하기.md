@@ -41,13 +41,13 @@ description: React native에서 특정 화면에서만 Bottom tab bar가 보이�
 
 ```tsx
 const getVisibility = (route: any, selectedIndex: number) => {
-    if (!route.state) return true
-    let index = route.state.index
+    if (!route.state) return true;
+    let index = route.state.index;
     if (index === selectedIndex) {
-        return false
+        return false;
     }
-    return true
-}
+    return true;
+};
 
 const HomeTab = () => {
     return (
@@ -55,8 +55,8 @@ const HomeTab = () => {
             <Stack.Screen name="Home" component={Home} />
             <Stack.Screen name="MathProblem" component={MathProblem} />
         </Stack.Navigator>
-    )
-}
+    );
+};
 
 const MainNavigator = () => {
     return (
@@ -218,16 +218,16 @@ const MainNavigator = () => {
                 }}
             />
         </BottomTab.Navigator>
-    )
-}
+    );
+};
 
 export default () => {
     return (
         <NavigationContainer>
             <MainNavigator />
         </NavigationContainer>
-    )
-}
+    );
+};
 ```
 
 # [참고]

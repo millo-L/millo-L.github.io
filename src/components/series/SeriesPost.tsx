@@ -1,11 +1,11 @@
-import React, { memo } from 'react';
-import Styled from 'styled-components';
-import media, { mediaQuery } from '../../lib/styles/media';
-import { PartialPostType } from '../post/PostCard';
-import { ellipsis, formatDate } from '../../lib/styles/utils';
-import palette from '../../lib/styles/palette';
-import RatioImage from '../common/RatioImage';
-import { Link } from 'gatsby';
+import React, { memo } from "react";
+import Styled from "styled-components";
+import media, { mediaQuery } from "../../lib/styles/media";
+import { PartialPostType } from "../post/PostCard";
+import { ellipsis, formatDate } from "../../lib/styles/utils";
+import palette from "../../lib/styles/palette";
+import RatioImage from "../common/RatioImage";
+import { Link } from "gatsby";
 
 const Wrapper = Styled.div`
     width: 100%;
@@ -37,7 +37,7 @@ const Wrapper = Styled.div`
         border-top: 1px solid ${palette.gray[2]};
     }
 
-`
+`;
 
 const Content = Styled.div`
     padding: 1rem;
@@ -74,13 +74,13 @@ const Content = Styled.div`
         color: ${palette.gray[6]};
     }
 
-`
+`;
 
 const StyledLink = Styled(Link)`
     display: block;
     color: inherit;
     text-decoration: none;
-`
+`;
 
 interface SeriesPost {
     post: PartialPostType;
@@ -91,7 +91,9 @@ const SeriesPost = ({ post, index }: SeriesPost) => {
     return (
         <Wrapper>
             <StyledLink to={`${post.path}`}>
-                <h2>{index + 1}. {post.title}</h2>
+                <h2>
+                    {index + 1}. {post.title}
+                </h2>
             </StyledLink>
             {post.image && (
                 <StyledLink to={`${post.path}`}>
@@ -118,7 +120,12 @@ const SeriesPost = ({ post, index }: SeriesPost) => {
                         {post.updated_at && (
                             <>
                                 <br />
-                                <span>{post.lang === 'ko' ? '수정: ' : 'Last edited at '}{formatDate(post.updated_at, post.lang)}</span>
+                                <span>
+                                    {post.lang === "ko"
+                                        ? "수정: "
+                                        : "Last edited at "}
+                                    {formatDate(post.updated_at, post.lang)}
+                                </span>
                             </>
                         )}
                     </div>
@@ -126,6 +133,6 @@ const SeriesPost = ({ post, index }: SeriesPost) => {
             </Content>
         </Wrapper>
     );
-}
+};
 
 export default memo(SeriesPost);

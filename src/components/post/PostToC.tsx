@@ -1,8 +1,8 @@
-import React, { memo, useEffect } from "react"
-import Styled from 'styled-components';
+import React, { memo, useEffect } from "react";
+import Styled from "styled-components";
 import media from "../../lib/styles/media";
 import palette from "../../lib/styles/palette";
-import ScrollSpy from "./ScrollSpy"
+import ScrollSpy from "./ScrollSpy";
 
 const ToCWrapper = Styled.div`
     transition: 0.125s all ease-in;
@@ -57,26 +57,26 @@ const ToCWrapper = Styled.div`
 `;
 
 interface PostToCProps {
-    tableOfContents: string
+    tableOfContents: string;
 }
 
 const PostToC = ({ tableOfContents }: PostToCProps) => {
     useEffect(() => {
-        const post = document.querySelector("#content-container")
-        const headings = Array.from(
-            post.querySelectorAll("h1, h2")
-        ).filter((h: any) => h.id)
-        const toc = document.querySelector("#toc-container")
+        const post = document.querySelector("#content-container");
+        const headings = Array.from(post.querySelectorAll("h1, h2")).filter(
+            (h: any) => h.id
+        );
+        const toc = document.querySelector("#toc-container");
 
         new ScrollSpy(toc as HTMLElement, headings as HTMLElement[]);
-    }, [])
+    }, []);
 
     return (
         <ToCWrapper
             id="toc-container"
             dangerouslySetInnerHTML={{ __html: tableOfContents }}
         />
-    )
-}
+    );
+};
 
 export default memo(PostToC);

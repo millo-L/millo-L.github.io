@@ -1,26 +1,26 @@
-const path = require(`path`)
+const path = require(`path`);
 
-const { createFilePath } = require(`gatsby-source-filesystem`)
+const { createFilePath } = require(`gatsby-source-filesystem`);
 exports.onCreateNode = ({ node, getNode, actions }) => {
-    const { createNodeField } = actions
+    const { createNodeField } = actions;
     if (node.internal.type === `MarkdownRemark`) {
-        const slug = createFilePath({ node, getNode, basePath: `` })
-        const update_slug = slug.slice(11)
+        const slug = createFilePath({ node, getNode, basePath: `` });
+        const update_slug = slug.slice(11);
         createNodeField({
             node,
             name: `slug`,
             value: update_slug,
-        })
+        });
     }
-}
+};
 
 exports.createPages = async ({ actions, graphql, reporter }) => {
-    const { createPage } = actions
+    const { createPage } = actions;
 
-    const postTemplate = path.resolve(`src/components/post/PostPage.tsx`)
+    const postTemplate = path.resolve(`src/components/post/PostPage.tsx`);
     const seriesTemplate = path.resolve(
         `src/components/series/SeriesPostListPage.tsx`
-    )
+    );
 
     const result = await graphql(`
         {
@@ -48,11 +48,11 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
                 }
             }
         }
-    `)
+    `);
 
     if (result.errors) {
-        reporter.panicOnBuild(`Error while running GraphQL query.`)
-        return
+        reporter.panicOnBuild(`Error while running GraphQL query.`);
+        return;
     }
 
     result.data.allMarkdownRemark.edges.forEach(({ node }) => {
@@ -63,8 +63,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
                 slug: node.fields.slug,
                 series: node.frontmatter.series,
             }, // additional data can be passed via context
-        })
-    })
+        });
+    });
 
     result.data.allMarkdownRemark.group.forEach(({ edges }) => {
         edges[0].node.frontmatter.series !== "none" &&
@@ -77,6 +77,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
                 context: {
                     series: edges[0].node.frontmatter.series,
                 },
-            })
-    })
-}
+            });
+    });
+};

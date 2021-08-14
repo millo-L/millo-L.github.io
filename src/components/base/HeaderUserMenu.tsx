@@ -1,8 +1,8 @@
-import React from 'react';
-import Styled from 'styled-components';
-import OutsideClickHandler from 'react-outside-click-handler';
-import HeaderUserMenuItem from './HeaderUserMenuItem';
-import media from '../../lib/styles/media';
+import React from "react";
+import Styled from "styled-components";
+import OutsideClickHandler from "react-outside-click-handler";
+import HeaderUserMenuItem from "./HeaderUserMenuItem";
+import media from "../../lib/styles/media";
 
 const HeaderUserMenuWrapper = Styled.div`
     position: absolute;
@@ -43,10 +43,12 @@ const HeaderUserMenu = ({
         <OutsideClickHandler onOutsideClick={onClose}>
             <HeaderUserMenuWrapper onClick={onClose}>
                 <div className="menu-wrapper">
-                    <HeaderUserMenuItem to={ko_to ? ko_to : '#'}>
+                    <HeaderUserMenuItem to={ko_to ? ko_to : "#"}>
                         한국어
                     </HeaderUserMenuItem>
-                    <HeaderUserMenuItem to={en_to ? en_to : '#'}>English</HeaderUserMenuItem>
+                    <HeaderUserMenuItem to={en_to ? en_to : "#"}>
+                        English
+                    </HeaderUserMenuItem>
                 </div>
             </HeaderUserMenuWrapper>
         </OutsideClickHandler>

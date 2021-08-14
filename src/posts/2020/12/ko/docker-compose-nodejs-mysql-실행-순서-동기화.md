@@ -158,7 +158,7 @@ mysql의 연결이 제대로 진행됐는지 여부를 판단할 수 있게 코�
 ```js
 // index.js
 
-const mysql = require("mysql2/promise")
+const mysql = require("mysql2/promise");
 
 const dbConnect = async () => {
     try {
@@ -167,15 +167,15 @@ const dbConnect = async () => {
             user: "root",
             password: "root",
             database: "SampleDB",
-        })
+        });
 
-        console.log("mysql connection success")
+        console.log("mysql connection success");
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
-}
+};
 
-dbConnect()
+dbConnect();
 ```
 
 # 5. MySQL

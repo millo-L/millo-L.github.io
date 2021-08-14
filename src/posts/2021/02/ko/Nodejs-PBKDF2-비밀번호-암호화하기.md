@@ -60,48 +60,48 @@ npm install pbkdf2-password
 ```js
 // index.js
 
-const pbkdf2Password = require("pbkdf2-password")
-const hasher = pbkdf2Password()
+const pbkdf2Password = require("pbkdf2-password");
+const hasher = pbkdf2Password();
 
-const password = "비밀번호486"
+const password = "비밀번호486";
 
 // password인 비밀번호486을 암호화
 // 회원가입 때는 이와 같이 password만을 파라미터로 넣는다.
 hasher({ password }, (error, pw, salt, hash) => {
     if (error) {
-        console.log(error)
-        return
+        console.log(error);
+        return;
     }
 
-    console.log("암호화 된 비밀번호 '비밀번호486'")
-    console.log("==============================================")
-    console.log(hash)
-    console.log("==============================================")
-    console.log("암호화에 사용한 salt")
-    console.log("==============================================")
-    console.log(salt)
-    console.log("==============================================")
+    console.log("암호화 된 비밀번호 '비밀번호486'");
+    console.log("==============================================");
+    console.log(hash);
+    console.log("==============================================");
+    console.log("암호화에 사용한 salt");
+    console.log("==============================================");
+    console.log(salt);
+    console.log("==============================================");
 
     // password인 비밀번호485을 암호화
     // 로그인 때는 이와 같이 password와 저장되어 있는 salt를 같이 파라미터로 넣는다.
     hasher({ password: "비밀번호485", salt }, (error2, pw2, salt2, hash2) => {
         if (error2) {
-            console.log(error2)
-            return
+            console.log(error2);
+            return;
         }
 
-        console.log("암호화 된 비밀번호 '비밀번호485'")
-        console.log("==============================================")
-        console.log(hash2)
-        console.log("==============================================")
+        console.log("암호화 된 비밀번호 '비밀번호485'");
+        console.log("==============================================");
+        console.log(hash2);
+        console.log("==============================================");
 
         if (hash === hash2) {
-            console.log("로그인 성공!")
+            console.log("로그인 성공!");
         } else {
-            console.log("로그인 실패!")
+            console.log("로그인 실패!");
         }
-    })
-})
+    });
+});
 ```
 
 ## 3-3. crypto 사용하기
@@ -111,43 +111,43 @@ hasher({ password }, (error, pw, salt, hash) => {
 ```js
 // index.js
 
-const crypto = require("crypto")
+const crypto = require("crypto");
 
-const password = "비밀번호486"
+const password = "비밀번호486";
 
 // 회원가입할 때
 // salt 생성
 crypto.randomBytes(64, (error, buf) => {
     if (error) {
-        console.log(error)
-        return
+        console.log(error);
+        return;
     }
-    const salt = buf.toString("base64")
+    const salt = buf.toString("base64");
     // 생성한 salt 기반으로 비밀번호 암호화
     crypto.pbkdf2(password, salt, 256, 64, "sha512", (err, key) => {
         if (err) {
-            console.log(err)
-            return
+            console.log(err);
+            return;
         }
-        const hash = key.toString("base64")
+        const hash = key.toString("base64");
 
         // 로그인 시에 비밀번호 비교
-        const pw = "비밀번호485"
+        const pw = "비밀번호485";
         crypto.pbkdf2(pw, salt, 256, 64, "sha512", (err2, key2) => {
             if (err2) {
-                console.log(err2)
-                return
+                console.log(err2);
+                return;
             }
 
-            const hash2 = key2.toString("base64")
+            const hash2 = key2.toString("base64");
             if (hash === hash2) {
-                console.log("로그인 성공!")
+                console.log("로그인 성공!");
             } else {
-                console.log("로그인 실패!")
+                console.log("로그인 실패!");
             }
-        })
-    })
-})
+        });
+    });
+});
 ```
 
 # [참고]

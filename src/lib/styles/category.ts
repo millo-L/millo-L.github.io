@@ -1,7 +1,7 @@
 export const categoryMap: {
     [category: string]: {
-        src: string
-    }
+        src: string;
+    };
 } = {
     nodejs: {
         src:
@@ -78,7 +78,7 @@ export const categoryMap: {
         src:
             "https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=Android&logoColor=white",
     },
-}
+};
 
 export const categoryList = [
     {
@@ -175,7 +175,7 @@ export const categoryList = [
         src:
             "https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=MySQL&logoColor=white",
     },
-]
+];
 
 export const enCategoryList = [
     {
@@ -277,4 +277,4 @@ export const enCategoryList = [
         src:
             "https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=MySQL&logoColor=white",
     },
-]
+];

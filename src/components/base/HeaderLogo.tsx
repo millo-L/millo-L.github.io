@@ -1,8 +1,8 @@
-import React from 'react';
-import { graphql, Link, useStaticQuery } from 'gatsby';
-import Img from 'gatsby-image';
-import Styled from 'styled-components';
-import media from '../../lib/styles/media';
+import React from "react";
+import { graphql, Link, useStaticQuery } from "gatsby";
+import Img from "gatsby-image";
+import Styled from "styled-components";
+import media from "../../lib/styles/media";
 
 const HeaderLogoWrapper = Styled.div`
     display: flex;
@@ -33,7 +33,7 @@ interface HeaderLogoProps {
 const HeaderLogo = ({ lang }: HeaderLogoProps) => {
     const data = useStaticQuery(graphql`
         {
-            file(relativePath: {eq: "logo.png"}) {
+            file(relativePath: { eq: "logo.png" }) {
                 childImageSharp {
                     fluid {
                         ...GatsbyImageSharpFluid
@@ -47,11 +47,14 @@ const HeaderLogo = ({ lang }: HeaderLogoProps) => {
 
     return (
         <HeaderLogoWrapper>
-            <VelogLogoLink to={lang === 'ko' ? '/' : '/en'}>
-                <Img className="header-logo" fluid={data.file.childImageSharp.fluid} />
+            <VelogLogoLink to={lang === "ko" ? "/" : "/en"}>
+                <Img
+                    className="header-logo"
+                    fluid={data.file.childImageSharp.fluid}
+                />
             </VelogLogoLink>
         </HeaderLogoWrapper>
-    )
-}
+    );
+};
 
 export default HeaderLogo;

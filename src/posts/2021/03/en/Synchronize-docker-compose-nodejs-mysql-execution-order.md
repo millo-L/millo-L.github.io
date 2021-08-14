@@ -158,7 +158,7 @@ The database can also be changed by arbitrarily modifying init.sql in the MySQL 
 ```js
 // index.js
 
-const mysql = require("mysql2/promise")
+const mysql = require("mysql2/promise");
 
 const dbConnect = async () => {
     try {
@@ -167,15 +167,15 @@ const dbConnect = async () => {
             user: "root",
             password: "root",
             database: "SampleDB",
-        })
+        });
 
-        console.log("mysql connection success")
+        console.log("mysql connection success");
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
-}
+};
 
-dbConnect()
+dbConnect();
 ```
 
 # 5. MySQL

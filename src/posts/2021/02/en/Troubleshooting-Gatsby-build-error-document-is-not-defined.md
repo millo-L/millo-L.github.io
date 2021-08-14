@@ -30,7 +30,7 @@ In terms of the code,
 
 ```tsx
 if (typeof window === "undefined" || !window.document) {
-    return
+    return;
 }
 ```
 
@@ -39,12 +39,12 @@ In my case, I used it as below.
 ```tsx
 const getScrollTop = () => {
     if (typeof window === "undefined" || !window.document) {
-        return
+        return;
     }
-    if (!document.body) return 0
+    if (!document.body) return 0;
     const scrollTop = document.documentElement
         ? document.documentElement.scrollTop || document.body.scrollTop
-        : document.body.scrollTop
-    return scrollTop
-}
+        : document.body.scrollTop;
+    return scrollTop;
+};
 ```

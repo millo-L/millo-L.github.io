@@ -35,44 +35,44 @@ typescript 환경에서 mongoose 모듈을 사용하여 methods와 statics를 �
 ```ts
 // user.ts
 
-import mongoose, { Schema, Document, Model } from "mongoose"
-import bcrypt from "bcrypt"
+import mongoose, { Schema, Document, Model } from "mongoose";
+import bcrypt from "bcrypt";
 
 interface IUser {
-    username: string
-    hashedPassword: string
+    username: string;
+    hashedPassword: string;
 }
 
 interface IUserDocument extends IUser, Document {
-    setPassword: (password: string) => Promise<void>
-    checkPassword: (password: string) => Promise<boolean>
+    setPassword: (password: string) => Promise<void>;
+    checkPassword: (password: string) => Promise<boolean>;
 }
 
 interface IUserModel extends Model<IUserDocument> {
-    findByUsername: (username: string) => Promise<IUserDocument>
+    findByUsername: (username: string) => Promise<IUserDocument>;
 }
 
 const UserSchema: Schema<IUserDocument> = new Schema({
     username: { type: String, required: true },
     hashedPassword: { type: String, required: true },
-})
+});
 
 UserSchema.methods.setPassword = async function (password: string) {
-    const hash = await bcrypt.hash(password, 10)
-    this.hashedPassword = hash
-}
+    const hash = await bcrypt.hash(password, 10);
+    this.hashedPassword = hash;
+};
 
 UserSchema.methods.checkPassword = async function (password: string) {
-    const result = await bcrypt.compare(password, this.hashedPassword)
-    return result
-}
+    const result = await bcrypt.compare(password, this.hashedPassword);
+    return result;
+};
 
 UserSchema.statics.findByUsername = function (username: string) {
-    return this.findOne({ username })
-}
+    return this.findOne({ username });
+};
 
-const User = mongoose.model<IUserDocument, IUserModel>("User", UserSchema)
-export default User
+const User = mongoose.model<IUserDocument, IUserModel>("User", UserSchema);
+export default User;
 ```
 
 ## 2-2. 모델에서 사용할 변수 interface
@@ -81,8 +81,8 @@ export default User
 
 ```ts
 interface IUser {
-    username: string
-    hashedPassword: string
+    username: string;
+    hashedPassword: string;
 }
 ```
 
@@ -106,24 +106,24 @@ methods를 사용할 때는 이 <span style="color:red">method를 호출한 객�
 
 ```ts
 interface IUserDocument extends IUser, Document {
-    setPassword: (password: string) => Promise<void>
-    checkPassword: (password: string) => Promise<boolean>
+    setPassword: (password: string) => Promise<void>;
+    checkPassword: (password: string) => Promise<boolean>;
 }
 
 const UserSchema: Schema<IUserDocument> = new Schema({
     username: { type: String, required: true },
     hashedPassword: { type: String, required: true },
-})
+});
 
 UserSchema.methods.setPassword = async function (password: string) {
-    const hash = await bcrypt.hash(password, 10)
-    this.hashedPassword = hash
-}
+    const hash = await bcrypt.hash(password, 10);
+    this.hashedPassword = hash;
+};
 
 UserSchema.methods.checkPassword = async function (password: string) {
-    const result = await bcrypt.compare(password, this.hashedPassword)
-    return result
-}
+    const result = await bcrypt.compare(password, this.hashedPassword);
+    return result;
+};
 ```
 
 ## 2-4. 모델에서 사용할 statics interface
@@ -132,12 +132,12 @@ UserSchema.methods.checkPassword = async function (password: string) {
 
 ```ts
 interface IUserModel extends Model<IUserDocument> {
-    findByUsername: (username: string) => Promise<IUserDocument>
+    findByUsername: (username: string) => Promise<IUserDocument>;
 }
 
 UserSchema.statics.findByUsername = function (username: string) {
-    return this.findOne({ username })
-}
+    return this.findOne({ username });
+};
 ```
 
 ## 2-5. User 모델 선언
@@ -145,8 +145,8 @@ UserSchema.statics.findByUsername = function (username: string) {
 위에서 만든 IUserDocument(변수 + methods의 interface)와 statics 까지 포함한 interface를 기반으로 User model을 선언한다. 이 후 해당 model을 import하면 위의 변수, methods, statics 기능을 모두 사용할 수 있다.
 
 ```ts
-const User = mongoose.model<IUserDocument, IUserModel>("User", UserSchema)
-export default User
+const User = mongoose.model<IUserDocument, IUserModel>("User", UserSchema);
+export default User;
 ```
 
 ## 2-5. User Model Declaration
@@ -155,10 +155,10 @@ The user model is declared based on the interface including the IUserDocument (t
 
 ```ts
 interface IUserModel extends Model<IUserDocument> {
-    findByUsername: (username: string) => Promise<IUserDocument>
+    findByUsername: (username: string) => Promise<IUserDocument>;
 }
 
 UserSchema.statics.findByUsername = function (username: string) {
-    return this.findOne({ username })
-}
+    return this.findOne({ username });
+};
 ```

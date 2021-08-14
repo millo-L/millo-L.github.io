@@ -1,7 +1,7 @@
-import React from 'react';
-import Styled from 'styled-components';
-import { Disqus } from 'gatsby-plugin-disqus';
-import { mediaQuery } from '../../lib/styles/media';
+import React from "react";
+import Styled from "styled-components";
+import { Disqus } from "gatsby-plugin-disqus";
+import { mediaQuery } from "../../lib/styles/media";
 
 const Wrapper = Styled.div`
     width: 60%;
@@ -27,11 +27,11 @@ const PostComment = ({ id, title, path }: PostCommentProps) => {
                 config={{
                     url: `https://millo-l.github.io${path}`,
                     identifier: id,
-                    title
+                    title,
                 }}
             />
         </Wrapper>
     );
-}
+};
 
 export default PostComment;

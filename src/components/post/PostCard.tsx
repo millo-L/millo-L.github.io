@@ -1,11 +1,11 @@
-import React, { memo } from "react"
-import { Link } from "gatsby"
-import Styled, { css } from "styled-components"
-import { mediaQuery } from "../../lib/styles/media"
-import palette from "../../lib/styles/palette"
-import { ellipsis, formatDate } from "../../lib/styles/utils"
-import RatioImage from "../common/RatioImage"
-import { FluidObject } from "gatsby-image"
+import React, { memo } from "react";
+import { Link } from "gatsby";
+import Styled, { css } from "styled-components";
+import { mediaQuery } from "../../lib/styles/media";
+import palette from "../../lib/styles/palette";
+import { ellipsis, formatDate } from "../../lib/styles/utils";
+import RatioImage from "../common/RatioImage";
+import { FluidObject } from "gatsby-image";
 
 const Wrapper = Styled.div`
     width: 20rem;
@@ -41,13 +41,13 @@ const Wrapper = Styled.div`
         }
     }
 
-`
+`;
 
 const StyledLink = Styled(Link)`
     display: block;
     color: inherit;
     text-decoration: none;
-`
+`;
 
 const Content = Styled.div<{ clamp: boolean }>`
     padding: 1rem;
@@ -102,21 +102,21 @@ const Content = Styled.div<{ clamp: boolean }>`
         color: ${palette.gray[6]};
     }
 
-`
+`;
 
 export type PartialPostType = {
-    path: string
-    title: string
-    description: string
-    image: FluidObject | FluidObject[]
-    released_at: string
-    updated_at: string
-    lang: "ko" | "en"
-    category: string
-}
+    path: string;
+    title: string;
+    description: string;
+    image: FluidObject | FluidObject[];
+    released_at: string;
+    updated_at: string;
+    lang: "ko" | "en";
+    category: string;
+};
 
 interface PostCardProps {
-    post: PartialPostType
+    post: PartialPostType;
 }
 
 const PostCard = ({ post }: PostCardProps) => {
@@ -159,7 +159,7 @@ const PostCard = ({ post }: PostCardProps) => {
                 </StyledLink>
             </Content>
         </Wrapper>
-    )
-}
+    );
+};
 
-export default memo(PostCard)
+export default memo(PostCard);

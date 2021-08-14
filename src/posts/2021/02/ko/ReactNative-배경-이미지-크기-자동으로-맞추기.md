@@ -28,15 +28,15 @@ description: React native에서 resizeMode 속성을 통해 배경 이미지의 
 아래의 예시 코드처럼 resizeMode="stretch" 를 적용하면 지정한 크기에 꽉 차게 배경 이미지가 생성되고 해상도에 상관 없이 깨지지 않고 유지된다. 만약, 다른 방식을 원하는 사람들은 아래의 stackoverflow 주소를 들어가면 여러 가지 해결 방법들을 볼 수 있다.
 
 ```tsx
-import React from "react"
-import Styled from "styled-components/native"
+import React from "react";
+import Styled from "styled-components/native";
 
-const Container = Styled.SafeAreaView``
+const Container = Styled.SafeAreaView``;
 
 const BGImageContainer = Styled.ImageBackground`
   width: 100%;
   height: 100%;
-`
+`;
 
 const App = () => {
     return (
@@ -48,10 +48,10 @@ const App = () => {
                 {/* Input your inner code */}
             </BGImageContainer>
         </Container>
-    )
-}
+    );
+};
 
-export default App
+export default App;
 ```
 
 # [참고]

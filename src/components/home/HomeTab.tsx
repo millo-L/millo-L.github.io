@@ -1,28 +1,28 @@
-import React, { memo, useEffect, useState } from "react"
-import Styled, { css } from "styled-components"
-import palette from "../../lib/styles/palette"
-import { MdFace } from "react-icons/md"
-import { GiOpenBook } from "react-icons/gi"
-import { useSpring, animated } from "react-spring"
-import { mediaQuery } from "../../lib/styles/media"
-import { getScrollTop } from "../../lib/styles/utils"
-import { BsPencilSquare } from "react-icons/bs"
-import { graphql, Link, useStaticQuery } from "gatsby"
-import Img from "gatsby-image"
+import React, { memo, useEffect, useState } from "react";
+import Styled, { css } from "styled-components";
+import palette from "../../lib/styles/palette";
+import { MdFace } from "react-icons/md";
+import { GiOpenBook } from "react-icons/gi";
+import { useSpring, animated } from "react-spring";
+import { mediaQuery } from "../../lib/styles/media";
+import { getScrollTop } from "../../lib/styles/utils";
+import { BsPencilSquare } from "react-icons/bs";
+import { graphql, Link, useStaticQuery } from "gatsby";
+import Img from "gatsby-image";
 
 interface HomeTabProps {
-    setUser: boolean
-    page: number
-    lang: string
+    setUser: boolean;
+    page: number;
+    lang: string;
 }
 
 const HomeTab = ({ setUser, page, lang }: HomeTabProps) => {
     useEffect(() => {
         if (typeof window === "undefined" || !window.document) {
-            return
+            return;
         }
-    }, [])
-    const [visible, setVisible] = useState<boolean>(false)
+    }, []);
+    const [visible, setVisible] = useState<boolean>(false);
 
     const data = useStaticQuery(graphql`
         {
@@ -35,7 +35,7 @@ const HomeTab = ({ setUser, page, lang }: HomeTabProps) => {
                 }
             }
         }
-    `)
+    `);
 
     /*
     const [extra, toggle] = useToggle(false);
@@ -59,12 +59,12 @@ const HomeTab = ({ setUser, page, lang }: HomeTabProps) => {
             friction: 16,
             tension: 160,
         },
-    })
+    });
 
     useEffect(() => {
-        if (getScrollTop() > 30) setVisible(true)
-        else setVisible(false)
-    }, [getScrollTop()])
+        if (getScrollTop() > 30) setVisible(true);
+        else setVisible(false);
+    }, [getScrollTop()]);
 
     return (
         <Wrapper>
@@ -109,8 +109,8 @@ const HomeTab = ({ setUser, page, lang }: HomeTabProps) => {
                 <MdMoreVert className="more" onClick={toggle} />
             </MobileMore>*/}
         </Wrapper>
-    )
-}
+    );
+};
 
 const Wrapper = Styled.div`
     margin-top: 1.5rem;
@@ -121,7 +121,7 @@ const Wrapper = Styled.div`
         font-size: 1.5rem;
         color: ${palette.gray[6]};
     }
-`
+`;
 
 const UserWrapper = Styled.div<{ visible: boolean }>`
     display: flex;
@@ -151,13 +151,13 @@ const UserWrapper = Styled.div<{ visible: boolean }>`
         margin-right: 1rem;
         border-radius: 1.25rem;
     }
-`
+`;
 
 const MobileMore = Styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-`
+`;
 
 const InnerWrapper = Styled.div`
     display: flex;
@@ -196,7 +196,7 @@ const InnerWrapper = Styled.div`
             }
         }
     }
-`
+`;
 
 const Indicator = Styled(animated.div)`
     width: 33.33%;
@@ -204,6 +204,6 @@ const Indicator = Styled(animated.div)`
     position: absolute;
     bottom: 0px;
     background: ${palette.indigo[8]};
-`
+`;
 
-export default memo(HomeTab)
+export default memo(HomeTab);

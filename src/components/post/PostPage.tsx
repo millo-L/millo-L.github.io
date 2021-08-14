@@ -1,51 +1,51 @@
-import { graphql } from "gatsby"
-import React, { useCallback } from "react"
-import Footer from "../base/Footer"
-import Header from "../base/Header"
-import SimpleProfile from "../common/SimpleProfile"
-import MainPageRowTemplate from "../main/MainPageRowTemplate"
-import MainResponsive from "../main/MainResponsive"
-import PostTemplate from "../post/PostTemplate"
-import PostToC from "../post/PostToC"
-import PostViewer from "../post/PostViewer"
-import SEO from "../SEO"
-import Utterances from "./Utterances"
-import "../css/typography.css"
-import { createGlobalStyle } from "styled-components"
-import { PartialSeriesType } from "./PostSeriesList"
-import { filterByLanguage } from "../../lib/list/reshape"
+import { graphql } from "gatsby";
+import React, { useCallback } from "react";
+import Footer from "../base/Footer";
+import Header from "../base/Header";
+import SimpleProfile from "../common/SimpleProfile";
+import MainPageRowTemplate from "../main/MainPageRowTemplate";
+import MainResponsive from "../main/MainResponsive";
+import PostTemplate from "../post/PostTemplate";
+import PostToC from "../post/PostToC";
+import PostViewer from "../post/PostViewer";
+import SEO from "../SEO";
+import Utterances from "./Utterances";
+import "../css/typography.css";
+import { createGlobalStyle } from "styled-components";
+import { PartialSeriesType } from "./PostSeriesList";
+import { filterByLanguage } from "../../lib/list/reshape";
 
 createGlobalStyle`
     body {
         font-family: "ELAND", serif;
     }
-`
+`;
 
 interface PostPageProps {
-    data: any
+    data: any;
 }
 
 const PostPage = ({ data }: PostPageProps) => {
-    const { markdownRemark, site, allMarkdownRemark } = data
-    if (!(markdownRemark && site && allMarkdownRemark)) return <div></div>
+    const { markdownRemark, site, allMarkdownRemark } = data;
+    if (!(markdownRemark && site && allMarkdownRemark)) return <div></div>;
 
     const reshapeSeries = useCallback(() => {
-        const { edges } = allMarkdownRemark
-        let seriesList: Array<PartialSeriesType> = []
+        const { edges } = allMarkdownRemark;
+        let seriesList: Array<PartialSeriesType> = [];
 
         edges.map(edge => {
-            const { node } = edge
+            const { node } = edge;
             let series: PartialSeriesType = {
                 title: node.frontmatter.title,
                 lang: node.frontmatter.lang,
                 slug: node.fields.slug,
-            }
+            };
 
-            seriesList.push(series)
-        })
+            seriesList.push(series);
+        });
 
-        return seriesList
-    }, [allMarkdownRemark])
+        return seriesList;
+    }, [allMarkdownRemark]);
 
     return (
         <PostTemplate>
@@ -103,8 +103,8 @@ const PostPage = ({ data }: PostPageProps) => {
                 <Footer />
             </MainResponsive>
         </PostTemplate>
-    )
-}
+    );
+};
 
 export const pageQuery = graphql`
     query($slug: String!, $series: String!) {
@@ -157,6 +157,6 @@ export const pageQuery = graphql`
             }
         }
     }
-`
+`;
 
-export default PostPage
+export default PostPage;

@@ -1,11 +1,11 @@
-import React, { memo } from "react"
-import { Link } from "gatsby"
-import Styled, { css } from "styled-components"
-import { mediaQuery } from "../../lib/styles/media"
-import palette from "../../lib/styles/palette"
-import { ellipsis, formatDate } from "../../lib/styles/utils"
-import RatioImage from "../common/RatioImage"
-import { FluidObject } from 'gatsby-image';
+import React, { memo } from "react";
+import { Link } from "gatsby";
+import Styled, { css } from "styled-components";
+import { mediaQuery } from "../../lib/styles/media";
+import palette from "../../lib/styles/palette";
+import { ellipsis, formatDate } from "../../lib/styles/utils";
+import RatioImage from "../common/RatioImage";
+import { FluidObject } from "gatsby-image";
 
 const Wrapper = Styled.div`
     width: 42rem;
@@ -35,13 +35,13 @@ const Wrapper = Styled.div`
         }
     }
 
-`
+`;
 
 const StyledLink = Styled(Link)`
     display: block;
     color: inherit;
     text-decoration: none;
-`
+`;
 
 const Content = Styled.div<{ clamp: boolean }>`
     padding: 1rem;
@@ -72,8 +72,8 @@ const Content = Styled.div<{ clamp: boolean }>`
         font-size: 0.875rem;
         line-height: 1.5;
         ${props =>
-        props.clamp &&
-        css`
+            props.clamp &&
+            css`
                 height: 3.9375rem;
                 display: -webkit-box;
                 -webkit-line-clamp: 3;
@@ -82,8 +82,8 @@ const Content = Styled.div<{ clamp: boolean }>`
                 text-overflow: ellipsis;
             `}
         /* ${props =>
-        !props.clamp &&
-        css`
+            !props.clamp &&
+            css`
                 height: 15.875rem;
             `} */
 
@@ -100,19 +100,19 @@ const Content = Styled.div<{ clamp: boolean }>`
         }
     }
 
-`
+`;
 
 export type SeriesType = {
-    path: string
-    title: string
-    image: FluidObject | FluidObject[]
-    updated_at: string
-    totalCount: number
-    lang: string
-}
+    path: string;
+    title: string;
+    image: FluidObject | FluidObject[];
+    updated_at: string;
+    totalCount: number;
+    lang: string;
+};
 
 interface SeriesCardProps {
-    series: SeriesType
+    series: SeriesType;
 }
 
 const SeriesCard = ({ series }: SeriesCardProps) => {
@@ -124,7 +124,7 @@ const SeriesCard = ({ series }: SeriesCardProps) => {
                         widthRatio={2}
                         heightRatio={1}
                         fluid={series.image}
-                        style={{ maxHeight: '16rem' }}
+                        style={{ maxHeight: "16rem" }}
                     />
                 </StyledLink>
             )}
@@ -134,14 +134,22 @@ const SeriesCard = ({ series }: SeriesCardProps) => {
                 </StyledLink>
                 <StyledLink to={`${series.path}`}>
                     <div className="sub-info">
-                        <span>{series.totalCount}{series.lang === 'ko' ? '개의 포스트' : ' posts'}</span>
+                        <span>
+                            {series.totalCount}
+                            {series.lang === "ko" ? "개의 포스트" : " posts"}
+                        </span>
                         <span className="separator">·</span>
-                        <span>{series.lang === 'ko' ? '마지막 업데이트' : 'Last edited at'} {formatDate(series.updated_at, series.lang)}</span>
+                        <span>
+                            {series.lang === "ko"
+                                ? "마지막 업데이트"
+                                : "Last edited at"}{" "}
+                            {formatDate(series.updated_at, series.lang)}
+                        </span>
                     </div>
                 </StyledLink>
             </Content>
         </Wrapper>
-    )
-}
+    );
+};
 
-export default memo(SeriesCard)
+export default memo(SeriesCard);

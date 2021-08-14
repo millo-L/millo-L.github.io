@@ -1,13 +1,13 @@
-import React from "react"
-import { Helmet } from "react-helmet"
+import React from "react";
+import { Helmet } from "react-helmet";
 
 interface AdsenseProps {
-    style?: React.CSSProperties
-    adClient?: string
-    adSlot?: string
-    adFormat?: string
-    adLayout?: string
-    fullWidthResponsive?: string
+    style?: React.CSSProperties;
+    adClient?: string;
+    adSlot?: string;
+    adFormat?: string;
+    adLayout?: string;
+    fullWidthResponsive?: string;
 }
 
 const Adsense = ({
@@ -35,7 +35,7 @@ const Adsense = ({
             ></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </>
-    )
-}
+    );
+};
 
-export default Adsense
+export default Adsense;

@@ -1,10 +1,10 @@
-import React, { memo } from "react"
-import Styled from "styled-components"
-import media, { mediaQuery } from "../../lib/styles/media"
-import palette from "../../lib/styles/palette"
-import Adsense from "../common/Adsense"
-import { PartialPostType } from "../post/PostCard"
-import SeriesPost from "./SeriesPost"
+import React, { memo } from "react";
+import Styled from "styled-components";
+import media, { mediaQuery } from "../../lib/styles/media";
+import palette from "../../lib/styles/palette";
+import Adsense from "../common/Adsense";
+import { PartialPostType } from "../post/PostCard";
+import SeriesPost from "./SeriesPost";
 
 const Wrapper = Styled.div`
     display: flex;
@@ -43,11 +43,11 @@ const Wrapper = Styled.div`
             }
         }
     }
-`
+`;
 interface SeriesPostListProps {
-    posts: Array<PartialPostType>
-    series: string
-    lang: string
+    posts: Array<PartialPostType>;
+    series: string;
+    lang: string;
 }
 
 const SeriesPostList = ({ posts, series, lang }: SeriesPostListProps) => {
@@ -61,7 +61,7 @@ const SeriesPostList = ({ posts, series, lang }: SeriesPostListProps) => {
                 <SeriesPost post={post} index={index} key={index} />
             ))}
         </Wrapper>
-    )
-}
+    );
+};
 
-export default memo(SeriesPostList)
+export default memo(SeriesPostList);

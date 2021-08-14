@@ -28,8 +28,8 @@ description: javascript의 Date 객체를 사용해서 시간과 날짜를 출�
 ## 2-1. 현재 날짜: new Date()
 
 ```js
-let now = new Date()
-console.log(now) // Sat Jan 30 12:24:00 GMT+0900 (대한민국 표준시)
+let now = new Date();
+console.log(now); // Sat Jan 30 12:24:00 GMT+0900 (대한민국 표준시)
 ```
 
 ## 2-2. 특정 날짜 지정
@@ -37,11 +37,11 @@ console.log(now) // Sat Jan 30 12:24:00 GMT+0900 (대한민국 표준시)
 ```js
 // Sat Jan 30 03:24:00 GMT+0900 (대한민국 표준시)
 
-console.log(new Date("January 30, 2021 03:24:00"))
-console.log(new Date("20201-01-30T03:24:00"))
-console.log(new Date(2021, 01, 30)) // the month is 0-indexed
-console.log(new Date(2021, 01, 30, 3, 24, 0))
-console.log(new Date(1611944640)) // passing epoch timestamp
+console.log(new Date("January 30, 2021 03:24:00"));
+console.log(new Date("20201-01-30T03:24:00"));
+console.log(new Date(2021, 01, 30)); // the month is 0-indexed
+console.log(new Date(2021, 01, 30, 3, 24, 0));
+console.log(new Date(1611944640)); // passing epoch timestamp
 ```
 
 ## 2-3. UNIX 시간으로 나타내기
@@ -49,15 +49,15 @@ console.log(new Date(1611944640)) // passing epoch timestamp
 ### 현재 시간
 
 ```js
-let now = Date.now() // 1611976260
-console.log(new Date(now)) // Sat Jan 30 12:11:00 GMT+0900 (대한민국 표준시)
+let now = Date.now(); // 1611976260
+console.log(new Date(now)); // Sat Jan 30 12:11:00 GMT+0900 (대한민국 표준시)
 ```
 
 ### 특정 시간
 
 ```js
-console.log(Date.parse("2020-01-01")) // 1577804400
-console.log(Date.parse("2020-01-01 12:00:00")) // 1577847600
+console.log(Date.parse("2020-01-01")); // 1577804400
+console.log(Date.parse("2020-01-01 12:00:00")); // 1577847600
 ```
 
 ## 2-4. 년, 월, 일, 요일, 시간 받아오기
@@ -65,8 +65,8 @@ console.log(Date.parse("2020-01-01 12:00:00")) // 1577847600
 ### 년: getFullYear()
 
 ```js
-let date = new Date("2021-01-30")
-console.log(date.getFullYear()) // 2021
+let date = new Date("2021-01-30");
+console.log(date.getFullYear()); // 2021
 ```
 
 ### 월: getMonth()
@@ -74,8 +74,8 @@ console.log(date.getFullYear()) // 2021
 1월(0) ~ 12월(11)로 정수를 반환한다.
 
 ```js
-let date = new Date("2021-01-30")
-console.log(date.getMonth()) // 0
+let date = new Date("2021-01-30");
+console.log(date.getMonth()); // 0
 ```
 
 ### 일: getDate()
@@ -83,19 +83,19 @@ console.log(date.getMonth()) // 0
 1일(1) ~ 31일(31)로 정수를 반환한다.
 
 ```js
-let date = new Date("2021-01-30")
-console.log(date.getDate()) // 30
+let date = new Date("2021-01-30");
+console.log(date.getDate()); // 30
 ```
 
 ### 년, 월, 일 한 번에 받기
 
 ```js
-let specificDate = new Date("2021-01-30")
+let specificDate = new Date("2021-01-30");
 let [year, month, date] = specificDate
     .toLocaleDateString("ko-KR")
     .split("/")[0]
-    .split("-")
-console.log(`${year}-${month}-${date}`) // 2021-01-30
+    .split("-");
+console.log(`${year}-${month}-${date}`); // 2021-01-30
 ```
 
 ### 요일: getDay()
@@ -103,39 +103,39 @@ console.log(`${year}-${month}-${date}`) // 2021-01-30
 일(0) ~ 토(6)로 정수를 반환한다.
 
 ```js
-let date = new Date("2021-01-30")
-console.log(date.getDay()) // 6
+let date = new Date("2021-01-30");
+console.log(date.getDay()); // 6
 ```
 
 ### 시: getHours()
 
 ```js
-let date = new Date("2021-01-30 12:00:00")
-console.log(date.getHours()) // 12
+let date = new Date("2021-01-30 12:00:00");
+console.log(date.getHours()); // 12
 ```
 
 ### 분: getMinutes
 
 ```js
-let date = new Date("2021-01-30 12:30:00")
-console.log(date.getMinutes()) // 30
+let date = new Date("2021-01-30 12:30:00");
+console.log(date.getMinutes()); // 30
 ```
 
 ### 초: getSeconds
 
 ```js
-let date = new Date("2021-01-30 12:00:12")
-console.log(date.getSeconds()) // 12
+let date = new Date("2021-01-30 12:00:12");
+console.log(date.getSeconds()); // 12
 ```
 
 ### 시, 분, 초 한 번에 받기
 
 ```js
-let specificDate = new Date("2020-01-30 12:23:34")
+let specificDate = new Date("2020-01-30 12:23:34");
 let [hour, minute, second] = specificDate
     .toLocaleTimeString("ko-KR")
-    .split(/:| /)
-console.log(`${hour}:${minute}:${second}`) // 12:23:34
+    .split(/:| /);
+console.log(`${hour}:${minute}:${second}`); // 12:23:34
 ```
 
 # [참고]

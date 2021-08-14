@@ -76,74 +76,74 @@ description: WebRTC의 이론을 기반으로 1:N P2P 실시간 영상 송수신
 ### 1:1 연결에서는 상대방이 한 명 밖에 없기 때문에 offer, answer, candidate를 주고 받는 이벤트에서 socket id를 함께 보낼 필요가 없었다. 하지만 1:N 연결에서는 같은 방에 여러 명이 존재하기 때문에 어떤 user에게 데이터를 전달할지는 중요한 부분이다.
 
 ```js
-let users = {}
-let socketToRoom = {}
-const maximum = process.env.MAXIMUM || 4
+let users = {};
+let socketToRoom = {};
+const maximum = process.env.MAXIMUM || 4;
 
 io.on("connection", socket => {
     socket.on("join_room", data => {
         if (users[data.room]) {
-            const length = users[data.room].length
+            const length = users[data.room].length;
             if (length === maximum) {
-                socket.to(socket.id).emit("room_full")
-                return
+                socket.to(socket.id).emit("room_full");
+                return;
             }
-            users[data.room].push({ id: socket.id, email: data.email })
+            users[data.room].push({ id: socket.id, email: data.email });
         } else {
-            users[data.room] = [{ id: socket.id, email: data.email }]
+            users[data.room] = [{ id: socket.id, email: data.email }];
         }
-        socketToRoom[socket.id] = data.room
+        socketToRoom[socket.id] = data.room;
 
-        socket.join(data.room)
-        console.log(`[${socketToRoom[socket.id]}]: ${socket.id} enter`)
+        socket.join(data.room);
+        console.log(`[${socketToRoom[socket.id]}]: ${socket.id} enter`);
 
         const usersInThisRoom = users[data.room].filter(
             user => user.id !== socket.id
-        )
+        );
 
-        console.log(usersInThisRoom)
+        console.log(usersInThisRoom);
 
-        io.sockets.to(socket.id).emit("all_users", usersInThisRoom)
-    })
+        io.sockets.to(socket.id).emit("all_users", usersInThisRoom);
+    });
 
     socket.on("offer", data => {
         socket.to(data.offerReceiveID).emit("getOffer", {
             sdp: data.sdp,
             offerSendID: data.offerSendID,
             offerSendEmail: data.offerSendEmail,
-        })
-    })
+        });
+    });
 
     socket.on("answer", data => {
         socket.to(data.answerReceiveID).emit("getAnswer", {
             sdp: data.sdp,
             answerSendID: data.answerSendID,
-        })
-    })
+        });
+    });
 
     socket.on("candidate", data => {
         socket.to(data.candidateReceiveID).emit("getCandidate", {
             candidate: data.candidate,
             candidateSendID: data.candidateSendID,
-        })
-    })
+        });
+    });
 
     socket.on("disconnect", () => {
-        console.log(`[${socketToRoom[socket.id]}]: ${socket.id} exit`)
-        const roomID = socketToRoom[socket.id]
-        let room = users[roomID]
+        console.log(`[${socketToRoom[socket.id]}]: ${socket.id} exit`);
+        const roomID = socketToRoom[socket.id];
+        let room = users[roomID];
         if (room) {
-            room = room.filter(user => user.id !== socket.id)
-            users[roomID] = room
+            room = room.filter(user => user.id !== socket.id);
+            users[roomID] = room;
             if (room.length === 0) {
-                delete users[roomID]
-                return
+                delete users[roomID];
+                return;
             }
         }
-        socket.to(roomID).emit("user_exit", { id: socket.id })
-        console.log(users)
-    })
-})
+        socket.to(roomID).emit("user_exit", { id: socket.id });
+        console.log(users);
+    });
+});
 ```
 
 ## 3-2. Client(ReactJS, Typescript)
@@ -159,12 +159,12 @@ io.on("connection", socket => {
 -   pc_config: 지난 포스트와 동일
 
 ```ts
-const [socket, setSocket] = useState<SocketIOClient.Socket>()
-const [users, setUsers] = useState<Array<IWebRTCUser>>([])
+const [socket, setSocket] = useState<SocketIOClient.Socket>();
+const [users, setUsers] = useState<Array<IWebRTCUser>>([]);
 
-let localVideoRef = useRef<HTMLVideoElement>(null)
+let localVideoRef = useRef<HTMLVideoElement>(null);
 
-let pcs: { [socketId: string]: RTCPeerConnection }
+let pcs: { [socketId: string]: RTCPeerConnection };
 
 const pc_config = {
     iceServers: [
@@ -177,7 +177,7 @@ const pc_config = {
             urls: "stun:stun.l.google.com:19302",
         },
     ],
-}
+};
 ```
 
 ### 2. Socket 수신 이벤트
@@ -199,11 +199,11 @@ const pc_config = {
     -   users에서 해당 user의 데이터를 삭제한다.
 
 ```ts
-let newSocket = io.connect("http://localhost:8080")
-let localStream: MediaStream
+let newSocket = io.connect("http://localhost:8080");
+let localStream: MediaStream;
 
 newSocket.on("all_users", (allUsers: Array<{ id: string; email: string }>) => {
-    let len = allUsers.length
+    let len = allUsers.length;
 
     for (let i = 0; i < len; i++) {
         createPeerConnection(
@@ -211,105 +211,105 @@ newSocket.on("all_users", (allUsers: Array<{ id: string; email: string }>) => {
             allUsers[i].email,
             newSocket,
             localStream
-        )
-        let pc: RTCPeerConnection = pcs[allUsers[i].id]
+        );
+        let pc: RTCPeerConnection = pcs[allUsers[i].id];
         if (pc) {
             pc.createOffer({
                 offerToReceiveAudio: true,
                 offerToReceiveVideo: true,
             })
                 .then(sdp => {
-                    console.log("create offer success")
-                    pc.setLocalDescription(new RTCSessionDescription(sdp))
+                    console.log("create offer success");
+                    pc.setLocalDescription(new RTCSessionDescription(sdp));
                     newSocket.emit("offer", {
                         sdp: sdp,
                         offerSendID: newSocket.id,
                         offerSendEmail: "offerSendSample@sample.com",
                         offerReceiveID: allUsers[i].id,
-                    })
+                    });
                 })
                 .catch(error => {
-                    console.log(error)
-                })
+                    console.log(error);
+                });
         }
     }
-})
+});
 
 newSocket.on(
     "getOffer",
     (data: {
-        sdp: RTCSessionDescription
-        offerSendID: string
-        offerSendEmail: string
+        sdp: RTCSessionDescription;
+        offerSendID: string;
+        offerSendEmail: string;
     }) => {
-        console.log("get offer")
+        console.log("get offer");
         createPeerConnection(
             data.offerSendID,
             data.offerSendEmail,
             newSocket,
             localStream
-        )
-        let pc: RTCPeerConnection = pcs[data.offerSendID]
+        );
+        let pc: RTCPeerConnection = pcs[data.offerSendID];
         if (pc) {
             pc.setRemoteDescription(new RTCSessionDescription(data.sdp)).then(
                 () => {
-                    console.log("answer set remote description success")
+                    console.log("answer set remote description success");
                     pc.createAnswer({
                         offerToReceiveVideo: true,
                         offerToReceiveAudio: true,
                     })
                         .then(sdp => {
-                            console.log("create answer success")
+                            console.log("create answer success");
                             pc.setLocalDescription(
                                 new RTCSessionDescription(sdp)
-                            )
+                            );
                             newSocket.emit("answer", {
                                 sdp: sdp,
                                 answerSendID: newSocket.id,
                                 answerReceiveID: data.offerSendID,
-                            })
+                            });
                         })
                         .catch(error => {
-                            console.log(error)
-                        })
+                            console.log(error);
+                        });
                 }
-            )
+            );
         }
     }
-)
+);
 
 newSocket.on(
     "getAnswer",
     (data: { sdp: RTCSessionDescription; answerSendID: string }) => {
-        console.log("get answer")
-        let pc: RTCPeerConnection = pcs[data.answerSendID]
+        console.log("get answer");
+        let pc: RTCPeerConnection = pcs[data.answerSendID];
         if (pc) {
-            pc.setRemoteDescription(new RTCSessionDescription(data.sdp))
+            pc.setRemoteDescription(new RTCSessionDescription(data.sdp));
         }
         //console.log(sdp);
     }
-)
+);
 
 newSocket.on(
     "getCandidate",
     (data: { candidate: RTCIceCandidateInit; candidateSendID: string }) => {
-        console.log("get candidate")
-        let pc: RTCPeerConnection = pcs[data.candidateSendID]
+        console.log("get candidate");
+        let pc: RTCPeerConnection = pcs[data.candidateSendID];
         if (pc) {
             pc.addIceCandidate(new RTCIceCandidate(data.candidate)).then(() => {
-                console.log("candidate add success")
-            })
+                console.log("candidate add success");
+            });
         }
     }
-)
+);
 
 newSocket.on("user_exit", (data: { id: string }) => {
-    pcs[data.id].close()
-    delete pcs[data.id]
-    setUsers(oldUsers => oldUsers.filter(user => user.id !== data.id))
-})
+    pcs[data.id].close();
+    delete pcs[data.id];
+    setUsers(oldUsers => oldUsers.filter(user => user.id !== data.id));
+});
 
-setSocket(newSocket)
+setSocket(newSocket);
 ```
 
 ### 3. MediaStream 설정
@@ -327,15 +327,18 @@ navigator.mediaDevices
         },
     })
     .then(stream => {
-        if (localVideoRef.current) localVideoRef.current.srcObject = stream
+        if (localVideoRef.current) localVideoRef.current.srcObject = stream;
 
-        localStream = stream
+        localStream = stream;
 
-        newSocket.emit("join_room", { room: "1234", email: "sample@naver.com" })
+        newSocket.emit("join_room", {
+            room: "1234",
+            email: "sample@naver.com",
+        });
     })
     .catch(error => {
-        console.log(`getUserMedia error: ${error}`)
-    })
+        console.log(`getUserMedia error: ${error}`);
+    });
 ```
 
 ### 4. 상대방을 위한 RTCPeerConnection 생성
@@ -358,29 +361,29 @@ const createPeerConnection = (
     newSocket: SocketIOClient.Socket,
     localStream: MediaStream
 ): RTCPeerConnection => {
-    let pc = new RTCPeerConnection(pc_config)
+    let pc = new RTCPeerConnection(pc_config);
 
     // add pc to peerConnections object
-    pcs = { ...pcs, [socketID]: pc }
+    pcs = { ...pcs, [socketID]: pc };
 
     pc.onicecandidate = e => {
         if (e.candidate) {
-            console.log("onicecandidate")
+            console.log("onicecandidate");
             newSocket.emit("candidate", {
                 candidate: e.candidate,
                 candidateSendID: newSocket.id,
                 candidateReceiveID: socketID,
-            })
+            });
         }
-    }
+    };
 
     pc.oniceconnectionstatechange = e => {
-        console.log(e)
-    }
+        console.log(e);
+    };
 
     pc.ontrack = e => {
-        console.log("ontrack success")
-        setUsers(oldUsers => oldUsers.filter(user => user.id !== socketID))
+        console.log("ontrack success");
+        setUsers(oldUsers => oldUsers.filter(user => user.id !== socketID));
         setUsers(oldUsers => [
             ...oldUsers,
             {
@@ -388,21 +391,21 @@ const createPeerConnection = (
                 email: email,
                 stream: e.streams[0],
             },
-        ])
-    }
+        ]);
+    };
 
     if (localStream) {
-        console.log("localstream add")
+        console.log("localstream add");
         localStream.getTracks().forEach(track => {
-            pc.addTrack(track, localStream)
-        })
+            pc.addTrack(track, localStream);
+        });
     } else {
-        console.log("no local stream")
+        console.log("no local stream");
     }
 
     // return pc
-    return pc
-}
+    return pc;
+};
 ```
 
 ### 5. 본인과 상대방의 video 렌더링
@@ -413,33 +416,33 @@ const createPeerConnection = (
 
 ```tsx
 interface IWebRTCUser {
-    id: string
-    email: string
-    stream: MediaStream
+    id: string;
+    email: string;
+    stream: MediaStream;
 }
 
 interface Props {
-    email: string
-    stream: MediaStream
-    muted?: boolean
+    email: string;
+    stream: MediaStream;
+    muted?: boolean;
 }
 
 const Video = ({ email, stream, muted }: Props) => {
-    const ref = useRef<HTMLVideoElement>(null)
-    const [isMuted, setIsMuted] = useState<boolean>(false)
+    const ref = useRef<HTMLVideoElement>(null);
+    const [isMuted, setIsMuted] = useState<boolean>(false);
 
     useEffect(() => {
-        if (ref.current) ref.current.srcObject = stream
-        if (muted) setIsMuted(muted)
-    })
+        if (ref.current) ref.current.srcObject = stream;
+        if (muted) setIsMuted(muted);
+    });
 
     return (
         <Container>
             <VideoContainer ref={ref} muted={isMuted} autoPlay></VideoContainer>
             <UserLabel>{email}</UserLabel>
         </Container>
-    )
-}
+    );
+};
 
 return (
     <div>
@@ -455,10 +458,12 @@ return (
             autoPlay
         ></video>
         {users.map((user, index) => {
-            return <Video key={index} email={user.email} stream={user.stream} />
+            return (
+                <Video key={index} email={user.email} stream={user.stream} />
+            );
         })}
     </div>
-)
+);
 ```
 
 # 4. 느낀 점

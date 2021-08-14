@@ -1,14 +1,14 @@
-import React, { memo } from "react"
-import Styled, { css } from "styled-components"
-import { mediaQuery } from "../../lib/styles/media"
-import MainResponsive from "../main/MainResponsive"
-import Img from "gatsby-image"
-import { graphql, useStaticQuery } from "gatsby"
-import CategoryList from "./CategoryList"
-import ProfileIcons from "./ProfileIcons"
+import React, { memo } from "react";
+import Styled, { css } from "styled-components";
+import { mediaQuery } from "../../lib/styles/media";
+import MainResponsive from "../main/MainResponsive";
+import Img from "gatsby-image";
+import { graphql, useStaticQuery } from "gatsby";
+import CategoryList from "./CategoryList";
+import ProfileIcons from "./ProfileIcons";
 
 const SimpleProfileWrapper = Styled(MainResponsive)<{
-    type: "header" | "body"
+    type: "header" | "body";
 }>`
     ${props =>
         props.type === "header"
@@ -100,13 +100,13 @@ const SimpleProfileWrapper = Styled(MainResponsive)<{
                       }
                   }
               `}
-`
+`;
 
 interface SimpleProfileProps {
-    type: "header" | "body"
-    categoryVisible: boolean
-    lang: string
-    style?: React.CSSProperties
+    type: "header" | "body";
+    categoryVisible: boolean;
+    lang: string;
+    style?: React.CSSProperties;
 }
 
 const SimpleProfile = ({
@@ -126,7 +126,7 @@ const SimpleProfile = ({
                 }
             }
         }
-    `)
+    `);
 
     return (
         <SimpleProfileWrapper type={type} style={style}>
@@ -140,7 +140,7 @@ const SimpleProfile = ({
             </div>
             <CategoryList visible={categoryVisible} lang={lang} />
         </SimpleProfileWrapper>
-    )
-}
+    );
+};
 
-export default memo(SimpleProfile)
+export default memo(SimpleProfile);

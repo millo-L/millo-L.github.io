@@ -30,7 +30,7 @@ description: "Gatsby  document is not defined build error 해결하기."
 
 ```tsx
 if (typeof window === "undefined" || !window.document) {
-    return
+    return;
 }
 ```
 
@@ -39,12 +39,12 @@ if (typeof window === "undefined" || !window.document) {
 ```tsx
 const getScrollTop = () => {
     if (typeof window === "undefined" || !window.document) {
-        return 0
+        return 0;
     }
-    if (!document.body) return 0
+    if (!document.body) return 0;
     const scrollTop = document.documentElement
         ? document.documentElement.scrollTop || document.body.scrollTop
-        : document.body.scrollTop
-    return scrollTop
-}
+        : document.body.scrollTop;
+    return scrollTop;
+};
 ```

@@ -93,12 +93,12 @@ npm install http express slack-node
 ```js
 // index.js
 
-const Slack = require("slack-node")
+const Slack = require("slack-node");
 
 // 생성한 token
-const API_TOKEN = "Bot User OAuth Access Token"
+const API_TOKEN = "Bot User OAuth Access Token";
 
-const slack = new Slack(API_TOKEN)
+const slack = new Slack(API_TOKEN);
 
 const send = async (sender, message) => {
     slack.api(
@@ -110,15 +110,15 @@ const send = async (sender, message) => {
         },
         (error, response) => {
             if (error) {
-                console.log(error)
-                return
+                console.log(error);
+                return;
             }
-            console.log(response)
+            console.log(response);
         }
-    )
-}
+    );
+};
 
-send("user1", "send message")
+send("user1", "send message");
 ```
 
 ![](../../../../images/2021/02/slack6.png)
@@ -130,18 +130,18 @@ send("user1", "send message")
 ```js
 // index.js
 
-const Slack = require("slack-node")
-const http = require("http")
-const express = require("express")
+const Slack = require("slack-node");
+const http = require("http");
+const express = require("express");
 
-const app = express()
-const server = http.createServer(app)
+const app = express();
+const server = http.createServer(app);
 
-const PORT = 8080
+const PORT = 8080;
 // 생성한 token
-const API_TOKEN = "Bot User OAuth Access Token"
+const API_TOKEN = "Bot User OAuth Access Token";
 
-const slack = new Slack(API_TOKEN)
+const slack = new Slack(API_TOKEN);
 
 const send = async (sender, message) => {
     slack.api(
@@ -153,26 +153,26 @@ const send = async (sender, message) => {
         },
         (error, response) => {
             if (error) {
-                console.log(error)
-                return
+                console.log(error);
+                return;
             }
-            console.log(response)
+            console.log(response);
         }
-    )
-}
+    );
+};
 
 app.get("/pay", async (req, res) => {
-    let user = req.query.user
-    let product = req.query.product
+    let user = req.query.user;
+    let product = req.query.product;
 
-    await send(user, `purchase ${product}`)
+    await send(user, `purchase ${product}`);
 
-    res.send("<h1>Thank you for purchasing our product</h1>")
-})
+    res.send("<h1>Thank you for purchasing our product</h1>");
+});
 
 server.listen(PORT, () => {
-    console.log(`Server running on ${PORT}`)
-})
+    console.log(`Server running on ${PORT}`);
+});
 ```
 
 ![](../../../../images/2021/02/slack7.png)

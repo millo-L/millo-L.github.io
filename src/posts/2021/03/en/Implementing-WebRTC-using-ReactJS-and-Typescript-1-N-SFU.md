@@ -57,10 +57,10 @@ Last time, I posted for [1:N P2P communication using WebRTC](<https://millo-l.gi
         -   socketToRoom[socketID] = Room ID to which user belongs
 
 ```js
-let receiverPCs = {}
-let senderPCs = {}
-let users = {}
-let socketToRoom = {}
+let receiverPCs = {};
+let senderPCs = {};
+let users = {};
+let socketToRoom = {};
 ```
 
 ### 2. socket 이벤트
@@ -75,12 +75,12 @@ let socketToRoom = {}
 ```js
 socket.on("joinRoom", data => {
     try {
-        let allUsers = getOtherUsersInRoom(data.id, data.roomID)
-        io.to(data.id).emit("allUsers", { users: allUsers })
+        let allUsers = getOtherUsersInRoom(data.id, data.roomID);
+        io.to(data.id).emit("allUsers", { users: allUsers });
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
-})
+});
 ```
 
 -   senderOffer
@@ -96,24 +96,24 @@ socket.on("joinRoom", data => {
 ```js
 socket.on("senderOffer", async data => {
     try {
-        socketToRoom[data.senderSocketID] = data.roomID
+        socketToRoom[data.senderSocketID] = data.roomID;
         let pc = createReceiverPeerConnection(
             data.senderSocketID,
             socket,
             data.roomID
-        )
-        await pc.setRemoteDescription(data.sdp)
+        );
+        await pc.setRemoteDescription(data.sdp);
         let sdp = await pc.createAnswer({
             offerToReceiveAudio: true,
             offerToReceiveVideo: true,
-        })
-        await pc.setLocalDescription(sdp)
-        socket.join(data.roomID)
-        io.to(data.senderSocketID).emit("getSenderAnswer", { sdp })
+        });
+        await pc.setLocalDescription(sdp);
+        socket.join(data.roomID);
+        io.to(data.senderSocketID).emit("getSenderAnswer", { sdp });
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
-})
+});
 ```
 
 -   senderCandidate
@@ -126,12 +126,12 @@ socket.on("senderOffer", async data => {
 ```js
 socket.on("senderCandidate", async data => {
     try {
-        let pc = receiverPCs[data.senderSocketID]
-        await pc.addIceCandidate(new wrtc.RTCIceCandidate(data.candidate))
+        let pc = receiverPCs[data.senderSocketID];
+        await pc.addIceCandidate(new wrtc.RTCIceCandidate(data.candidate));
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
-})
+});
 ```
 
 -   receiverOffer
@@ -153,21 +153,21 @@ socket.on("receiverOffer", async data => {
             data.senderSocketID,
             socket,
             data.roomID
-        )
-        await pc.setRemoteDescription(data.sdp)
+        );
+        await pc.setRemoteDescription(data.sdp);
         let sdp = await pc.createAnswer({
             offerToReceiveAudio: false,
             offerToReceiveVideo: false,
-        })
-        await pc.setLocalDescription(sdp)
+        });
+        await pc.setLocalDescription(sdp);
         io.to(data.receiverSocketID).emit("getReceiverAnswer", {
             id: data.senderSocketID,
             sdp,
-        })
+        });
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
-})
+});
 ```
 
 -   receiverCandidate
@@ -183,14 +183,14 @@ socket.on("receiverCandidate", async data => {
     try {
         const senderPC = senderPCs[data.senderSocketID].filter(
             sPC => sPC.id === data.receiverSocketID
-        )
+        );
         await senderPC[0].pc.addIceCandidate(
             new wrtc.RTCIceCandidate(data.candidate)
-        )
+        );
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
-})
+});
 ```
 
 -   disconnect
@@ -200,17 +200,17 @@ socket.on("receiverCandidate", async data => {
 ```js
 socket.on("disconnect", () => {
     try {
-        let roomID = socketToRoom[socket.id]
+        let roomID = socketToRoom[socket.id];
 
-        deleteUser(socket.id, roomID)
-        closeRecevierPC(socket.id)
-        closeSenderPCs(socket.id)
+        deleteUser(socket.id, roomID);
+        closeRecevierPC(socket.id);
+        closeSenderPCs(socket.id);
 
-        socket.broadcast.to(roomID).emit("userExit", { id: socket.id })
+        socket.broadcast.to(roomID).emit("userExit", { id: socket.id });
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
-})
+});
 ```
 
 ### 3. Function description
@@ -224,12 +224,12 @@ socket.on("disconnect", () => {
 
 ```js
 const isIncluded = (array, id) => {
-    let len = array.length
+    let len = array.length;
     for (let i = 0; i < len; i++) {
-        if (array[i].id === id) return true
+        if (array[i].id === id) return true;
     }
-    return false
-}
+    return false;
+};
 ```
 
 -   createReceiverPeerConnection
@@ -242,21 +242,21 @@ const isIncluded = (array, id) => {
 
 ```js
 const createReceiverPeerConnection = (socketID, socket, roomID) => {
-    let pc = new wrtc.RTCPeerConnection(pc_config)
+    let pc = new wrtc.RTCPeerConnection(pc_config);
 
-    if (receiverPCs[socketID]) receiverPCs[socketID] = pc
-    else receiverPCs = { ...receiverPCs, [socketID]: pc }
+    if (receiverPCs[socketID]) receiverPCs[socketID] = pc;
+    else receiverPCs = { ...receiverPCs, [socketID]: pc };
 
     pc.onicecandidate = e => {
         //console.log(`socketID: ${socketID}'s receiverPeerConnection icecandidate`);
         socket.to(socketID).emit("getSenderCandidate", {
             candidate: e.candidate,
-        })
-    }
+        });
+    };
 
     pc.oniceconnectionstatechange = e => {
         //console.log(e);
-    }
+    };
 
     pc.ontrack = e => {
         if (users[roomID]) {
@@ -264,21 +264,21 @@ const createReceiverPeerConnection = (socketID, socket, roomID) => {
                 users[roomID].push({
                     id: socketID,
                     stream: e.streams[0],
-                })
-            } else return
+                });
+            } else return;
         } else {
             users[roomID] = [
                 {
                     id: socketID,
                     stream: e.streams[0],
                 },
-            ]
+            ];
         }
-        socket.broadcast.to(roomID).emit("userEnter", { id: socketID })
-    }
+        socket.broadcast.to(roomID).emit("userEnter", { id: socketID });
+    };
 
-    return pc
-}
+    return pc;
+};
 ```
 
 -   createSenderPeerConnection
@@ -297,36 +297,36 @@ const createSenderPeerConnection = (
     socket,
     roomID
 ) => {
-    let pc = new wrtc.RTCPeerConnection(pc_config)
+    let pc = new wrtc.RTCPeerConnection(pc_config);
 
     if (senderPCs[senderSocketID]) {
-        senderPCs[senderSocketID].filter(user => user.id !== receiverSocketID)
-        senderPCs[senderSocketID].push({ id: receiverSocketID, pc: pc })
+        senderPCs[senderSocketID].filter(user => user.id !== receiverSocketID);
+        senderPCs[senderSocketID].push({ id: receiverSocketID, pc: pc });
     } else
         senderPCs = {
             ...senderPCs,
             [senderSocketID]: [{ id: receiverSocketID, pc: pc }],
-        }
+        };
 
     pc.onicecandidate = e => {
         //console.log(`socketID: ${receiverSocketID}'s senderPeerConnection icecandidate`);
         socket.to(receiverSocketID).emit("getReceiverCandidate", {
             id: senderSocketID,
             candidate: e.candidate,
-        })
-    }
+        });
+    };
 
     pc.oniceconnectionstatechange = e => {
         //console.log(e);
-    }
+    };
 
-    const sendUser = users[roomID].filter(user => user.id === senderSocketID)
+    const sendUser = users[roomID].filter(user => user.id === senderSocketID);
     sendUser[0].stream.getTracks().forEach(track => {
-        pc.addTrack(track, sendUser[0].stream)
-    })
+        pc.addTrack(track, sendUser[0].stream);
+    });
 
-    return pc
-}
+    return pc;
+};
 ```
 
 -   getOtherUsersInRoom
@@ -338,18 +338,18 @@ const createSenderPeerConnection = (
 
 ```js
 const getOtherUsersInRoom = (socketID, roomID) => {
-    let allUsers = []
+    let allUsers = [];
 
-    if (!users[roomID]) return allUsers
+    if (!users[roomID]) return allUsers;
 
-    let len = users[roomID].length
+    let len = users[roomID].length;
     for (let i = 0; i < len; i++) {
-        if (users[roomID][i].id === socketID) continue
-        allUsers.push({ id: users[roomID][i].id })
+        if (users[roomID][i].id === socketID) continue;
+        allUsers.push({ id: users[roomID][i].id });
     }
 
-    return allUsers
-}
+    return allUsers;
+};
 ```
 
 -   deleteUser
@@ -361,15 +361,15 @@ const getOtherUsersInRoom = (socketID, roomID) => {
 
 ```js
 const deleteUser = (socketID, roomID) => {
-    let roomUsers = users[roomID]
-    if (!roomUsers) return
-    roomUsers = roomUsers.filter(user => user.id !== socketID)
-    users[roomID] = roomUsers
+    let roomUsers = users[roomID];
+    if (!roomUsers) return;
+    roomUsers = roomUsers.filter(user => user.id !== socketID);
+    users[roomID] = roomUsers;
     if (roomUsers.length === 0) {
-        delete users[roomID]
+        delete users[roomID];
     }
-    delete socketToRoom[socketID]
-}
+    delete socketToRoom[socketID];
+};
 ```
 
 -   closeReceiverPC
@@ -380,11 +380,11 @@ const deleteUser = (socketID, roomID) => {
 
 ```js
 const closeRecevierPC = socketID => {
-    if (!receiverPCs[socketID]) return
+    if (!receiverPCs[socketID]) return;
 
-    receiverPCs[socketID].close()
-    delete receiverPCs[socketID]
-}
+    receiverPCs[socketID].close();
+    delete receiverPCs[socketID];
+};
 ```
 
 -   closeSenderPCs
@@ -395,23 +395,23 @@ const closeRecevierPC = socketID => {
 
 ```js
 const closeSenderPCs = socketID => {
-    if (!senderPCs[socketID]) return
+    if (!senderPCs[socketID]) return;
 
-    let len = senderPCs[socketID].length
+    let len = senderPCs[socketID].length;
     for (let i = 0; i < len; i++) {
-        senderPCs[socketID][i].pc.close()
-        let _senderPCs = senderPCs[senderPCs[socketID][i].id]
-        let senderPC = _senderPCs.filter(sPC => sPC.id === socketID)
+        senderPCs[socketID][i].pc.close();
+        let _senderPCs = senderPCs[senderPCs[socketID][i].id];
+        let senderPC = _senderPCs.filter(sPC => sPC.id === socketID);
         if (senderPC[0]) {
-            senderPC[0].pc.close()
+            senderPC[0].pc.close();
             senderPCs[senderPCs[socketID][i].id] = _senderPCs.filter(
                 sPC => sPC.id !== socketID
-            )
+            );
         }
     }
 
-    delete senderPCs[socketID]
-}
+    delete senderPCs[socketID];
+};
 ```
 
 ## Client(ReactJS, Typescript)
@@ -428,13 +428,13 @@ const closeSenderPCs = socketID => {
 -   pc_config: RTCPeerConnection setting
 
 ```tsx
-const [socket, setSocket] = useState<SocketIOClient.Socket>()
-const [users, setUsers] = useState<Array<IWebRTCUser>>([])
+const [socket, setSocket] = useState<SocketIOClient.Socket>();
+const [users, setUsers] = useState<Array<IWebRTCUser>>([]);
 
-let localVideoRef = useRef<HTMLVideoElement>(null)
+let localVideoRef = useRef<HTMLVideoElement>(null);
 
-let sendPC: RTCPeerConnection
-let receivePCs: any
+let sendPC: RTCPeerConnection;
+let receivePCs: any;
 
 const pc_config = {
     iceServers: [
@@ -447,7 +447,7 @@ const pc_config = {
             urls: "stun:stun.l.google.com:19302",
         },
     ],
-}
+};
 ```
 
 ### 2. Socket 수신 이벤트
@@ -460,8 +460,8 @@ const pc_config = {
 
 ```tsx
 newSocket.on("userEnter", (data: { id: string }) => {
-    createReceivePC(data.id, newSocket)
-})
+    createReceivePC(data.id, newSocket);
+});
 ```
 
 -   allUsers
@@ -472,11 +472,11 @@ newSocket.on("userEnter", (data: { id: string }) => {
 
 ```tsx
 newSocket.on("allUsers", (data: { users: Array<{ id: string }> }) => {
-    let len = data.users.length
+    let len = data.users.length;
     for (let i = 0; i < len; i++) {
-        createReceivePC(data.users[i].id, newSocket)
+        createReceivePC(data.users[i].id, newSocket);
     }
-})
+});
 ```
 
 -   userExit
@@ -487,10 +487,10 @@ newSocket.on("allUsers", (data: { users: Array<{ id: string }> }) => {
 
 ```tsx
 newSocket.on("userExit", (data: { id: string }) => {
-    receivePCs[data.id].close()
-    delete receivePCs[data.id]
-    setUsers(users => users.filter(user => user.id !== data.id))
-})
+    receivePCs[data.id].close();
+    delete receivePCs[data.id];
+    setUsers(users => users.filter(user => user.id !== data.id));
+});
 ```
 
 -   getSenderAnswer
@@ -506,12 +506,12 @@ newSocket.on(
         try {
             await sendPC.setRemoteDescription(
                 new RTCSessionDescription(data.sdp)
-            )
+            );
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     }
-)
+);
 ```
 
 -   getSenderCandidate
@@ -525,13 +525,13 @@ newSocket.on(
     "getSenderCandidate",
     async (data: { candidate: RTCIceCandidateInit }) => {
         try {
-            if (!data.candidate) return
-            sendPC.addIceCandidate(new RTCIceCandidate(data.candidate))
+            if (!data.candidate) return;
+            sendPC.addIceCandidate(new RTCIceCandidate(data.candidate));
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     }
-)
+);
 ```
 
 -   getReceiverAnswer
@@ -546,13 +546,13 @@ newSocket.on(
     "getReceiverAnswer",
     async (data: { id: string; sdp: RTCSessionDescription }) => {
         try {
-            let pc: RTCPeerConnection = receivePCs[data.id]
-            await pc.setRemoteDescription(data.sdp)
+            let pc: RTCPeerConnection = receivePCs[data.id];
+            await pc.setRemoteDescription(data.sdp);
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     }
-)
+);
 ```
 
 -   getReceiverCandidate
@@ -567,14 +567,14 @@ newSocket.on(
     "getReceiverCandidate",
     async (data: { id: string; candidate: RTCIceCandidateInit }) => {
         try {
-            let pc: RTCPeerConnection = receivePCs[data.id]
-            if (!data.candidate) return
-            pc.addIceCandidate(new RTCIceCandidate(data.candidate))
+            let pc: RTCPeerConnection = receivePCs[data.id];
+            if (!data.candidate) return;
+            pc.addIceCandidate(new RTCIceCandidate(data.candidate));
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     }
-)
+);
 ```
 
 ### 3. MediaStream Settings
@@ -593,21 +593,21 @@ navigator.mediaDevices
         },
     })
     .then(stream => {
-        if (localVideoRef.current) localVideoRef.current.srcObject = stream
+        if (localVideoRef.current) localVideoRef.current.srcObject = stream;
 
-        localStream = stream
+        localStream = stream;
 
-        sendPC = createSenderPeerConnection(newSocket, localStream)
-        createSenderOffer(newSocket)
+        sendPC = createSenderPeerConnection(newSocket, localStream);
+        createSenderOffer(newSocket);
 
         newSocket.emit("joinRoom", {
             id: newSocket.id,
             roomID: "1234",
-        })
+        });
     })
     .catch(error => {
-        console.log(`getUserMedia error: ${error}`)
-    })
+        console.log(`getUserMedia error: ${error}`);
+    });
 ```
 
 ### 4. Function Description
@@ -622,12 +622,12 @@ navigator.mediaDevices
 ```tsx
 const createReceivePC = (id: string, newSocket: SocketIOClient.Socket) => {
     try {
-        let pc = createReceiverPeerConnection(id, newSocket)
-        createReceiverOffer(pc, newSocket, id)
+        let pc = createReceiverPeerConnection(id, newSocket);
+        createReceiverOffer(pc, newSocket, id);
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
-}
+};
 ```
 
 -   createSenderOffer
@@ -646,18 +646,18 @@ const createSenderOffer = async (newSocket: SocketIOClient.Socket) => {
         let sdp = await sendPC.createOffer({
             offerToReceiveAudio: false,
             offerToReceiveVideo: false,
-        })
-        await sendPC.setLocalDescription(new RTCSessionDescription(sdp))
+        });
+        await sendPC.setLocalDescription(new RTCSessionDescription(sdp));
 
         newSocket.emit("senderOffer", {
             sdp,
             senderSocketID: newSocket.id,
             roomID: "1234",
-        })
+        });
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
-}
+};
 ```
 
 -   createReceiverOffer
@@ -682,19 +682,19 @@ const createReceiverOffer = async (
         let sdp = await pc.createOffer({
             offerToReceiveAudio: true,
             offerToReceiveVideo: true,
-        })
-        await pc.setLocalDescription(new RTCSessionDescription(sdp))
+        });
+        await pc.setLocalDescription(new RTCSessionDescription(sdp));
 
         newSocket.emit("receiverOffer", {
             sdp,
             receiverSocketID: newSocket.id,
             senderSocketID,
             roomID: "1234",
-        })
+        });
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
-}
+};
 ```
 
 -   createSenderPeerConnection
@@ -715,33 +715,33 @@ const createSenderPeerConnection = (
     newSocket: SocketIOClient.Socket,
     localStream: MediaStream
 ): RTCPeerConnection => {
-    let pc = new RTCPeerConnection(pc_config)
+    let pc = new RTCPeerConnection(pc_config);
 
     pc.onicecandidate = e => {
         if (e.candidate) {
             newSocket.emit("senderCandidate", {
                 candidate: e.candidate,
                 senderSocketID: newSocket.id,
-            })
+            });
         }
-    }
+    };
 
     pc.oniceconnectionstatechange = e => {
-        console.log(e)
-    }
+        console.log(e);
+    };
 
     if (localStream) {
-        console.log("localstream add")
+        console.log("localstream add");
         localStream.getTracks().forEach(track => {
-            pc.addTrack(track, localStream)
-        })
+            pc.addTrack(track, localStream);
+        });
     } else {
-        console.log("no local stream")
+        console.log("no local stream");
     }
 
     // return pc
-    return pc
-}
+    return pc;
+};
 ```
 
 -   createReceiverPeerConnection
@@ -766,10 +766,10 @@ const createReceiverPeerConnection = (
     socketID: string,
     newSocket: SocketIOClient.Socket
 ): RTCPeerConnection => {
-    let pc = new RTCPeerConnection(pc_config)
+    let pc = new RTCPeerConnection(pc_config);
 
     // add pc to peerConnections object
-    receivePCs = { ...receivePCs, [socketID]: pc }
+    receivePCs = { ...receivePCs, [socketID]: pc };
 
     pc.onicecandidate = e => {
         if (e.candidate) {
@@ -777,28 +777,28 @@ const createReceiverPeerConnection = (
                 candidate: e.candidate,
                 receiverSocketID: newSocket.id,
                 senderSocketID: socketID,
-            })
+            });
         }
-    }
+    };
 
     pc.oniceconnectionstatechange = e => {
-        console.log(e)
-    }
+        console.log(e);
+    };
 
     pc.ontrack = e => {
-        setUsers(oldUsers => oldUsers.filter(user => user.id !== socketID))
+        setUsers(oldUsers => oldUsers.filter(user => user.id !== socketID));
         setUsers(oldUsers => [
             ...oldUsers,
             {
                 id: socketID,
                 stream: e.streams[0],
             },
-        ])
-    }
+        ]);
+    };
 
     // return pc
-    return pc
-}
+    return pc;
+};
 ```
 
 ### 5. Video rendering of yourself and your opponent
@@ -809,33 +809,33 @@ const createReceiverPeerConnection = (
 
 ```tsx
 interface IWebRTCUser {
-    id: string
-    email: string
-    stream: MediaStream
+    id: string;
+    email: string;
+    stream: MediaStream;
 }
 
 interface Props {
-    email: string
-    stream: MediaStream
-    muted?: boolean
+    email: string;
+    stream: MediaStream;
+    muted?: boolean;
 }
 
 const Video = ({ email, stream, muted }: Props) => {
-    const ref = useRef<HTMLVideoElement>(null)
-    const [isMuted, setIsMuted] = useState<boolean>(false)
+    const ref = useRef<HTMLVideoElement>(null);
+    const [isMuted, setIsMuted] = useState<boolean>(false);
 
     useEffect(() => {
-        if (ref.current) ref.current.srcObject = stream
-        if (muted) setIsMuted(muted)
-    })
+        if (ref.current) ref.current.srcObject = stream;
+        if (muted) setIsMuted(muted);
+    });
 
     return (
         <Container>
             <VideoContainer ref={ref} muted={isMuted} autoPlay></VideoContainer>
             <UserLabel>{email}</UserLabel>
         </Container>
-    )
-}
+    );
+};
 
 return (
     <div>
@@ -851,10 +851,12 @@ return (
             autoPlay
         ></video>
         {users.map((user, index) => {
-            return <Video key={index} email={user.email} stream={user.stream} />
+            return (
+                <Video key={index} email={user.email} stream={user.stream} />
+            );
         })}
     </div>
-)
+);
 ```
 
 # [GitHub]

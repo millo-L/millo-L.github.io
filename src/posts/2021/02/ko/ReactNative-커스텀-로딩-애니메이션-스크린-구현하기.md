@@ -61,18 +61,18 @@ react native 0.62.2 버전을 typescript와 함께 설치한다. 또한, 아래�
 아래와 같이 setInterval 함수를 생성해서 이미지가 계속해서 변경되게 코드를 작성한다. 여기서 중요한 점은 해당 페이지가 종료될 때 clearInterval 함수를 통해서 작동하고 있는 setInterval 함수를 초기화해줘야 한다는 것이다. 그다지 어렵지 않게 구현할 수 있었으므로 로딩 화면 제작 자체는 크게 어렵지 않을 것으로 예상된다.
 
 ```tsx
-import React, { useEffect, useState } from "react"
-import Styled from "styled-components/native"
+import React, { useEffect, useState } from "react";
+import Styled from "styled-components/native";
 
 const Container = Styled.SafeAreaView`
   align-items: center;
   justify-content: center;
   flex: 1;
-`
+`;
 
 const Image = Styled.Image`
 
-`
+`;
 
 const animationImages = [
     require("~/Assets/Images/0.png"),
@@ -90,26 +90,26 @@ const animationImages = [
     require("~/Assets/Images/12.png"),
     require("~/Assets/Images/13.png"),
     require("~/Assets/Images/14.png"),
-]
+];
 
 const App = () => {
-    const [imageNumber, setImageNumber] = useState<number>(0)
+    const [imageNumber, setImageNumber] = useState<number>(0);
 
     useEffect(() => {
-        let count = 0
+        let count = 0;
         let countInterval = setInterval(() => {
-            setImageNumber(count++ % 15)
-        }, 1000 / 20)
+            setImageNumber(count++ % 15);
+        }, 1000 / 20);
 
-        return () => clearInterval(countInterval)
-    }, [])
+        return () => clearInterval(countInterval);
+    }, []);
 
     return (
         <Container>
             <Image source={animationImages[imageNumber]} key={imageNumber} />
         </Container>
-    )
-}
+    );
+};
 
-export default App
+export default App;
 ```

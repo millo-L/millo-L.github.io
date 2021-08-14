@@ -1,14 +1,14 @@
-import React, { memo, useCallback, useRef, useState } from 'react';
-import Styled from 'styled-components';
-import useToggle from '../../lib/hooks/useToggle';
-import { BsSearch } from 'react-icons/bs';
-import MainResponsive from '../main/MainResponsive';
-import { Link } from 'gatsby';
-import media from '../../lib/styles/media';
-import HeaderLanguage from './HeaderLanguage';
-import HeaderLogo from './HeaderLogo';
-import HeaderUserMenu from './HeaderUserMenu';
-import SimpleProfile from '../common/SimpleProfile';
+import React, { memo, useCallback, useRef, useState } from "react";
+import Styled from "styled-components";
+import useToggle from "../../lib/hooks/useToggle";
+import { BsSearch } from "react-icons/bs";
+import MainResponsive from "../main/MainResponsive";
+import { Link } from "gatsby";
+import media from "../../lib/styles/media";
+import HeaderLanguage from "./HeaderLanguage";
+import HeaderLogo from "./HeaderLogo";
+import HeaderUserMenu from "./HeaderUserMenu";
+import SimpleProfile from "../common/SimpleProfile";
 
 interface HeaderProps {
     lang: string;
@@ -20,18 +20,18 @@ const Header = ({ lang, ko_to, en_to }: HeaderProps) => {
     const [userMenuVisible, toggleUserMenu] = useToggle(false);
     const ref = useRef<HTMLDivElement>(null);
 
-    const onOutsideClick = useCallback((e: React.MouseEvent) => {
-        if (!ref.current) return;
-        if (ref.current.contains(e.target as any)) return;
-        toggleUserMenu();
-    }, [toggleUserMenu]);
+    const onOutsideClick = useCallback(
+        (e: React.MouseEvent) => {
+            if (!ref.current) return;
+            if (ref.current.contains(e.target as any)) return;
+            toggleUserMenu();
+        },
+        [toggleUserMenu]
+    );
 
     return (
         <Wrapper>
-            <Inner
-                style={{
-                }}
-            >
+            <Inner style={{}}>
                 <HeaderLogo lang={lang} />
                 <Right>
                     {/*<SearchButton to="/search">
@@ -39,7 +39,7 @@ const Header = ({ lang, ko_to, en_to }: HeaderProps) => {
                     </SearchButton>*/}
                     <div ref={ref}>
                         <HeaderLanguage
-                            language={lang === 'ko' ? '한국어' : 'English'}
+                            language={lang === "ko" ? "한국어" : "English"}
                             onClick={toggleUserMenu}
                         />
                     </div>
@@ -52,10 +52,10 @@ const Header = ({ lang, ko_to, en_to }: HeaderProps) => {
                 </Right>
             </Inner>
 
-            <SimpleProfile type='header' categoryVisible={false} lang={lang} />
+            <SimpleProfile type="header" categoryVisible={false} lang={lang} />
         </Wrapper>
     );
-}
+};
 
 const Wrapper = Styled.div`
     margin-top: 1rem;

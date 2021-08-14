@@ -48,25 +48,25 @@ index.js 파일은 user의 request가 처음 도달하는 js이다. 여기서 �
 ```js
 // index.js 파일
 
-const express = require("express")
-const http = require("http")
-const bodyParser = require("body-parser")
-const app = express()
+const express = require("express");
+const http = require("http");
+const bodyParser = require("body-parser");
+const app = express();
 
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }));
 
-const server = http.createServer(app)
-const PORT = 8080
+const server = http.createServer(app);
+const PORT = 8080;
 
-const accountRouter = require("./router/account")
-const helloworldRouter = require("./router/helloworld")
+const accountRouter = require("./router/account");
+const helloworldRouter = require("./router/helloworld");
 
 server.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`)
-})
+    console.log(`Server running on http://localhost:${PORT}`);
+});
 
-app.use("/account", accountRouter)
-app.use("/helloworld", helloworldRouter)
+app.use("/account", accountRouter);
+app.use("/helloworld", helloworldRouter);
 ```
 
 ## 3-2. helloworld.js
@@ -76,14 +76,14 @@ app.use("/helloworld", helloworldRouter)
 ```js
 // helloworld.js 파일
 
-const express = require("express")
-const router = express.Router()
+const express = require("express");
+const router = express.Router();
 
 router.get("/", (req, res) => {
-    res.send("Hello world")
-})
+    res.send("Hello world");
+});
 
-module.exports = router
+module.exports = router;
 ```
 
 ## 3-3. account.js(전 포스팅의 rest.js)
@@ -93,8 +93,8 @@ module.exports = router
 ```js
 // account.js 파일
 
-let express = require("express")
-const router = express.Router()
+let express = require("express");
+const router = express.Router();
 
 let users = [
     {
@@ -105,98 +105,98 @@ let users = [
         id: "world",
         password: "1234",
     },
-]
+];
 
 const findUserIndex = id => {
-    let index = -1
-    let len = users.length
+    let index = -1;
+    let len = users.length;
 
     for (let i = 0; i < len; i++) {
         if (users[i].id === id) {
-            index = i
-            break
+            index = i;
+            break;
         }
     }
 
-    return index
-}
+    return index;
+};
 
 const register = (id, password) => {
-    let index = findUserIndex(id)
-    if (index !== -1) return false
+    let index = findUserIndex(id);
+    if (index !== -1) return false;
 
-    users.push({ id, password })
-    return true
-}
+    users.push({ id, password });
+    return true;
+};
 
 const login = (id, password) => {
-    let index = findUserIndex(id)
-    if (index === -1) return false
+    let index = findUserIndex(id);
+    if (index === -1) return false;
 
     if (users[index].id === id && users[index].password === password)
-        return true
+        return true;
 
-    return false
-}
+    return false;
+};
 
 const changePassword = (id, password) => {
-    let index = findUserIndex(id)
-    if (index === -1) return false
+    let index = findUserIndex(id);
+    if (index === -1) return false;
 
-    users[index].password = password
-    return true
-}
+    users[index].password = password;
+    return true;
+};
 
 const deleteUser = id => {
-    let index = findUserIndex(id)
-    if (index === -1) return false
+    let index = findUserIndex(id);
+    if (index === -1) return false;
 
-    users.splice(index, 1)
-    return true
-}
+    users.splice(index, 1);
+    return true;
+};
 
 router.post("/", (req, res) => {
-    let id = req.body.id
-    let password = req.body.password
+    let id = req.body.id;
+    let password = req.body.password;
 
-    if (!register(id, password)) return res.status(401).send("duplicate id")
-    res.send(`success to register ${id}'s account`)
-})
+    if (!register(id, password)) return res.status(401).send("duplicate id");
+    res.send(`success to register ${id}'s account`);
+});
 
 router.get("/:id", (req, res) => {
-    let id = req.params.id
+    let id = req.params.id;
 
-    if (findUserIndex(id) === -1) return res.status(401).send("invalid id")
+    if (findUserIndex(id) === -1) return res.status(401).send("invalid id");
 
-    res.send(`Hello world ${id}`)
-})
+    res.send(`Hello world ${id}`);
+});
 
 router.put("/:id", (req, res) => {
-    let id = req.params.id
-    let password = req.body.password
+    let id = req.params.id;
+    let password = req.body.password;
 
     if (!changePassword(id, password))
-        return res.status(401).send("password change fail")
-    res.send(`success to change ${id}'s password`)
-})
+        return res.status(401).send("password change fail");
+    res.send(`success to change ${id}'s password`);
+});
 
 router.delete("/:id", (req, res) => {
-    let id = req.params.id
+    let id = req.params.id;
 
-    if (!deleteUser(id)) return res.status(401).send("delete fail")
-    res.send(`success to delete ${id}'s account`)
-})
+    if (!deleteUser(id)) return res.status(401).send("delete fail");
+    res.send(`success to delete ${id}'s account`);
+});
 
 router.post("/login", (req, res) => {
-    let id = req.body.id
-    let password = req.body.password
+    let id = req.body.id;
+    let password = req.body.password;
 
-    if (!login(id, password)) return res.status(401).send("login fail")
+    if (!login(id, password)) return res.status(401).send("login fail");
 
-    res.send("hello " + id)
-})
+    res.send("hello " + id);
+});
 
-module.exports = router
+module.exports = router;
 ```
 
 # [참고]

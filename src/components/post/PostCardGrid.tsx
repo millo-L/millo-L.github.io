@@ -1,8 +1,8 @@
-import React, { memo } from "react"
-import Styled from "styled-components"
-import { mediaQuery } from "../../lib/styles/media"
-import Adsense from "../common/Adsense"
-import PostCard, { PartialPostType } from "./PostCard"
+import React, { memo } from "react";
+import Styled from "styled-components";
+import { mediaQuery } from "../../lib/styles/media";
+import Adsense from "../common/Adsense";
+import PostCard, { PartialPostType } from "./PostCard";
 
 const Wrapper = Styled.div`
     display: flex;
@@ -15,10 +15,10 @@ const Wrapper = Styled.div`
     .adsense-block {
         width: 100%;
     }
-`
+`;
 
 interface PostCardGridProps {
-    posts: Array<PartialPostType>
+    posts: Array<PartialPostType>;
 }
 
 const PostCardGrid = ({ posts }: PostCardGridProps) => {
@@ -28,7 +28,7 @@ const PostCardGrid = ({ posts }: PostCardGridProps) => {
                 <PostCard post={post} key={index} />
             ))}
         </Wrapper>
-    )
-}
+    );
+};
 
-export default memo(PostCardGrid)
+export default memo(PostCardGrid);

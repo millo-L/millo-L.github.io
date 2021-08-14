@@ -49,19 +49,19 @@ npm install http express
 ```js
 // helloworld.js 파일
 
-const express = require("express")
-const http = require("http")
-const app = express()
-const server = http.createServer(app)
-const PORT = 8080
+const express = require("express");
+const http = require("http");
+const app = express();
+const server = http.createServer(app);
+const PORT = 8080;
 
 app.get("/", (req, res) => {
-    res.send("Hello world")
-})
+    res.send("Hello world");
+});
 
 server.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`)
-})
+    console.log(`Server running on http://localhost:${PORT}`);
+});
 ```
 
 실행 후 브라우저 혹은 postman을 통해 http://localhost:8080으로 접속해보자.
@@ -77,15 +77,15 @@ user의 계정 정보를 CRUD하는 간단한 Rest API를 구현해보자.
 ```js
 // rest.js 파일
 
-const express = require("express")
-const http = require("http")
-const bodyParser = require("body-parser")
-const app = express()
+const express = require("express");
+const http = require("http");
+const bodyParser = require("body-parser");
+const app = express();
 
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }));
 
-const server = http.createServer(app)
-const PORT = 8080
+const server = http.createServer(app);
+const PORT = 8080;
 
 // 임시 user id, password
 let users = [
@@ -97,110 +97,110 @@ let users = [
         id: "world",
         password: "1234",
     },
-]
+];
 
 // 임시 user 배열에서 user의 index 반환
 const findUserIndex = id => {
-    let index = -1
-    let len = users.length
+    let index = -1;
+    let len = users.length;
 
     for (let i = 0; i < len; i++) {
         if (users[i].id === id) {
-            index = i
-            break
+            index = i;
+            break;
         }
     }
 
-    return index
-}
+    return index;
+};
 
 // 임시 user 배열에 새로운 user 등록
 const register = (id, password) => {
-    let index = findUserIndex(id)
-    if (index !== -1) return false
+    let index = findUserIndex(id);
+    if (index !== -1) return false;
 
-    users.push({ id, password })
-    return true
-}
+    users.push({ id, password });
+    return true;
+};
 
 // 임시 user에 존재하는 id, password인지 검사
 const login = (id, password) => {
-    let index = findUserIndex(id)
-    if (index === -1) return false
+    let index = findUserIndex(id);
+    if (index === -1) return false;
 
     if (users[index].id === id && users[index].password === password)
-        return true
+        return true;
 
-    return false
-}
+    return false;
+};
 
 // 임시 user 배열에서 password 변경
 const changePassword = (id, password) => {
-    let index = findUserIndex(id)
-    if (index === -1) return false
+    let index = findUserIndex(id);
+    if (index === -1) return false;
 
-    users[index].password = password
-    return true
-}
+    users[index].password = password;
+    return true;
+};
 
 // 임시 user 배열에서 user 삭제
 const deleteUser = id => {
-    let index = findUserIndex(id)
-    if (index === -1) return false
+    let index = findUserIndex(id);
+    if (index === -1) return false;
 
-    users.splice(index, 1)
-    return true
-}
+    users.splice(index, 1);
+    return true;
+};
 
 // 회원가입
 app.post("/", (req, res) => {
-    let id = req.body.id
-    let password = req.body.password
+    let id = req.body.id;
+    let password = req.body.password;
 
-    if (!register(id, password)) return res.status(401).send("duplicate id")
-    res.send(`success to register ${id}'s account`)
-})
+    if (!register(id, password)) return res.status(401).send("duplicate id");
+    res.send(`success to register ${id}'s account`);
+});
 
 // 특정 user의 정보 가져오기
 app.get("/:id", (req, res) => {
-    let id = req.params.id
+    let id = req.params.id;
 
-    if (findUserIndex(id) === -1) return res.status(401).send("invalid id")
+    if (findUserIndex(id) === -1) return res.status(401).send("invalid id");
 
-    res.send(`Hello world ${id}`)
-})
+    res.send(`Hello world ${id}`);
+});
 
 // 특정 user 정보 수정
 app.put("/:id", (req, res) => {
-    let id = req.params.id
-    let password = req.body.password
+    let id = req.params.id;
+    let password = req.body.password;
 
     if (!changePassword(id, password))
-        return res.status(401).send("password change fail")
-    res.send(`success to change ${id}'s password`)
-})
+        return res.status(401).send("password change fail");
+    res.send(`success to change ${id}'s password`);
+});
 
 // 특정 user 삭제
 app.delete("/:id", (req, res) => {
-    let id = req.params.id
+    let id = req.params.id;
 
-    if (!deleteUser(id)) return res.status(401).send("delete fail")
-    res.send(`success to delete ${id}'s account`)
-})
+    if (!deleteUser(id)) return res.status(401).send("delete fail");
+    res.send(`success to delete ${id}'s account`);
+});
 
 // user login
 app.post("/login", (req, res) => {
-    let id = req.body.id
-    let password = req.body.password
+    let id = req.body.id;
+    let password = req.body.password;
 
-    if (!login(id, password)) return res.status(401).send("login fail")
+    if (!login(id, password)) return res.status(401).send("login fail");
 
-    res.send("hello " + id)
-})
+    res.send("hello " + id);
+});
 
 server.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`)
-})
+    console.log(`Server running on http://localhost:${PORT}`);
+});
 ```
 
 # [참고]

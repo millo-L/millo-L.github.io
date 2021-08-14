@@ -85,30 +85,30 @@ JavaScript의 Callback 지옥을 해결하기 위한 첫 번째 방안인 Promis
 ```js
 const isRandomNumberEven = new Promise((resolve, reject) => {
     setTimeout(() => {
-        let random = Math.floor(Math.random() * 10)
+        let random = Math.floor(Math.random() * 10);
         if (random % 2 === 0) {
-            resolve(random)
+            resolve(random);
         } else {
-            reject(new Error("The random number is odd"))
+            reject(new Error("The random number is odd"));
         }
-    }, 2000)
-})
+    }, 2000);
+});
 
 isRandomNumberEven
     .then(random => {
         // 짝수이면
-        console.log(`random number is ${random}`)
+        console.log(`random number is ${random}`);
     })
     .catch(error => {
         // 홀수이면
-        console.log(error)
+        console.log(error);
     })
     .finally(() => {
         // 짝수이든 홀수이든
         console.log(
             "The handler is called when the promise is settled, whether fulfilled or rejected."
-        )
-    })
+        );
+    });
 ```
 
 Promise를 사용하며 주의해야할 점은 **Promise가 생성되자마자 Promise 내부 코드가 실행된다**는 점이다.
@@ -126,14 +126,14 @@ Promise를 사용하며 주의해야할 점은 **Promise가 생성되자마자 P
 
 ```js
 async function func() {
-    return 1
+    return 1;
 }
-func().then(alert) // 1
+func().then(alert); // 1
 
 const fun = async () => {
-    return 2
-}
-fun().then(alert) // 2
+    return 2;
+};
+fun().then(alert); // 2
 ```
 
 ## 3-2. await
@@ -146,23 +146,23 @@ async 함수 내에서 Promise의 값이 반환될 때까지 기다리는 코드
 
 ```js
 function resolveAfter2Seconds() {
-    console.log("starting slow promise")
+    console.log("starting slow promise");
     return new Promise(resolve => {
         setTimeout(function () {
-            resolve("slow")
-            console.log("slow promise is done")
-        }, 2000)
-    })
+            resolve("slow");
+            console.log("slow promise is done");
+        }, 2000);
+    });
 }
 
 function resolveAfter1Second() {
-    console.log("starting fast promise")
+    console.log("starting fast promise");
     return new Promise(resolve => {
         setTimeout(function () {
-            resolve("fast")
-            console.log("fast promise is done")
-        }, 1000)
-    })
+            resolve("fast");
+            console.log("fast promise is done");
+        }, 1000);
+    });
 }
 ```
 
@@ -172,16 +172,16 @@ function resolveAfter1Second() {
 
 ```js
 async function sequentialStart() {
-    console.log("==SEQUENTIAL START==")
+    console.log("==SEQUENTIAL START==");
 
     // 1. Execution gets here almost instantly
-    const slow = await resolveAfter2Seconds()
-    console.log(slow) // 2. this runs 2 seconds after 1.
+    const slow = await resolveAfter2Seconds();
+    console.log(slow); // 2. this runs 2 seconds after 1.
 
-    const fast = await resolveAfter1Second()
-    console.log(fast) // 3. this runs 3 seconds after 1.
+    const fast = await resolveAfter1Second();
+    console.log(fast); // 3. this runs 3 seconds after 1.
 }
-sequentialStart()
+sequentialStart();
 // after 2 seconds, logs "slow", then after 1 more second, "fast"
 ```
 
@@ -191,15 +191,15 @@ sequentialStart()
 
 ```js
 async function concurrentStart() {
-    console.log("==CONCURRENT START with await==")
-    const slow = resolveAfter2Seconds() // starts timer immediately
-    const fast = resolveAfter1Second() // starts timer immediately
+    console.log("==CONCURRENT START with await==");
+    const slow = resolveAfter2Seconds(); // starts timer immediately
+    const fast = resolveAfter1Second(); // starts timer immediately
 
     // 1. Execution gets here almost instantly
-    console.log(await slow) // 2. this runs 2 seconds after 1.
-    console.log(await fast) // 3. this runs 2 seconds after 1., immediately after 2., since fast is already resolved
+    console.log(await slow); // 2. this runs 2 seconds after 1.
+    console.log(await fast); // 3. this runs 2 seconds after 1., immediately after 2., since fast is already resolved
 }
-concurrentStart()
+concurrentStart();
 // after 2 seconds, logs "slow" and then "fast"
 ```
 
@@ -209,15 +209,15 @@ concurrentStart()
 
 ```js
 function concurrentPromise() {
-    console.log("==CONCURRENT START with Promise.all==")
+    console.log("==CONCURRENT START with Promise.all==");
     return Promise.all([resolveAfter2Seconds(), resolveAfter1Second()]).then(
         messages => {
-            console.log(messages[0]) // slow
-            console.log(messages[1]) // fast
+            console.log(messages[0]); // slow
+            console.log(messages[1]); // fast
         }
-    )
+    );
 }
-concurrentPromise()
+concurrentPromise();
 // same as concurrentStart
 ```
 
@@ -227,15 +227,15 @@ concurrentPromise()
 
 ```js
 async function parallel() {
-    console.log("==PARALLEL with await Promise.all==")
+    console.log("==PARALLEL with await Promise.all==");
 
     // Start 2 "jobs" in parallel and wait for both of them to complete
     await Promise.all([
         (async () => console.log(await resolveAfter2Seconds()))(),
         (async () => console.log(await resolveAfter1Second()))(),
-    ])
+    ]);
 }
-parallel()
+parallel();
 // truly parallel: after 1 second, logs "fast", then after 1 more second, "slow"
 ```
 
@@ -248,21 +248,21 @@ parallel()
 function getProcessedData(url) {
     return downloadData(url) // returns a promise
         .catch(e => {
-            return downloadFallbackData(url) // returns a promise
+            return downloadFallbackData(url); // returns a promise
         })
         .then(v => {
-            return processDataInWorker(v) // returns a promise
-        })
+            return processDataInWorker(v); // returns a promise
+        });
 }
 // async/await 방식
 async function getProcessedData(url) {
-    let v
+    let v;
     try {
-        v = await downloadData(url)
+        v = await downloadData(url);
     } catch (e) {
-        v = await downloadFallbackData(url)
+        v = await downloadFallbackData(url);
     }
-    return processDataInWorker(v)
+    return processDataInWorker(v);
 }
 ```
 

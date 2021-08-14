@@ -100,31 +100,31 @@ static folder를 지정하는 것은 매우 간단하다. express에 내장되�
 ```js
 // index.js
 
-const http = require("http")
-const express = require("express")
-const fs = require("fs")
-const app = express()
-const server = http.createServer(app)
-const PORT = 8080
+const http = require("http");
+const express = require("express");
+const fs = require("fs");
+const app = express();
+const server = http.createServer(app);
+const PORT = 8080;
 
-const WEBPATH = "./webpage"
+const WEBPATH = "./webpage";
 
-app.use(express.static("public"))
+app.use(express.static("public"));
 
 app.get("/", (req, res) => {
     fs.readFile(`${WEBPATH}/block.html`, (error, data) => {
         if (error) {
-            console.log(error)
-            return res.status(500).send("<h1>500 Error</h1>")
+            console.log(error);
+            return res.status(500).send("<h1>500 Error</h1>");
         }
-        res.writeHead(200, { "Content-Type": "text/html" })
-        res.end(data)
-    })
-})
+        res.writeHead(200, { "Content-Type": "text/html" });
+        res.end(data);
+    });
+});
 
 server.listen(PORT, () => {
-    console.log(`Server running on ${PORT}`)
-})
+    console.log(`Server running on ${PORT}`);
+});
 ```
 
 # [참고]

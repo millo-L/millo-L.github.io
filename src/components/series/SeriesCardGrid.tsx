@@ -1,8 +1,8 @@
-import React, { memo } from "react"
-import Styled from "styled-components"
-import { mediaQuery } from "../../lib/styles/media"
-import Adsense from "../common/Adsense"
-import SeriesCard, { SeriesType } from "./SeriesCard"
+import React, { memo } from "react";
+import Styled from "styled-components";
+import { mediaQuery } from "../../lib/styles/media";
+import Adsense from "../common/Adsense";
+import SeriesCard, { SeriesType } from "./SeriesCard";
 
 const Wrapper = Styled.div`
     display: flex;
@@ -15,10 +15,10 @@ const Wrapper = Styled.div`
     .adsense-block {
         width: 100%;
     }
-`
+`;
 
 interface SeriseCardGridProps {
-    seriesList: Array<SeriesType>
+    seriesList: Array<SeriesType>;
 }
 
 const SeriesCardGrid = ({ seriesList }: SeriseCardGridProps) => {
@@ -28,7 +28,7 @@ const SeriesCardGrid = ({ seriesList }: SeriseCardGridProps) => {
                 <SeriesCard series={series} key={index} />
             ))}
         </Wrapper>
-    )
-}
+    );
+};
 
-export default memo(SeriesCardGrid)
+export default memo(SeriesCardGrid);

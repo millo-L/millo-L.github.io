@@ -1,7 +1,7 @@
-import React from 'react';
-import { MdArrowDropDown } from 'react-icons/md';
-import Styled from 'styled-components';
-import palette from '../../lib/styles/palette';
+import React from "react";
+import { MdArrowDropDown } from "react-icons/md";
+import Styled from "styled-components";
+import palette from "../../lib/styles/palette";
 
 const HeaderUserImageWrapper = Styled.div`
     cursor: pointer;
@@ -27,13 +27,12 @@ export interface HeaderUserImageProps {
 }
 
 const HeaderUserImage = ({ language, onClick }: HeaderUserImageProps) => {
-
     return (
         <HeaderUserImageWrapper onClick={onClick}>
             <span>{language}</span>
             <MdArrowDropDown />
         </HeaderUserImageWrapper>
     );
-}
+};
 
 export default HeaderUserImage;

@@ -1,6 +1,6 @@
-import React from 'react';
-import Styled, { createGlobalStyle } from 'styled-components';
-import '../css/typography.css';
+import React from "react";
+import Styled, { createGlobalStyle } from "styled-components";
+import "../css/typography.css";
 
 const BackgroundStyle = createGlobalStyle`
     body {
@@ -17,16 +17,13 @@ interface PostTemplateProps {
     children: React.ReactNode;
 }
 
-
 const PostTemplate = ({ children }: PostTemplateProps) => {
     return (
         <>
             <BackgroundStyle />
-            <PostTemplateWrapper>
-                {children}
-            </PostTemplateWrapper>
+            <PostTemplateWrapper>{children}</PostTemplateWrapper>
         </>
     );
-}
+};
 
 export default PostTemplate;

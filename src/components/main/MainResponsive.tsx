@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import { mediaQuery } from '../../lib/styles/media';
+import React from "react";
+import styled from "styled-components";
+import { mediaQuery } from "../../lib/styles/media";
 
 export type MainResponsiveProps = {
     className?: string;
@@ -9,7 +9,11 @@ export type MainResponsiveProps = {
 };
 
 function MainResponsive({ className, children, style }: MainResponsiveProps) {
-    return <Wrapper className={className} style={style}>{children}</Wrapper>;
+    return (
+        <Wrapper className={className} style={style}>
+            {children}
+        </Wrapper>
+    );
 }
 
 const Wrapper = styled.div`
@@ -17,13 +21,13 @@ const Wrapper = styled.div`
     margin-left: auto;
     margin-right: auto;
     ${mediaQuery(1919)} {
-      width: 1376px;
+        width: 1376px;
     }
     ${mediaQuery(1440)} {
-      width: 1024px;
+        width: 1024px;
     }
     ${mediaQuery(1056)} {
-      width: calc(100% - 2rem);
+        width: calc(100% - 2rem);
     }
 `;
 

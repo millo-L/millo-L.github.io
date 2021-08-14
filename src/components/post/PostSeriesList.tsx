@@ -1,11 +1,16 @@
-import { Link } from 'gatsby';
-import React from 'react';
-import { AiFillCaretDown, AiFillCaretUp, AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
+import { Link } from "gatsby";
+import React from "react";
+import {
+    AiFillCaretDown,
+    AiFillCaretUp,
+    AiOutlineLeft,
+    AiOutlineRight,
+} from "react-icons/ai";
 import { IoBookmarkSharp } from "react-icons/io5";
-import Styled from 'styled-components';
-import useToggle from '../../lib/hooks/useToggle';
-import media from '../../lib/styles/media';
-import palette from '../../lib/styles/palette';
+import Styled from "styled-components";
+import useToggle from "../../lib/hooks/useToggle";
+import media from "../../lib/styles/media";
+import palette from "../../lib/styles/palette";
 
 const Wrapper = Styled.div`
     position: relative;
@@ -101,7 +106,7 @@ export type PartialSeriesType = {
     slug: string;
     title: string;
     lang: string;
-}
+};
 
 interface PostSeriesListProps {
     series: string;
@@ -110,36 +115,54 @@ interface PostSeriesListProps {
     lang: string;
 }
 
-const PostSeriesList = ({ series, seriesList, nowPostTitle, lang }: PostSeriesListProps) => {
+const PostSeriesList = ({
+    series,
+    seriesList,
+    nowPostTitle,
+    lang,
+}: PostSeriesListProps) => {
     const [seriesListVisible, onToggle] = useToggle(true);
 
     return (
         <Wrapper>
-            <Link to={`/series/${series.replace(/ /gi, '-')}`}><h2>{series}</h2></Link>
+            <Link to={`/series/${series.replace(/ /gi, "-")}`}>
+                <h2>{series}</h2>
+            </Link>
             <IoBookmarkSharp className="bookmark-img" />
-            {seriesListVisible
-                ?
+            {seriesListVisible ? (
                 <ol>
                     {seriesList.map((series, index) => {
-                        return nowPostTitle === series.title ? <li key={index}><span className="now-post" >{series.title}</span></li> : <li key={index}><Link to={`${series.slug}`} >{series.title}</Link></li>
+                        return nowPostTitle === series.title ? (
+                            <li key={index}>
+                                <span className="now-post">{series.title}</span>
+                            </li>
+                        ) : (
+                            <li key={index}>
+                                <Link to={`${series.slug}`}>
+                                    {series.title}
+                                </Link>
+                            </li>
+                        );
                     })}
                 </ol>
-                :
-                <div></div>}
+            ) : (
+                <div></div>
+            )}
             <div className="footer">
-                {seriesListVisible
-                    ?
+                {seriesListVisible ? (
                     <div className="visible-btn" onClick={onToggle}>
-                        <AiFillCaretUp /><span>{lang === 'ko' ? '숨기기' : 'Hide'}</span>
+                        <AiFillCaretUp />
+                        <span>{lang === "ko" ? "숨기기" : "Hide"}</span>
                     </div>
-                    :
+                ) : (
                     <div className="visible-btn" onClick={onToggle}>
-                        <AiFillCaretDown /><span>{lang === 'ko' ? '목록 보기' : 'Show list'}</span>
+                        <AiFillCaretDown />
+                        <span>{lang === "ko" ? "목록 보기" : "Show list"}</span>
                     </div>
-                }
+                )}
             </div>
         </Wrapper>
     );
-}
+};
 
 export default PostSeriesList;
