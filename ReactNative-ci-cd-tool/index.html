@@ -1,0 +1,502 @@
+<!DOCTYPE html><html lang="ko"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.02da59e048d2795200be.css" id="gatsby-global-css">code[class*=language-],pre[class*=language-]{color:#d4d4d4;font-size:13px;text-shadow:none;font-family:Menlo,Monaco,Consolas,Andale Mono,Ubuntu Mono,Courier New,monospace;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}code[class*=language-]::selection,code[class*=language-] ::selection,pre[class*=language-]::selection,pre[class*=language-] ::selection{text-shadow:none;background:#75a7ca}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto;background:#1e1e1e}:not(pre)>code[class*=language-]{padding:.1em .3em;border-radius:.3em;color:#db4c69;background:#f9f2f4}.namespace{opacity:.7}.token.doctype .token.doctype-tag{color:#569cd6}.token.doctype .token.name{color:#9cdcfe}.token.comment,.token.prolog{color:#6a9955}.language-html .language-css .token.punctuation,.language-html .language-javascript .token.punctuation,.token.punctuation{color:#d4d4d4}.token.boolean,.token.constant,.token.inserted,.token.number,.token.property,.token.symbol,.token.tag,.token.unit{color:#b5cea8}.token.attr-name,.token.builtin,.token.char,.token.deleted,.token.selector,.token.string{color:#ce9178}.language-css .token.string.url{text-decoration:underline}.token.entity,.token.operator{color:#d4d4d4}.token.operator.arrow{color:#569cd6}.token.atrule{color:#ce9178}.token.atrule .token.rule{color:#c586c0}.token.atrule .token.url{color:#9cdcfe}.token.atrule .token.url .token.function{color:#dcdcaa}.token.atrule .token.url .token.punctuation{color:#d4d4d4}.token.keyword{color:#569cd6}.token.keyword.control-flow,.token.keyword.module{color:#c586c0}.token.function,.token.function .token.maybe-class-name{color:#dcdcaa}.token.regex{color:#d16969}.token.important{color:#569cd6}.token.italic{font-style:italic}.token.constant{color:#9cdcfe}.token.class-name,.token.maybe-class-name{color:#4ec9b0}.token.console,.token.interpolation,.token.parameter{color:#9cdcfe}.token.boolean,.token.punctuation.interpolation-punctuation{color:#569cd6}.token.exports .token.maybe-class-name,.token.imports .token.maybe-class-name,.token.property,.token.variable{color:#9cdcfe}.token.escape,.token.selector{color:#d7ba7d}.token.tag{color:#569cd6}.token.cdata,.token.tag .token.punctuation{color:grey}.token.attr-name{color:#9cdcfe}.token.attr-value,.token.attr-value .token.punctuation{color:#ce9178}.token.attr-value .token.punctuation.attr-equals{color:#d4d4d4}.token.entity{color:#569cd6}.token.namespace{color:#4ec9b0}code[class*=language-javascript],code[class*=language-jsx],code[class*=language-tsx],code[class*=language-typescript],pre[class*=language-javascript],pre[class*=language-jsx],pre[class*=language-tsx],pre[class*=language-typescript]{color:#9cdcfe}code[class*=language-css],pre[class*=language-css]{color:#ce9178}code[class*=language-html],pre[class*=language-html]{color:#d4d4d4}.language-regex .token.anchor{color:#dcdcaa}.language-html .token.punctuation{color:grey}pre[data-line]{position:relative}pre[class*=language-]>code[class*=language-]{position:relative;z-index:1}.line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:#f7ebc6;box-shadow:inset 5px 0 0 #f7d87c;z-index:0;pointer-events:none;line-height:inherit;white-space:pre}@font-face{font-family:ELAND;src:url(/static/ELAND_Choice_M-18a7230f7ccba226392903761d55bb76.ttf)}</style><meta name="generator" content="Gatsby 2.32.4"/><style type="text/css">
+    .anchor-header.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 4px;
+    }
+    .anchor-header.after {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    h1 .anchor-header svg,
+    h2 .anchor-header svg,
+    h3 .anchor-header svg,
+    h4 .anchor-header svg,
+    h5 .anchor-header svg,
+    h6 .anchor-header svg {
+      visibility: hidden;
+    }
+    h1:hover .anchor-header svg,
+    h2:hover .anchor-header svg,
+    h3:hover .anchor-header svg,
+    h4:hover .anchor-header svg,
+    h5:hover .anchor-header svg,
+    h6:hover .anchor-header svg,
+    h1 .anchor-header:focus svg,
+    h2 .anchor-header:focus svg,
+    h3 .anchor-header:focus svg,
+    h4 .anchor-header:focus svg,
+    h5 .anchor-header:focus svg,
+    h6 .anchor-header:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - 0)
+          }), 0)
+        }
+      }
+    })
+  </script><style data-styled="" data-styled-version="5.2.1">.incLxJ{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;border-top:1px solid #ADB5BD;margin-top:5rem;width:100%;height:8rem;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}/*!sc*/
+.incLxJ span{font-size:1.5rem;}/*!sc*/
+.incLxJ .icon-wrapper{width:9rem;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;margin-top:1rem;}/*!sc*/
+.incLxJ .icon-wrapper svg{width:30%;height:1.5rem;cursor:pointer;}/*!sc*/
+data-styled.g2[id="Footer__FooterWrapper-sc-11i4h0w-0"]{content:"incLxJ,"}/*!sc*/
+.jBmihO{width:1728px;margin-left:auto;margin-right:auto;}/*!sc*/
+@media (max-width:1919px){.jBmihO{width:1376px;}}/*!sc*/
+@media (max-width:1440px){.jBmihO{width:1024px;}}/*!sc*/
+@media (max-width:1056px){.jBmihO{width:calc(100% - 2rem);}}/*!sc*/
+data-styled.g3[id="MainResponsive__Wrapper-akiqw6-0"]{content:"jBmihO,"}/*!sc*/
+.jAIvAt{cursor:pointer;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}/*!sc*/
+.jAIvAt svg{font-size:1.5rem;margin-left:0.25rem;color:#868E96;-webkit-transition:0.125s all ease-in;transition:0.125s all ease-in;margin-right:-0.4375rem;}/*!sc*/
+.jAIvAt:hover svg{color:#212529;}/*!sc*/
+data-styled.g4[id="HeaderLanguage__HeaderUserImageWrapper-sc-10f9laq-0"]{content:"jAIvAt,"}/*!sc*/
+.dtMDNx{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;font-weight:bold;}/*!sc*/
+data-styled.g5[id="HeaderLogo__HeaderLogoWrapper-jctne5-0"]{content:"dtMDNx,"}/*!sc*/
+.fWiMFD{color:inherit;}/*!sc*/
+.fWiMFD .header-logo{margin-right:1rem;width:3rem;height:3rem;display:block;}/*!sc*/
+@media (max-width:1056px){.fWiMFD .header-logo{width:2.5rem;height:2.5rem;margin-right:0.75rem;}}/*!sc*/
+data-styled.g6[id="HeaderLogo__VelogLogoLink-jctne5-1"]{content:"fWiMFD,"}/*!sc*/
+.giOsDM{margin-top:2.5rem;border-top:1px solid #DEE2E6;padding-top:1.5rem;width:12rem;min-width:12rem;display:none;}/*!sc*/
+.giOsDM p{margin:0;font-size:1.3rem;text-align:center;margin-bottom:1.5rem;}/*!sc*/
+.giOsDM .img-wrapper{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;width:90%;margin-left:auto;margin-right:auto;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-align-items:space-between;-webkit-box-align:space-between;-ms-flex-align:space-between;align-items:space-between;}/*!sc*/
+.giOsDM .whole-category{height:1.8rem;width:90%;margin-left:5%;margin-bottom:10px;border:1px solid #5c7cfa;font-size:11pt;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-transition:background-color 0.5s;-webkit-transition:background-color 0.5s;transition:background-color 0.5s;color:#5c7cfa;}/*!sc*/
+.giOsDM .whole-category:hover{color:white;background-color:#5c7cfa;}/*!sc*/
+.giOsDM .category-img{height:1.5rem;max-width:5.5rem;margin:0;border-radius:0;}/*!sc*/
+@media (max-width:1440px){.giOsDM{width:100%;}}/*!sc*/
+@media (max-width:1056px){.giOsDM{display:none;}}/*!sc*/
+.dlfBJV{margin-top:2.5rem;border-top:1px solid #DEE2E6;padding-top:1.5rem;width:12rem;min-width:12rem;}/*!sc*/
+.dlfBJV p{margin:0;font-size:1.3rem;text-align:center;margin-bottom:1.5rem;}/*!sc*/
+.dlfBJV .img-wrapper{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;width:90%;margin-left:auto;margin-right:auto;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-align-items:space-between;-webkit-box-align:space-between;-ms-flex-align:space-between;align-items:space-between;}/*!sc*/
+.dlfBJV .whole-category{height:1.8rem;width:90%;margin-left:5%;margin-bottom:10px;border:1px solid #5c7cfa;font-size:11pt;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-transition:background-color 0.5s;-webkit-transition:background-color 0.5s;transition:background-color 0.5s;color:#5c7cfa;}/*!sc*/
+.dlfBJV .whole-category:hover{color:white;background-color:#5c7cfa;}/*!sc*/
+.dlfBJV .category-img{height:1.5rem;max-width:5.5rem;margin:0;border-radius:0;}/*!sc*/
+@media (max-width:1440px){.dlfBJV{width:100%;}}/*!sc*/
+@media (max-width:1056px){.dlfBJV{display:none;}}/*!sc*/
+data-styled.g9[id="CategoryList__CategoryListWrapper-tlquuq-0"]{content:"giOsDM,dlfBJV,"}/*!sc*/
+.khaWeL{display:none;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-top:1rem;font-size:1.5rem;}/*!sc*/
+@media (max-width:1056px){.khaWeL{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}}/*!sc*/
+@media (max-width:767px){}/*!sc*/
+.khaWeL .profile-img{width:6rem;height:6rem;border-radius:4rem;margin-right:1rem;}/*!sc*/
+@media (max-width:1056px){.khaWeL .profile-img{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}}/*!sc*/
+.khaWeL .info-wrapper{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:6rem;height:3rem;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;}/*!sc*/
+.khaWeL .info-wrapper .icon-wrapper{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;margin-top:0.3rem;}/*!sc*/
+.khaWeL svg{cursor:pointer;width:30%;}/*!sc*/
+.eWoSoe{max-width:20rem;margin-right:2rem;margin-top:-2rem;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;font-size:2rem;width:calc(20%);-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}/*!sc*/
+@media (max-width:1440px){}/*!sc*/
+@media (max-width:1056px){.eWoSoe{display:none;}}/*!sc*/
+.eWoSoe .profile-img{width:100%;border-radius:10rem;margin-bottom:1.5rem;}/*!sc*/
+.eWoSoe .info-wrapper{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:8rem;height:3rem;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;font-weight:lighter;text-align:center;}/*!sc*/
+.eWoSoe .info-wrapper .icon-wrapper{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;margin-top:0.3rem;}/*!sc*/
+.eWoSoe .info-wrapper .icon-wrapper svg{width:30%;cursor:pointer;}/*!sc*/
+data-styled.g10[id="SimpleProfile__SimpleProfileWrapper-sc-15fair4-0"]{content:"khaWeL,eWoSoe,"}/*!sc*/
+.hBRhDm{margin-top:1rem;width:100%;}/*!sc*/
+data-styled.g11[id="Header__Wrapper-sc-1kb1hjy-0"]{content:"hBRhDm,"}/*!sc*/
+.fXDuam{height:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;}/*!sc*/
+data-styled.g12[id="Header__Inner-sc-1kb1hjy-1"]{content:"fXDuam,"}/*!sc*/
+.gEGCIj{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;position:relative;}/*!sc*/
+@media (max-width:1024px){.gEGCIj .write-button{display:none;}}/*!sc*/
+data-styled.g13[id="Header__Right-sc-1kb1hjy-2"]{content:"gEGCIj,"}/*!sc*/
+.iDhEGQ{width:100%;height:100%;position:relative;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;}/*!sc*/
+data-styled.g15[id="MainPageRowTemplate__Wrapper-edmyx5-0"]{content:"iDhEGQ,"}/*!sc*/
+body{background-color:white;font-family:"ELAND",serif;}/*!sc*/
+data-styled.g16[id="sc-global-fslvaJ1"]{content:"sc-global-fslvaJ1,"}/*!sc*/
+.hOPIuR{font-family:"ELAND",serif;}/*!sc*/
+data-styled.g17[id="PostTemplate__PostTemplateWrapper-fu5bv9-0"]{content:"hOPIuR,"}/*!sc*/
+.kBxdJI{-webkit-transition:0.125s all ease-in;transition:0.125s all ease-in;width:20%;padding:0.5rem;padding-right:1rem;padding-left:0;-webkit-order:1;-ms-flex-order:1;order:1;top:10rem;margin-left:4rem;position:-webkit-sticky;position:sticky;height:40rem;overflow-y:auto;word-break:break-all;}/*!sc*/
+@media (max-width:1440px){.kBxdJI{display:none;}}/*!sc*/
+.kBxdJI ul:first-child{padding-left:1rem;border-left:2px solid #748ffc;}/*!sc*/
+.kBxdJI ul{list-style:none;margin:0;}/*!sc*/
+.kBxdJI ul li{border:none;margin-bottom:4px;}/*!sc*/
+.kBxdJI ul li p{margin:0;}/*!sc*/
+.kBxdJI a{-webkit-text-decoration:none;text-decoration:none;color:#CED4DA;font-size:0.9rem;}/*!sc*/
+.kBxdJI a:hover,.kBxdJI a:focus{color:#748ffc;}/*!sc*/
+.kBxdJI a.active{color:#364fc7;-webkit-transform:scale(1.1);-ms-transform:scale(1.1);transform:scale(1.1);}/*!sc*/
+.PostToC__ToCWrapper-sc-1vz6emx-0 + .PostToC__ToCWrapper-sc-1vz6emx-0{margin-top:4px;}/*!sc*/
+data-styled.g18[id="PostToC__ToCWrapper-sc-1vz6emx-0"]{content:"kBxdJI,"}/*!sc*/
+.dZpwpA{position:relative;width:80%;background-color:#F8F9FA;margin-left:auto;margin-right:auto;padding-top:1rem;padding-bottom:1rem;border-radius:10px;word-break:break-all;}/*!sc*/
+@media (max-width:767px){.dZpwpA{width:100%;}}/*!sc*/
+.dZpwpA h2{margin-left:1.5rem;margin-right:1.5rem;}/*!sc*/
+@media (max-width:767px){.dZpwpA h2{font-size:1.2rem;}}/*!sc*/
+.dZpwpA a{-webkit-text-decoration:none;text-decoration:none;color:#343A40;}/*!sc*/
+.dZpwpA a:hover{-webkit-text-decoration:underline;text-decoration:underline;}/*!sc*/
+.dZpwpA ol{padding-left:3rem;padding-right:1.5rem;}/*!sc*/
+@media (max-width:767px){.dZpwpA ol{font-size:0.9rem;}}/*!sc*/
+.dZpwpA ol .now-post{color:#5c7cfa;font-weight:bold;}/*!sc*/
+.dZpwpA ol li{margin:0.5rem;color:#868E96;}/*!sc*/
+.dZpwpA .bookmark-img{position:absolute;right:1.5rem;top:-2px;width:2.8rem;height:2.8rem;color:#5c7cfa;}/*!sc*/
+@media (max-width:767px){.dZpwpA .bookmark-img{right:1rem;width:2.2rem;height:2.2rem;}}/*!sc*/
+.dZpwpA .footer{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;margin-top:3rem;margin-right:1.5rem;margin-left:1.5rem;}/*!sc*/
+.dZpwpA .footer .visible-btn{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;cursor:pointer;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;color:#495057;}/*!sc*/
+.dZpwpA .footer .visible-btn span{margin-left:0.3rem;font-size:0.9rem;}/*!sc*/
+data-styled.g19[id="PostSeriesList__Wrapper-sc-9otow0-0"]{content:"dZpwpA,"}/*!sc*/
+.fwJJPB{width:32px;height:32px;border-radius:16px;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;border:1px solid #5c7cfa;font-size:1.5rem;color:#5c7cfa;margin-left:1rem;margin-right:1rem;}/*!sc*/
+data-styled.g20[id="PrevNextPostItem__Circle-u4u2kx-0"]{content:"fwJJPB,"}/*!sc*/
+.hZyJtI{cursor:pointer;background:#F8F9FA;box-shadow:0 0 4px 0 rgba(0,0,0,0.06);width:100%;height:4rem;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+.hZyJtI:hover .PrevNextPostItem__Circle-u4u2kx-0{-webkit-animation-duration:0.35s;animation-duration:0.35s;-webkit-animation-name:JamRA;animation-name:JamRA;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards;-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out;}/*!sc*/
+data-styled.g21[id="PrevNextPostItem__Wrapper-u4u2kx-1"]{content:"hZyJtI,"}/*!sc*/
+.eLobFH{-webkit-flex:1;-ms-flex:1;flex:1;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;line-height:1;min-width:0;margin-right:1rem;}/*!sc*/
+.eLobFH .description{font-size:0.75rem;font-weight:bold;color:#495057;}/*!sc*/
+.eLobFH h3{margin-right:1rem;width:100%;font-size:1.125rem;color:#495057;line-height:1.15;margin:0;margin-top:0.5rem;text-overflow:ellipsis;white-space:nowrap;overflow-x:hidden;overflow-y:hidden;}/*!sc*/
+@media (max-width:768px){.eLobFH h3{font-size:1rem;}}/*!sc*/
+data-styled.g22[id="PrevNextPostItem__Text-u4u2kx-2"]{content:"eLobFH,"}/*!sc*/
+.hVFHhd{width:100%;margin-top:5rem;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:space-between;-webkit-box-align:space-between;-ms-flex-align:space-between;align-items:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;margin-left:auto;margin-right:auto;}/*!sc*/
+@media (max-width:767px){.hVFHhd{-webkit-flex-direction:column-reverse;-ms-flex-direction:column-reverse;flex-direction:column-reverse;}}/*!sc*/
+data-styled.g23[id="PrevNextPost__Wrapper-sc-1i8zxj4-0"]{content:"hVFHhd,"}/*!sc*/
+.fmrWiR{width:300px;}/*!sc*/
+@media (max-width:767px){.fmrWiR{width:100%;}.PrevNextPost__ItemWrapper-sc-1i8zxj4-1 + .PrevNextPost__ItemWrapper-sc-1i8zxj4-1{margin-bottom:1.5rem;}}/*!sc*/
+data-styled.g24[id="PrevNextPost__ItemWrapper-sc-1i8zxj4-1"]{content:"fmrWiR,"}/*!sc*/
+.cjbRyQ{padding:0.5rem 1rem;background-color:#F1F3F5;color:#3b5bdb;border-radius:0.5rem;margin-right:1rem;margin-bottom:0.5rem;}/*!sc*/
+@media (max-width:1056px){.cjbRyQ{font-size:0.8rem;}}/*!sc*/
+data-styled.g25[id="TagList__TagItemWrapper-sc-1ja74mt-0"]{content:"cjbRyQ,"}/*!sc*/
+.cXMAIe{width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-bottom:2rem;}/*!sc*/
+data-styled.g26[id="TagList__TagListWrapper-sc-1ja74mt-1"]{content:"cXMAIe,"}/*!sc*/
+.ffDpqt{width:60%;margin-left:0;max-width:972px;}/*!sc*/
+@media (max-width:1440px){.ffDpqt{width:80%;}}/*!sc*/
+@media (max-width:1056px){.ffDpqt{width:100%;}}/*!sc*/
+.ffDpqt .category{-webkit-text-decoration:none;text-decoration:none;font-size:1.5rem;color:gray;margin-bottom:0;}/*!sc*/
+.ffDpqt .category:hover{-webkit-text-decoration:underline;text-decoration:underline;}/*!sc*/
+@media (max-width:1056px){.ffDpqt .category{font-size:1rem;}}/*!sc*/
+.ffDpqt .title{margin-top:0.5rem;font-size:3rem;}/*!sc*/
+@media (max-width:1056px){.ffDpqt .title{font-size:2.2rem;}}/*!sc*/
+.ffDpqt .date{line-height:0.8;color:gray;}/*!sc*/
+@media (max-width:1056px){.ffDpqt .date{font-size:0.8rem;}}/*!sc*/
+.ffDpqt .adsense-block{width:100%;}/*!sc*/
+data-styled.g27[id="PostViewer__PostViewerWrapper-sc-1vcgubz-0"]{content:"ffDpqt,"}/*!sc*/
+.cIdEKb{width:100%;margin:0;word-break:break-all;}/*!sc*/
+.cIdEKb a{color:#4c6ef5;-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+.cIdEKb a:hover{-webkit-text-decoration:underline;text-decoration:underline;}/*!sc*/
+.cIdEKb h1{margin-top:3rem;}/*!sc*/
+@media (max-width:767px){.cIdEKb h1{margin-top:2rem;font-size:1.8rem;}}/*!sc*/
+.cIdEKb h2{margin-top:3rem;}/*!sc*/
+@media (max-width:767px){.cIdEKb h2{margin-top:2rem;}}/*!sc*/
+.cIdEKb h3{margin-top:2rem;}/*!sc*/
+@media (max-width:767px){.cIdEKb h3{margin-top:1rem;}}/*!sc*/
+.cIdEKb p{font-size:1.1rem;line-height:1.8;}/*!sc*/
+@media (max-width:767px){.cIdEKb p{font-size:0.9rem;line-height:1.7;}}/*!sc*/
+.cIdEKb li{font-size:1.1rem;line-height:2;}/*!sc*/
+@media (max-width:767px){.cIdEKb li{font-size:0.9rem;line-height:1.7;}}/*!sc*/
+.cIdEKb li h4,.cIdEKb li p{margin:0;font-size:1.1rem;}/*!sc*/
+@media (max-width:767px){.cIdEKb li h4,.cIdEKb li p{font-size:0.9rem;line-height:1.7;}}/*!sc*/
+.cIdEKb pre,.cIdEKb code{font-size:1rem;margin-bottom:2rem;}/*!sc*/
+@media (max-width:767px){.cIdEKb pre,.cIdEKb code{font-size:0.9rem;margin-bottom:1.5rem;}}/*!sc*/
+.cIdEKb pre{border-radius:3px;}/*!sc*/
+.cIdEKb img{width:100%;}/*!sc*/
+.cIdEKb table{white-space:normal;max-width:100%;border-collapse:collapse;text-align:left;line-height:1.5;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:20px 0;}/*!sc*/
+.cIdEKb table thead th{min-width:60px;max-width:150px;padding:10px;font-weight:bold;vertical-align:top;color:#fff;background:#4c6ef5;margin:20px 10px;}/*!sc*/
+.cIdEKb table tbody th{max-width:150px;padding:10px;}/*!sc*/
+.cIdEKb table td{max-width:350px;padding:10px;vertical-align:top;}/*!sc*/
+.cIdEKb table tr:nth-child(even){background:#edf2ff;}/*!sc*/
+.cIdEKb th{font-size:0.9rem;}/*!sc*/
+@media (max-width:767px){.cIdEKb th{font-size:0.8rem;}}/*!sc*/
+.cIdEKb td{font-size:0.9rem;}/*!sc*/
+@media (max-width:767px){.cIdEKb td{font-size:0.8rem;}}/*!sc*/
+.cIdEKb hr{margin-top:3rem;margin-bottom:3rem;}/*!sc*/
+@media (max-width:767px){.cIdEKb hr{margin-top:2rem;margin-bottom:2rem;}}/*!sc*/
+.cIdEKb blockquote{background-color:#F8F9FA;width:100%;margin:0;padding-top:0.5rem;padding-bottom:0.5rem;border-left:4px solid #5c7cfa;}/*!sc*/
+.cIdEKb blockquote p{margin-left:2rem;margin-right:2rem;}/*!sc*/
+data-styled.g28[id="PostViewer__PostContentWrapper-sc-1vcgubz-1"]{content:"cIdEKb,"}/*!sc*/
+.lhumdt{width:60%;margin-left:auto;margin-right:auto;}/*!sc*/
+@media (max-width:1056px){.lhumdt{width:100%;}}/*!sc*/
+data-styled.g29[id="Utterances__Wrapper-sc-1m6k9q3-0"]{content:"lhumdt,"}/*!sc*/
+@-webkit-keyframes JamRA{0%{-webkit-transform:translateX(0px);-ms-transform:translateX(0px);transform:translateX(0px);}50%{-webkit-transform:translateX(-8px);-ms-transform:translateX(-8px);transform:translateX(-8px);}100%{-webkit-transform:translateX(0px);-ms-transform:translateX(0px);transform:translateX(0px);}}/*!sc*/
+@keyframes JamRA{0%{-webkit-transform:translateX(0px);-ms-transform:translateX(0px);transform:translateX(0px);}50%{-webkit-transform:translateX(-8px);-ms-transform:translateX(-8px);transform:translateX(-8px);}100%{-webkit-transform:translateX(0px);-ms-transform:translateX(0px);transform:translateX(0px);}}/*!sc*/
+data-styled.g54[id="sc-keyframes-JamRA"]{content:"JamRA,"}/*!sc*/
+</style><title data-react-helmet="true">[React Native] 원격 배포를 위한 CI/CD 툴 선택 | millo&#x27;s tech blog</title><meta data-react-helmet="true" property="og:locale" content="ko_KR"/><meta data-react-helmet="true" property="og:locale:alternate" content="en_US"/><meta data-react-helmet="true" property="og:site_name" content="millo&#x27;s tech blog"/><meta data-react-helmet="true" property="description" content="react native 원격 배포를 위한 CI/CD 툴을 비교하고 선택해보자."/><meta data-react-helmet="true" property="og:url" content="https://millo-L.github.io/ReactNative-ci-cd-tool/"/><meta data-react-helmet="true" property="og:title" content="[React Native] 원격 배포를 위한 CI/CD 툴 선택"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:description" content="react native 원격 배포를 위한 CI/CD 툴을 비교하고 선택해보자."/><meta data-react-helmet="true" property="og:image" content="https://millo-L.github.io/static/41ace13b6768be6622e6257e9bb0a52f/ee604/reactnative.png"/><meta data-react-helmet="true" property="article:published_time" content="2021-08-15"/><script data-react-helmet="true" type="application/ld+json">
+        {
+          "@context": "http://schema.org",
+          "@type": "BlogPosting",
+          "url": "https://millo-L.github.io/ReactNative-ci-cd-tool/",
+          "headline": "[React Native] 원격 배포를 위한 CI/CD 툴 선택",
+          "datePublished": "2021-08-15",
+          "dateModified": "2021-08-15",
+          "image": "https://millo-L.github.io/static/41ace13b6768be6622e6257e9bb0a52f/ee604/reactnative.png"
+        }
+        </script><script data-react-helmet="true" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js"></script><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>            
+              (adsbygoogle = window.adsbygoogle || []).push({
+                google_ad_client: "ca-pub-3926462216067158",
+                enable_page_level_ads: true
+              });
+          </script><link rel="preconnect" href="https://www.google-analytics.com"/><link rel="dns-prefetch" href="https://www.google-analytics.com"/><link as="script" rel="preload" href="/webpack-runtime-6d12b9e0ec37cb9ad8e5.js"/><link as="script" rel="preload" href="/framework-ba40f9a3aba7ac20e79d.js"/><link as="script" rel="preload" href="/app-fdb963cac35bb0f9bab2.js"/><link as="script" rel="preload" href="/styles-407fe62976dc5310c43e.js"/><link as="script" rel="preload" href="/d0447323-bedce39572060a0855c2.js"/><link as="script" rel="preload" href="/d7eeaac4-f8ba23a900ff33a7187f.js"/><link as="script" rel="preload" href="/252f366e-a64e38db0deea92b8691.js"/><link as="script" rel="preload" href="/ae51ba48-270e5111837ab28b50e9.js"/><link as="script" rel="preload" href="/commons-5642620b322105a118c5.js"/><link as="script" rel="preload" href="/component---src-components-post-post-page-tsx-87a09a460c3291e4b7ce.js"/><link as="fetch" rel="preload" href="/page-data/ReactNative-ci-cd-tool/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1608878238.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/3469517283.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/764694655.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="PostTemplate__PostTemplateWrapper-fu5bv9-0 hOPIuR"><div class="Header__Wrapper-sc-1kb1hjy-0 hBRhDm"><div class="MainResponsive__Wrapper-akiqw6-0 jBmihO Header__Inner-sc-1kb1hjy-1 fXDuam"><div class="HeaderLogo__HeaderLogoWrapper-jctne5-0 dtMDNx"><a class="HeaderLogo__VelogLogoLink-jctne5-1 fWiMFD" href="/"><div class="header-logo gatsby-image-wrapper" style="position:relative;overflow:hidden"><div aria-hidden="true" style="width:100%;padding-bottom:100%"></div><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAADrklEQVQ4y3VUa29UVRS9iX/Av+JHY5T6BNqZiiFqfCAIHa4tnaEDig9qCBJArSb4aOwgoqDlIbXyaomCwVI1Eh9IjGhIDPpB/wD33Jl7zu1ZrnXm1k6NTLJnn8c9a++99iMqVZOoNJjcVKqaNT01M0rd6KkmjVLNBJlf3+isp2rG+KZOnJtLtSSKumtpxM0kL8GPMK+7qbsHF5+VN5pFe2kCcs19NflFoAQzXeGylljqIPzQPrDJ2JWb2+v587vjxN7Xv7AvF5rSLIzUI1qoFFYcD33vkPF3rEv88fMW0185dPUluH/I4K71CT7+3GLnvlZY01tPcL98MPFL20bk7RgBk7hAz2nRLxtI8NgLBpn1eONQ+/GdlQTvn8ig35Y9TdwTB0A8uS3Fg88YT22XbwgYjYh/ccGHk3fy6N3JDJ6Pq6+kuHX19bB3ucehaRvABbjtnSZOz1p8NGX9e8cz21UJkSwAUhyT4MkbZn90mL3ksH5Hir2fZDh30eGbyw6PbzUgjyEhJ2cstjdaEDVMoC2ibANq07vRuCXk7s3DLVlFYyLDpd9yHDiV4eX9LYxPZ8G7R54zgcfdPHvrSIaBXSluW5NYvleUnSHTQybl4s8OfdtT/Hotx5Xfc5B4nP/OBb5WPm1w9DMbZPPrTez7NEPfSymGRpp2GTksy0MlRQTTutuxt+XPMLNKxOjRDCvqBlvfJlcXLJaQ23FyuGe8hZEDLfBbfDiV4fsrOWZ+cPahLQZLBwoPBUgQR+68yA7EP9XOrrzr35lieLSJsWNZMKRMiwpRUh9p4uDpzD76vFE0jYhexPKo/lrTXf1zzvcW3UBrqL2a4uy3LqyPMMwKw5s4Z4PXl6/mOEjQ4kxFj15lmXHH4umPv+fc4TNWRY0Vm0wI8dhZG0J7+FmDKZaIvNvPehTQiS+tPMMEv9mwO1UHKbGNiNZjthlOzVhH4r28UZGquL/+yUF38njVsMHqF9MALq3yUqZFB+vSljuzrLJhQTu1kdrs9rXtzpj8gslY1+4KGQrGODDUTRoc4ljtx/uFOlSW5QHjz9WferSKBXztrzn0s8bu7U/+nTL/FZ2rXYsBoolDwJpZG8YPO4Wg0GD44GTmmUFPD2Td8+7/pUqwoIvhwHmq8XULReMrgJK/nHy5J4ZTUeB0pj7no6A7RQMlnNeK1uOQlocasLsCaDE4xZGkc5iWwoMOWTRgw/2kJn9UHrxegNJThl90Tszw44LfG0p79JmKhnQx+aN/ANktQQFYbUDmAAAAAElFTkSuQmCC" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/b80cc5cfcebcbde1ec4f03e15cebebb0/65e33/logo.png 100w" sizes="(max-width: 100px) 100vw, 100px" /><img loading="lazy" sizes="(max-width: 100px) 100vw, 100px" srcset="/static/b80cc5cfcebcbde1ec4f03e15cebebb0/65e33/logo.png 100w" src="/static/b80cc5cfcebcbde1ec4f03e15cebebb0/65e33/logo.png" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div></a></div><div class="Header__Right-sc-1kb1hjy-2 gEGCIj"><div><div class="HeaderLanguage__HeaderUserImageWrapper-sc-10f9laq-0 jAIvAt"><span>한국어</span><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"></path></svg></div></div></div></div><div class="MainResponsive__Wrapper-akiqw6-0 jBmihO SimpleProfile__SimpleProfileWrapper-sc-15fair4-0 khaWeL"><div class="profile-img gatsby-image-wrapper" style="position:relative;overflow:hidden"><div aria-hidden="true" style="width:100%;padding-bottom:100%"></div><img aria-hidden="true" src="data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAGQABAQADAQAAAAAAAAAAAAAAAAQBAgUD/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQID/9oADAMBAAIQAxAAAAGqK7zzvmOkl1wBYJP/xAAbEAACAwADAAAAAAAAAAAAAAABAgADEhATIf/aAAgBAQABBQKxBZOhczWiIalYsMyr3j//xAAVEQEBAAAAAAAAAAAAAAAAAAAQAf/aAAgBAwEBPwEp/8QAFhEBAQEAAAAAAAAAAAAAAAAAEgAQ/9oACAECAQE/AVLf/8QAGhAAAgIDAAAAAAAAAAAAAAAAABEBECAhcf/aAAgBAQAGPwJT0eDNX//EABwQAQEBAQACAwAAAAAAAAAAAAERACEQQTFRcf/aAAgBAQABPyG1RLE0fkWPLgJ31zASPqbruuB3CF/GSC/Xj//aAAwDAQACAAMAAAAQwyi//8QAGBEAAgMAAAAAAAAAAAAAAAAAAREAEDH/2gAIAQMBAT8QQGx2/8QAFxEAAwEAAAAAAAAAAAAAAAAAAAEREP/aAAgBAgEBPxBwQPP/xAAcEAEAAwADAQEAAAAAAAAAAAABABEhMUFRYdH/2gAIAQEAAT8QD2Bwy6mIBN1LWSpFSDXyFYl2U+yuS8VXszWRWMHBEXSvR+xSXJWGFT//2Q==" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/c7759ca5a3cc7f61c0138afd7ced1e49/3a85a/profile.jpg 115w,
+/static/c7759ca5a3cc7f61c0138afd7ced1e49/4c3eb/profile.jpg 230w,
+/static/c7759ca5a3cc7f61c0138afd7ced1e49/d3376/profile.jpg 460w" sizes="(max-width: 460px) 100vw, 460px" /><img loading="lazy" sizes="(max-width: 460px) 100vw, 460px" srcset="/static/c7759ca5a3cc7f61c0138afd7ced1e49/3a85a/profile.jpg 115w,
+/static/c7759ca5a3cc7f61c0138afd7ced1e49/4c3eb/profile.jpg 230w,
+/static/c7759ca5a3cc7f61c0138afd7ced1e49/d3376/profile.jpg 460w" src="/static/c7759ca5a3cc7f61c0138afd7ced1e49/d3376/profile.jpg" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><div class="info-wrapper"><span>millo</span><div class="ProfileIcons__IconWrapper-sc-1lpa755-0 kWLSJs icon-wrapper"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9a127.5 127.5 0 0 1 38.1 91v112.5c.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z"></path></svg><svg stroke="currentColor" fill="currentColor" stroke-width="0" role="img" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><title></title><path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z"></path></svg><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path></svg></div></div><div class="CategoryList__CategoryListWrapper-tlquuq-0 giOsDM"><p>Categories</p><a style="text-decoration:none" href="/"><div class="whole-category">전체 보기</div></a><div class="img-wrapper"><a href="/?category=nodejs"><img class="category-img" src="https://img.shields.io/badge/NodeJS-339933?style=flat-square&amp;logo=Node.js&amp;logoColor=white"/></a><a href="/?category=webrtc"><img class="category-img" src="https://img.shields.io/badge/WebRTC-333333?style=flat-square&amp;logo=WebRTC&amp;logoColor=white"/></a><a href="/?category=network"><img class="category-img" src="https://img.shields.io/badge/Network-F96702?style=flat-square"/></a><a href="/?category=javascript"><img class="category-img" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&amp;logo=JavaScript&amp;logoColor=black"/></a><a href="/?category=docker"><img class="category-img" src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&amp;logo=Docker&amp;logoColor=white"/></a><a href="/?category=reactnative"><img class="category-img" src="https://img.shields.io/badge/ReactNative-61DAFB?style=flat-square&amp;logo=React&amp;logoColor=white"/></a><a href="/?category=go"><img class="category-img" src="https://img.shields.io/badge/Go-00ADD8?style=flat-square&amp;logo=Go&amp;logoColor=white"/></a><a href="/?category=opensource"><img class="category-img" src="https://img.shields.io/badge/OpenSource-3DA639?style=flat-square&amp;logo=Open-Source-Initiative&amp;logoColor=white"/></a><a href="/?category=typescript"><img class="category-img" src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&amp;logo=TypeScript&amp;logoColor=white"/></a><a href="/?category=nginx"><img class="category-img" src="https://img.shields.io/badge/NGINX-269539?style=flat-square&amp;logo=NGINX&amp;logoColor=white"/></a><a href="/?category=gatsby"><img class="category-img" src="https://img.shields.io/badge/Gatsby-663399?style=flat-square&amp;logo=Gatsby&amp;logoColor=white"/></a><a href="/?category=raspberrypi"><img class="category-img" src="https://img.shields.io/badge/Raspberry-C51A4A?style=flat-square&amp;logo=Raspberry-Pi&amp;logoColor=white"/></a><a href="/?category=python"><img class="category-img" src="https://img.shields.io/badge/Python-3776AB?style=flat-square&amp;logo=Python&amp;logoColor=white"/></a><a href="/?category=android"><img class="category-img" src="https://img.shields.io/badge/Android-3DDC84?style=flat-square&amp;logo=Android&amp;logoColor=white"/></a></div></div></div></div><div class="MainResponsive__Wrapper-akiqw6-0 jBmihO" style="margin-top:2rem"><div style="margin-bottom:2rem" class="MainPageRowTemplate__Wrapper-edmyx5-0 iDhEGQ"><div class="MainResponsive__Wrapper-akiqw6-0 jBmihO SimpleProfile__SimpleProfileWrapper-sc-15fair4-0 eWoSoe" style="margin-top:0.5rem"><div class="profile-img gatsby-image-wrapper" style="position:relative;overflow:hidden"><div aria-hidden="true" style="width:100%;padding-bottom:100%"></div><img aria-hidden="true" src="data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAGQABAQADAQAAAAAAAAAAAAAAAAQBAgUD/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQID/9oADAMBAAIQAxAAAAGqK7zzvmOkl1wBYJP/xAAbEAACAwADAAAAAAAAAAAAAAABAgADEhATIf/aAAgBAQABBQKxBZOhczWiIalYsMyr3j//xAAVEQEBAAAAAAAAAAAAAAAAAAAQAf/aAAgBAwEBPwEp/8QAFhEBAQEAAAAAAAAAAAAAAAAAEgAQ/9oACAECAQE/AVLf/8QAGhAAAgIDAAAAAAAAAAAAAAAAABEBECAhcf/aAAgBAQAGPwJT0eDNX//EABwQAQEBAQACAwAAAAAAAAAAAAERACEQQTFRcf/aAAgBAQABPyG1RLE0fkWPLgJ31zASPqbruuB3CF/GSC/Xj//aAAwDAQACAAMAAAAQwyi//8QAGBEAAgMAAAAAAAAAAAAAAAAAAREAEDH/2gAIAQMBAT8QQGx2/8QAFxEAAwEAAAAAAAAAAAAAAAAAAAEREP/aAAgBAgEBPxBwQPP/xAAcEAEAAwADAQEAAAAAAAAAAAABABEhMUFRYdH/2gAIAQEAAT8QD2Bwy6mIBN1LWSpFSDXyFYl2U+yuS8VXszWRWMHBEXSvR+xSXJWGFT//2Q==" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/c7759ca5a3cc7f61c0138afd7ced1e49/3a85a/profile.jpg 115w,
+/static/c7759ca5a3cc7f61c0138afd7ced1e49/4c3eb/profile.jpg 230w,
+/static/c7759ca5a3cc7f61c0138afd7ced1e49/d3376/profile.jpg 460w" sizes="(max-width: 460px) 100vw, 460px" /><img loading="lazy" sizes="(max-width: 460px) 100vw, 460px" srcset="/static/c7759ca5a3cc7f61c0138afd7ced1e49/3a85a/profile.jpg 115w,
+/static/c7759ca5a3cc7f61c0138afd7ced1e49/4c3eb/profile.jpg 230w,
+/static/c7759ca5a3cc7f61c0138afd7ced1e49/d3376/profile.jpg 460w" src="/static/c7759ca5a3cc7f61c0138afd7ced1e49/d3376/profile.jpg" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><div class="info-wrapper"><span>millo</span><div class="ProfileIcons__IconWrapper-sc-1lpa755-0 kWLSJs icon-wrapper"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9a127.5 127.5 0 0 1 38.1 91v112.5c.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z"></path></svg><svg stroke="currentColor" fill="currentColor" stroke-width="0" role="img" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><title></title><path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z"></path></svg><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path></svg></div></div><div class="CategoryList__CategoryListWrapper-tlquuq-0 dlfBJV"><p>Categories</p><a style="text-decoration:none" href="/"><div class="whole-category">전체 보기</div></a><div class="img-wrapper"><a href="/?category=nodejs"><img class="category-img" src="https://img.shields.io/badge/NodeJS-339933?style=flat-square&amp;logo=Node.js&amp;logoColor=white"/></a><a href="/?category=webrtc"><img class="category-img" src="https://img.shields.io/badge/WebRTC-333333?style=flat-square&amp;logo=WebRTC&amp;logoColor=white"/></a><a href="/?category=network"><img class="category-img" src="https://img.shields.io/badge/Network-F96702?style=flat-square"/></a><a href="/?category=javascript"><img class="category-img" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&amp;logo=JavaScript&amp;logoColor=black"/></a><a href="/?category=docker"><img class="category-img" src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&amp;logo=Docker&amp;logoColor=white"/></a><a href="/?category=reactnative"><img class="category-img" src="https://img.shields.io/badge/ReactNative-61DAFB?style=flat-square&amp;logo=React&amp;logoColor=white"/></a><a href="/?category=go"><img class="category-img" src="https://img.shields.io/badge/Go-00ADD8?style=flat-square&amp;logo=Go&amp;logoColor=white"/></a><a href="/?category=opensource"><img class="category-img" src="https://img.shields.io/badge/OpenSource-3DA639?style=flat-square&amp;logo=Open-Source-Initiative&amp;logoColor=white"/></a><a href="/?category=typescript"><img class="category-img" src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&amp;logo=TypeScript&amp;logoColor=white"/></a><a href="/?category=nginx"><img class="category-img" src="https://img.shields.io/badge/NGINX-269539?style=flat-square&amp;logo=NGINX&amp;logoColor=white"/></a><a href="/?category=gatsby"><img class="category-img" src="https://img.shields.io/badge/Gatsby-663399?style=flat-square&amp;logo=Gatsby&amp;logoColor=white"/></a><a href="/?category=raspberrypi"><img class="category-img" src="https://img.shields.io/badge/Raspberry-C51A4A?style=flat-square&amp;logo=Raspberry-Pi&amp;logoColor=white"/></a><a href="/?category=python"><img class="category-img" src="https://img.shields.io/badge/Python-3776AB?style=flat-square&amp;logo=Python&amp;logoColor=white"/></a><a href="/?category=android"><img class="category-img" src="https://img.shields.io/badge/Android-3DDC84?style=flat-square&amp;logo=Android&amp;logoColor=white"/></a></div></div></div><div class="PostViewer__PostViewerWrapper-sc-1vcgubz-0 ffDpqt"><a class="category" href="/?category=reactnative"><img src="https://img.shields.io/badge/ReactNative-61DAFB?style=flat-square&amp;logo=React&amp;logoColor=white"/></a><h1 class="title">[React Native] 원격 배포를 위한 CI/CD 툴 선택</h1><p class="date">게시: <!-- -->약 11시간 전</p><div class="TagList__TagListWrapper-sc-1ja74mt-1 cXMAIe"><div class="TagList__TagItemWrapper-sc-1ja74mt-0 cjbRyQ">ReactNative</div><div class="TagList__TagItemWrapper-sc-1ja74mt-0 cjbRyQ">iOS</div><div class="TagList__TagItemWrapper-sc-1ja74mt-0 cjbRyQ">Android</div><div class="TagList__TagItemWrapper-sc-1ja74mt-0 cjbRyQ">CI/CD Tool</div><div class="TagList__TagItemWrapper-sc-1ja74mt-0 cjbRyQ">Circle CI</div><div class="TagList__TagItemWrapper-sc-1ja74mt-0 cjbRyQ">Travis CI</div><div class="TagList__TagItemWrapper-sc-1ja74mt-0 cjbRyQ">Jenkins</div><div class="TagList__TagItemWrapper-sc-1ja74mt-0 cjbRyQ">AWS Mac instance</div><div class="TagList__TagItemWrapper-sc-1ja74mt-0 cjbRyQ">Mac Mini(M1)</div></div><div class="PostSeriesList__Wrapper-sc-9otow0-0 dZpwpA"><a href="/series/React-Native-배포-자동화"><h2>React Native 배포 자동화</h2></a><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="bookmark-img" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M416 480L256 357.41 96 480V32h320z"></path></svg><ol><li><a href="/ReactNative-fastlane/">[React Native] Fastlane을 사용한 배포 자동화</a></li><li><a href="/ReactNative-fastlane-match/">[React Native] Fastlane match를 사용한 iOS 인증서 동기화</a></li><li><a href="/ReactNative-fastlane-slack/">[React Native] Fastlane Slack 연동</a></li><li><span class="now-post">[React Native] 원격 배포를 위한 CI/CD 툴 선택</span></li></ol><div class="footer"><div class="visible-btn"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M858.9 689L530.5 308.2c-9.4-10.9-27.5-10.9-37 0L165.1 689c-12.2 14.2-1.2 35 18.5 35h656.8c19.7 0 30.7-20.8 18.5-35z"></path></svg><span>숨기기</span></div></div></div><div id="content-container" class="PostViewer__PostContentWrapper-sc-1vcgubz-1 cIdEKb"><h1 id="1-서론" style="position:relative;"><a href="#1-%EC%84%9C%EB%A1%A0" aria-label="1 서론 permalink" class="anchor-header before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. 서론</h1>
+<p><code class="language-text">이번 포스팅은 지극히 주관적인 의견을 띄고 있다는 것에 유의해주기 바란다.</code> 지난 포스팅까지 읽었다면 로컬 환경에서 배포 자동화하는 법에 대해서는 어느 정도 이해가 생겼을 것 같다. 하지만 로컬에서 배포를 진행한다는 것은 생각보다 유쾌하지만은 않다. 내 맥북이 그렇게 사양이 좋지 않은 문제도 있지만 안드로이드와 iOS 배포를 진행하는 데 걸리는 시간이 30분 이상 소요됐다. 물론 CPU 점유율이 높은 Android와 iOS 각각의 빌드 시기 이후인 배포 단계에서는 다른 작업을 진행할 수 있지만. 빌드 단계에서는 CPU 점유율이 99%까지 올라가서 다른 작업을 맥북에서 진행하기가 힘들 정도가 된다. 이런 문제점들을 해결하기 위해 원격 배포를 도입하고자 했고 CI/CD 툴을 고려하게 됐다.</p>
+<h1 id="2-원격-환경-선택" style="position:relative;"><a href="#2-%EC%9B%90%EA%B2%A9-%ED%99%98%EA%B2%BD-%EC%84%A0%ED%83%9D" aria-label="2 원격 환경 선택 permalink" class="anchor-header before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. 원격 환경 선택</h1>
+<h2 id="2-1-aws" style="position:relative;"><a href="#2-1-aws" aria-label="2 1 aws permalink" class="anchor-header before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2-1. AWS</h2>
+<p>우리 회사는 기존에 지원받은 AWS 크레딧이 있어서 우선 AWS에서 맥 환경을 지원하는 지 여부부터 조사해봤다. 조사 결과는 와우! 작년 2020년부터 Mac환경을 제공한다는 <a href="https://aws.amazon.com/ec2/instance-types/mac/">공식 홈페이지</a>를 보고 바로 자세히 찾아보기 시작했지만 선택하지 못했던 이유는...</p>
+<ol>
+<li>
+<p>가격</p>
+<p>뭐니뭐니해도 스타트업에서 가장 중요한 건 번레이트를 줄이는 것이다. 하지만 AWS Mac 인스턴스를 사용하게 되면 이 비용으로만 한 달 고정 지출이 988.42USD(= 120만원) 추가된다... 말도 꺼낼 수 없는 금액이어서 당연히 포기했다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1046px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/903e65e569de19af2206efebd7d2835e/c1b63/fastlane-ci-cd-1.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 61.45038167938931%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAAsTAAALEwEAmpwYAAABnUlEQVQoz4VSCW6EQAzj/69sgeVYYLnmgoF145SptlWrIkVhJo7jGLKuu6MoChRliVyyRp5/3v0TpfQw0tkYg6yua1S3G25SSFmBtwp5WeG9alDUDfK6xVtZo+06DH2PYRjwGCe0s0G3WLSTQdg2ZMYHjNZjumJ2ATEYHGbA6SbYsGEwHm7bse07juPA8/nU/DNijMi2eAg4wu8RTkMajohn9Bq7AK3U40UUQoB1Dud5apBI8/WeBe/R9x3MusqFEFqLXtax7pPMSTNXJEbJpL4sC3ZRS9z9ftcz1alCGvl4PFTBKQq8WEB/NvFjHEclmKZJm1YZukh4EcE7DiMpB7FHFRLEL9SJ2SSnTwRTwTzP2kwMiRnEeCGYZQCJiOVwZlVIX84Xk+mHmn7ldE7BZip7rb3mbJWJddOoCq7NlaqqUiVs5Ko88/fiHVWPosaI2rZtdbtkzU6FbJoERLnnpYDrsMghXI9EJHCyPvG0hXdcmQPYw8HfPGzla/E9ecdMED1kMxWQjMRpCInYkwi/POSTPPjNl+Sz1v/wLuUPh6edqWzwgycAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="fastlane ci cd 1"
+        title="fastlane ci cd 1"
+        src="/static/903e65e569de19af2206efebd7d2835e/1c1a4/fastlane-ci-cd-1.png"
+        srcset="/static/903e65e569de19af2206efebd7d2835e/8ff13/fastlane-ci-cd-1.png 262w,
+/static/903e65e569de19af2206efebd7d2835e/3e286/fastlane-ci-cd-1.png 523w,
+/static/903e65e569de19af2206efebd7d2835e/1c1a4/fastlane-ci-cd-1.png 1046w,
+/static/903e65e569de19af2206efebd7d2835e/c1b63/fastlane-ci-cd-1.png 1200w"
+        sizes="(max-width: 1046px) 100vw, 1046px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+</li>
+<li>
+<p>지역</p>
+<p>위의 이미지에서 보이겠지만 Seoul 지역을 지원하지 않는다. 사용자들의 request를 받는 일반 서버에 비해 배포 서버의 위치는 그다지 중요하지 않은 요소지만 위의 가격 문제가 생긴 터라 서울을 지원하지 않는 다는 사실도 괜히 괘씸했다랄까... 그림에 떡이었다랄까... 기분이 별로 좋지 않았다.</p>
+</li>
+</ol>
+<p>이러한 이유들로 깔끔하게 아무 아쉬움 없이 AWS는 포기해버렸다!</p>
+<h2 id="2-2-circle-ci" style="position:relative;"><a href="#2-2-circle-ci" aria-label="2 2 circle ci permalink" class="anchor-header before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2-2. Circle CI</h2>
+<p>AWS를 포기하고 빌드 서버를 제공해주는 CI 툴들 중에 Circle CI가 Mac을 지원한다는 사실을 알고 자세하게 찾아봤다. .circleci/config.yml을 작성해두고 Github을 연동해서 해당 브런치에 푸쉬가 되면 자동으로 빌드가 수행되는 형식이다. 내가 생각하는 주관적인 특징에 대해서 말해보도록 하겠다.</p>
+<ol>
+<li>
+<p>가격</p>
+<p><a href="https://circleci.com/docs/2.0/credits/#performance-plan">공식 문서</a>를 참고한 결과 Mac OS로 빌드하기 위해서는 매달 30USD(3~4만원)정도가 지출된다. 그럼 한 달에 25,000크레딧이 지급되고 Mac OS를 사용하면 분당 50크레딧을 사용하게 된다. 그럼 한 달에 총 500분의 빌드 시간을 갖게 된다. Fastlane을 이용한 iOS 빌드 및 배포 시간을 30분 정도라고 생각해보면 한 달에 대략 16~17번의 배포를 진행할 수 있다는 건데 턱없이 모자라다...(우리 회사는 테스트 플라이트 배포를 통해 QA를 진행하기 때문에...) 더 높은 가격은 Custom Pricing으로 직접 문의를 통해서 지정해준다는 듯 한데, 대략 5만 크레딧이 필요하다고 하고 물론 2배 가격은 아니겠지만 단순 계산으로 60USD(7.2만원)라고 하면 AWS 형님에 비해서는 매우 괜찮은 듯 하면서도 조금 애매한 수치인듯 하다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 372px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/6805687dcfee910e45a1f269cc6f5c4a/98b6e/fastlane-ci-cd-2.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 150.38167938931298%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAeCAYAAAAsEj5rAAAACXBIWXMAAAsTAAALEwEAmpwYAAADG0lEQVRIx61VS09TURC+a/+GCx+ISxcahQSNJq6Mv8FEhZWJD+Jr5Q/BmLhwq0V5CImBYJo2acMjBUESWtrS9+29t73Pz/Odyym00FKVQ6ZzZs6Z787MmRm0ePEXIukovmVi+PqPRFti/CykoGXqBfw2coLyLdqqZ/dJ6AVt6QfyAW+3IUZaYGmB6+PUlhdAsx0Hgfjz/RC4VC5hanoaq2trWFpaQiKZRFJQLBaTukQygY2NDbFfhWVZ0sYPfInhCCyNP1xBEEheq9WQSCQkWCqVwvLyMqLRKOLxuNQtLCxgZWUFi4uL0HW9zdZ13XZAdUBv+fVmswnTNCW3bVvqaESd53lH7LoC0rBcLreoWq1KzyuVivSKOhVuX4B/s3oCykcplbCzs4NMJoN0Oi3l7e1t7O7uIpvNolAoIJfLyTv0tGcOuSgbpgGrYcnwmD+G12g0YBhGSzYtE522bYAI/qP+9m0loO3YUjDcBoa/j+Pcl4e4NDmKgcgoBgXn/vLkmOSD+3wg8ljy85FHuDL1BDXHbEXXAqTyzKf70CZuQPswAu39sDAaw9nPD3BBGBKMdFGAaRNDrTvax7soNfXDgGHIptvEvR/vcHXmKYZmx3F99jluzb3GzblXGJl7idvzb6RM4tnQ7Atcm3mGO/NvoTvWAWBn2bCNQgrg+p4kT8hqT/LlvfBu17L5n9W1bNhy6ostb/3Q2+AEOgLI3tzc3JQDYX19XRY2ZQ6HYrHYlhYF0MmPhEwFhwA5PeMZC1mNtuPC7ArIxOtNE/lcHnt7e7LF6BnbjC2mWo8tx6450UMCGraFakVMFj2cLCROGgIShJ7SqFvoxwJWhHG9Xpfe5fN5SfRSedX3tCFgxaqLkHMoCDB6xklD7wjIR2IquKeenIP2xEdhrpgnThq+PM8V5zn35JTVY3WtQ8dzJZAaU7ygQBRo54v3DLkuclhi7kRoHPl8aTVImUt6z491AvUsm7LIjyoXvjLzxnwSnHvWaV91yDZruDZM4QG9YOhMOj0lp477w4A9W+80lgTk1wnKL/dLvH+YbDvk/F/zB6f204tWSUySAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="fastlane ci cd 2"
+        title="fastlane ci cd 2"
+        src="/static/6805687dcfee910e45a1f269cc6f5c4a/98b6e/fastlane-ci-cd-2.png"
+        srcset="/static/6805687dcfee910e45a1f269cc6f5c4a/8ff13/fastlane-ci-cd-2.png 262w,
+/static/6805687dcfee910e45a1f269cc6f5c4a/98b6e/fastlane-ci-cd-2.png 372w"
+        sizes="(max-width: 372px) 100vw, 372px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 809px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/aeef92a6701485d803df4ede49f2bb9e/e80ac/fastlane-ci-cd-3.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 32.44274809160305%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAlklEQVQY052Q2wrDIAyGff+HVEsvRG219XAj2Iy/I6VFNsYCnwnxNweFMYaUUqS1pmmaSEpJ8zzTJzuO4yui1krLstC2bbSuK4UQHh7gnuOU0klr7WpwN9F7PwXe+wvnHFlrT1CMYwBtKeXyw4Q40BniGOMwHWKGcwCN0Ywnxtuc83tCLoi1kYRg3/dhnV/ssfL9X/7lBVQw0GLo0kYFAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="fastlane ci cd 3"
+        title="fastlane ci cd 3"
+        src="/static/aeef92a6701485d803df4ede49f2bb9e/e80ac/fastlane-ci-cd-3.png"
+        srcset="/static/aeef92a6701485d803df4ede49f2bb9e/8ff13/fastlane-ci-cd-3.png 262w,
+/static/aeef92a6701485d803df4ede49f2bb9e/3e286/fastlane-ci-cd-3.png 523w,
+/static/aeef92a6701485d803df4ede49f2bb9e/e80ac/fastlane-ci-cd-3.png 809w"
+        sizes="(max-width: 809px) 100vw, 809px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+</li>
+<li>
+<p>편리성</p>
+<p>Github과 손쉽게 연동되고 자동으로 생성해놓은 config.yml 파일에 맞춰서 빌드를 진행하기 때문에 대단히 편리하다. jenkins에 비해서는 별도로 플러그인을 설치하거나 연동을 힘들게 할 필요가 없다.</p>
+</li>
+<li>
+<p>보안 파일 관련</p>
+<p>우리 회사에서는 안드로이드와 iOS 모두의 서명키와 배포 관련 파일들을 .gitignore에 등록해서 개발자들끼리 직접 Naver Works의 보안 메일로 주고 받는다. 혹여나 Github 계정 노출 등의 문제가 생겼을 때를 대비하기 위함인데 이를 위한 처리를 Circle CI에서 어떻게 해야할 지 감이 오지 않는다. 자동 배포를 위해서 이러한 보안 부분을 내려놓아야 하는 건지... 감이 오지 않는다.</p>
+</li>
+</ol>
+<h2 id="2-3-travis-ci" style="position:relative;"><a href="#2-3-travis-ci" aria-label="2 3 travis ci permalink" class="anchor-header before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2-3. Travis CI</h2>
+<p>Circle CI와 비슷하게 Mac OS 빌드 서버를 제공해주는 유명한 CI 툴이다. 다만, 나는 경험해본적이 없다. 간단하게 특징을 정리해봤다.</p>
+<ol>
+<li>
+<p>가격</p>
+<p><a href="https://www.travis-ci.com/plans">공식문서</a>에서 보면 가격이... 확실히 세다. 무료로 10,000크레딧이 제공되는 프리티어도 있지만 Travis에서도 Mac OS를 사용하면 분당 50크레딧을 사용하게 된다. 그럼 의미가 없기 때문에 결국 결제를 하게 될 것 같은 데, 다음 가격이 69USD(8.2만원) 확실히 Circle CI에 비해서는 비싸다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 334px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/23b5583dd50785e941ed24e7866c6213/86d36/fastlane-ci-cd-4.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 144.27480916030535%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAdCAYAAACqhkzFAAAACXBIWXMAAAsTAAALEwEAmpwYAAAC7klEQVRIx61WyW4TQRD1P/ALCCFOIIT4AC5IiAsc4IJYfoErixDrEQmQ4MgncOAUwCFW7CRObCdK4pUoUiQTnHg8q2fvR1eNx4ztiSOSjPTUU9XVb2ptOxMEIU4SmTAUiB8hBCMMQ4YQ4fA9ksWITJCnhudJzkTKiOyoT3x2SBgr9vb20Gg0sLy8jFKphPX1dVQqFaysrKBYLGJzcxPZbBblchlzc3NYWlqCZVlD0gnCbreLVqvFhkS4urrKpPSBtbU1Js7lcmg2m7w3Pz+Pfr8/SXjiISc34mQHQcA623Gg9FSZjn1Y0ptxm6QjqR7Glaan0+lwaO12m41d10PSPomphLFue3sbMzMznFfHcWWOFUnqHujABGHaV8fzNE6SQjgwFNMTPm0v1cNA+PB8D6ZpwrZt7i96932fV5I9z5OhO7xP+oNDlnJf6NjvdbBQWJB9V0Q+n8fi4iL3XKFQ4AannqT+pCbf3d09PIdH7b9UQlsY0C0VlXKFR4s8olEjr6h1aCSr1So2Njag6/rhhF7owAtcGIbBBzRNY5CsKMpQJoxXPLWxA/hwXBuaqjFhXAgioHklOdbRB1RVHZnjCUIqiqLto1atoVwpc6i1Wo0LU6/XOXy6IChsWunC2NnZSSOc3of/U6CRtrFh4E/3Nwr5BfaQWmNra4uLQd7SSi1DVxuNInlMNrOzs5wCTluQCNkNXTiycQ2zD003oBmmXE3ohgVVM6TeYvRUnXVW32G90tPkQPijIYtjhjsScjDwsNURyDUFCr8E8gP8qAlk69H6rSrwXeJnY9SGzrRV8S9k148Ib34SyNwCMg8k7kncBU4/jnDuGXDpNXD5DXDqody7I3F/YHtb4PnXiJC4Mt6A8NEXgTNPooMXXwEXXgLX3gNX3wHXP9AHgRsfgStvgfMvIhuyPftU4HMhIiSuYVFCmQNP3vp+ApYbwZQwnAi2J/fkkdjWC8RBvyniWEj0YTzgx0Bylvk/SXhy/23+AkHxogAKze4aAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="fastlane ci cd 4"
+        title="fastlane ci cd 4"
+        src="/static/23b5583dd50785e941ed24e7866c6213/86d36/fastlane-ci-cd-4.png"
+        srcset="/static/23b5583dd50785e941ed24e7866c6213/8ff13/fastlane-ci-cd-4.png 262w,
+/static/23b5583dd50785e941ed24e7866c6213/86d36/fastlane-ci-cd-4.png 334w"
+        sizes="(max-width: 334px) 100vw, 334px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+</li>
+<li>
+<p>편리성</p>
+<p>사용해보지는 않았지만 <a href="https://www.lambdatest.com/blog/circleci-vs-travis/">이 글</a>을 본 봐로는 Circle CI와 동일 혹은 그보다 더 편리할 것으로 예상된다.</p>
+</li>
+<li>
+<p>보안 파일 관련</p>
+<p>이 부분은 위의 Circle CI의 설명과 동일하다.</p>
+</li>
+</ol>
+<h2 id="2-4-mac-minim1--jenkins" style="position:relative;"><a href="#2-4-mac-minim1--jenkins" aria-label="2 4 mac minim1  jenkins permalink" class="anchor-header before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2-4. Mac Mini(M1) + Jenkins</h2>
+<p>모든 경우의 수를 생각하기 위해 CI/CD용으로 사용할 Mac Mini(M1)도 생각해봤다. 올해인 2021년 4월에 Docker를 M1칩에도 설치할 수 있는 방법이 Docker 공식 홈페이지에 올라왔기 때문에 Docker부분에서는 걱정이 없었고, M1이 워낙 성능이 좋다고들 하길래 궁금하기도 했다. 배포 서버로 사용할거라 사양 자체는 크게 좋을 필요가 없다고 생각해서 가격대를 좀 낮게 잡고 검색해봤다.</p>
+<ol>
+<li>
+<p>사양</p>
+<p>2021 Mac Mini Apple M1 칩</p>
+<ul>
+<li>CPU 8코어</li>
+<li>GPU 8코어</li>
+<li>Neural Engine 16코어</li>
+<li>메모리 16GB</li>
+<li>SSD 256GB</li>
+<li>Gigabit Ethernet</li>
+</ul>
+</li>
+<li>
+<p>가격</p>
+<p>Mac mini라서 그런 지 가격은 애플치고는 너무 저렴한 1,115,000원이다. 위에서 Circle CI와 Travis CI를 1년 조금 넘게 쓰면 비슷한 가격일 것 같은 데, 괜찮지 않을까 싶은 느낌이든다.(1년 안에 회사가 망하진 않을 거라고 믿으니까!)</p>
+</li>
+<li>
+<p>편리성</p>
+<p>Jenkins를 설치해서 사용해야되는 데, 일단 필요한 플러그인들 모두 설치하고 기본적으로 Android Studio와 Xcode를 직접 설치해야한다. 그 외에도 git, ruby, fastlane, jdk 등 필요한 프로그램들은 모두 설치해야하고 환경 변수도 모두 설정해야 한다. 또한, 회사 사람들이 접근할 수 있게 고정 IP등록, 도메인 준비, https 연결, IP 선택적 허용 등 처리할 게 산더미다... 이래서 다들 빌드 서버 구매해서 쓰는구나 싶을 정도다.</p>
+</li>
+<li>
+<p>보안 파일 관련</p>
+<p>이 부분만은 위의 Circle CI와 Travis CI에서는 해결 방법이 감이 잡히지 않았던 것과 달리 Naver Works를 통해 보안메일로 미리 파일들을 준비해뒀다가 jenkins pipeline에서 프로젝트 폴더에 복사해서 넣는 방식으로 진행하면 되겠다는 감이 잡혔다.</p>
+</li>
+<li>
+<p>Jenkins 사용</p>
+<p>맥 미니를 구매하게 되면 CI/CD 툴로 오픈 소스인 Jenkins를 사용하게 될 것 같은 데, Jenkins에서 제공하는 pipeline에 나쁘지 않은 경험을 갖고 있기도 하고, 워낙 사용하는 사람들도 많기 때문에 관련 자료도 많아서 괜찮을 것으로 예상된다.</p>
+</li>
+</ol>
+<h1 id="3-결정" style="position:relative;"><a href="#3-%EA%B2%B0%EC%A0%95" aria-label="3 결정 permalink" class="anchor-header before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3. 결정</h1>
+<p>결정된 최종 사안에 대해서 말하자면 나의 결정은 <code class="language-text">Mac Mini(M1) + Jenkins 사용</code>이다. 현재는 설정을 모두 마치고 배포에 잘 사용하고 있으며, 로컬에서의 배포가 완전히 종료되는 시간보다 10~15분 정도 빠르게 배포가 진행되고 있다. 빌드 시간만 비교하면 맥 미니에서는 안드로이드와 iOS 빌드를 병렬로 수행해서 6분 정도가 소요되는 데 반해 나의 로컬 환경에서는 15~20분 정도가 소요된다.(<del>물론, 회사에서 지금해준 내 맥북이 그렇게 좋은 사양이 아니라는 것은 비밀로...</del>) M1칩이 빠르긴 빠르구나...라고 생각하고 있다. 하지만 초기 설정에서 역시나 시간이 많이 걸렸고 후에 버전 업데이트 관련 이슈가 생길 위험성도 있어서 잘한 선택인지는 1년 뒤의 나에게 물어봐야 알 수 있을 것 같다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1046px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/5c6892ef76a778783c946718654dbd06/87629/fastlane-ci-cd-5.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 14.122137404580155%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAl0lEQVQI102LyxKDIBAE/f9fDBqMGAohvAyCRmrikksOU9PVO9vt+47jOLBtW2tKrRXnWRvnnK/+NC6lIKXUEmME/ZLLubQ7+Y6EMQZKKXjvoY2GDwHOOZiXgda6hW7W2sZqWSDm+eof0472Ukp0wQU8o8SwDpiywBCoJ/A3x33lEEWg/3P8PbYdcww3y8B8jzE9IMhd/AVh7uOTxKPl8wAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="fastlane ci cd 5"
+        title="fastlane ci cd 5"
+        src="/static/5c6892ef76a778783c946718654dbd06/1c1a4/fastlane-ci-cd-5.png"
+        srcset="/static/5c6892ef76a778783c946718654dbd06/8ff13/fastlane-ci-cd-5.png 262w,
+/static/5c6892ef76a778783c946718654dbd06/3e286/fastlane-ci-cd-5.png 523w,
+/static/5c6892ef76a778783c946718654dbd06/1c1a4/fastlane-ci-cd-5.png 1046w,
+/static/5c6892ef76a778783c946718654dbd06/fa601/fastlane-ci-cd-5.png 1569w,
+/static/5c6892ef76a778783c946718654dbd06/87629/fastlane-ci-cd-5.png 2076w"
+        sizes="(max-width: 1046px) 100vw, 1046px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span></p>
+<p>이 화면은 최근 배포를 성공한 예시인데 빌드 시간만 따로 계산했을 때는 길지 않지만 TestFlight에 업로드 여부를 Fastlane이 확인해주는 시간이 포함되서 총 20분 정도가 소요된다.</p>
+<h1 id="참고" style="position:relative;"><a href="#%EC%B0%B8%EA%B3%A0" aria-label="참고 permalink" class="anchor-header before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[참고]</h1>
+<ul>
+<li><a href="https://aws.amazon.com/ec2/instance-types/mac/">https://aws.amazon.com/ec2/instance-types/mac/</a></li>
+<li><a href="https://circleci.com/docs/2.0/credits/#performance-plan">https://circleci.com/docs/2.0/credits/#performance-plan</a></li>
+<li><a href="https://www.lambdatest.com/blog/circleci-vs-travis/">https://www.lambdatest.com/blog/circleci-vs-travis/</a></li>
+</ul></div><div class="PrevNextPost__Wrapper-sc-1i8zxj4-0 hVFHhd"><div class="PrevNextPost__ItemWrapper-sc-1i8zxj4-1 fmrWiR"><a class="PrevNextPostItem__Wrapper-u4u2kx-1 hZyJtI" href="/ReactNative-fastlane-slack/"><div class="PrevNextPostItem__Circle-u4u2kx-0 fwJJPB"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path></svg></div><div class="PrevNextPostItem__Text-u4u2kx-2 eLobFH"><div class="description">이전<!-- --> <!-- -->포스트</div><h3>[React Native] Fastlane Slack 연동</h3></div></a></div><div class="PrevNextPost__ItemWrapper-sc-1i8zxj4-1 fmrWiR"></div></div></div><div id="toc-container" class="PostToC__ToCWrapper-sc-1vz6emx-0 kBxdJI"><ul>
+<li><a href="#1-%EC%84%9C%EB%A1%A0">1. 서론</a></li>
+<li>
+<p><a href="#2-%EC%9B%90%EA%B2%A9-%ED%99%98%EA%B2%BD-%EC%84%A0%ED%83%9D">2. 원격 환경 선택</a></p>
+<ul>
+<li><a href="#2-1-aws">2-1. AWS</a></li>
+<li><a href="#2-2-circle-ci">2-2. Circle CI</a></li>
+<li><a href="#2-3-travis-ci">2-3. Travis CI</a></li>
+<li><a href="#2-4-mac-minim1--jenkins">2-4. Mac Mini(M1) + Jenkins</a></li>
+</ul>
+</li>
+<li><a href="#3-%EA%B2%B0%EC%A0%95">3. 결정</a></li>
+<li><a href="#%EC%B0%B8%EA%B3%A0">참고</a></li>
+</ul></div></div><div class="Utterances__Wrapper-sc-1m6k9q3-0 lhumdt"></div><div class="Footer__FooterWrapper-sc-11i4h0w-0 incLxJ"><span>millo&#x27;s tech blog</span><div class="ProfileIcons__IconWrapper-sc-1lpa755-0 kWLSJs icon-wrapper"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9a127.5 127.5 0 0 1 38.1 91v112.5c.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z"></path></svg><svg stroke="currentColor" fill="currentColor" stroke-width="0" role="img" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><title></title><path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z"></path></svg><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path></svg></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script>
+  
+  
+  if(true) {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  }
+  if (typeof ga === "function") {
+    ga('create', 'UA-190413996-1', 'auto', {});
+      
+      
+      
+      
+      
+      }</script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/ReactNative-ci-cd-tool/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-0f9e7d7b54aaab6b0844.js"],"app":["/app-fdb963cac35bb0f9bab2.js"],"component---src-components-post-post-page-tsx":["/component---src-components-post-post-page-tsx-87a09a460c3291e4b7ce.js"],"component---src-components-series-series-post-list-page-tsx":["/component---src-components-series-series-post-list-page-tsx-f074949e72486c43f366.js"],"component---src-pages-about-tsx":["/component---src-pages-about-tsx-16700b6ff53f2989b8a3.js"],"component---src-pages-en-about-tsx":["/component---src-pages-en-about-tsx-38774ad957788afbfe39.js"],"component---src-pages-en-index-tsx":["/component---src-pages-en-index-tsx-17f9dbd797b16f407cc1.js"],"component---src-pages-en-series-tsx":["/component---src-pages-en-series-tsx-4050163585b38a18beda.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-00cef9955f27abd1ca89.js"],"component---src-pages-series-tsx":["/component---src-pages-series-tsx-b3e821c499b8671cedec.js"]};/*]]>*/</script><script src="/polyfill-0f9e7d7b54aaab6b0844.js" nomodule=""></script><script src="/component---src-components-post-post-page-tsx-87a09a460c3291e4b7ce.js" async=""></script><script src="/commons-5642620b322105a118c5.js" async=""></script><script src="/ae51ba48-270e5111837ab28b50e9.js" async=""></script><script src="/252f366e-a64e38db0deea92b8691.js" async=""></script><script src="/d7eeaac4-f8ba23a900ff33a7187f.js" async=""></script><script src="/d0447323-bedce39572060a0855c2.js" async=""></script><script src="/styles-407fe62976dc5310c43e.js" async=""></script><script src="/app-fdb963cac35bb0f9bab2.js" async=""></script><script src="/framework-ba40f9a3aba7ac20e79d.js" async=""></script><script src="/webpack-runtime-6d12b9e0ec37cb9ad8e5.js" async=""></script></body></html>
