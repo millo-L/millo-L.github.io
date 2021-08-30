@@ -4,7 +4,7 @@ title: "[React Native] Fastlane을 사용한 배포 자동화"
 category: reactnative
 layout: post
 released_at: 2021-08-08 16:45
-updated_at:
+updated_at: 2021-08-30 22:01
 image: ../../../../images/category/reactnative.png
 series: React Native 배포 자동화
 lang: ko
@@ -347,8 +347,6 @@ end
 
 이 때도 위와 마찬가지로 `chmod +x deploy-android.sh`를 터미널에 입력해서 실행권한을 부여한다.
 
-@bam.tech/react-native-make를 사용한 splash screen을 적용하는 데 아래의 주석 코드를 생략하면 splash screen 빌드 과정에서 오류가 생긴다.
-
 ```bash
 # deploy-android.sh
 
@@ -357,20 +355,10 @@ echo "*** Play store store v$VER is going to be published ***"
 cd android
 ./gradlew clean
 cd ../
+
 rm -rf ./android/app/src/main/assets/index.android.bundle
+npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle
 
-npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res
-rm -rf ./android/app/src/main/res/drawable-hdpi
-rm -rf ./android/app/src/main/res/drawable-mdpi
-rm -rf ./android/app/src/main/res/drawable-xhdpi
-rm -rf ./android/app/src/main/res/drawable-xxhdpi
-rm -rf ./android/app/src/main/res/drawable-xxxhdpi
-rm -rf ./android/app/src/main/res/raw
-
-# 아래의 주석 처리된 명령어는
-# @bam.tech/react-native-make의 set-splash를 사용해서
-# splash screen을 생성하는 경우에만 사용한다.
-# npx react-native set-splash --platform android --path ./src/Assets/Images/app_splash_android.png --resize cover
 cd android
 fastlane beta version:$VER
 cd ../
