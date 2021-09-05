@@ -213,6 +213,8 @@ export default Screen1;
 
 화면2를 만들어보자. 버튼을 두 개로 구성하는 데 하나는 뒤로가는 버튼, 하나는 카카오톡으로 공유하기 버튼이다. 만약 Screen1에서 넘어온다면 `from Screen1`이라는 알림이 뜨고, 카카오톡 공유로 해당 페이지에 오게 되면 `from Kakao App`이라는 알림이 뜬다.
 
+아래와 같이 ExecutionParams를 지정하게 되면 `kakao{카카오 네이티브 앱키}://kakaolink?text=from Kakao App` 형식으로 만들어지게 된다.
+
 ```tsx
 // ./src/Screen2.tsx
 import React, { useCallback, useEffect } from "react";
