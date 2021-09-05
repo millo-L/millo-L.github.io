@@ -1,0 +1,519 @@
+<!DOCTYPE html><html lang="ko"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.02da59e048d2795200be.css" id="gatsby-global-css">code[class*=language-],pre[class*=language-]{color:#d4d4d4;font-size:13px;text-shadow:none;font-family:Menlo,Monaco,Consolas,Andale Mono,Ubuntu Mono,Courier New,monospace;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}code[class*=language-]::selection,code[class*=language-] ::selection,pre[class*=language-]::selection,pre[class*=language-] ::selection{text-shadow:none;background:#75a7ca}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto;background:#1e1e1e}:not(pre)>code[class*=language-]{padding:.1em .3em;border-radius:.3em;color:#db4c69;background:#f9f2f4}.namespace{opacity:.7}.token.doctype .token.doctype-tag{color:#569cd6}.token.doctype .token.name{color:#9cdcfe}.token.comment,.token.prolog{color:#6a9955}.language-html .language-css .token.punctuation,.language-html .language-javascript .token.punctuation,.token.punctuation{color:#d4d4d4}.token.boolean,.token.constant,.token.inserted,.token.number,.token.property,.token.symbol,.token.tag,.token.unit{color:#b5cea8}.token.attr-name,.token.builtin,.token.char,.token.deleted,.token.selector,.token.string{color:#ce9178}.language-css .token.string.url{text-decoration:underline}.token.entity,.token.operator{color:#d4d4d4}.token.operator.arrow{color:#569cd6}.token.atrule{color:#ce9178}.token.atrule .token.rule{color:#c586c0}.token.atrule .token.url{color:#9cdcfe}.token.atrule .token.url .token.function{color:#dcdcaa}.token.atrule .token.url .token.punctuation{color:#d4d4d4}.token.keyword{color:#569cd6}.token.keyword.control-flow,.token.keyword.module{color:#c586c0}.token.function,.token.function .token.maybe-class-name{color:#dcdcaa}.token.regex{color:#d16969}.token.important{color:#569cd6}.token.italic{font-style:italic}.token.constant{color:#9cdcfe}.token.class-name,.token.maybe-class-name{color:#4ec9b0}.token.console,.token.interpolation,.token.parameter{color:#9cdcfe}.token.boolean,.token.punctuation.interpolation-punctuation{color:#569cd6}.token.exports .token.maybe-class-name,.token.imports .token.maybe-class-name,.token.property,.token.variable{color:#9cdcfe}.token.escape,.token.selector{color:#d7ba7d}.token.tag{color:#569cd6}.token.cdata,.token.tag .token.punctuation{color:grey}.token.attr-name{color:#9cdcfe}.token.attr-value,.token.attr-value .token.punctuation{color:#ce9178}.token.attr-value .token.punctuation.attr-equals{color:#d4d4d4}.token.entity{color:#569cd6}.token.namespace{color:#4ec9b0}code[class*=language-javascript],code[class*=language-jsx],code[class*=language-tsx],code[class*=language-typescript],pre[class*=language-javascript],pre[class*=language-jsx],pre[class*=language-tsx],pre[class*=language-typescript]{color:#9cdcfe}code[class*=language-css],pre[class*=language-css]{color:#ce9178}code[class*=language-html],pre[class*=language-html]{color:#d4d4d4}.language-regex .token.anchor{color:#dcdcaa}.language-html .token.punctuation{color:grey}pre[data-line]{position:relative}pre[class*=language-]>code[class*=language-]{position:relative;z-index:1}.line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:#f7ebc6;box-shadow:inset 5px 0 0 #f7d87c;z-index:0;pointer-events:none;line-height:inherit;white-space:pre}@font-face{font-family:ELAND;src:url(/static/ELAND_Choice_M-18a7230f7ccba226392903761d55bb76.ttf)}</style><meta name="generator" content="Gatsby 2.32.4"/><style type="text/css">
+    .anchor-header.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 4px;
+    }
+    .anchor-header.after {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    h1 .anchor-header svg,
+    h2 .anchor-header svg,
+    h3 .anchor-header svg,
+    h4 .anchor-header svg,
+    h5 .anchor-header svg,
+    h6 .anchor-header svg {
+      visibility: hidden;
+    }
+    h1:hover .anchor-header svg,
+    h2:hover .anchor-header svg,
+    h3:hover .anchor-header svg,
+    h4:hover .anchor-header svg,
+    h5:hover .anchor-header svg,
+    h6:hover .anchor-header svg,
+    h1 .anchor-header:focus svg,
+    h2 .anchor-header:focus svg,
+    h3 .anchor-header:focus svg,
+    h4 .anchor-header:focus svg,
+    h5 .anchor-header:focus svg,
+    h6 .anchor-header:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - 0)
+          }), 0)
+        }
+      }
+    })
+  </script><style data-styled="" data-styled-version="5.2.1">.incLxJ{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;border-top:1px solid #ADB5BD;margin-top:5rem;width:100%;height:8rem;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}/*!sc*/
+.incLxJ span{font-size:1.5rem;}/*!sc*/
+.incLxJ .icon-wrapper{width:9rem;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;margin-top:1rem;}/*!sc*/
+.incLxJ .icon-wrapper svg{width:30%;height:1.5rem;cursor:pointer;}/*!sc*/
+data-styled.g2[id="Footer__FooterWrapper-sc-11i4h0w-0"]{content:"incLxJ,"}/*!sc*/
+.jBmihO{width:1728px;margin-left:auto;margin-right:auto;}/*!sc*/
+@media (max-width:1919px){.jBmihO{width:1376px;}}/*!sc*/
+@media (max-width:1440px){.jBmihO{width:1024px;}}/*!sc*/
+@media (max-width:1056px){.jBmihO{width:calc(100% - 2rem);}}/*!sc*/
+data-styled.g3[id="MainResponsive__Wrapper-akiqw6-0"]{content:"jBmihO,"}/*!sc*/
+.jAIvAt{cursor:pointer;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}/*!sc*/
+.jAIvAt svg{font-size:1.5rem;margin-left:0.25rem;color:#868E96;-webkit-transition:0.125s all ease-in;transition:0.125s all ease-in;margin-right:-0.4375rem;}/*!sc*/
+.jAIvAt:hover svg{color:#212529;}/*!sc*/
+data-styled.g4[id="HeaderLanguage__HeaderUserImageWrapper-sc-10f9laq-0"]{content:"jAIvAt,"}/*!sc*/
+.dtMDNx{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;font-weight:bold;}/*!sc*/
+data-styled.g5[id="HeaderLogo__HeaderLogoWrapper-jctne5-0"]{content:"dtMDNx,"}/*!sc*/
+.fWiMFD{color:inherit;}/*!sc*/
+.fWiMFD .header-logo{margin-right:1rem;width:3rem;height:3rem;display:block;}/*!sc*/
+@media (max-width:1056px){.fWiMFD .header-logo{width:2.5rem;height:2.5rem;margin-right:0.75rem;}}/*!sc*/
+data-styled.g6[id="HeaderLogo__VelogLogoLink-jctne5-1"]{content:"fWiMFD,"}/*!sc*/
+.giOsDM{margin-top:2.5rem;border-top:1px solid #DEE2E6;padding-top:1.5rem;width:12rem;min-width:12rem;display:none;}/*!sc*/
+.giOsDM p{margin:0;font-size:1.3rem;text-align:center;margin-bottom:1.5rem;}/*!sc*/
+.giOsDM .img-wrapper{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;width:90%;margin-left:auto;margin-right:auto;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-align-items:space-between;-webkit-box-align:space-between;-ms-flex-align:space-between;align-items:space-between;}/*!sc*/
+.giOsDM .whole-category{height:1.8rem;width:90%;margin-left:5%;margin-bottom:10px;border:1px solid #5c7cfa;font-size:11pt;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-transition:background-color 0.5s;-webkit-transition:background-color 0.5s;transition:background-color 0.5s;color:#5c7cfa;}/*!sc*/
+.giOsDM .whole-category:hover{color:white;background-color:#5c7cfa;}/*!sc*/
+.giOsDM .category-img{height:1.5rem;max-width:5.5rem;margin:0;border-radius:0;}/*!sc*/
+@media (max-width:1440px){.giOsDM{width:100%;}}/*!sc*/
+@media (max-width:1056px){.giOsDM{display:none;}}/*!sc*/
+.dlfBJV{margin-top:2.5rem;border-top:1px solid #DEE2E6;padding-top:1.5rem;width:12rem;min-width:12rem;}/*!sc*/
+.dlfBJV p{margin:0;font-size:1.3rem;text-align:center;margin-bottom:1.5rem;}/*!sc*/
+.dlfBJV .img-wrapper{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;width:90%;margin-left:auto;margin-right:auto;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-align-items:space-between;-webkit-box-align:space-between;-ms-flex-align:space-between;align-items:space-between;}/*!sc*/
+.dlfBJV .whole-category{height:1.8rem;width:90%;margin-left:5%;margin-bottom:10px;border:1px solid #5c7cfa;font-size:11pt;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-transition:background-color 0.5s;-webkit-transition:background-color 0.5s;transition:background-color 0.5s;color:#5c7cfa;}/*!sc*/
+.dlfBJV .whole-category:hover{color:white;background-color:#5c7cfa;}/*!sc*/
+.dlfBJV .category-img{height:1.5rem;max-width:5.5rem;margin:0;border-radius:0;}/*!sc*/
+@media (max-width:1440px){.dlfBJV{width:100%;}}/*!sc*/
+@media (max-width:1056px){.dlfBJV{display:none;}}/*!sc*/
+data-styled.g9[id="CategoryList__CategoryListWrapper-tlquuq-0"]{content:"giOsDM,dlfBJV,"}/*!sc*/
+.khaWeL{display:none;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-top:1rem;font-size:1.5rem;}/*!sc*/
+@media (max-width:1056px){.khaWeL{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}}/*!sc*/
+@media (max-width:767px){}/*!sc*/
+.khaWeL .profile-img{width:6rem;height:6rem;border-radius:4rem;margin-right:1rem;}/*!sc*/
+@media (max-width:1056px){.khaWeL .profile-img{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}}/*!sc*/
+.khaWeL .info-wrapper{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:6rem;height:3rem;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;}/*!sc*/
+.khaWeL .info-wrapper .icon-wrapper{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;margin-top:0.3rem;}/*!sc*/
+.khaWeL svg{cursor:pointer;width:30%;}/*!sc*/
+.eWoSoe{max-width:20rem;margin-right:2rem;margin-top:-2rem;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;font-size:2rem;width:calc(20%);-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}/*!sc*/
+@media (max-width:1440px){}/*!sc*/
+@media (max-width:1056px){.eWoSoe{display:none;}}/*!sc*/
+.eWoSoe .profile-img{width:100%;border-radius:10rem;margin-bottom:1.5rem;}/*!sc*/
+.eWoSoe .info-wrapper{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:8rem;height:3rem;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;font-weight:lighter;text-align:center;}/*!sc*/
+.eWoSoe .info-wrapper .icon-wrapper{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;margin-top:0.3rem;}/*!sc*/
+.eWoSoe .info-wrapper .icon-wrapper svg{width:30%;cursor:pointer;}/*!sc*/
+data-styled.g10[id="SimpleProfile__SimpleProfileWrapper-sc-15fair4-0"]{content:"khaWeL,eWoSoe,"}/*!sc*/
+.hBRhDm{margin-top:1rem;width:100%;}/*!sc*/
+data-styled.g11[id="Header__Wrapper-sc-1kb1hjy-0"]{content:"hBRhDm,"}/*!sc*/
+.fXDuam{height:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;}/*!sc*/
+data-styled.g12[id="Header__Inner-sc-1kb1hjy-1"]{content:"fXDuam,"}/*!sc*/
+.gEGCIj{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;position:relative;}/*!sc*/
+@media (max-width:1024px){.gEGCIj .write-button{display:none;}}/*!sc*/
+data-styled.g13[id="Header__Right-sc-1kb1hjy-2"]{content:"gEGCIj,"}/*!sc*/
+.iDhEGQ{width:100%;height:100%;position:relative;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;}/*!sc*/
+data-styled.g15[id="MainPageRowTemplate__Wrapper-edmyx5-0"]{content:"iDhEGQ,"}/*!sc*/
+body{background-color:white;font-family:"ELAND",serif;}/*!sc*/
+data-styled.g16[id="sc-global-fslvaJ1"]{content:"sc-global-fslvaJ1,"}/*!sc*/
+.hOPIuR{font-family:"ELAND",serif;}/*!sc*/
+data-styled.g17[id="PostTemplate__PostTemplateWrapper-fu5bv9-0"]{content:"hOPIuR,"}/*!sc*/
+.kBxdJI{-webkit-transition:0.125s all ease-in;transition:0.125s all ease-in;width:20%;padding:0.5rem;padding-right:1rem;padding-left:0;-webkit-order:1;-ms-flex-order:1;order:1;top:10rem;margin-left:4rem;position:-webkit-sticky;position:sticky;height:40rem;overflow-y:auto;word-break:break-all;}/*!sc*/
+@media (max-width:1440px){.kBxdJI{display:none;}}/*!sc*/
+.kBxdJI ul:first-child{padding-left:1rem;border-left:2px solid #748ffc;}/*!sc*/
+.kBxdJI ul{list-style:none;margin:0;}/*!sc*/
+.kBxdJI ul li{border:none;margin-bottom:4px;}/*!sc*/
+.kBxdJI ul li p{margin:0;}/*!sc*/
+.kBxdJI a{-webkit-text-decoration:none;text-decoration:none;color:#CED4DA;font-size:0.9rem;}/*!sc*/
+.kBxdJI a:hover,.kBxdJI a:focus{color:#748ffc;}/*!sc*/
+.kBxdJI a.active{color:#364fc7;-webkit-transform:scale(1.1);-ms-transform:scale(1.1);transform:scale(1.1);}/*!sc*/
+.PostToC__ToCWrapper-sc-1vz6emx-0 + .PostToC__ToCWrapper-sc-1vz6emx-0{margin-top:4px;}/*!sc*/
+data-styled.g18[id="PostToC__ToCWrapper-sc-1vz6emx-0"]{content:"kBxdJI,"}/*!sc*/
+.fwJJPB{width:32px;height:32px;border-radius:16px;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;border:1px solid #5c7cfa;font-size:1.5rem;color:#5c7cfa;margin-left:1rem;margin-right:1rem;}/*!sc*/
+data-styled.g20[id="PrevNextPostItem__Circle-u4u2kx-0"]{content:"fwJJPB,"}/*!sc*/
+.hZyJtI{cursor:pointer;background:#F8F9FA;box-shadow:0 0 4px 0 rgba(0,0,0,0.06);width:100%;height:4rem;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+.hZyJtI:hover .PrevNextPostItem__Circle-u4u2kx-0{-webkit-animation-duration:0.35s;animation-duration:0.35s;-webkit-animation-name:JamRA;animation-name:JamRA;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards;-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out;}/*!sc*/
+data-styled.g21[id="PrevNextPostItem__Wrapper-u4u2kx-1"]{content:"hZyJtI,"}/*!sc*/
+.eLobFH{-webkit-flex:1;-ms-flex:1;flex:1;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;line-height:1;min-width:0;margin-right:1rem;}/*!sc*/
+.eLobFH .description{font-size:0.75rem;font-weight:bold;color:#495057;}/*!sc*/
+.eLobFH h3{margin-right:1rem;width:100%;font-size:1.125rem;color:#495057;line-height:1.15;margin:0;margin-top:0.5rem;text-overflow:ellipsis;white-space:nowrap;overflow-x:hidden;overflow-y:hidden;}/*!sc*/
+@media (max-width:768px){.eLobFH h3{font-size:1rem;}}/*!sc*/
+data-styled.g22[id="PrevNextPostItem__Text-u4u2kx-2"]{content:"eLobFH,"}/*!sc*/
+.hVFHhd{width:100%;margin-top:5rem;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:space-between;-webkit-box-align:space-between;-ms-flex-align:space-between;align-items:space-between;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;margin-left:auto;margin-right:auto;}/*!sc*/
+@media (max-width:767px){.hVFHhd{-webkit-flex-direction:column-reverse;-ms-flex-direction:column-reverse;flex-direction:column-reverse;}}/*!sc*/
+data-styled.g23[id="PrevNextPost__Wrapper-sc-1i8zxj4-0"]{content:"hVFHhd,"}/*!sc*/
+.fmrWiR{width:300px;}/*!sc*/
+@media (max-width:767px){.fmrWiR{width:100%;}.PrevNextPost__ItemWrapper-sc-1i8zxj4-1 + .PrevNextPost__ItemWrapper-sc-1i8zxj4-1{margin-bottom:1.5rem;}}/*!sc*/
+data-styled.g24[id="PrevNextPost__ItemWrapper-sc-1i8zxj4-1"]{content:"fmrWiR,"}/*!sc*/
+.cjbRyQ{padding:0.5rem 1rem;background-color:#F1F3F5;color:#3b5bdb;border-radius:0.5rem;margin-right:1rem;margin-bottom:0.5rem;}/*!sc*/
+@media (max-width:1056px){.cjbRyQ{font-size:0.8rem;}}/*!sc*/
+data-styled.g25[id="TagList__TagItemWrapper-sc-1ja74mt-0"]{content:"cjbRyQ,"}/*!sc*/
+.cXMAIe{width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-bottom:2rem;}/*!sc*/
+data-styled.g26[id="TagList__TagListWrapper-sc-1ja74mt-1"]{content:"cXMAIe,"}/*!sc*/
+.ffDpqt{width:60%;margin-left:0;max-width:972px;}/*!sc*/
+@media (max-width:1440px){.ffDpqt{width:80%;}}/*!sc*/
+@media (max-width:1056px){.ffDpqt{width:100%;}}/*!sc*/
+.ffDpqt .category{-webkit-text-decoration:none;text-decoration:none;font-size:1.5rem;color:gray;margin-bottom:0;}/*!sc*/
+.ffDpqt .category:hover{-webkit-text-decoration:underline;text-decoration:underline;}/*!sc*/
+@media (max-width:1056px){.ffDpqt .category{font-size:1rem;}}/*!sc*/
+.ffDpqt .title{margin-top:0.5rem;font-size:3rem;}/*!sc*/
+@media (max-width:1056px){.ffDpqt .title{font-size:2.2rem;}}/*!sc*/
+.ffDpqt .date{line-height:0.8;color:gray;}/*!sc*/
+@media (max-width:1056px){.ffDpqt .date{font-size:0.8rem;}}/*!sc*/
+.ffDpqt .adsense-block{width:100%;}/*!sc*/
+data-styled.g27[id="PostViewer__PostViewerWrapper-sc-1vcgubz-0"]{content:"ffDpqt,"}/*!sc*/
+.cIdEKb{width:100%;margin:0;word-break:break-all;}/*!sc*/
+.cIdEKb a{color:#4c6ef5;-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+.cIdEKb a:hover{-webkit-text-decoration:underline;text-decoration:underline;}/*!sc*/
+.cIdEKb h1{margin-top:3rem;}/*!sc*/
+@media (max-width:767px){.cIdEKb h1{margin-top:2rem;font-size:1.8rem;}}/*!sc*/
+.cIdEKb h2{margin-top:3rem;}/*!sc*/
+@media (max-width:767px){.cIdEKb h2{margin-top:2rem;}}/*!sc*/
+.cIdEKb h3{margin-top:2rem;}/*!sc*/
+@media (max-width:767px){.cIdEKb h3{margin-top:1rem;}}/*!sc*/
+.cIdEKb p{font-size:1.1rem;line-height:1.8;}/*!sc*/
+@media (max-width:767px){.cIdEKb p{font-size:0.9rem;line-height:1.7;}}/*!sc*/
+.cIdEKb li{font-size:1.1rem;line-height:2;}/*!sc*/
+@media (max-width:767px){.cIdEKb li{font-size:0.9rem;line-height:1.7;}}/*!sc*/
+.cIdEKb li h4,.cIdEKb li p{margin:0;font-size:1.1rem;}/*!sc*/
+@media (max-width:767px){.cIdEKb li h4,.cIdEKb li p{font-size:0.9rem;line-height:1.7;}}/*!sc*/
+.cIdEKb pre,.cIdEKb code{font-size:1rem;margin-bottom:2rem;}/*!sc*/
+@media (max-width:767px){.cIdEKb pre,.cIdEKb code{font-size:0.9rem;margin-bottom:1.5rem;}}/*!sc*/
+.cIdEKb pre{border-radius:3px;}/*!sc*/
+.cIdEKb img{width:100%;}/*!sc*/
+.cIdEKb table{white-space:normal;max-width:100%;border-collapse:collapse;text-align:left;line-height:1.5;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:20px 0;}/*!sc*/
+.cIdEKb table thead th{min-width:60px;max-width:150px;padding:10px;font-weight:bold;vertical-align:top;color:#fff;background:#4c6ef5;margin:20px 10px;}/*!sc*/
+.cIdEKb table tbody th{max-width:150px;padding:10px;}/*!sc*/
+.cIdEKb table td{max-width:350px;padding:10px;vertical-align:top;}/*!sc*/
+.cIdEKb table tr:nth-child(even){background:#edf2ff;}/*!sc*/
+.cIdEKb th{font-size:0.9rem;}/*!sc*/
+@media (max-width:767px){.cIdEKb th{font-size:0.8rem;}}/*!sc*/
+.cIdEKb td{font-size:0.9rem;}/*!sc*/
+@media (max-width:767px){.cIdEKb td{font-size:0.8rem;}}/*!sc*/
+.cIdEKb hr{margin-top:3rem;margin-bottom:3rem;}/*!sc*/
+@media (max-width:767px){.cIdEKb hr{margin-top:2rem;margin-bottom:2rem;}}/*!sc*/
+.cIdEKb blockquote{background-color:#F8F9FA;width:100%;margin:0;padding-top:0.5rem;padding-bottom:0.5rem;border-left:4px solid #5c7cfa;}/*!sc*/
+.cIdEKb blockquote p{margin-left:2rem;margin-right:2rem;}/*!sc*/
+data-styled.g28[id="PostViewer__PostContentWrapper-sc-1vcgubz-1"]{content:"cIdEKb,"}/*!sc*/
+.lhumdt{width:60%;margin-left:auto;margin-right:auto;}/*!sc*/
+@media (max-width:1056px){.lhumdt{width:100%;}}/*!sc*/
+data-styled.g29[id="Utterances__Wrapper-sc-1m6k9q3-0"]{content:"lhumdt,"}/*!sc*/
+@-webkit-keyframes JamRA{0%{-webkit-transform:translateX(0px);-ms-transform:translateX(0px);transform:translateX(0px);}50%{-webkit-transform:translateX(-8px);-ms-transform:translateX(-8px);transform:translateX(-8px);}100%{-webkit-transform:translateX(0px);-ms-transform:translateX(0px);transform:translateX(0px);}}/*!sc*/
+@keyframes JamRA{0%{-webkit-transform:translateX(0px);-ms-transform:translateX(0px);transform:translateX(0px);}50%{-webkit-transform:translateX(-8px);-ms-transform:translateX(-8px);transform:translateX(-8px);}100%{-webkit-transform:translateX(0px);-ms-transform:translateX(0px);transform:translateX(0px);}}/*!sc*/
+data-styled.g54[id="sc-keyframes-JamRA"]{content:"JamRA,"}/*!sc*/
+</style><title data-react-helmet="true">[React Native] Kakao Link를 사용해서 Deep link를 구현해보자. | millo&#x27;s tech blog</title><meta data-react-helmet="true" property="og:locale" content="ko_KR"/><meta data-react-helmet="true" property="og:locale:alternate" content="en_US"/><meta data-react-helmet="true" property="og:site_name" content="millo&#x27;s tech blog"/><meta data-react-helmet="true" property="description" content="react-native-kakako-share-link를 사용해서 딥링크를 구현해보자."/><meta data-react-helmet="true" property="og:url" content="https://millo-L.github.io/ReactNative-kakao-deep-link/"/><meta data-react-helmet="true" property="og:title" content="[React Native] Kakao Link를 사용해서 Deep link를 구현해보자."/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:description" content="react-native-kakako-share-link를 사용해서 딥링크를 구현해보자."/><meta data-react-helmet="true" property="og:image" content="https://millo-L.github.io/static/41ace13b6768be6622e6257e9bb0a52f/ee604/reactnative.png"/><meta data-react-helmet="true" property="article:published_time" content="2021-09-05"/><script data-react-helmet="true" type="application/ld+json">
+        {
+          "@context": "http://schema.org",
+          "@type": "BlogPosting",
+          "url": "https://millo-L.github.io/ReactNative-kakao-deep-link/",
+          "headline": "[React Native] Kakao Link를 사용해서 Deep link를 구현해보자.",
+          "datePublished": "2021-09-05",
+          "dateModified": "2021-09-05",
+          "image": "https://millo-L.github.io/static/41ace13b6768be6622e6257e9bb0a52f/ee604/reactnative.png"
+        }
+        </script><script data-react-helmet="true" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js"></script><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>            
+              (adsbygoogle = window.adsbygoogle || []).push({
+                google_ad_client: "ca-pub-3926462216067158",
+                enable_page_level_ads: true
+              });
+          </script><link rel="preconnect" href="https://www.google-analytics.com"/><link rel="dns-prefetch" href="https://www.google-analytics.com"/><link as="script" rel="preload" href="/webpack-runtime-61c4fdd77dc41cc5a425.js"/><link as="script" rel="preload" href="/framework-ba40f9a3aba7ac20e79d.js"/><link as="script" rel="preload" href="/app-e7cada0e060727aa1495.js"/><link as="script" rel="preload" href="/styles-407fe62976dc5310c43e.js"/><link as="script" rel="preload" href="/d0447323-bedce39572060a0855c2.js"/><link as="script" rel="preload" href="/d7eeaac4-f8ba23a900ff33a7187f.js"/><link as="script" rel="preload" href="/252f366e-a64e38db0deea92b8691.js"/><link as="script" rel="preload" href="/ae51ba48-270e5111837ab28b50e9.js"/><link as="script" rel="preload" href="/commons-5642620b322105a118c5.js"/><link as="script" rel="preload" href="/component---src-components-post-post-page-tsx-87a09a460c3291e4b7ce.js"/><link as="fetch" rel="preload" href="/page-data/ReactNative-kakao-deep-link/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1608878238.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/3469517283.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/764694655.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="PostTemplate__PostTemplateWrapper-fu5bv9-0 hOPIuR"><div class="Header__Wrapper-sc-1kb1hjy-0 hBRhDm"><div class="MainResponsive__Wrapper-akiqw6-0 jBmihO Header__Inner-sc-1kb1hjy-1 fXDuam"><div class="HeaderLogo__HeaderLogoWrapper-jctne5-0 dtMDNx"><a class="HeaderLogo__VelogLogoLink-jctne5-1 fWiMFD" href="/"><div class="header-logo gatsby-image-wrapper" style="position:relative;overflow:hidden"><div aria-hidden="true" style="width:100%;padding-bottom:100%"></div><img aria-hidden="true" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAADrklEQVQ4y3VUa29UVRS9iX/Av+JHY5T6BNqZiiFqfCAIHa4tnaEDig9qCBJArSb4aOwgoqDlIbXyaomCwVI1Eh9IjGhIDPpB/wD33Jl7zu1ZrnXm1k6NTLJnn8c9a++99iMqVZOoNJjcVKqaNT01M0rd6KkmjVLNBJlf3+isp2rG+KZOnJtLtSSKumtpxM0kL8GPMK+7qbsHF5+VN5pFe2kCcs19NflFoAQzXeGylljqIPzQPrDJ2JWb2+v587vjxN7Xv7AvF5rSLIzUI1qoFFYcD33vkPF3rEv88fMW0185dPUluH/I4K71CT7+3GLnvlZY01tPcL98MPFL20bk7RgBk7hAz2nRLxtI8NgLBpn1eONQ+/GdlQTvn8ig35Y9TdwTB0A8uS3Fg88YT22XbwgYjYh/ccGHk3fy6N3JDJ6Pq6+kuHX19bB3ucehaRvABbjtnSZOz1p8NGX9e8cz21UJkSwAUhyT4MkbZn90mL3ksH5Hir2fZDh30eGbyw6PbzUgjyEhJ2cstjdaEDVMoC2ibANq07vRuCXk7s3DLVlFYyLDpd9yHDiV4eX9LYxPZ8G7R54zgcfdPHvrSIaBXSluW5NYvleUnSHTQybl4s8OfdtT/Hotx5Xfc5B4nP/OBb5WPm1w9DMbZPPrTez7NEPfSymGRpp2GTksy0MlRQTTutuxt+XPMLNKxOjRDCvqBlvfJlcXLJaQ23FyuGe8hZEDLfBbfDiV4fsrOWZ+cPahLQZLBwoPBUgQR+68yA7EP9XOrrzr35lieLSJsWNZMKRMiwpRUh9p4uDpzD76vFE0jYhexPKo/lrTXf1zzvcW3UBrqL2a4uy3LqyPMMwKw5s4Z4PXl6/mOEjQ4kxFj15lmXHH4umPv+fc4TNWRY0Vm0wI8dhZG0J7+FmDKZaIvNvPehTQiS+tPMMEv9mwO1UHKbGNiNZjthlOzVhH4r28UZGquL/+yUF38njVsMHqF9MALq3yUqZFB+vSljuzrLJhQTu1kdrs9rXtzpj8gslY1+4KGQrGODDUTRoc4ljtx/uFOlSW5QHjz9WferSKBXztrzn0s8bu7U/+nTL/FZ2rXYsBoolDwJpZG8YPO4Wg0GD44GTmmUFPD2Td8+7/pUqwoIvhwHmq8XULReMrgJK/nHy5J4ZTUeB0pj7no6A7RQMlnNeK1uOQlocasLsCaDE4xZGkc5iWwoMOWTRgw/2kJn9UHrxegNJThl90Tszw44LfG0p79JmKhnQx+aN/ANktQQFYbUDmAAAAAElFTkSuQmCC" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/b80cc5cfcebcbde1ec4f03e15cebebb0/65e33/logo.png 100w" sizes="(max-width: 100px) 100vw, 100px" /><img loading="lazy" sizes="(max-width: 100px) 100vw, 100px" srcset="/static/b80cc5cfcebcbde1ec4f03e15cebebb0/65e33/logo.png 100w" src="/static/b80cc5cfcebcbde1ec4f03e15cebebb0/65e33/logo.png" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div></a></div><div class="Header__Right-sc-1kb1hjy-2 gEGCIj"><div><div class="HeaderLanguage__HeaderUserImageWrapper-sc-10f9laq-0 jAIvAt"><span>한국어</span><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"></path></svg></div></div></div></div><div class="MainResponsive__Wrapper-akiqw6-0 jBmihO SimpleProfile__SimpleProfileWrapper-sc-15fair4-0 khaWeL"><div class="profile-img gatsby-image-wrapper" style="position:relative;overflow:hidden"><div aria-hidden="true" style="width:100%;padding-bottom:100%"></div><img aria-hidden="true" src="data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAGQABAQADAQAAAAAAAAAAAAAAAAQBAgUD/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQID/9oADAMBAAIQAxAAAAGqK7zzvmOkl1wBYJP/xAAbEAACAwADAAAAAAAAAAAAAAABAgADEhATIf/aAAgBAQABBQKxBZOhczWiIalYsMyr3j//xAAVEQEBAAAAAAAAAAAAAAAAAAAQAf/aAAgBAwEBPwEp/8QAFhEBAQEAAAAAAAAAAAAAAAAAEgAQ/9oACAECAQE/AVLf/8QAGhAAAgIDAAAAAAAAAAAAAAAAABEBECAhcf/aAAgBAQAGPwJT0eDNX//EABwQAQEBAQACAwAAAAAAAAAAAAERACEQQTFRcf/aAAgBAQABPyG1RLE0fkWPLgJ31zASPqbruuB3CF/GSC/Xj//aAAwDAQACAAMAAAAQwyi//8QAGBEAAgMAAAAAAAAAAAAAAAAAAREAEDH/2gAIAQMBAT8QQGx2/8QAFxEAAwEAAAAAAAAAAAAAAAAAAAEREP/aAAgBAgEBPxBwQPP/xAAcEAEAAwADAQEAAAAAAAAAAAABABEhMUFRYdH/2gAIAQEAAT8QD2Bwy6mIBN1LWSpFSDXyFYl2U+yuS8VXszWRWMHBEXSvR+xSXJWGFT//2Q==" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/c7759ca5a3cc7f61c0138afd7ced1e49/3a85a/profile.jpg 115w,
+/static/c7759ca5a3cc7f61c0138afd7ced1e49/4c3eb/profile.jpg 230w,
+/static/c7759ca5a3cc7f61c0138afd7ced1e49/d3376/profile.jpg 460w" sizes="(max-width: 460px) 100vw, 460px" /><img loading="lazy" sizes="(max-width: 460px) 100vw, 460px" srcset="/static/c7759ca5a3cc7f61c0138afd7ced1e49/3a85a/profile.jpg 115w,
+/static/c7759ca5a3cc7f61c0138afd7ced1e49/4c3eb/profile.jpg 230w,
+/static/c7759ca5a3cc7f61c0138afd7ced1e49/d3376/profile.jpg 460w" src="/static/c7759ca5a3cc7f61c0138afd7ced1e49/d3376/profile.jpg" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><div class="info-wrapper"><span>millo</span><div class="ProfileIcons__IconWrapper-sc-1lpa755-0 kWLSJs icon-wrapper"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9a127.5 127.5 0 0 1 38.1 91v112.5c.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z"></path></svg><svg stroke="currentColor" fill="currentColor" stroke-width="0" role="img" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><title></title><path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z"></path></svg><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path></svg></div></div><div class="CategoryList__CategoryListWrapper-tlquuq-0 giOsDM"><p>Categories</p><a style="text-decoration:none" href="/"><div class="whole-category">전체 보기</div></a><div class="img-wrapper"><a href="/?category=nodejs"><img class="category-img" src="https://img.shields.io/badge/NodeJS-339933?style=flat-square&amp;logo=Node.js&amp;logoColor=white"/></a><a href="/?category=webrtc"><img class="category-img" src="https://img.shields.io/badge/WebRTC-333333?style=flat-square&amp;logo=WebRTC&amp;logoColor=white"/></a><a href="/?category=network"><img class="category-img" src="https://img.shields.io/badge/Network-F96702?style=flat-square"/></a><a href="/?category=javascript"><img class="category-img" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&amp;logo=JavaScript&amp;logoColor=black"/></a><a href="/?category=docker"><img class="category-img" src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&amp;logo=Docker&amp;logoColor=white"/></a><a href="/?category=reactnative"><img class="category-img" src="https://img.shields.io/badge/ReactNative-61DAFB?style=flat-square&amp;logo=React&amp;logoColor=white"/></a><a href="/?category=go"><img class="category-img" src="https://img.shields.io/badge/Go-00ADD8?style=flat-square&amp;logo=Go&amp;logoColor=white"/></a><a href="/?category=opensource"><img class="category-img" src="https://img.shields.io/badge/OpenSource-3DA639?style=flat-square&amp;logo=Open-Source-Initiative&amp;logoColor=white"/></a><a href="/?category=typescript"><img class="category-img" src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&amp;logo=TypeScript&amp;logoColor=white"/></a><a href="/?category=nginx"><img class="category-img" src="https://img.shields.io/badge/NGINX-269539?style=flat-square&amp;logo=NGINX&amp;logoColor=white"/></a><a href="/?category=gatsby"><img class="category-img" src="https://img.shields.io/badge/Gatsby-663399?style=flat-square&amp;logo=Gatsby&amp;logoColor=white"/></a><a href="/?category=raspberrypi"><img class="category-img" src="https://img.shields.io/badge/Raspberry-C51A4A?style=flat-square&amp;logo=Raspberry-Pi&amp;logoColor=white"/></a><a href="/?category=python"><img class="category-img" src="https://img.shields.io/badge/Python-3776AB?style=flat-square&amp;logo=Python&amp;logoColor=white"/></a><a href="/?category=android"><img class="category-img" src="https://img.shields.io/badge/Android-3DDC84?style=flat-square&amp;logo=Android&amp;logoColor=white"/></a></div></div></div></div><div class="MainResponsive__Wrapper-akiqw6-0 jBmihO" style="margin-top:2rem"><div style="margin-bottom:2rem" class="MainPageRowTemplate__Wrapper-edmyx5-0 iDhEGQ"><div class="MainResponsive__Wrapper-akiqw6-0 jBmihO SimpleProfile__SimpleProfileWrapper-sc-15fair4-0 eWoSoe" style="margin-top:0.5rem"><div class="profile-img gatsby-image-wrapper" style="position:relative;overflow:hidden"><div aria-hidden="true" style="width:100%;padding-bottom:100%"></div><img aria-hidden="true" src="data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAGQABAQADAQAAAAAAAAAAAAAAAAQBAgUD/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQID/9oADAMBAAIQAxAAAAGqK7zzvmOkl1wBYJP/xAAbEAACAwADAAAAAAAAAAAAAAABAgADEhATIf/aAAgBAQABBQKxBZOhczWiIalYsMyr3j//xAAVEQEBAAAAAAAAAAAAAAAAAAAQAf/aAAgBAwEBPwEp/8QAFhEBAQEAAAAAAAAAAAAAAAAAEgAQ/9oACAECAQE/AVLf/8QAGhAAAgIDAAAAAAAAAAAAAAAAABEBECAhcf/aAAgBAQAGPwJT0eDNX//EABwQAQEBAQACAwAAAAAAAAAAAAERACEQQTFRcf/aAAgBAQABPyG1RLE0fkWPLgJ31zASPqbruuB3CF/GSC/Xj//aAAwDAQACAAMAAAAQwyi//8QAGBEAAgMAAAAAAAAAAAAAAAAAAREAEDH/2gAIAQMBAT8QQGx2/8QAFxEAAwEAAAAAAAAAAAAAAAAAAAEREP/aAAgBAgEBPxBwQPP/xAAcEAEAAwADAQEAAAAAAAAAAAABABEhMUFRYdH/2gAIAQEAAT8QD2Bwy6mIBN1LWSpFSDXyFYl2U+yuS8VXszWRWMHBEXSvR+xSXJWGFT//2Q==" alt="" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;transition-delay:500ms"/><noscript><picture><source srcset="/static/c7759ca5a3cc7f61c0138afd7ced1e49/3a85a/profile.jpg 115w,
+/static/c7759ca5a3cc7f61c0138afd7ced1e49/4c3eb/profile.jpg 230w,
+/static/c7759ca5a3cc7f61c0138afd7ced1e49/d3376/profile.jpg 460w" sizes="(max-width: 460px) 100vw, 460px" /><img loading="lazy" sizes="(max-width: 460px) 100vw, 460px" srcset="/static/c7759ca5a3cc7f61c0138afd7ced1e49/3a85a/profile.jpg 115w,
+/static/c7759ca5a3cc7f61c0138afd7ced1e49/4c3eb/profile.jpg 230w,
+/static/c7759ca5a3cc7f61c0138afd7ced1e49/d3376/profile.jpg 460w" src="/static/c7759ca5a3cc7f61c0138afd7ced1e49/d3376/profile.jpg" alt="" style="position:absolute;top:0;left:0;opacity:1;width:100%;height:100%;object-fit:cover;object-position:center"/></picture></noscript></div><div class="info-wrapper"><span>millo</span><div class="ProfileIcons__IconWrapper-sc-1lpa755-0 kWLSJs icon-wrapper"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9a127.5 127.5 0 0 1 38.1 91v112.5c.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z"></path></svg><svg stroke="currentColor" fill="currentColor" stroke-width="0" role="img" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><title></title><path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z"></path></svg><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path></svg></div></div><div class="CategoryList__CategoryListWrapper-tlquuq-0 dlfBJV"><p>Categories</p><a style="text-decoration:none" href="/"><div class="whole-category">전체 보기</div></a><div class="img-wrapper"><a href="/?category=nodejs"><img class="category-img" src="https://img.shields.io/badge/NodeJS-339933?style=flat-square&amp;logo=Node.js&amp;logoColor=white"/></a><a href="/?category=webrtc"><img class="category-img" src="https://img.shields.io/badge/WebRTC-333333?style=flat-square&amp;logo=WebRTC&amp;logoColor=white"/></a><a href="/?category=network"><img class="category-img" src="https://img.shields.io/badge/Network-F96702?style=flat-square"/></a><a href="/?category=javascript"><img class="category-img" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&amp;logo=JavaScript&amp;logoColor=black"/></a><a href="/?category=docker"><img class="category-img" src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&amp;logo=Docker&amp;logoColor=white"/></a><a href="/?category=reactnative"><img class="category-img" src="https://img.shields.io/badge/ReactNative-61DAFB?style=flat-square&amp;logo=React&amp;logoColor=white"/></a><a href="/?category=go"><img class="category-img" src="https://img.shields.io/badge/Go-00ADD8?style=flat-square&amp;logo=Go&amp;logoColor=white"/></a><a href="/?category=opensource"><img class="category-img" src="https://img.shields.io/badge/OpenSource-3DA639?style=flat-square&amp;logo=Open-Source-Initiative&amp;logoColor=white"/></a><a href="/?category=typescript"><img class="category-img" src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&amp;logo=TypeScript&amp;logoColor=white"/></a><a href="/?category=nginx"><img class="category-img" src="https://img.shields.io/badge/NGINX-269539?style=flat-square&amp;logo=NGINX&amp;logoColor=white"/></a><a href="/?category=gatsby"><img class="category-img" src="https://img.shields.io/badge/Gatsby-663399?style=flat-square&amp;logo=Gatsby&amp;logoColor=white"/></a><a href="/?category=raspberrypi"><img class="category-img" src="https://img.shields.io/badge/Raspberry-C51A4A?style=flat-square&amp;logo=Raspberry-Pi&amp;logoColor=white"/></a><a href="/?category=python"><img class="category-img" src="https://img.shields.io/badge/Python-3776AB?style=flat-square&amp;logo=Python&amp;logoColor=white"/></a><a href="/?category=android"><img class="category-img" src="https://img.shields.io/badge/Android-3DDC84?style=flat-square&amp;logo=Android&amp;logoColor=white"/></a></div></div></div><div class="PostViewer__PostViewerWrapper-sc-1vcgubz-0 ffDpqt"><a class="category" href="/?category=reactnative"><img src="https://img.shields.io/badge/ReactNative-61DAFB?style=flat-square&amp;logo=React&amp;logoColor=white"/></a><h1 class="title">[React Native] Kakao Link를 사용해서 Deep link를 구현해보자.</h1><p class="date">게시: <!-- -->약 12시간 전</p><div class="TagList__TagListWrapper-sc-1ja74mt-1 cXMAIe"><div class="TagList__TagItemWrapper-sc-1ja74mt-0 cjbRyQ">ReactNative</div><div class="TagList__TagItemWrapper-sc-1ja74mt-0 cjbRyQ">iOS</div><div class="TagList__TagItemWrapper-sc-1ja74mt-0 cjbRyQ">Android</div><div class="TagList__TagItemWrapper-sc-1ja74mt-0 cjbRyQ">Kakao Link</div><div class="TagList__TagItemWrapper-sc-1ja74mt-0 cjbRyQ">Deep Link</div><div class="TagList__TagItemWrapper-sc-1ja74mt-0 cjbRyQ">react-native-kakao-share-link</div><div class="TagList__TagItemWrapper-sc-1ja74mt-0 cjbRyQ">react-navigation</div></div><div id="content-container" class="PostViewer__PostContentWrapper-sc-1vcgubz-1 cIdEKb"><h1 id="1-서론" style="position:relative;"><a href="#1-%EC%84%9C%EB%A1%A0" aria-label="1 서론 permalink" class="anchor-header before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. 서론</h1>
+<p>이번에 앱 내에 발달 놀이터라는 커뮤니티 형태의 기능이 들어가게 됐는 데, 이에 따른 공유하기 기능과 해당 공유를 눌렀을 경우 앱에서 해당 화면으로 바로 이동할 수 있게 하는 코드를 작성했다. 작업 도중 해당 기능을 구현하는 방식에 대해 공부하게 됐고, <a href="https://reactnavigation.org/docs/deep-linking/">react-navigation</a>과 <a href="https://www.npmjs.com/package/react-native-kakao-share-link">react-native-kakao-share-link</a>를 사용해서 구현했다. 크게 어려운 부분은 없고 해당 기능을 처음 사용해보는 사람들을 위해 포스팅을 작성한다.</p>
+<h1 id="2-deep-link란" style="position:relative;"><a href="#2-deep-link%EB%9E%80" aria-label="2 deep link란 permalink" class="anchor-header before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. Deep Link란?</h1>
+<p>자세한 설명은 <a href="https://help.dfinery.io/hc/ko/articles/360039757433-%EB%94%A5%EB%A7%81%ED%81%AC-Deeplink-URI%EC%8A%A4%ED%82%B4-%EC%9C%A0%EB%8B%88%EB%B2%84%EC%85%9C-%EB%A7%81%ED%81%AC-%EC%95%B1%EB%A7%81%ED%81%AC-%EA%B5%AC%EB%B6%84%EA%B3%BC-%EC%9D%B4%ED%95%B4">여기</a>서 확인해보기 바란다.</p>
+<p>간단하게 설명하자면 웹 브라우저 환경에서 DNS가 존재하는 것처럼 모바일 환경에서 특정 앱을 실행시키거나, 특정 앱의 특정 페이지로 이동시키는 주소 혹은 값이다. 방식에서는 크게 세 가지가 있다.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">1. URI 스킴 방식: 앱에 URI 스킴(scheme) 등록해서 사용
+2. 앱 링크(App Link): 도메인 주소를 등록해서 사용 (Android only)
+3. 유니버셜 링크(Universal Link): 도메인 주소를 등록해서 사용 (iOS only)</code></pre></div>
+<h2 id="2-1-uri-스킴-방식" style="position:relative;"><a href="#2-1-uri-%EC%8A%A4%ED%82%B4-%EB%B0%A9%EC%8B%9D" aria-label="2 1 uri 스킴 방식 permalink" class="anchor-header before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2-1. URI 스킴 방식</h2>
+<p>URI 스킴 방식은 현재까지 가장 많이 사용하는 방식으로, 가장 초기에 나온 방식이며 앱에 scheme을 등록하는 형태로 각 앱을 구분한다. 방식은 Scheme://Path 형태이고 경우에 따라 query(?name=millo)가 붙기도 한다.</p>
+<ul>
+<li>Scheme: 앱을 특정 (twitter)</li>
+<li>Path: 앱 내 페이지를 특정 (트위터 내 특정 페이지)</li>
+<li>query: 해당 페이지로 넘겨줄 값 (선택)</li>
+</ul>
+<p>URI 스킴 방식은 완벽할까? 정답은 아니다. 그렇다면 뒤의 앱 링크와 유니버셜 링크는 세상에 나올 필요가 없었을 것이다. URI 스킴 방식의 가장 큰 단점은 무수히 많은 앱들이 생성됨에 따라 Scheme이 중복되는 문제이다. 현재 Scheme이 중복되는 지 검사할 수 있는 방식은 없다. 하지만, 매우 유니크하게 scheme을 생성한다면 딱히 문제가 될 것 같진 않다.</p>
+<p>우리는 카카오 링크 기능을 기반으로 진행할 것이기 때문에, <a href="https://www.npmjs.com/package/react-native-kakao-share-link">여기</a>에서 초기 설정을 마친 후 보기 바란다. 만약 카카오 링크 기능 사용 없이 딥링크만을 이해하고 싶다면 scheme과 host에 원하는 값을 넣으면 된다.</p>
+<h3>1. Android 설정</h3>
+<p>위의 링크에서 설정을 마쳤다면 이미 아래의 설정을 진행했을 것이다. <code class="language-text">./android/app/src/main/AndroidManifest.xml</code>에서 <code class="language-text">kakao{카카오 네이티브 앱키}</code>가 Scheme이 되고, <code class="language-text">kakaolink</code>가 Path가 된다. Scheme은 카카오 자체에서 URI 스킴이 겹치지 않게 랜덤으로 배정해주므로 중복될 걱정이 없다. 만약, 카카오 링크 없이 딥링크만을 원하면 아래의 <code class="language-text">&lt;data ~ /&gt;</code>에 원하는 값들을 집어넣으면 된다.</p>
+<div class="gatsby-highlight" data-language="diff"><pre class="language-diff"><code class="language-diff"># ./android/app/src/main/AndroidManifest.xml
+<span class="token deleted-arrow deleted"><span class="token prefix deleted"><</span>manifest xmlns:android="http://schemas.android.com/apk/res/android"
+</span><span class="token unchanged"><span class="token prefix unchanged"> </span> package="com.example">
+<span class="token prefix unchanged"> </span>   ...
+</span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span>   &lt;uses-permission android:name="android.permission.INTERNET" />
+</span><span class="token unchanged"><span class="token prefix unchanged"> </span>   ...
+<span class="token prefix unchanged"> </span>   &lt;application
+<span class="token prefix unchanged"> </span>     ...
+</span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span>     android:allowBackup="true"
+</span><span class="token unchanged"><span class="token prefix unchanged"> </span>     ...>
+<span class="token prefix unchanged"> </span>     &lt;activity
+<span class="token prefix unchanged"> </span>     ...>
+<span class="token prefix unchanged"> </span>       &lt;intent-filter>
+<span class="token prefix unchanged"> </span>           &lt;action android:name="android.intent.action.MAIN" />
+<span class="token prefix unchanged"> </span>           &lt;category android:name="android.intent.category.LAUNCHER" />
+<span class="token prefix unchanged"> </span>       &lt;/intent-filter>
+</span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span>       &lt;intent-filter>
+<span class="token prefix inserted">+</span>           &lt;action android:name="android.intent.action.VIEW" />
+<span class="token prefix inserted">+</span>           &lt;category android:name="android.intent.category.DEFAULT" />
+<span class="token prefix inserted">+</span>           &lt;category android:name="android.intent.category.BROWSABLE" />
+<span class="token prefix inserted">+</span>           &lt;data android:host="kakaolink"
+<span class="token prefix inserted">+</span>                   android:scheme="kakao{카카오 네이티브 앱키}" />
+</span><span class="token unchanged"><span class="token prefix unchanged"> </span>       &lt;/intent-filter>
+<span class="token prefix unchanged"> </span>     &lt;/activity>
+<span class="token prefix unchanged"> </span>     &lt;activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+<span class="token prefix unchanged"> </span>   &lt;/application>
+</span>
+<span class="token deleted-arrow deleted"><span class="token prefix deleted"><</span>/manifest></span></code></pre></div>
+<h3>2. iOS 설정</h3>
+<p>iOS도 마찬가지로 위의 링크에서 진행했다면 이미 완료된 상태일 것이고, 카카오 링크를 사용하지 않는 다면 <code class="language-text">./ios/{your-project-name}/Info.plist</code>의 해당하는 부분에 원하는 값들을 넣으면 된다. 여기서도 마찬가지로 Scheme은 <code class="language-text">kakao{카카오 네이티브 앱키}</code>부분이고 Path는 아래의 <code class="language-text">LSApplicationQueriesSchemes</code>의 <code class="language-text">&lt;string&gt;kakaolink&lt;/string&gt;</code>이다.</p>
+<div class="gatsby-highlight" data-language="diff"><pre class="language-diff"><code class="language-diff"># ./ios/{your-project-name}/Info.plist
+
+<span class="token unchanged"><span class="token prefix unchanged"> </span> &lt;key>CFBundleURLTypes&lt;/key>
+<span class="token prefix unchanged"> </span> &lt;array>
+</span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span>   &lt;dict>
+<span class="token prefix inserted">+</span>     &lt;key>CFBundleTypeRole&lt;/key>
+<span class="token prefix inserted">+</span>     &lt;string>Editor&lt;/string>
+<span class="token prefix inserted">+</span>     &lt;key>CFBundleURLSchemes&lt;/key>
+<span class="token prefix inserted">+</span>     &lt;array>
+<span class="token prefix inserted">+</span>       &lt;string>kakao{카카오 네이티브 앱키}&lt;/string>
+<span class="token prefix inserted">+</span>     &lt;/array>
+<span class="token prefix inserted">+</span>   &lt;/dict>
+</span><span class="token unchanged"><span class="token prefix unchanged"> </span> &lt;/array>
+<span class="token prefix unchanged"> </span> &lt;key>CFBundleVersion&lt;/key>
+<span class="token prefix unchanged"> </span> &lt;string>1&lt;/string>
+</span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span> &lt;key>KAKAO_APP_KEY&lt;/key>
+<span class="token prefix inserted">+</span> &lt;string>{카카오 네이티브 앱키}&lt;/string>
+<span class="token prefix inserted">+</span> &lt;key>LSApplicationQueriesSchemes&lt;/key>
+<span class="token prefix inserted">+</span> &lt;array>
+<span class="token prefix inserted">+</span>     &lt;!-- 카카오링크 -->
+<span class="token prefix inserted">+</span>     &lt;string>kakaolink&lt;/string>
+<span class="token prefix inserted">+</span> &lt;/array></span></code></pre></div>
+<h2 id="2-2-앱-링크와-유니버셜-링크" style="position:relative;"><a href="#2-2-%EC%95%B1-%EB%A7%81%ED%81%AC%EC%99%80-%EC%9C%A0%EB%8B%88%EB%B2%84%EC%85%9C-%EB%A7%81%ED%81%AC" aria-label="2 2 앱 링크와 유니버셜 링크 permalink" class="anchor-header before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2-2. 앱 링크와 유니버셜 링크</h2>
+<p>앱 링크와 유니버셜 링크는 위의 URI 스킴의 중복 문제를 해결하기 위해 고안됐지만, 사실상 사용할 수 있는 환경이 제공돼있지 않다. 자세한 설명은 <a href="https://help.dfinery.io/hc/ko/articles/360039757433-%EB%94%A5%EB%A7%81%ED%81%AC-Deeplink-URI%EC%8A%A4%ED%82%B4-%EC%9C%A0%EB%8B%88%EB%B2%84%EC%85%9C-%EB%A7%81%ED%81%AC-%EC%95%B1%EB%A7%81%ED%81%AC-%EA%B5%AC%EB%B6%84%EA%B3%BC-%EC%9D%B4%ED%95%B4">여기</a>서 알아보도록 하자.</p>
+<h1 id="3-deep-link-구현하기" style="position:relative;"><a href="#3-deep-link-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0" aria-label="3 deep link 구현하기 permalink" class="anchor-header before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3. Deep Link 구현하기</h1>
+<p>위에서 말했듯 우리는 URI 스킴 방식을 사용할 것이므로 위의 설정을 했다고 가정하고 시작하겠다. 화면 전환이라는 것 자체가 react-navigation를 기반으로 하므로 실습에 필요한 모듈을 모두 설치해보자.</p>
+<h2 id="3-1-모듈-설치" style="position:relative;"><a href="#3-1-%EB%AA%A8%EB%93%88-%EC%84%A4%EC%B9%98" aria-label="3 1 모듈 설치 permalink" class="anchor-header before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3-1. 모듈 설치</h2>
+<p>만약, 이미 설치되어 있는 모듈이 있다면 생략해도 된다. (거의 필수적으로 사용하는 모듈들이기 때문에 크게 문제는 없을 것 같다.) 카카오 링크는 <a href="https://www.npmjs.com/package/react-native-kakao-share-link">공식 문서</a>를 보고 설치하기 바란다.</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
+<span class="token function">npm</span> <span class="token function">install</span> @react-navigation/stack
+<span class="token builtin class-name">cd</span> ios
+pod <span class="token function">install</span></code></pre></div>
+<h2 id="3-2-navigator-구성" style="position:relative;"><a href="#3-2-navigator-%EA%B5%AC%EC%84%B1" aria-label="3 2 navigator 구성 permalink" class="anchor-header before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3-2. Navigator 구성</h2>
+<p>간단한 Stack 네비게이션을 구성해보자. 화면1과 화면1의 버튼을 누르면 이동할 수 있는 화면2로 구성해보자.</p>
+<p>우선은 네비게이터를 먼저 만들어보자.</p>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token comment">// ./src/Navigator.tsx</span>
+
+<span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">"react"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> NavigationContainer <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@react-navigation/native"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> createStackNavigator <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@react-navigation/stack"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> Screen1 <span class="token keyword">from</span> <span class="token string">"./Screen1"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> Screen2 <span class="token keyword">from</span> <span class="token string">"./Screen2"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">type</span> <span class="token class-name">NavigationParamList</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+    Screen1<span class="token operator">:</span> <span class="token keyword">undefined</span><span class="token punctuation">;</span>
+    Screen2<span class="token operator">:</span> <span class="token punctuation">{</span>
+        test<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> Stack <span class="token operator">=</span> <span class="token generic-function"><span class="token function">createStackNavigator</span><span class="token generic class-name"><span class="token operator">&lt;</span>NavigationParamList<span class="token operator">></span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">Navigator</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Stack.Navigator</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">StackRouter.Screen</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Screen1<span class="token punctuation">"</span></span> <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Screen1<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">StackRouter.Screen</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Screen2<span class="token punctuation">"</span></span> <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>Screen2<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Stack.Navigator</span></span><span class="token punctuation">></span></span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> Navigator<span class="token punctuation">;</span></code></pre></div>
+<p>화면1을 만들어보자.</p>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token comment">// ./src/Screen1.tsx</span>
+<span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> useCallback <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"react"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> StyleSheet<span class="token punctuation">,</span> TouchableOpacity<span class="token punctuation">,</span> Text <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"react-native"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> useNavigation <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@react-navigation/native"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> StackNavigationProp <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@react-navigation/stack"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> NavigationParamList <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./Navigator"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">type</span> <span class="token class-name">NavigationProp</span> <span class="token operator">=</span> StackNavigationProp<span class="token operator">&lt;</span>NavigationParamList<span class="token punctuation">,</span> <span class="token string">"Screen1"</span><span class="token operator">></span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">Screen1</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> navigation <span class="token operator">=</span> <span class="token generic-function"><span class="token function">useNavigation</span><span class="token generic class-name"><span class="token operator">&lt;</span>NavigationProp<span class="token operator">></span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> onPress <span class="token operator">=</span> <span class="token function">useCallback</span><span class="token punctuation">(</span>
+        <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> navigation<span class="token punctuation">.</span><span class="token function">navigate</span><span class="token punctuation">(</span><span class="token string">"Screen2"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> test<span class="token operator">:</span> <span class="token string">"from Screen1"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">[</span>navigation<span class="token punctuation">]</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">TouchableOpacity</span></span> <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>styles<span class="token punctuation">.</span>button<span class="token punctuation">}</span></span> <span class="token attr-name">onPress</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>onPress<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Text</span></span> <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>styles<span class="token punctuation">.</span>text<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">스크린2로 이동</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Text</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">TouchableOpacity</span></span><span class="token punctuation">></span></span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> styles <span class="token operator">=</span> StyleSheet<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    button<span class="token operator">:</span> <span class="token punctuation">{</span>
+        width<span class="token operator">:</span> <span class="token string">"90%"</span><span class="token punctuation">,</span>
+        height<span class="token operator">:</span> <span class="token number">50</span><span class="token punctuation">,</span>
+        justifyContent<span class="token operator">:</span> <span class="token string">"center"</span><span class="token punctuation">,</span>
+        alignItems<span class="token operator">:</span> <span class="token string">"center"</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    text<span class="token operator">:</span> <span class="token punctuation">{</span>
+        fontSize<span class="token operator">:</span> <span class="token number">18</span><span class="token punctuation">,</span>
+        textAlign<span class="token operator">:</span> <span class="token string">"center"</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> Screen1<span class="token punctuation">;</span></code></pre></div>
+<p>화면2를 만들어보자. 버튼을 두 개로 구성하는 데 하나는 뒤로가는 버튼, 하나는 카카오톡으로 공유하기 버튼이다. 만약 Screen1에서 넘어온다면 <code class="language-text">from Screen1</code>이라는 알림이 뜨고, 카카오톡 공유로 해당 페이지에 오게 되면 <code class="language-text">from Kakao App</code>이라는 알림이 뜬다.</p>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token comment">// ./src/Screen2.tsx</span>
+<span class="token keyword">import</span> React<span class="token punctuation">,</span> <span class="token punctuation">{</span> useCallback<span class="token punctuation">,</span> useEffect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"react"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> StyleSheet<span class="token punctuation">,</span> TouchableOpacity<span class="token punctuation">,</span> Text<span class="token punctuation">,</span> Alert <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"react-native"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> KakaoShareLink <span class="token keyword">from</span> <span class="token string">"react-native-kakao-share-link"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> useNavigation <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@react-navigation/native"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> RouteProp<span class="token punctuation">,</span> useRoute <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@react-navigation/native"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> StackNavigationProp <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@react-navigation/stack"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> NavigationParamList <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./Navigator"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">type</span> <span class="token class-name">NavigationProp</span> <span class="token operator">=</span> StackNavigationProp<span class="token operator">&lt;</span>NavigationParamList<span class="token punctuation">,</span> <span class="token string">"Screen2"</span><span class="token operator">></span><span class="token punctuation">;</span>
+<span class="token keyword">type</span> <span class="token class-name">Screen2Route</span> <span class="token operator">=</span> RouteProp<span class="token operator">&lt;</span>NavigationParamList<span class="token punctuation">,</span> <span class="token string">"Screen2"</span><span class="token operator">></span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">Screen2</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> navigation <span class="token operator">=</span> <span class="token generic-function"><span class="token function">useNavigation</span><span class="token generic class-name"><span class="token operator">&lt;</span>NavigationProp<span class="token operator">></span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> route <span class="token operator">=</span> <span class="token generic-function"><span class="token function">useRoute</span><span class="token generic class-name"><span class="token operator">&lt;</span>Screen2Route<span class="token operator">></span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> test <span class="token punctuation">}</span> <span class="token operator">=</span> route<span class="token punctuation">.</span>params<span class="token punctuation">;</span>
+    <span class="token keyword">const</span> onPressBack <span class="token operator">=</span> <span class="token function">useCallback</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> navigation<span class="token punctuation">.</span><span class="token function">goBack</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>navigation<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> onPressShare <span class="token operator">=</span> <span class="token function">useCallback</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            <span class="token keyword">const</span> response <span class="token operator">=</span> <span class="token keyword">await</span> KakaoShareLink<span class="token punctuation">.</span><span class="token function">sendText</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                text<span class="token operator">:</span> <span class="token string">"text"</span><span class="token punctuation">,</span>
+                link<span class="token operator">:</span> <span class="token punctuation">{</span>
+                    webUrl<span class="token operator">:</span> <span class="token string">"https://developers.kakao.com/"</span><span class="token punctuation">,</span>
+                    mobileWebUrl<span class="token operator">:</span> <span class="token string">"https://developers.kakao.com/"</span><span class="token punctuation">,</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                buttons<span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token punctuation">{</span>
+                        title<span class="token operator">:</span> <span class="token string">"앱에서 보기"</span><span class="token punctuation">,</span>
+                        link<span class="token operator">:</span> <span class="token punctuation">{</span>
+                            androidExecutionParams<span class="token operator">:</span> <span class="token punctuation">[</span>
+                                <span class="token punctuation">{</span> key<span class="token operator">:</span> <span class="token string">"test"</span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token string">"from Kakao App"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                            iosExecutionParams<span class="token operator">:</span> <span class="token punctuation">[</span>
+                                <span class="token punctuation">{</span> key<span class="token operator">:</span> <span class="token string">"test"</span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token string">"from Kakao App"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        Alert<span class="token punctuation">.</span><span class="token function">alert</span><span class="token punctuation">(</span>test<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>test<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">TouchableOpacity</span></span> <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>styles<span class="token punctuation">.</span>button<span class="token punctuation">}</span></span> <span class="token attr-name">onPress</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>onPressBack<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+                </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Text</span></span> <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>styles<span class="token punctuation">.</span>text<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">뒤로가기</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Text</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">TouchableOpacity</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">TouchableOpacity</span></span> <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>styles<span class="token punctuation">.</span>button<span class="token punctuation">}</span></span> <span class="token attr-name">onPress</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>onPressShare<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+                </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Text</span></span> <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>styles<span class="token punctuation">.</span>text<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">카카오톡으로 공유하기</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Text</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">TouchableOpacity</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span></span><span class="token punctuation">></span></span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> styles <span class="token operator">=</span> StyleSheet<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    button<span class="token operator">:</span> <span class="token punctuation">{</span>
+        width<span class="token operator">:</span> <span class="token string">"90%"</span><span class="token punctuation">,</span>
+        height<span class="token operator">:</span> <span class="token number">50</span><span class="token punctuation">,</span>
+        justifyContent<span class="token operator">:</span> <span class="token string">"center"</span><span class="token punctuation">,</span>
+        alignItems<span class="token operator">:</span> <span class="token string">"center"</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    text<span class="token operator">:</span> <span class="token punctuation">{</span>
+        fontSize<span class="token operator">:</span> <span class="token number">18</span><span class="token punctuation">,</span>
+        textAlign<span class="token operator">:</span> <span class="token string">"center"</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> Screen2<span class="token punctuation">;</span></code></pre></div>
+<h2 id="3-3-link-연결" style="position:relative;"><a href="#3-3-link-%EC%97%B0%EA%B2%B0" aria-label="3 3 link 연결 permalink" class="anchor-header before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3-3. Link 연결</h2>
+<p>자세한 사항이 궁금하다면 <a href="https://reactnavigation.org/docs/deep-linking/">공식문서</a>를 확인해보자.</p>
+<p><code class="language-text">App.tsx</code>에서 Deep Link를 네비게이터에 연결해보자. 아래의 prefixes에 자신의 카카오 네이티브 앱키를 입력한다. 아래의 config에서는 해당 Path를 연결할 페이지를 선택한다.(여기서는 Screen2)</p>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token comment">// ./src/App.tsx</span>
+
+<span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">"react"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> LinkingOptions<span class="token punctuation">,</span> NavigationContainer <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@react-navigation/native"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> Navigator <span class="token keyword">from</span> <span class="token string">"./Navigator"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> linking<span class="token operator">:</span> LinkingOptions <span class="token operator">=</span> <span class="token punctuation">{</span>
+    prefixes<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"kakao{카카오 네이티브 앱키}://"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    config<span class="token operator">:</span> <span class="token punctuation">{</span>
+        screens<span class="token operator">:</span> <span class="token punctuation">{</span>
+            Screen2<span class="token operator">:</span> <span class="token string">"kakaolink"</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">NavigationContainer</span></span> <span class="token attr-name">linking</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>linking<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+            </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Navigator</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">NavigationContainer</span></span><span class="token punctuation">></span></span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> App<span class="token punctuation">;</span></code></pre></div>
+<h1 id="4-실행" style="position:relative;"><a href="#4-%EC%8B%A4%ED%96%89" aria-label="4 실행 permalink" class="anchor-header before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4. 실행</h1>
+<p>카카오톡이 설치되어 있는 기기에서 실행해서 테스트를 해보자.</p>
+<h1 id="참고" style="position:relative;"><a href="#%EC%B0%B8%EA%B3%A0" aria-label="참고 permalink" class="anchor-header before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[참고]</h1>
+<ul>
+<li><a href="https://help.dfinery.io/hc/ko/articles/360039757433-%EB%94%A5%EB%A7%81%ED%81%AC-Deeplink-URI%EC%8A%A4%ED%82%B4-%EC%9C%A0%EB%8B%88%EB%B2%84%EC%85%9C-%EB%A7%81%ED%81%AC-%EC%95%B1%EB%A7%81%ED%81%AC-%EA%B5%AC%EB%B6%84%EA%B3%BC-%EC%9D%B4%ED%95%B4">https://help.dfinery.io/hc/ko/articles/360039757433-%EB%94%A5%EB%A7%81%ED%81%AC-Deeplink-URI%EC%8A%A4%ED%82%B4-%EC%9C%A0%EB%8B%88%EB%B2%84%EC%85%9C-%EB%A7%81%ED%81%AC-%EC%95%B1%EB%A7%81%ED%81%AC-%EA%B5%AC%EB%B6%84%EA%B3%BC-%EC%9D%B4%ED%95%B4</a></li>
+<li><a href="https://reactnavigation.org/docs/deep-linking/">https://reactnavigation.org/docs/deep-linking/</a></li>
+<li><a href="https://www.npmjs.com/package/react-native-kakao-share-link">https://www.npmjs.com/package/react-native-kakao-share-link</a></li>
+</ul></div><div class="PrevNextPost__Wrapper-sc-1i8zxj4-0 hVFHhd"><div class="PrevNextPost__ItemWrapper-sc-1i8zxj4-1 fmrWiR"><a class="PrevNextPostItem__Wrapper-u4u2kx-1 hZyJtI" href="/ReactNative-codepush/"><div class="PrevNextPostItem__Circle-u4u2kx-0 fwJJPB"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path></svg></div><div class="PrevNextPostItem__Text-u4u2kx-2 eLobFH"><div class="description">이전<!-- --> <!-- -->포스트</div><h3>[React Native] CodePush를 이용한 앱 업데이트</h3></div></a></div><div class="PrevNextPost__ItemWrapper-sc-1i8zxj4-1 fmrWiR"></div></div></div><div id="toc-container" class="PostToC__ToCWrapper-sc-1vz6emx-0 kBxdJI"><ul>
+<li><a href="#1-%EC%84%9C%EB%A1%A0">1. 서론</a></li>
+<li>
+<p><a href="#2-deep-link%EB%9E%80">2. Deep Link란?</a></p>
+<ul>
+<li><a href="#2-1-uri-%EC%8A%A4%ED%82%B4-%EB%B0%A9%EC%8B%9D">2-1. URI 스킴 방식</a></li>
+<li><a href="#2-2-%EC%95%B1-%EB%A7%81%ED%81%AC%EC%99%80-%EC%9C%A0%EB%8B%88%EB%B2%84%EC%85%9C-%EB%A7%81%ED%81%AC">2-2. 앱 링크와 유니버셜 링크</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#3-deep-link-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0">3. Deep Link 구현하기</a></p>
+<ul>
+<li><a href="#3-1-%EB%AA%A8%EB%93%88-%EC%84%A4%EC%B9%98">3-1. 모듈 설치</a></li>
+<li><a href="#3-2-navigator-%EA%B5%AC%EC%84%B1">3-2. Navigator 구성</a></li>
+<li><a href="#3-3-link-%EC%97%B0%EA%B2%B0">3-3. Link 연결</a></li>
+</ul>
+</li>
+<li><a href="#4-%EC%8B%A4%ED%96%89">4. 실행</a></li>
+<li><a href="#%EC%B0%B8%EA%B3%A0">참고</a></li>
+</ul></div></div><div class="Utterances__Wrapper-sc-1m6k9q3-0 lhumdt"></div><div class="Footer__FooterWrapper-sc-11i4h0w-0 incLxJ"><span>millo&#x27;s tech blog</span><div class="ProfileIcons__IconWrapper-sc-1lpa755-0 kWLSJs icon-wrapper"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9a127.5 127.5 0 0 1 38.1 91v112.5c.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z"></path></svg><svg stroke="currentColor" fill="currentColor" stroke-width="0" role="img" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><title></title><path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z"></path></svg><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path></svg></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script>
+  
+  
+  if(true) {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  }
+  if (typeof ga === "function") {
+    ga('create', 'UA-190413996-1', 'auto', {});
+      
+      
+      
+      
+      
+      }</script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/ReactNative-kakao-deep-link/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-0f9e7d7b54aaab6b0844.js"],"app":["/app-e7cada0e060727aa1495.js"],"component---src-components-post-post-page-tsx":["/component---src-components-post-post-page-tsx-87a09a460c3291e4b7ce.js"],"component---src-components-series-series-post-list-page-tsx":["/component---src-components-series-series-post-list-page-tsx-f074949e72486c43f366.js"],"component---src-pages-about-tsx":["/component---src-pages-about-tsx-16700b6ff53f2989b8a3.js"],"component---src-pages-en-about-tsx":["/component---src-pages-en-about-tsx-38774ad957788afbfe39.js"],"component---src-pages-en-index-tsx":["/component---src-pages-en-index-tsx-17f9dbd797b16f407cc1.js"],"component---src-pages-en-series-tsx":["/component---src-pages-en-series-tsx-4050163585b38a18beda.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-00cef9955f27abd1ca89.js"],"component---src-pages-series-tsx":["/component---src-pages-series-tsx-b3e821c499b8671cedec.js"]};/*]]>*/</script><script src="/polyfill-0f9e7d7b54aaab6b0844.js" nomodule=""></script><script src="/component---src-components-post-post-page-tsx-87a09a460c3291e4b7ce.js" async=""></script><script src="/commons-5642620b322105a118c5.js" async=""></script><script src="/ae51ba48-270e5111837ab28b50e9.js" async=""></script><script src="/252f366e-a64e38db0deea92b8691.js" async=""></script><script src="/d7eeaac4-f8ba23a900ff33a7187f.js" async=""></script><script src="/d0447323-bedce39572060a0855c2.js" async=""></script><script src="/styles-407fe62976dc5310c43e.js" async=""></script><script src="/app-e7cada0e060727aa1495.js" async=""></script><script src="/framework-ba40f9a3aba7ac20e79d.js" async=""></script><script src="/webpack-runtime-61c4fdd77dc41cc5a425.js" async=""></script></body></html>
