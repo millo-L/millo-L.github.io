@@ -96,7 +96,7 @@ const CategoryList = ({
             <div className="img-wrapper">
                 {lang === "ko"
                     ? categoryList
-                          .filter((category, idx) => idx < 14)
+                          .filter((_, idx) => idx < 15)
                           .map((category, index) => {
                               return (
                                   <Link

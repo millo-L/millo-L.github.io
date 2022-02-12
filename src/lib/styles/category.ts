@@ -78,6 +78,9 @@ export const categoryMap: {
         src:
             "https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=Android&logoColor=white",
     },
+    startup: {
+        src: "https://img.shields.io/badge/Startup-4651EB?style=flat-square",
+    },
 };
 
 export const categoryList = [
@@ -149,6 +152,10 @@ export const categoryList = [
         name: "android",
         src:
             "https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=Android&logoColor=white",
+    },
+    {
+        name: "startup",
+        src: "https://img.shields.io/badge/Startup-4651EB?style=flat-square",
     },
     {
         name: "anaconda",
