@@ -5,7 +5,7 @@ category: startup
 layout: post
 released_at: 2022-02-12 12:40
 updated_at:
-image: ../../../../images/category/startup.jpg
+image: ../../../../images/category/startup.png
 series: 스타트업 개발자의 일기장
 lang: ko
 tags:
