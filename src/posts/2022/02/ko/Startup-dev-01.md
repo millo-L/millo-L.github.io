@@ -1,6 +1,6 @@
 ---
 author: millo
-title: "[Start up] 스타트업 개발자의 허심탄회한 이야기 (시작)"
+title: "[Start up] 스타트업 개발자가 된 계기"
 category: startup
 layout: post
 released_at: 2022-02-12 12:40
@@ -12,12 +12,11 @@ tags:
     - Startup
     - 스타트업
     - 개발자
-    - 커뮤니케이션
-    - 직장생활
+    - 창업 도전
 is_private: false
 translation:
 translation_series: none
-description: "스타트업 개발자로써의 8개월간의 삶에 대해 기록해두고자 한다."
+description: "스타트업 개발자로 진로를 정한 계기에 대해 적어둔다."
 ---
 
 # 1. 서론
