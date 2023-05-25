@@ -196,7 +196,7 @@ data-styled.g28[id="PostViewer__PostContentWrapper-sc-1vcgubz-1"]{content:"cIdEK
 data-styled.g29[id="Utterances__Wrapper-sc-1m6k9q3-0"]{content:"lhumdt,"}/*!sc*/
 @-webkit-keyframes JamRA{0%{-webkit-transform:translateX(0px);-ms-transform:translateX(0px);transform:translateX(0px);}50%{-webkit-transform:translateX(-8px);-ms-transform:translateX(-8px);transform:translateX(-8px);}100%{-webkit-transform:translateX(0px);-ms-transform:translateX(0px);transform:translateX(0px);}}/*!sc*/
 @keyframes JamRA{0%{-webkit-transform:translateX(0px);-ms-transform:translateX(0px);transform:translateX(0px);}50%{-webkit-transform:translateX(-8px);-ms-transform:translateX(-8px);transform:translateX(-8px);}100%{-webkit-transform:translateX(0px);-ms-transform:translateX(0px);transform:translateX(0px);}}/*!sc*/
-data-styled.g55[id="sc-keyframes-JamRA"]{content:"JamRA,"}/*!sc*/
+data-styled.g54[id="sc-keyframes-JamRA"]{content:"JamRA,"}/*!sc*/
 </style><title data-react-helmet="true">[React Native] @react-native-firebase 적용하기 (pod install 에러 해결) | millo&#x27;s tech blog</title><meta data-react-helmet="true" name="google-site-verification" content="3RV-iVIsB1icAg20Pkdf-2uSR7XMnOYS2FxfhQ3YCD8"/><meta data-react-helmet="true" name="naver-site-verification" content="3be60e4cdc653a5f4c68e0da86c7f8414891c370"/><script data-react-helmet="true" type="application/ld+json">
         {
           "@context": "http://schema.org",
@@ -234,6 +234,8 @@ data-styled.g55[id="sc-keyframes-JamRA"]{content:"JamRA,"}/*!sc*/
 <p>만약 아래의 방식대로 하지 않고, <code class="language-text">pod &#39;GoogleUtilities&#39;, :modular_headers =&gt; true</code> 등을 추가하여 해결하려 하면, 설치 후 앱이 실행되기는 하지만 firebase가 제대로 실행되지 않는 이슈가 생기므로 꼭 아래의 방식으로 진행해야한다.</p>
 <p>해결 방법은 <code class="language-text">ios/Podfile</code> 파일에 아래의 코드를 추가하는 것이다.</p>
 <div class="gatsby-highlight" data-language="diff"><pre class="language-diff"><code class="language-diff"># Podfile
+
+# ...
 
 target '{your project name}' do
 <span class="token unchanged"><span class="token prefix unchanged"> </span> config = use_native_modules!
