@@ -5,7 +5,6 @@ import { categoryMap } from "../../lib/styles/category";
 import media from "../../lib/styles/media";
 import palette from "../../lib/styles/palette";
 import { formatDate } from "../../lib/styles/utils";
-import Adsense from "../common/Adsense";
 import PostSeriesList, { PartialSeriesType } from "./PostSeriesList";
 import PrevNextPost from "./PrevNextPost";
 import TagList from "./TagList";

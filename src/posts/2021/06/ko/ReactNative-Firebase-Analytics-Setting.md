@@ -4,7 +4,7 @@ title: "[React Native] Firebase Analytics(@react-native-firebase/analytics) 적�
 category: reactnative
 layout: post
 released_at: 2021-06-03 22:45
-updated_at:
+updated_at: 2023-05-25 15:35
 image: ../../../../images/category/reactnative.png
 series: none
 lang: ko
@@ -17,6 +17,10 @@ translation:
 translation_series: none
 description: react native 앱에 Firbase Analytics를 적용해보자.
 ---
+
+# 참고
+
+firebase-ios-sdk v9+ (react-native-firebase v15+) 사용 시 pod install 에러에 관련된 해결방법은 [여기](https://millo-l.github.io/ReactNative-Firebase-2023-05-25/)서 확인해주세요.
 
 # 1. 서론
 

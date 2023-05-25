@@ -116,8 +116,8 @@ export const pageQuery = graphql`
                 author
                 description
                 category
-                released_at(formatString: "YYYY-MM-DD")
-                updated_at(formatString: "YYYY-MM-DD")
+                released_at(formatString: "YYYY-MM-DD HH:mm")
+                updated_at(formatString: "YYYY-MM-DD HH:mm")
                 tags
                 title
                 lang
