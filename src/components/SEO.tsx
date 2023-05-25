@@ -109,6 +109,8 @@ const SEO = (p: P) => {
         }
         `}</script>
             )}
+            <meta name="google-site-verification" content="3RV-iVIsB1icAg20Pkdf-2uSR7XMnOYS2FxfhQ3YCD8" />
+            <meta name="naver-site-verification" content="3be60e4cdc653a5f4c68e0da86c7f8414891c370" />
             <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js"></script>
         </Helmet>
     );
