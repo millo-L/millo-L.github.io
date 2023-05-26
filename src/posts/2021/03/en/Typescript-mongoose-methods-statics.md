@@ -139,3 +139,12 @@ UserSchema.statics.findByUsername = function (username: string) {
     return this.findOne({ username });
 };
 ```
+
+## 2-5. User Model Declaration
+
+The user model is declared based on the interface including the IUserDocument (the interface of the variables + methods) and statics created above. The above variables, methods, and statics functions are all available when the model is then imported.
+
+```ts
+const User = mongoose.model<IUserDocument, IUserModel>("User", UserSchema);
+export default User;
+```

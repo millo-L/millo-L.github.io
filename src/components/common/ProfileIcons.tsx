@@ -12,7 +12,7 @@ const openNewBrowser = (type: "github" | "notion" | "email") => {
     if (type === "github") link = "https://github.com/millo-L";
     else if (type === "notion")
         link =
-            "https://www.notion.so/Seungmin-Lee-706a5c55276c4ff58f1ff87d433bb4fb";
+            "https://decorous-ferret-9a5.notion.site/Seungmin-Lee-706a5c55276c4ff58f1ff87d433bb4fb";
     else link = "mailto:seungmin3837@gmail.com";
 
     window.open(link, "_blank");
