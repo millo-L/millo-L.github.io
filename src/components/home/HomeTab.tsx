@@ -26,7 +26,7 @@ const HomeTab = ({ setUser, page, lang }: HomeTabProps) => {
 
     const data = useStaticQuery(graphql`
         {
-            file(relativePath: { eq: "profile.jpg" }) {
+            file(relativePath: { eq: "profile.jpeg" }) {
                 id
                 childImageSharp {
                     fluid(maxWidth: 460) {
