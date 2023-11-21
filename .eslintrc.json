@@ -1,0 +1,120 @@
+{
+    "root": true,
+    "env": {
+       "browser": true,
+        "es2021": true,
+        "es6": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "airbnb",
+        "airbnb/hooks",
+        "plugin:prettier/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "prettier/prettier": [
+            "error",
+            {
+                "endOfLine": "auto"
+            }
+        ],
+        "import/order": [
+            "error",
+            {
+                "groups": [
+                    "type",
+                    "builtin",
+                    "external",
+                    "internal",
+                    "parent",
+                    "sibling",
+                    "index",
+                    "unknown"
+                ],
+                "pathGroups": [
+                    {
+                        "pattern": "{react*, react*/**}",
+                        "group": "external",
+                        "position": "before"
+                    },
+                    {
+                        "pattern": "@**/**",
+                        "group": "external",
+                        "position": "after"
+                    }
+                ],
+                "pathGroupsExcludedImportTypes": ["react"],
+                "alphabetize": {
+                    "order": "asc"
+                }
+            }
+        ],
+        "react/function-component-definition":[
+            2, 
+            { 
+                "namedComponents": [
+                    "arrow-function", 
+                    "function-declaration"
+                ] 
+            }
+        ],
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx"] }],
+        "no-console": "off",
+        "import/extensions": ["error", "ignorePackages", {
+            "js": "never",
+            "jsx": "never",
+            "ts": "never",
+            "tsx": "never",
+            "mjs": "never"
+        }],
+        "jsx-a11y/heading-has-content": [ 0, {
+            "components": [ "h2" ]
+        }],
+        "react/jsx-props-no-spreading": "off",        
+        "react/destructuring-assignment": "off",
+        "react/require-default-props": "off",
+        "camelcase": "off",
+        "import/prefer-default-export": "off",
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": "error",
+        "no-nested-ternary": "off",
+        "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+        "jsx-a11y/no-static-element-interactions": [
+            "error",
+            {
+                "handlers": [
+                    "onClick",
+                    "onMouseDown",
+                    "onMouseUp",
+                    "onKeyPress",
+                    "onKeyDown",
+                    "onKeyUp"
+                ],
+                "allowExpressionValues": true
+            }
+        ]
+          
+    },
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [".js", ".jsx", ".ts", ".tsx"]
+            }
+        }
+    },
+    "ignorePatterns": ["gatsby-node.js"]
+}
+

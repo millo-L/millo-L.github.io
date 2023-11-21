@@ -1,133 +1,121 @@
-import { graphql, Link, useStaticQuery } from "gatsby";
-import React, { memo } from "react";
-import Styled, { css } from "styled-components";
-import { categoryList, enCategoryList } from "../../lib/styles/category";
-import { mediaQuery } from "../../lib/styles/media";
-import palette from "../../lib/styles/palette";
+import React from "react";
+import { Link } from "gatsby";
+import styled, { css } from "styled-components";
+import { categoryList, enCategoryList } from "../../libs/styles/category";
+import { mediaQuery } from "../../libs/styles/media";
+import palette from "../../libs/styles/palette";
 
-const CategoryListWrapper = Styled.div<{ visible: boolean }>`
-    margin-top: 2.5rem;
-    border-top: 1px solid ${palette.gray[3]};
-    padding-top: 1.5rem;
-    width: 12rem;
-    min-width: 12rem;
+const Container = styled.div<{ visible: boolean }>`
+	margin-top: 2.5rem;
+	border-top: 1px solid ${palette.gray[3]};
+	padding-top: 1.5rem;
+	width: 12rem;
+	min-width: 12rem;
 
-    ${props =>
-        props.visible
-            ? css``
-            : css`
-                  display: none;
-              `}
+	${(props) =>
+		props.visible
+			? css``
+			: css`
+					display: none;
+			  `}
 
-    p {
-        margin: 0;
-        font-size: 1.3rem;
-        text-align: center;
-        margin-bottom: 1.5rem;
-    }
+	p {
+		margin: 0;
+		font-size: 1.3rem;
+		text-align: center;
+		margin-bottom: 1.5rem;
+	}
 
-    .img-wrapper {
-        display: flex;
-        flex-wrap: wrap;
-        width: 90%;
-        margin-left: auto;
-        margin-right: auto;
-        justify-content: space-between;
-        align-items: space-between;
-    }
+	.img-wrapper {
+		display: flex;
+		flex-wrap: wrap;
+		width: 90%;
+		margin-left: auto;
+		margin-right: auto;
+		justify-content: space-between;
+		align-items: space-between;
+	}
 
-    .whole-category {
-        height: 1.8rem;
-        width: 90%;
-        margin-left: 5%;
-        margin-bottom: 10px;
-        border: 1px solid #5c7cfa;
-        font-size: 11pt;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        -webkit-transition: background-color 0.5s;
-        transition: background-color 0.5s;
-        color: #5c7cfa;
-        &:hover {
-            color: white;
-            background-color: #5c7cfa;
-        }
-    }
+	.whole-category {
+		height: 1.8rem;
+		width: 90%;
+		margin-left: 5%;
+		margin-bottom: 10px;
+		border: 1px solid #5c7cfa;
+		font-size: 11pt;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		-webkit-transition: background-color 0.5s;
+		transition: background-color 0.5s;
+		color: #5c7cfa;
+		&:hover {
+			color: white;
+			background-color: #5c7cfa;
+		}
+	}
 
-    .category-img {
-        height: 1.5rem;
-        max-width: 5.5rem;
-        margin: 0;
-        border-radius: 0;
-    }
+	a {
+		height: 1.5rem;
+		margin-bottom: 0.8rem;
+	}
 
-    ${mediaQuery(1440)} {
-        width: 100%;
-    }
+	.category-img {
+		height: 1.5rem;
+		margin: 0;
+		border-radius: 0;
+	}
 
-    ${mediaQuery(1056)} {
-        display: none;
-    }
+	${mediaQuery(1440)} {
+		width: 100%;
+	}
+
+	${mediaQuery(1056)} {
+		display: none;
+	}
 `;
 
-interface CategoryListProps {
-    visible: boolean;
-    lang: string;
-    selectedCategory?: string;
+interface Props {
+	visible: boolean;
+	lang: string;
 }
 
-const CategoryList = ({
-    visible,
-    lang,
-    selectedCategory,
-}: CategoryListProps) => {
-    return (
-        <CategoryListWrapper visible={visible}>
-            <p>Categories</p>
-            <Link
-                to={lang === "ko" ? "/" : "/en"}
-                style={{ textDecoration: "none" }}
-            >
-                <div className="whole-category">
-                    {lang === "ko" ? "전체 보기" : "All Posts"}
-                </div>
-            </Link>
-            <div className="img-wrapper">
-                {lang === "ko"
-                    ? categoryList
-                          .filter((_, idx) => idx < 15)
-                          .map((category, index) => {
-                              return (
-                                  <Link
-                                      to={`/?category=${category.name}`}
-                                      key={index}
-                                  >
-                                      <img
-                                          className="category-img"
-                                          src={category.src}
-                                      />
-                                  </Link>
-                              );
-                          })
-                    : enCategoryList
-                          .filter((category, idx) => idx < 12)
-                          .map((category, index) => {
-                              return (
-                                  <Link
-                                      to={`/en?category=${category.name}`}
-                                      key={index}
-                                  >
-                                      <img
-                                          className="category-img"
-                                          src={category.src}
-                                      />
-                                  </Link>
-                              );
-                          })}
-            </div>
-        </CategoryListWrapper>
-    );
-};
-
-export default memo(CategoryList);
+export default function CategoryList({ visible, lang }: Props) {
+	return (
+		<Container visible={visible}>
+			<p>Categories</p>
+			<Link to={lang === "ko" ? "/" : "/en"} style={{ textDecoration: "none" }}>
+				<div className="whole-category">{lang === "ko" ? "전체 보기" : "All Posts"}</div>
+			</Link>
+			<div className="img-wrapper">
+				{lang === "ko"
+					? categoryList
+							.filter((_, idx) => idx < 15)
+							.map((category) => {
+								return (
+									<Link to={`/?category=${category.name}`} key={category.name}>
+										<img
+											className="category-img"
+											src={category.src}
+											alt={category.name}
+										/>
+									</Link>
+								);
+							})
+					: enCategoryList
+							.filter((_, idx) => idx < 12)
+							.map((category) => {
+								return (
+									<Link to={`/en?category=${category.name}`} key={category.name}>
+										<img
+											className="category-img"
+											src={category.src}
+											alt={category.name}
+										/>
+									</Link>
+								);
+							})}
+			</div>
+		</Container>
+	);
+}

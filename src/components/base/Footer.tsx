@@ -1,6 +1,6 @@
 import React from "react";
 import Styled from "styled-components";
-import palette from "../../lib/styles/palette";
+import palette from "../../libs/styles/palette";
 import ProfileIcons from "../common/ProfileIcons";
 
 const FooterWrapper = Styled.div`
@@ -31,13 +31,13 @@ const FooterWrapper = Styled.div`
     }
 `;
 
-const Footer = () => {
-    return (
-        <FooterWrapper>
-            <span>millo's tech blog</span>
-            <ProfileIcons className="icon-wrapper" />
-        </FooterWrapper>
-    );
-};
+const TEXT = "millo's tech blog";
 
-export default Footer;
+export default function Footer() {
+	return (
+		<FooterWrapper>
+			<span>{TEXT}</span>
+			<ProfileIcons className="icon-wrapper" />
+		</FooterWrapper>
+	);
+}

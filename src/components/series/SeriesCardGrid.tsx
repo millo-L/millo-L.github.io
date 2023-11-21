@@ -1,12 +1,12 @@
-import React, { memo } from "react";
+import React from "react";
 import Styled from "styled-components";
-import { mediaQuery } from "../../lib/styles/media";
-import Adsense from "../common/Adsense";
-import SeriesCard, { SeriesType } from "./SeriesCard";
+import { mediaQuery } from "../../libs/styles/media";
+import { SeriesType } from "../../types/Common";
+import SeriesCard from "./SeriesCard";
 
-const Wrapper = Styled.div`
+const Container = Styled.div`
     display: flex;
-    margin: -1rem;
+    margin: 0 -1rem;
     flex-wrap: wrap;
     ${mediaQuery(767)} {
         margin: 0;
@@ -17,18 +17,16 @@ const Wrapper = Styled.div`
     }
 `;
 
-interface SeriseCardGridProps {
-    seriesList: Array<SeriesType>;
+interface Props {
+	seriesList: SeriesType[];
 }
 
-const SeriesCardGrid = ({ seriesList }: SeriseCardGridProps) => {
-    return (
-        <Wrapper>
-            {seriesList.map((series, index) => (
-                <SeriesCard series={series} key={index} />
-            ))}
-        </Wrapper>
-    );
-};
-
-export default memo(SeriesCardGrid);
+export default function SeriesCardGrid({ seriesList }: Props) {
+	return (
+		<Container>
+			{seriesList.map((series) => (
+				<SeriesCard series={series} key={series.title} />
+			))}
+		</Container>
+	);
+}

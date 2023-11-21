@@ -1,9 +1,9 @@
-import React, { memo } from "react";
+import React from "react";
 import Styled from "styled-components";
-import media from "../../lib/styles/media";
-import palette from "../../lib/styles/palette";
+import media from "../../libs/styles/media";
+import palette from "../../libs/styles/palette";
 
-const TagItemWrapper = Styled.div`
+const ItemContainer = Styled.div`
     padding: 0.5rem 1rem;
     background-color: ${palette.gray[1]};
     color: ${palette.indigo[8]};
@@ -21,34 +21,32 @@ const TagItemWrapper = Styled.div`
 `;
 
 interface TagItemProps {
-    tag: string;
-    onClick: (tag: string) => void;
+	tag: string;
+	onClick: (tag: string) => void;
 }
 
-const TagItem = memo(({ tag, onClick }: TagItemProps) => (
-    <TagItemWrapper onClick={() => onClick(tag)}>{tag}</TagItemWrapper>
-));
+function TagItem({ tag, onClick }: TagItemProps) {
+	return <ItemContainer onClick={() => onClick(tag)}>{tag}</ItemContainer>;
+}
 
-const TagListWrapper = Styled.div`
+const Container = Styled.div`
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 2rem;
 `;
 
-interface TagListWrapper {
-    tags: Array<string>;
-    onClick: (tag: string) => void;
+interface Props {
+	tags: Array<string>;
+	onClick: (tag: string) => void;
 }
 
-const TagList = ({ tags, onClick }: TagListWrapper) => {
-    return (
-        <TagListWrapper>
-            {tags.map((tag, index) => {
-                return <TagItem tag={tag} key={index} onClick={onClick} />;
-            })}
-        </TagListWrapper>
-    );
-};
-
-export default memo(TagList);
+export default function TagList({ tags, onClick }: Props) {
+	return (
+		<Container>
+			{tags.map((tag) => (
+				<TagItem tag={tag} key={tag} onClick={onClick} />
+			))}
+		</Container>
+	);
+}

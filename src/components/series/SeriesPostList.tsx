@@ -1,9 +1,8 @@
-import React, { memo } from "react";
+import React from "react";
 import Styled from "styled-components";
-import media, { mediaQuery } from "../../lib/styles/media";
-import palette from "../../lib/styles/palette";
-import Adsense from "../common/Adsense";
-import { PartialPostType } from "../post/PostCard";
+import media, { mediaQuery } from "../../libs/styles/media";
+import palette from "../../libs/styles/palette";
+import { PostType } from "../../types/Common";
 import SeriesPost from "./SeriesPost";
 
 const Wrapper = Styled.div`
@@ -44,24 +43,22 @@ const Wrapper = Styled.div`
         }
     }
 `;
-interface SeriesPostListProps {
-    posts: Array<PartialPostType>;
-    series: string;
-    lang: string;
+interface Props {
+	posts: PostType[];
+	series: string;
+	lang: string;
 }
 
-const SeriesPostList = ({ posts, series, lang }: SeriesPostListProps) => {
-    return (
-        <Wrapper>
-            <div className="series-header">
-                <h3>{lang === "ko" ? "시리즈" : "Series"}</h3>
-                <h1>{series}</h1>
-            </div>
-            {posts.map((post, index) => (
-                <SeriesPost post={post} index={index} key={index} />
-            ))}
-        </Wrapper>
-    );
-};
-
-export default memo(SeriesPostList);
+export default function SeriesPostList({ posts, series, lang }: Props) {
+	return (
+		<Wrapper>
+			<div className="series-header">
+				<h3>{lang === "ko" ? "시리즈" : "Series"}</h3>
+				<h1>{series}</h1>
+			</div>
+			{posts.map((post, index) => (
+				<SeriesPost post={post} index={index} key={post.title} />
+			))}
+		</Wrapper>
+	);
+}

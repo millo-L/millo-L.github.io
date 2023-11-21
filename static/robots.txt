@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://millo-L.github.io/sitemap.xml
+Host: https://millo-l.github.io

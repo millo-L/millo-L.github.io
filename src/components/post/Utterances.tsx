@@ -1,10 +1,10 @@
 import React, { createRef, useLayoutEffect } from "react";
 import Styled from "styled-components";
-import { mediaQuery } from "../../lib/styles/media";
+import { mediaQuery } from "../../libs/styles/media";
 
 const src = "https://utteranc.es/client.js";
 
-const Wrapper = Styled.div`
+const Container = Styled.div`
     width: 60%;
     margin-left: auto;
     margin-right: auto;
@@ -15,34 +15,28 @@ const Wrapper = Styled.div`
     }
 `;
 
-interface IUtterancesProps {}
+export default function Utterances() {
+	const containerRef = createRef<HTMLDivElement>();
 
-const Utterances = React.memo(({}: IUtterancesProps) => {
-    const containerRef = createRef<HTMLDivElement>();
+	useLayoutEffect(() => {
+		const utterances = document.createElement("script");
 
-    useLayoutEffect(() => {
-        const utterances = document.createElement("script");
+		const attributes = {
+			src,
+			repo: "millo-L/millo-L.github.io",
+			"issue-term": "pathname",
+			label: "comment",
+			theme: "github-light",
+			crossOrigin: "anonymous",
+			async: "true",
+		};
 
-        const attributes = {
-            src,
-            repo: "millo-L/millo-L.github.io",
-            "issue-term": "pathname",
-            label: "comment",
-            theme: "github-light",
-            crossOrigin: "anonymous",
-            async: "true",
-        };
+		Object.entries(attributes).forEach(([key, value]) => {
+			utterances.setAttribute(key, value);
+		});
 
-        Object.entries(attributes).forEach(([key, value]) => {
-            utterances.setAttribute(key, value);
-        });
+		containerRef.current?.appendChild(utterances);
+	}, [containerRef]);
 
-        containerRef.current.appendChild(utterances);
-    }, []);
-
-    return <Wrapper ref={containerRef} />;
-});
-
-Utterances.displayName = "Utterances";
-
-export default Utterances;
+	return <Container ref={containerRef} />;
+}
