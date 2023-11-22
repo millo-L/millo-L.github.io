@@ -14,7 +14,8 @@
     "clean": "gatsby clean",
     "typecheck": "tsc --noEmit",
     "postinstall": "patch-package",
-    "deploy": "gatsby build && gh-pages -d public -b deploy"
+    "deploy": "gatsby build && gh-pages -d public -b deploy",
+    "prepare": "husky install"
   },
   "dependencies": {
     "babel-plugin-styled-components": "^2.1.4",
@@ -58,8 +59,17 @@
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "gh-pages": "^6.1.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.1.0",
     "patch-package": "^8.0.0",
     "prettier": "^3.1.0",
     "typescript": "^5.1.6"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.js": "eslint --cache --fix"
   }
 }
