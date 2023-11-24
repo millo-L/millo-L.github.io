@@ -18,7 +18,7 @@ tags:
     - mysql-session-store
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: nodejs에서 session을 사용한 인증 방식을 구현해보자.
 ---
 

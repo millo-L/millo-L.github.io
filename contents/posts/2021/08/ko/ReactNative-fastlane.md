@@ -15,7 +15,7 @@ tags:
     - Fastlane
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: "Android와 iOS를 직접 빌드해서 배포했던 과거와 작별하고 Fastlane을 이용한 배포 자동화를 시작해보자."
 ---
 

@@ -3,13 +3,8 @@ import { HeadProps, PageProps, graphql } from "gatsby";
 import styled, { createGlobalStyle } from "styled-components";
 import { LanguageType, SeriesPostType } from "../../types/Common";
 import SEO from "../SEO";
-import Footer from "../base/Footer";
-import Header from "../base/Header";
-import SimpleProfile from "../common/SimpleProfile";
-import MainResponsive from "../main/MainResponsive";
 import PostToC from "./PostToC";
 import PostViewer from "./PostViewer";
-import Utterances from "./Utterances";
 
 const GlobalStyle = createGlobalStyle`
 	body {
@@ -20,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
 const Container = styled.div`
 	width: 100%;
 	display: flex;
-	padding-top: 62px;
+	padding-top: 20px;
 `;
 
 type QueryType = {
@@ -84,34 +79,16 @@ export default function PostPage({ data }: PageProps<QueryType>) {
 	if (!(markdownRemark && allMarkdownRemark)) return null;
 
 	return (
-		<MainResponsive>
+		<Container>
 			<GlobalStyle />
-			<Header
+			<PostViewer
+				post={{ ...markdownRemark.frontmatter, html: markdownRemark.html }}
+				series={markdownRemark.frontmatter.series}
+				seriesPosts={seriesPosts}
 				lang={markdownRemark.frontmatter.lang}
-				ko_to={
-					markdownRemark.frontmatter.lang === "ko"
-						? "#"
-						: markdownRemark.frontmatter.translation || "#"
-				}
-				en_to={
-					markdownRemark.frontmatter.lang === "en"
-						? "#"
-						: markdownRemark.frontmatter.translation || "#"
-				}
 			/>
-			<Container>
-				<SimpleProfile type="body" categoryVisible lang={markdownRemark.frontmatter.lang} />
-				<PostViewer
-					post={{ ...markdownRemark.frontmatter, html: markdownRemark.html }}
-					series={markdownRemark.frontmatter.series}
-					seriesPosts={seriesPosts}
-					lang={markdownRemark.frontmatter.lang}
-				/>
-				<PostToC tableOfContents={markdownRemark.tableOfContents} />
-			</Container>
-			<Footer />
-			<Utterances />
-		</MainResponsive>
+			<PostToC tableOfContents={markdownRemark.tableOfContents} />
+		</Container>
 	);
 }
 

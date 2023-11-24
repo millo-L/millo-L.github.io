@@ -14,7 +14,7 @@ tags:
     - HTTP 상태 코드
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: HTTP 상태(응답) 코드를 정리해보자.
 ---
 

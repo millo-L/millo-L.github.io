@@ -15,7 +15,7 @@ tags:
     - x86_64
 is_private: false
 translation: /ReactNative-ld-symbols-not-found-error
-translation_series: none
+translation_series:
 description: "Let's find out how to resolve the error ld: symbol(s) not found for architecture x86_64 when running react native ios."
 ---
 

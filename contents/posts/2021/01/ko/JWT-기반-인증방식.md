@@ -19,7 +19,7 @@ tags:
     - micro architecture
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: JWT 기반 인증 방식의 원리와 특징에 대해 알아보자.
 ---
 

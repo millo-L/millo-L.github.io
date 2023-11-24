@@ -15,7 +15,7 @@ tags:
     - 크기 조절
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: React native에서 resizeMode 속성을 통해 배경 이미지의 크기를 자동으로 맞춰보자.
 ---
 

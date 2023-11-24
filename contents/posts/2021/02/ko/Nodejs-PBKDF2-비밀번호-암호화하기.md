@@ -19,7 +19,7 @@ tags:
     - 회원가입
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: nodejs에서 PBKDF2 암호화 방식을 사용해보자.
 ---
 

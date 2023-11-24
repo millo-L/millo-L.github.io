@@ -14,7 +14,7 @@
     "clean": "gatsby clean",
     "typecheck": "tsc --noEmit",
     "postinstall": "patch-package",
-    "deploy": "gatsby build && gh-pages -d public -b deploy",
+    "deploy": "gatsby clean && gatsby build && gh-pages -d public -b deploy",
     "prepare": "husky install"
   },
   "dependencies": {

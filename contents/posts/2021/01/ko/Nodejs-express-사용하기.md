@@ -14,7 +14,7 @@ tags:
     - route
 is_private: false
 translation: /Nodejs-use-expressjs/
-translation_series: none
+translation_series:
 description: nodejs의 express.js를 사용하여 서버를 구현해보자.
 ---
 

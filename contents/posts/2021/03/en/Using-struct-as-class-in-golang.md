@@ -16,7 +16,7 @@ tags:
     - Receiver
 is_private: false
 translation: /Go언어에서-구조체를-Class처럼-사용하기/
-translation_series: none
+translation_series:
 description: Let's use Go's struct like class of an object-oriented language.
 ---
 

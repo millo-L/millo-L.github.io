@@ -15,7 +15,7 @@ tags:
     - Dimensions.get('screen')
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: React native에서 Dimensions.get('window')와 Dimensions.get('screen')의 차이를 알아보자.
 ---
 

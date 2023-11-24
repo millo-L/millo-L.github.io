@@ -14,7 +14,7 @@ tags:
     - "@react-native-firebase"
 is_private: false
 translation: /ReactNative-Firebase-2023-05-25/
-translation_series: none
+translation_series:
 description: Solving react-native-firebase pod install issue.
 ---
 

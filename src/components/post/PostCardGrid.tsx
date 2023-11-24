@@ -23,7 +23,7 @@ export default function PostCardGrid({ posts }: Props) {
 	return (
 		<Container>
 			{posts.map((post) => (
-				<PostCard post={post} />
+				<PostCard key={post.path} post={post} />
 			))}
 		</Container>
 	);

@@ -5,8 +5,6 @@ import { reshapePost } from "../../libs/list/reshape";
 import { LanguageType } from "../../types/Common";
 import SEO from "../SEO";
 import Footer from "../base/Footer";
-import Header from "../base/Header";
-import MainResponsive from "../main/MainResponsive";
 import SeriesPostList from "./SeriesPostList";
 
 type QueryType = {
@@ -43,15 +41,10 @@ export default function SeriesTemplate({ data }: PageProps<QueryType>) {
 
 	if (!allMarkdownRemark) return null;
 	return (
-		<MainResponsive>
-			<Header lang={data.allMarkdownRemark.nodes[0].frontmatter.lang} />
-			<SeriesPostList
-				posts={posts}
-				series={allMarkdownRemark.nodes[0].frontmatter.series}
-				lang={allMarkdownRemark.nodes[0].frontmatter.lang}
-			/>
+		<div>
+			<SeriesPostList posts={posts} series={allMarkdownRemark.nodes[0].frontmatter.series} />
 			<Footer />
-		</MainResponsive>
+		</div>
 	);
 }
 
@@ -82,6 +75,7 @@ export const pageQuery = graphql`
 					released_at
 					updated_at
 					description
+					lang
 					image {
 						childImageSharp {
 							gatsbyImageData(width: 1000, quality: 100)
@@ -90,7 +84,6 @@ export const pageQuery = graphql`
 							}
 						}
 					}
-					lang
 					translation_series
 					series
 					category

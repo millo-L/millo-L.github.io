@@ -20,7 +20,7 @@ tags:
     - Mac Mini(M1)
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: "react native 원격 배포를 위한 CI/CD 툴을 비교하고 선택해보자."
 ---
 

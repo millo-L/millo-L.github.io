@@ -14,7 +14,7 @@ tags:
     - promise
 is_private: false
 translation: /JavaScript-Callback-지옥-벗어나기/
-translation_series: none
+translation_series:
 description: Let's use promise and async/await to get out of JavaScript Callback hell.
 ---
 

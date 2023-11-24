@@ -45,7 +45,7 @@ const Circle = styled.div`
 	margin-right: 1rem;
 `;
 
-const Container = styled(Link)<{ right: boolean }>`
+const Container = styled(Link)<{ $right: boolean }>`
 	cursor: pointer;
 	background: ${palette.gray[0]};
 	box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.06);
@@ -55,30 +55,30 @@ const Container = styled(Link)<{ right: boolean }>`
 	align-items: center;
 	text-decoration: none;
 	${(props) =>
-		props.right &&
+		props.$right &&
 		css`
 			flex-direction: row-reverse;
 		`}
 	&:hover {
 		${Circle} {
 			animation-duration: 0.35s;
-			animation-name: ${(props) => (props.right ? bounceRight : bounceLeft)};
+			animation-name: ${(props) => (props.$right ? bounceRight : bounceLeft)};
 			animation-fill-mode: forwards;
 			animation-timing-function: ease-out;
 		}
 	}
 `;
 
-const Text = styled.div<{ right: boolean }>`
+const Text = styled.div<{ $right: boolean }>`
 	flex: 1;
 	display: flex;
 	flex-direction: column;
-	align-items: ${(props) => (props.right ? "flex-end" : "flex-start")};
+	align-items: ${(props) => (props.$right ? "flex-end" : "flex-start")};
 	line-height: 1;
 	min-width: 0;
 
 	${(props) =>
-		props.right
+		props.$right
 			? css`
 					margin-left: 1rem;
 			  `
@@ -92,7 +92,7 @@ const Text = styled.div<{ right: boolean }>`
 	}
 	h3 {
 		${(props) =>
-			props.right
+			props.$right
 				? css`
 						margin-left: 1rem;
 						text-align: right;
@@ -126,9 +126,9 @@ export default function PrevNextPostItem({ right, seriesPost, lang }: Props) {
 	const to = `${seriesPost.path}`;
 
 	return (
-		<Container right={right} to={to}>
+		<Container $right={right} to={to}>
 			<Circle>{right ? <MdArrowForward /> : <MdArrowBack />}</Circle>
-			<Text right={right}>
+			<Text $right={right}>
 				<div className="description">
 					{right
 						? lang === "ko"

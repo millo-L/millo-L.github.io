@@ -15,7 +15,7 @@ tags:
     - proguard
 is_private: false
 translation: /Android-release-error
-translation_series: none
+translation_series:
 description: "Occasionally, when testing Android in debug mode, it runs, but fails when it is released. Let's find out why."
 ---
 

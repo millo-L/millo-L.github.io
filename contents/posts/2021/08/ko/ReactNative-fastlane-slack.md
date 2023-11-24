@@ -14,7 +14,7 @@ tags:
     - Slack
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: "Fastlane에 Slack을 연동해서 배포 단계에 대한 알림을 설정해보자."
 ---
 

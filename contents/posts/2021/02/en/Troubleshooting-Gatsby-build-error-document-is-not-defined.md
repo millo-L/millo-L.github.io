@@ -14,7 +14,7 @@ tags:
     - document is not defined
 is_private: false
 translation: /Gatsby-build-error-document-is-not-defined-해결방법
-translation_series: none
+translation_series:
 description: "Troubleshooting Gatsby document is not defined build error."
 ---
 

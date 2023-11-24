@@ -68,8 +68,6 @@ const Container = styled.div<{ type: "header" | "body" }>`
 					width: calc(20%);
 					align-items: center;
 
-					${mediaQuery(1440)} {
-					}
 					${mediaQuery(1056)} {
 						display: none;
 					}

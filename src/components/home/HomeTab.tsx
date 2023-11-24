@@ -10,7 +10,7 @@ import { mediaQuery } from "../../libs/styles/media";
 import palette from "../../libs/styles/palette";
 
 const Container = styled.div`
-	margin-top: 1.5rem;
+	margin: 1.5rem 0 0;
 	display: flex;
 	position: relative;
 	.more {
@@ -20,16 +20,14 @@ const Container = styled.div`
 	}
 `;
 
-const UserContainer = styled.div<{ visible: boolean }>`
+const UserContainer = styled.div<{ $visible: boolean }>`
 	display: flex;
 	align-items: center;
 	font-size: 1.25rem;
-	max-width: 20.5rem;
-	width: calc(20%);
-	margin-right: 1.3rem;
+	width: 18%;
 
 	${(props) =>
-		props.visible
+		props.$visible
 			? css``
 			: css`
 					.small-profile-img,
@@ -38,8 +36,8 @@ const UserContainer = styled.div<{ visible: boolean }>`
 					}
 			  `}
 
-	${mediaQuery(1919)} {
-		margin-right: 1.75rem;
+	${mediaQuery(1440)} {
+		width: 22%;
 	}
 
 	${mediaQuery(1056)} {
@@ -157,7 +155,7 @@ const HomeTab = ({ userVisible, page, lang, style }: Props) => {
 
 	return (
 		<Container style={style}>
-			<UserContainer visible={userVisible}>
+			<UserContainer $visible={userVisible}>
 				<GatsbyImage
 					className="small-profile-img"
 					image={data.file.childImageSharp.gatsbyImageData}

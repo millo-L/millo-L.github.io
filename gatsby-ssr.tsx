@@ -1,5 +1,5 @@
 import React from "react";
-import { GatsbyBrowser } from "gatsby";
+import { GatsbySSR } from "gatsby";
 import styled, { createGlobalStyle } from "styled-components";
 import FloatingHeader from "./src/components/base/FloatingHeader";
 import Header from "./src/components/base/Header";
@@ -46,9 +46,9 @@ const BodyContainer = styled.div`
 	width: 100%;
 `;
 
-const MAIN_PATHS = ["/", "/en/", "/series/", "/en/series/", "/about/", "/en/about/"];
+const MAIN_PATHS = ["/", "/en/", "/series", "/en/series", "/about", "/en/about"];
 
-export const wrapPageElement: GatsbyBrowser["wrapPageElement"] = ({ element }) => {
+export const wrapPageElement: GatsbySSR["wrapPageElement"] = ({ element }) => {
 	const { path, pageContext } = element.props;
 	const isMain = MAIN_PATHS.includes(path);
 	const lang = isMain ? (path.includes("/en") ? "en" : "ko") : pageContext.lang || "ko";

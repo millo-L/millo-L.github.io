@@ -17,7 +17,7 @@ tags:
     - "ubuntu:18.04"
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: "Ubuntu:18.04에서 docker를 설치해보자."
 ---
 

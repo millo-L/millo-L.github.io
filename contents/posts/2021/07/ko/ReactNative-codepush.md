@@ -17,7 +17,7 @@ tags:
     - react-native-code-push
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: "CodePush를 이용해서 react native 앱을 심사 없이 업데이트해보자."
 ---
 

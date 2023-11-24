@@ -16,7 +16,7 @@ tags:
     - session
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: nodejs에서 passport 모듈의 session을 사용한 인증 방식을 구현해보자.
 ---
 

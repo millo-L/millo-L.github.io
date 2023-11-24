@@ -44,7 +44,7 @@ const Container = styled(Link)`
 	}
 `;
 
-const ContentContainer = styled.div<{ clamp: boolean }>`
+const ContentContainer = styled.div<{ $clamp: boolean }>`
 	padding: 1rem;
 	display: flex;
 	flex: 1;
@@ -73,7 +73,7 @@ const ContentContainer = styled.div<{ clamp: boolean }>`
 		font-size: 0.875rem;
 		line-height: 1.5;
 		${(props) =>
-			props.clamp &&
+			props.$clamp &&
 			css`
 				height: 3.9375rem;
 				display: -webkit-box;
@@ -83,7 +83,7 @@ const ContentContainer = styled.div<{ clamp: boolean }>`
 				text-overflow: ellipsis;
 			`}
 		/* ${(props) =>
-			!props.clamp &&
+			!props.$clamp &&
 			css`
 				height: 15.875rem;
 			`} */
@@ -112,7 +112,7 @@ export default function SeriesCard({ series }: Props) {
 			{series.image && (
 				<GatsbyImage className="thumbnail" image={series.image} alt={series.title} />
 			)}
-			<ContentContainer clamp={!series.image}>
+			<ContentContainer $clamp={series.image === null}>
 				<h4>{series.title}</h4>
 				<div className="sub-info">
 					<span>

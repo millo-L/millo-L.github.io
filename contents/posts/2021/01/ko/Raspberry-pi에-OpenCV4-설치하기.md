@@ -13,7 +13,7 @@ tags:
     - Raspberry Pi
 is_private: false
 translation: /Install-Opencv-4-on-Raspberry-Pi-4/
-translation_series: none
+translation_series:
 description: Raspberry pi에 OpenCV 4를 설치해보자.
 ---
 

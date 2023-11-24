@@ -16,7 +16,7 @@ tags:
     - session
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: OAuth 2.0 기반 인증 방식의 원리와 특징에 대해 알아보자.
 ---
 

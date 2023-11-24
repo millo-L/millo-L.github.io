@@ -15,7 +15,7 @@ tags:
     - socket.io
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: nodejs에서 socket.io를 사용하여 간단한 chat을 구현해보자.
 ---
 

@@ -6,9 +6,11 @@ import media from "../../libs/styles/media";
 import palette from "../../libs/styles/palette";
 import { formatDate } from "../../libs/styles/utils";
 import { SeriesPostType } from "../../types/Common";
+import Footer from "../base/Footer";
 import PostSeriesList from "./PostSeriesList";
 import PrevNextPost from "./PrevNextPost";
 import TagList from "./TagList";
+import Utterances from "./Utterances";
 
 type PostType = {
 	author: string;
@@ -19,8 +21,9 @@ type PostType = {
 	updated_at: string | null;
 	html: string;
 };
+
 const Container = styled.div`
-	width: 60%;
+	width: 80%;
 	margin-left: 0;
 	max-width: 972px;
 
@@ -220,17 +223,20 @@ const ContentContainer = styled.div`
 		}
 	}
 
-	.language-text {
-		font-family: "Nano Santo KR";
-		background-color: ${palette.gray[0]};
-		width: 100%;
-		margin: 0;
-		padding-top: 0.5rem;
-		padding-bottom: 0.5rem;
+	p {
+		.language-text {
+			font-family: "Noto Sans KR";
+			font-size: 1rem;
+			background-color: ${palette.gray[0]};
+			width: 100%;
+			margin: 0;
+			padding-top: 0.5rem;
+			padding-bottom: 0.5rem;
 
-		p {
-			margin-left: 2rem;
-			margin-right: 2rem;
+			p {
+				margin-left: 2rem;
+				margin-right: 2rem;
+			}
 		}
 	}
 `;
@@ -281,6 +287,8 @@ export default function PostViewer({ post, series, seriesPosts, lang }: Props) {
 			)}
 			<ContentContainer id="content-container" dangerouslySetInnerHTML={{ __html: html }} />
 			<PrevNextPost nowPostTitle={title} seriesPosts={seriesPosts} lang={lang} />
+			<Utterances />
+			<Footer />
 		</Container>
 	);
 }

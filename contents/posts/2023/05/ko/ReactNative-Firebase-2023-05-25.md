@@ -14,7 +14,7 @@ tags:
     - "@react-native-firebase"
 is_private: false
 translation: /ReactNative-Firebase-2023-05-25-en/
-translation_series: none
+translation_series:
 description: react native 앱에서 firebase 설치 시 pod install 오류를 해결해보자.
 ---
 

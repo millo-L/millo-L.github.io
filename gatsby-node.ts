@@ -1,6 +1,7 @@
 import path from "path";
 import { GatsbyNode } from "gatsby";
 import { createFilePath } from "gatsby-source-filesystem";
+import { LanguageType } from "./src/types/Common";
 
 export const onCreateNode: GatsbyNode["onCreateNode"] = async ({ actions, node, getNode }) => {
 	const { createNodeField } = actions;
@@ -17,22 +18,24 @@ export const onCreateNode: GatsbyNode["onCreateNode"] = async ({ actions, node, 
 
 type QueryType = {
 	allMarkdownRemark: {
-		nodes: [
-			{
-				frontmatter: {
-					series: string;
-				};
-				fields: {
-					slug: string;
-				};
-			},
-		];
+		nodes: {
+			frontmatter: {
+				series: string;
+				translation: string;
+				lang: LanguageType;
+			};
+			fields: {
+				slug: string;
+			};
+		}[];
 		group: [
 			{
 				nodes: [
 					{
 						frontmatter: {
 							series: string;
+							translation_series: string;
+							lang: LanguageType;
 						};
 					},
 				];
@@ -53,6 +56,8 @@ export const createPages: GatsbyNode["createPages"] = async ({ actions, graphql,
 				nodes {
 					frontmatter {
 						series
+						translation
+						lang
 					}
 					fields {
 						slug
@@ -62,6 +67,8 @@ export const createPages: GatsbyNode["createPages"] = async ({ actions, graphql,
 					nodes {
 						frontmatter {
 							series
+							translation_series
+							lang
 						}
 					}
 				}
@@ -81,6 +88,8 @@ export const createPages: GatsbyNode["createPages"] = async ({ actions, graphql,
 			context: {
 				slug: node.fields.slug,
 				series: node.frontmatter.series,
+				translation: node.frontmatter.translation,
+				lang: node.frontmatter.lang,
 			},
 		});
 	});
@@ -93,6 +102,10 @@ export const createPages: GatsbyNode["createPages"] = async ({ actions, graphql,
 				component: seriesTemplate,
 				context: {
 					series: each.nodes[0].frontmatter.series,
+					translation_series: each.nodes[0].frontmatter.translation_series
+						? `/series${each.nodes[0].frontmatter.translation_series}`
+						: null,
+					lang: each.nodes[0].frontmatter.lang,
 				},
 			}),
 	);

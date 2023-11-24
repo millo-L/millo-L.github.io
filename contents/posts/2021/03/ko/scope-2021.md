@@ -15,7 +15,7 @@ tags:
     - 대회
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: 스타트업 코딩 페스티벌 2021 1차, 2차 참여 후기
 ---
 

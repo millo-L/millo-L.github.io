@@ -15,7 +15,7 @@ tags:
     - 바텀 탭바 숨기기
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: React native에서 특정 화면에서만 Bottom tab bar가 보이지 않게 설정해보자.
 ---
 

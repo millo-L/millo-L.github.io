@@ -15,7 +15,7 @@ tags:
     - python
 is_private: false
 translation: /Python-Manage-simple-Anaconda-virtual-environments/
-translation_series: none
+translation_series:
 description: python 개발을 편리하게 해주는 Anaconda 가상 환경을 관리 명령어에 대해 알아보자.
 ---
 

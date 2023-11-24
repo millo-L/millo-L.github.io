@@ -15,7 +15,7 @@ tags:
     - one-to-many
 is_private: false
 translation: /reactnative-realm-one-to-many-relationship-2023-05-26/
-translation_series: none
+translation_series:
 description: Let's find out about one-to-many relationship of real local db in the react native app.
 ---
 

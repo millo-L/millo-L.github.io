@@ -15,7 +15,7 @@ tags:
     - google
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: nodejs에서 nodemailer를 사용하여 이메일을 송신을 구현해보자.
 ---
 

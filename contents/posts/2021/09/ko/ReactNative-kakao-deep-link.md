@@ -18,7 +18,7 @@ tags:
     - react-navigation
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: "react-native-kakako-share-link를 사용해서 딥링크를 구현해보자."
 ---
 

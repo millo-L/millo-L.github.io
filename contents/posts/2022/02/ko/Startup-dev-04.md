@@ -16,7 +16,7 @@ tags:
 - 기획
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: "스타트업 개발자의 우선순위 이야기"
 ---
 

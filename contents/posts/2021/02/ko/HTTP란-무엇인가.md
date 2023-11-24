@@ -15,7 +15,7 @@ tags:
     - HTTP란
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: 우리에게 매우 친숙하지만 제대로 알고 있진 못한 HTTP에 대해 알아보자.
 ---
 

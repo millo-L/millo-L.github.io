@@ -49,7 +49,7 @@ const Container = styled(Link)`
 	}
 `;
 
-const ContentContainer = styled.div<{ clamp: boolean }>`
+const ContentContainer = styled.div<{ $clamp: boolean }>`
 	padding: 1rem;
 	display: flex;
 	flex: 1;
@@ -78,7 +78,7 @@ const ContentContainer = styled.div<{ clamp: boolean }>`
 		font-size: 0.875rem;
 		line-height: 1.5;
 		${(props) =>
-			props.clamp &&
+			props.$clamp &&
 			css`
 				height: 3.9375rem;
 				display: -webkit-box;
@@ -106,7 +106,7 @@ export default function PostCard({ post }: Props) {
 	return (
 		<Container to={`${post.path}`}>
 			{post.image && <GatsbyImage image={post.image} alt={post.title} />}
-			<ContentContainer clamp={!post.image}>
+			<ContentContainer $clamp={post.image === null}>
 				<h4>{post.title}</h4>
 				<div className="description-wrapper">
 					<p>

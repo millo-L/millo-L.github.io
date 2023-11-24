@@ -14,7 +14,7 @@ tags:
     - react-native-fbsdk
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: react native 앱에 facebook sdk을 적용해보자.
 ---
 

@@ -15,7 +15,7 @@ tags:
     - 창업 도전
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: "스타트업 개발자로 진로를 정한 계기에 대해 적어둔다."
 ---
 

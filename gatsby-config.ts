@@ -63,7 +63,10 @@ const config: GatsbyConfig = {
 							})),
 						query: `
 							{
-								allMarkdownRemark(sort: {frontmatter: {released_at: ASC}}) {
+								allMarkdownRemark(
+									sort: {frontmatter: {released_at: DESC}}
+									limit: 1000
+								) {
 									nodes {
 										frontmatter {
 											title

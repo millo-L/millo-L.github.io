@@ -16,7 +16,7 @@ tags:
     - TCP
 is_private: false
 translation: /Python-Implementing TCP image socket-Server-Client/
-translation_series: none
+translation_series:
 description: python에서 TCP socket을 사용한 이미지 송수신을 구현해보자.
 ---
 

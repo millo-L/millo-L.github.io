@@ -17,7 +17,7 @@ tags:
     - tty
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: ReactJS를 도커라이징해서 실행해보자.
 ---
 

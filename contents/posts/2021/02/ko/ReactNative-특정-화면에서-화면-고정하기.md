@@ -15,7 +15,7 @@ tags:
     - 화면 고정
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: React native에서 특정 화면에서 화면 회전이 되지 않게 고정해보자.
 ---
 

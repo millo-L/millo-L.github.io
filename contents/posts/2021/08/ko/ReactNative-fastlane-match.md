@@ -15,7 +15,7 @@ tags:
     - Fastlane Match
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: "팀 단위의 iOS 개발 및 배포에 필요한 인증서 문제를 Fastlane match로 해결해보자."
 ---
 

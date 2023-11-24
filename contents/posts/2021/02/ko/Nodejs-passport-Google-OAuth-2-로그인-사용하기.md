@@ -16,7 +16,7 @@ tags:
     - google login
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: Node.js에서 Google OAuth 2.0로 로그인을 해보자.
 ---
 

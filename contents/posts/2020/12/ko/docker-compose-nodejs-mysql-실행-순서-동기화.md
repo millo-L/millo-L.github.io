@@ -15,7 +15,7 @@ tags:
     - docker-compose
 is_private: false
 translation: /Synchronize-docker-compose-nodejs-mysql-execution-order/
-translation_series: none
+translation_series:
 description: docker-compose에서 dockerize를 사용하여 node.js와 mysql의 실행 순서를 동기화해보자.
 ---
 

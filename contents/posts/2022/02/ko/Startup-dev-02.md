@@ -16,7 +16,7 @@ tags:
     - 인터뷰
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: "스타트업 개발자의 인터뷰 및 합류 스토리"
 ---
 

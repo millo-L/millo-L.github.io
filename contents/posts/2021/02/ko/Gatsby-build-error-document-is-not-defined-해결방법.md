@@ -14,7 +14,7 @@ tags:
     - document is not defined
 is_private: false
 translation: /Troubleshooting-Gatsby-build-error-document-is-not-defined
-translation_series: none
+translation_series:
 description: "Gatsby  document is not defined build error 해결하기."
 ---
 

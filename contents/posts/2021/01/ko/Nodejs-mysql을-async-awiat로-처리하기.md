@@ -15,7 +15,7 @@ tags:
     - mysql2
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: nodejs에서 mysql2.js로 async/await로 mysql connection을 사용해보자.
 ---
 

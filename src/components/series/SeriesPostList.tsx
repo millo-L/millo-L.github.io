@@ -31,29 +31,17 @@ const Wrapper = Styled.div`
                 font-size: 1.4rem;
             }
         }
-        h3 {
-            width: 3.4rem;
-            color: ${palette.indigo[7]};
-            border-bottom: 4px solid ${palette.indigo[7]};
-            ${media.custom(1056)} {
-                font-size: 1rem;
-                border-bottom: 3px solid ${palette.indigo[7]};
-                width: 3rem;
-            }
-        }
     }
 `;
 interface Props {
 	posts: PostType[];
 	series: string;
-	lang: string;
 }
 
-export default function SeriesPostList({ posts, series, lang }: Props) {
+export default function SeriesPostList({ posts, series }: Props) {
 	return (
 		<Wrapper>
 			<div className="series-header">
-				<h3>{lang === "ko" ? "시리즈" : "Series"}</h3>
 				<h1>{series}</h1>
 			</div>
 			{posts.map((post, index) => (

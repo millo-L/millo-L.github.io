@@ -5,7 +5,7 @@ import { categoryList, enCategoryList } from "../../libs/styles/category";
 import { mediaQuery } from "../../libs/styles/media";
 import palette from "../../libs/styles/palette";
 
-const Container = styled.div<{ visible: boolean }>`
+const Container = styled.div<{ $visible: boolean }>`
 	margin-top: 2.5rem;
 	border-top: 1px solid ${palette.gray[3]};
 	padding-top: 1.5rem;
@@ -13,7 +13,7 @@ const Container = styled.div<{ visible: boolean }>`
 	min-width: 12rem;
 
 	${(props) =>
-		props.visible
+		props.$visible
 			? css``
 			: css`
 					display: none;
@@ -82,7 +82,7 @@ interface Props {
 
 export default function CategoryList({ visible, lang }: Props) {
 	return (
-		<Container visible={visible}>
+		<Container $visible={visible}>
 			<p>Categories</p>
 			<Link to={lang === "ko" ? "/" : "/en"} style={{ textDecoration: "none" }}>
 				<div className="whole-category">{lang === "ko" ? "전체 보기" : "All Posts"}</div>

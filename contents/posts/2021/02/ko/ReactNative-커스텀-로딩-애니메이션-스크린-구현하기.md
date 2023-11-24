@@ -15,7 +15,7 @@ tags:
     - loading
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: React native에서 이미지 전환을 통해 커스텀 로딩화면을 만들어 보자.
 ---
 

@@ -15,7 +15,7 @@ tags:
     - XML
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: 들어본 적은 있지만 잘 모르고 있는 SOAP에 대해 알아보자.
 ---
 

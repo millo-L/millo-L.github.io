@@ -16,7 +16,7 @@ tags:
     - TCP
 is_private: false
 translation: /Python-TCP-image-socket-구현하기-Server-Client/
-translation_series: none
+translation_series:
 description: Let's implement image sending and receiving using TCP socket in python.
 ---
 

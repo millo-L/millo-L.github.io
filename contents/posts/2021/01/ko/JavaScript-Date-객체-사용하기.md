@@ -15,7 +15,7 @@ tags:
     - 시간 계산
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: javascript의 Date 객체를 사용해서 시간과 날짜를 출력해보자.
 ---
 

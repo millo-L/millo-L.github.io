@@ -5,11 +5,8 @@ import { mediaQuery } from "../../libs/styles/media";
 const src = "https://utteranc.es/client.js";
 
 const Container = Styled.div`
-    width: 60%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
 
-    
     ${mediaQuery(1056)} {
         width: 100%;
     }

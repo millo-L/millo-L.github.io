@@ -15,7 +15,7 @@ tags:
     - instagram
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: react native에서 다른 앱(play store, instagram 등)을 실행시켜보자.
 ---
 

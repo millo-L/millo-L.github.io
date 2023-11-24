@@ -14,7 +14,7 @@ tags:
     - route
 is_private: false
 translation: /Nodejs-express-사용하기/
-translation_series: none
+translation_series:
 description: Let's implement the server using express.js in nodejs.
 ---
 

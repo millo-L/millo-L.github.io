@@ -17,7 +17,7 @@ tags:
     - methods
 is_private: false
 translation: /Typescript-mongodb-method-statics-사용하기/
-translation_series: none
+translation_series:
 description: Mongoose's methods and statics in a typescript environment.
 ---
 

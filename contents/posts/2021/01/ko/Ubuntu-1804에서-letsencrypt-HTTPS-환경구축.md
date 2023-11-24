@@ -19,7 +19,7 @@ tags:
     - ubuntu
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: "Ubuntu:18.04에서 letsencrypt와 certbot을 사용하여 NGINX HTTPS 환경을 구축해보자."
 ---
 

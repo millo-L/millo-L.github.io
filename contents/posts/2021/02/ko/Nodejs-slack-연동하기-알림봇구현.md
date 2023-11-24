@@ -15,7 +15,7 @@ tags:
     - not_in_channel
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: nodejs와 slack을 연동해서 알림봇을 구현해보자.
 ---
 

@@ -15,7 +15,7 @@ tags:
     - 부팅 시 자동실행
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: Raspberry pi를 부팅했을 때 프로그램이 자동실행하게 설정해보자.
 ---
 

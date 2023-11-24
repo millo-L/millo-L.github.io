@@ -15,7 +15,7 @@ tags:
     - proguard
 is_private: false
 translation: /Android-release-error-en
-translation_series: none
+translation_series:
 description: "간혹 안드로이드를 디버그 모드로 테스트할 때는 실행이 되는 데 릴리즈한 후 실행하면 실패하는 경우가 있다. 이런 이유에 대해 알아보자."
 ---
 

@@ -26,7 +26,7 @@ interface Props {
 	onClick: MouseEventHandler<HTMLDivElement>;
 }
 
-export default function HeaderUserImage({ language, onClick }: Props) {
+export default function HeaderLanguage({ language, onClick }: Props) {
 	return (
 		<Container onClick={onClick}>
 			<span>{language}</span>

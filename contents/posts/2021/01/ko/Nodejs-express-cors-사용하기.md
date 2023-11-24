@@ -15,7 +15,7 @@ tags:
     - express
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: nodejs의 cors.js를 사용해서 CORS 환경을 구축해보자.
 ---
 

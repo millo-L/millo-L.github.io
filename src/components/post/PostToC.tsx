@@ -18,6 +18,10 @@ const Container = styled.div`
 	overflow-y: auto;
 	word-break: break-all;
 
+	${media.custom(1919)} {
+		margin-left: 2rem;
+	}
+
 	${media.custom(1440)} {
 		display: none;
 	}

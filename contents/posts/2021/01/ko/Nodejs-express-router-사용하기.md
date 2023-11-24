@@ -15,7 +15,7 @@ tags:
     - router
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: nodejs의 express.js의 router를 사용하여 서버를 구현해보자.
 ---
 

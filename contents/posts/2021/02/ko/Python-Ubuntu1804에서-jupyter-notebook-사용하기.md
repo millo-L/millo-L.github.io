@@ -15,7 +15,7 @@ tags:
     - 자동 실행
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: "Ubuntu:18.04에서 juypter notebook을 설치하고 실행해보자."
 ---
 

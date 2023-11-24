@@ -14,7 +14,7 @@ tags:
     - moment
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: nodejs에서 moment.js를 사용해보자.
 ---
 

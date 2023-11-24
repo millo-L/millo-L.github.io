@@ -17,7 +17,7 @@ tags:
     - methods
 is_private: false
 translation: /Typescript-mongoose-methods-statics/
-translation_series: none
+translation_series:
 description: typescript 환경에서 mongoose의 methods와 statics를 사용해보자.
 ---
 

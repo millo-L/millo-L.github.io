@@ -14,7 +14,7 @@ tags:
     - "@react-native-firebase/analytics"
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: react native 앱에 Firbase Analytics를 적용해보자.
 ---
 

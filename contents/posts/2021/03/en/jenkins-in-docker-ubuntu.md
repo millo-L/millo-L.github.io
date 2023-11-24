@@ -14,7 +14,7 @@ tags:
     - ubuntu
 is_private: false
 translation: /Jenkins-in-Docker-Ubuntu1804/
-translation_series: none
+translation_series:
 description: Let's make Jenkins docker with Docker in Docker and create a CI/CD environment.
 ---
 

@@ -17,7 +17,7 @@ tags:
     - static folder
 is_private: false
 translation:
-translation_series: none
+translation_series:
 description: nodejs에서 express를 사용해 static folder를 지정해보자.
 ---
 
