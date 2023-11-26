@@ -18,29 +18,20 @@ export const onCreateNode: GatsbyNode["onCreateNode"] = async ({ actions, node, 
 
 type QueryType = {
 	allMarkdownRemark: {
-		nodes: {
-			frontmatter: {
-				series: string;
-				translation: string;
-				lang: LanguageType;
-			};
-			fields: {
-				slug: string;
-			};
+		group: {
+			nodes: {
+				id: string;
+				fields: {
+					slug: string;
+				};
+				frontmatter: {
+					series: string;
+					translation: string;
+					translation_series: string;
+					lang: LanguageType;
+				};
+			}[];
 		}[];
-		group: [
-			{
-				nodes: [
-					{
-						frontmatter: {
-							series: string;
-							translation_series: string;
-							lang: LanguageType;
-						};
-					},
-				];
-			},
-		];
 	};
 };
 
@@ -52,21 +43,19 @@ export const createPages: GatsbyNode["createPages"] = async ({ actions, graphql,
 
 	const result = await graphql<QueryType>(`
 		{
-			allMarkdownRemark(filter: { frontmatter: { is_private: { eq: false } } }) {
-				nodes {
-					frontmatter {
-						series
-						translation
-						lang
-					}
-					fields {
-						slug
-					}
-				}
-				group(field: { frontmatter: { series: SELECT } }, limit: 1) {
+			allMarkdownRemark(
+				filter: { frontmatter: { is_private: { eq: false } } }
+				sort: { frontmatter: { released_at: ASC } }
+			) {
+				group(field: { frontmatter: { series: SELECT } }) {
 					nodes {
+						id
+						fields {
+							slug
+						}
 						frontmatter {
 							series
+							translation
 							translation_series
 							lang
 						}
@@ -81,32 +70,31 @@ export const createPages: GatsbyNode["createPages"] = async ({ actions, graphql,
 		return;
 	}
 
-	result.data.allMarkdownRemark.nodes.forEach((node) => {
-		createPage({
-			path: node.fields.slug,
-			component: postTemplate,
-			context: {
-				slug: node.fields.slug,
-				series: node.frontmatter.series,
-				translation: node.frontmatter.translation,
-				lang: node.frontmatter.lang,
-			},
-		});
-	});
-
-	result.data.allMarkdownRemark.group.forEach(
-		(each) =>
-			each.nodes[0].frontmatter.series !== "none" &&
+	result.data.allMarkdownRemark.group.forEach((each) =>
+		each.nodes.forEach((node, index) => {
 			createPage({
-				path: `/series/${each.nodes[0].frontmatter.series.replace(/ /gi, "-")}`,
-				component: seriesTemplate,
+				path: node.fields.slug,
+				component: postTemplate,
 				context: {
-					series: each.nodes[0].frontmatter.series,
-					translation_series: each.nodes[0].frontmatter.translation_series
-						? `/series${each.nodes[0].frontmatter.translation_series}`
-						: null,
-					lang: each.nodes[0].frontmatter.lang,
+					id: node.id,
+					series: node.frontmatter.series,
+					lang: node.frontmatter.lang,
+					translation: node.frontmatter.translation,
 				},
-			}),
+			});
+			if (index === 0 && node.frontmatter.series !== "none") {
+				createPage({
+					path: `/series/${node.frontmatter.series.replace(/ /gi, "-")}`,
+					component: seriesTemplate,
+					context: {
+						series: node.frontmatter.series,
+						translation_series: node.frontmatter.translation_series
+							? `/series${node.frontmatter.translation_series}`
+							: null,
+						lang: node.frontmatter.lang,
+					},
+				});
+			}
+		}),
 	);
 };

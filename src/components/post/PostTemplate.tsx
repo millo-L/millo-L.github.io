@@ -66,12 +66,12 @@ export default function PostPage({ data }: PageProps<QueryType>) {
 		() =>
 			allMarkdownRemark && markdownRemark
 				? allMarkdownRemark.nodes
+						.filter((node) => node.frontmatter.lang === markdownRemark.frontmatter.lang)
 						.map((node) => ({
 							title: node.frontmatter.title,
 							lang: node.frontmatter.lang,
 							path: node.fields.slug,
 						}))
-						.filter((post) => post.lang === markdownRemark.frontmatter.lang)
 				: [],
 		[allMarkdownRemark, markdownRemark],
 	);
@@ -108,8 +108,8 @@ export function Head({ data }: HeadProps<QueryType>) {
 }
 
 export const pageQuery = graphql`
-	query ($slug: String!, $series: String!) {
-		markdownRemark(fields: { slug: { eq: $slug } }, frontmatter: { series: { eq: $series } }) {
+	query ($id: String!, $series: String!) {
+		markdownRemark(id: { eq: $id }) {
 			html
 			tableOfContents(absolute: false, maxDepth: 3, heading: null)
 			frontmatter {
