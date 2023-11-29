@@ -66,7 +66,7 @@ export default function PostToC({ tableOfContents }: Props) {
 	useEffect(() => {
 		const post = document.querySelector("#content-container");
 		if (!post) return;
-		const headings = Array.from(post.querySelectorAll("h2, h3")).filter((h: any) => h.id);
+		const headings = Array.from(post.querySelectorAll("h2, h3")).filter((h) => h.id);
 		const toc = document.querySelector("#toc-container");
 
 		// eslint-disable-next-line no-new
