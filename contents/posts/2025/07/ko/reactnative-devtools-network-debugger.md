@@ -14,7 +14,7 @@ tags:
     - network panel
     - network debugger
 is_private: false
-translation: 
+translation: /reactnative-devtools-network-debugger-en/
 translation_series:
 description: react native devtools에서 network panel을 만들고 network 디버깅을 편하게 하자.
 ---
