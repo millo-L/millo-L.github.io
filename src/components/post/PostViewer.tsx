@@ -135,6 +135,20 @@ const ContentContainer = styled.div`
 				line-height: 1.7;
 			}
 		}
+		.language-text {
+			font-family: "Noto Sans KR";
+			font-size: 1rem;
+			background-color: ${palette.gray[0]};
+			width: 100%;
+			margin: 0;
+			padding-top: 0.5rem;
+			padding-bottom: 0.5rem;
+
+			p {
+				margin-left: 2rem;
+				margin-right: 2rem;
+			}
+		}
 	}
 
 	pre,
