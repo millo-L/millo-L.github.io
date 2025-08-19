@@ -1,0 +1,408 @@
+<!DOCTYPE html><html><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 5.12.9"/><meta name="description" content="Bitrise 기본 캐싱 지원의 한계점과 커스텀 캐싱 솔루션을 통해 React Native 빌드 시간을 26분에서 7-11분으로 단축한 경험" data-gatsby-head="true"/><meta name="twitter:url" content="https://millo-L.github.io/reactnative-bitrise-whats-really-supported/" data-gatsby-head="true"/><meta name="twitter:title" content="[React Native] Bitrise가 제공하는 기본 캐싱 지원의 현실 | millo&#x27;s tech blog" data-gatsby-head="true"/><meta name="twitter:url" content="https://millo-L.github.io/reactnative-bitrise-whats-really-supported/" data-gatsby-head="true"/><meta name="twitter:description" content="Bitrise 기본 캐싱 지원의 한계점과 커스텀 캐싱 솔루션을 통해 React Native 빌드 시간을 26분에서 7-11분으로 단축한 경험" data-gatsby-head="true"/><meta name="twitter:card" content="summary" data-gatsby-head="true"/><meta property="twitter:image" content="https://millo-L.github.io/static/41ace13b6768be6622e6257e9bb0a52f/497c6/reactnative.png" data-gatsby-head="true"/><meta property="og:type" content="website" data-gatsby-head="true"/><meta property="og:title" content="[React Native] Bitrise가 제공하는 기본 캐싱 지원의 현실 | millo&#x27;s tech blog" data-gatsby-head="true"/><meta property="og:description" content="Bitrise 기본 캐싱 지원의 한계점과 커스텀 캐싱 솔루션을 통해 React Native 빌드 시간을 26분에서 7-11분으로 단축한 경험" data-gatsby-head="true"/><meta property="og:site_name" content="[React Native] Bitrise가 제공하는 기본 캐싱 지원의 현실 | millo&#x27;s tech blog" data-gatsby-head="true"/><meta property="og:image" content="https://millo-L.github.io/static/41ace13b6768be6622e6257e9bb0a52f/497c6/reactnative.png" data-gatsby-head="true"/><meta name="robots" content="index,follow" data-gatsby-head="true"/><meta name="google-site-verification" content="3RV-iVIsB1icAg20Pkdf-2uSR7XMnOYS2FxfhQ3YCD8" data-gatsby-head="true"/><meta name="naver-site-verification" content="3be60e4cdc653a5f4c68e0da86c7f8414891c370" data-gatsby-head="true"/><style data-href="/styles.a5c87e234c6e78b95935.css" data-identity="gatsby-global-css">code[class*=language-],pre[class*=language-]{color:#d4d4d4;direction:ltr;font-family:Menlo,Monaco,Consolas,Andale Mono,Ubuntu Mono,Courier New,monospace;font-size:13px;-webkit-hyphens:none;hyphens:none;line-height:1.5;tab-size:4;text-align:left;text-shadow:none;white-space:pre;word-break:normal;word-spacing:normal}code[class*=language-] ::selection,code[class*=language-]::selection,pre[class*=language-] ::selection,pre[class*=language-]::selection{background:#264f78;text-shadow:none}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}pre[class*=language-]{background:#1e1e1e;margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-]{background:#1e1e1e;border-radius:.3em;color:#db4c69;padding:.1em .3em}.namespace{opacity:.7}.token.doctype .token.doctype-tag{color:#569cd6}.token.doctype .token.name{color:#9cdcfe}.token.comment,.token.prolog{color:#6a9955}.language-html .language-css .token.punctuation,.language-html .language-javascript .token.punctuation,.token.punctuation{color:#d4d4d4}.token.boolean,.token.constant,.token.inserted,.token.number,.token.property,.token.symbol,.token.tag,.token.unit{color:#b5cea8}.token.attr-name,.token.builtin,.token.char,.token.deleted,.token.selector,.token.string{color:#ce9178}.language-css .token.string.url{text-decoration:underline}.token.entity,.token.operator{color:#d4d4d4}.token.operator.arrow{color:#569cd6}.token.atrule{color:#ce9178}.token.atrule .token.rule{color:#c586c0}.token.atrule .token.url{color:#9cdcfe}.token.atrule .token.url .token.function{color:#dcdcaa}.token.atrule .token.url .token.punctuation{color:#d4d4d4}.token.keyword{color:#569cd6}.token.keyword.control-flow,.token.keyword.module{color:#c586c0}.token.function,.token.function .token.maybe-class-name{color:#dcdcaa}.token.regex{color:#d16969}.token.important{color:#569cd6}.token.italic{font-style:italic}.token.constant{color:#9cdcfe}.token.class-name,.token.maybe-class-name{color:#4ec9b0}.token.console,.token.interpolation,.token.parameter{color:#9cdcfe}.token.boolean,.token.punctuation.interpolation-punctuation{color:#569cd6}.token.exports .token.maybe-class-name,.token.imports .token.maybe-class-name,.token.property,.token.variable{color:#9cdcfe}.token.escape,.token.selector{color:#d7ba7d}.token.tag{color:#569cd6}.token.cdata,.token.tag .token.punctuation{color:grey}.token.attr-name{color:#9cdcfe}.token.attr-value,.token.attr-value .token.punctuation{color:#ce9178}.token.attr-value .token.punctuation.attr-equals{color:#d4d4d4}.token.entity{color:#569cd6}.token.namespace{color:#4ec9b0}code[class*=language-javascript],code[class*=language-jsx],code[class*=language-tsx],code[class*=language-typescript],pre[class*=language-javascript],pre[class*=language-jsx],pre[class*=language-tsx],pre[class*=language-typescript]{color:#9cdcfe}code[class*=language-css],pre[class*=language-css]{color:#ce9178}code[class*=language-html],pre[class*=language-html]{color:#d4d4d4}.language-regex .token.anchor{color:#dcdcaa}.language-html .token.punctuation{color:grey}pre[class*=language-]>code[class*=language-]{position:relative;z-index:1}.line-highlight.line-highlight{background:#f7ebc6;box-shadow:inset 5px 0 0 #f7d87c;z-index:0}</style><style data-styled="" data-styled-version="6.1.1">.gkDWsS{margin:1.5rem 0 0;display:flex;position:relative;}/*!sc*/
+.gkDWsS .more{cursor:pointer;font-size:1.5rem;color:#868E96;}/*!sc*/
+data-styled.g1[id="HomeTab__Container-sc-n3tmpj-0"]{content:"gkDWsS,"}/*!sc*/
+.gvPZyU{display:flex;align-items:center;font-size:1.25rem;width:18%;}/*!sc*/
+@media (max-width: 1440px){.gvPZyU{width:22%;}}/*!sc*/
+@media (max-width: 1056px){.gvPZyU{display:none;}}/*!sc*/
+.gvPZyU .small-profile-img{width:2.5rem;height:2.5rem;margin-right:1rem;border-radius:1.25rem;}/*!sc*/
+.cmpBFu{display:flex;align-items:center;font-size:1.25rem;width:18%;}/*!sc*/
+.cmpBFu .small-profile-img,.cmpBFu span{display:none;}/*!sc*/
+@media (max-width: 1440px){.cmpBFu{width:22%;}}/*!sc*/
+@media (max-width: 1056px){.cmpBFu{display:none;}}/*!sc*/
+.cmpBFu .small-profile-img{width:2.5rem;height:2.5rem;margin-right:1rem;border-radius:1.25rem;}/*!sc*/
+data-styled.g2[id="HomeTab__UserContainer-sc-n3tmpj-1"]{content:"gvPZyU,cmpBFu,"}/*!sc*/
+.clcOqG{display:flex;position:relative;width:21rem;}/*!sc*/
+@media (max-width: 944px){.clcOqG{width:16.5rem;}}/*!sc*/
+.clcOqG .tab{width:7rem;display:flex;align-items:center;justify-content:center;font-size:1.125rem;text-decoration:none;color:#868E96;height:3rem;cursor:pointer;}/*!sc*/
+.clcOqG .tab svg{font-size:1.5rem;margin-right:0.5rem;}/*!sc*/
+.clcOqG .tab.active{color:#343A40;font-weight:bold;}/*!sc*/
+@media (max-width: 944px){.clcOqG .tab{font-size:1rem;width:5.5rem;}.clcOqG .tab svg{font-size:1.25rem;}}/*!sc*/
+data-styled.g3[id="HomeTab__InnerContainer-sc-n3tmpj-2"]{content:"clcOqG,"}/*!sc*/
+.gwdXuN{width:33.33%;height:2px;position:absolute;bottom:0px;background:#3b5bdb;}/*!sc*/
+data-styled.g4[id="HomeTab__Indicator-sc-n3tmpj-3"]{content:"gwdXuN,"}/*!sc*/
+.gLfZPx{width:1745px;margin-left:auto;margin-right:auto;}/*!sc*/
+@media (max-width: 1919px){.gLfZPx{width:1376px;}}/*!sc*/
+@media (max-width: 1440px){.gLfZPx{width:1024px;}}/*!sc*/
+@media (max-width: 1056px){.gLfZPx{width:calc(100% - 2rem);}}/*!sc*/
+data-styled.g5[id="MainResponsive__Container-sc-5br9q8-0"]{content:"gLfZPx,"}/*!sc*/
+.dcXuWi{position:fixed;top:0;left:0;background:white;width:100%;z-index:10;padding-left:0.5rem;box-shadow:0px 0 8px rgba(0,0,0,0.08);}/*!sc*/
+.dcXuWi .tab-wrapper{margin-top:-1.5rem;}/*!sc*/
+data-styled.g6[id="FloatingHeader__Container-sc-ynpivb-0"]{content:"dcXuWi,"}/*!sc*/
+.dXcwHn{margin-top:2.5rem;border-top:1px solid #DEE2E6;padding-top:1.5rem;width:12rem;min-width:12rem;display:none;}/*!sc*/
+.dXcwHn p{margin:0;font-size:1.3rem;text-align:center;margin-bottom:1.5rem;}/*!sc*/
+.dXcwHn .img-wrapper{display:flex;flex-wrap:wrap;width:90%;margin-left:auto;margin-right:auto;justify-content:space-between;align-items:space-between;}/*!sc*/
+.dXcwHn .whole-category{height:1.8rem;width:90%;margin-left:5%;margin-bottom:10px;border:1px solid #5c7cfa;font-size:11pt;display:flex;justify-content:center;align-items:center;-webkit-transition:background-color 0.5s;transition:background-color 0.5s;color:#5c7cfa;}/*!sc*/
+.dXcwHn .whole-category:hover{color:white;background-color:#5c7cfa;}/*!sc*/
+.dXcwHn a{height:1.5rem;margin-bottom:0.8rem;}/*!sc*/
+.dXcwHn .category-img{height:1.5rem;margin:0;border-radius:0;}/*!sc*/
+@media (max-width: 1440px){.dXcwHn{width:100%;}}/*!sc*/
+@media (max-width: 1056px){.dXcwHn{display:none;}}/*!sc*/
+.eFyqaq{margin-top:2.5rem;border-top:1px solid #DEE2E6;padding-top:1.5rem;width:12rem;min-width:12rem;}/*!sc*/
+.eFyqaq p{margin:0;font-size:1.3rem;text-align:center;margin-bottom:1.5rem;}/*!sc*/
+.eFyqaq .img-wrapper{display:flex;flex-wrap:wrap;width:90%;margin-left:auto;margin-right:auto;justify-content:space-between;align-items:space-between;}/*!sc*/
+.eFyqaq .whole-category{height:1.8rem;width:90%;margin-left:5%;margin-bottom:10px;border:1px solid #5c7cfa;font-size:11pt;display:flex;justify-content:center;align-items:center;-webkit-transition:background-color 0.5s;transition:background-color 0.5s;color:#5c7cfa;}/*!sc*/
+.eFyqaq .whole-category:hover{color:white;background-color:#5c7cfa;}/*!sc*/
+.eFyqaq a{height:1.5rem;margin-bottom:0.8rem;}/*!sc*/
+.eFyqaq .category-img{height:1.5rem;margin:0;border-radius:0;}/*!sc*/
+@media (max-width: 1440px){.eFyqaq{width:100%;}}/*!sc*/
+@media (max-width: 1056px){.eFyqaq{display:none;}}/*!sc*/
+data-styled.g7[id="CategoryList__Container-sc-1qwyrdp-0"]{content:"dXcwHn,eFyqaq,"}/*!sc*/
+.hdwqup{display:none;flex-direction:row;align-items:center;margin-top:1rem;font-size:1.5rem;}/*!sc*/
+.hdwqup .profile-img{border:3px solid #F8F9FA;}/*!sc*/
+@media (max-width: 1056px){.hdwqup{display:flex;}}/*!sc*/
+.hdwqup .profile-img{width:6rem;height:6rem;border-radius:4rem;margin-right:1rem;}/*!sc*/
+@media (max-width: 1056px){.hdwqup .profile-img{display:flex;}}/*!sc*/
+.hdwqup .info-wrapper{display:flex;width:6rem;height:3rem;flex-direction:column;justify-content:center;}/*!sc*/
+.hdwqup .info-wrapper .icon-wrapper{display:flex;justify-content:space-between;flex-direction:row;margin-top:0.3rem;}/*!sc*/
+.hdwqup svg{cursor:pointer;width:30%;}/*!sc*/
+.cKdNUD{max-width:20rem;margin-right:2rem;display:flex;flex-direction:column;font-size:2rem;width:calc(20%);align-items:center;}/*!sc*/
+.cKdNUD .profile-img{border:3px solid #F8F9FA;}/*!sc*/
+@media (max-width: 1056px){.cKdNUD{display:none;}}/*!sc*/
+.cKdNUD .profile-img{width:100%;border-radius:10rem;margin-bottom:1.5rem;}/*!sc*/
+.cKdNUD .info-wrapper{display:flex;width:8rem;height:3rem;flex-direction:column;justify-content:center;font-weight:lighter;text-align:center;}/*!sc*/
+.cKdNUD .info-wrapper .icon-wrapper{display:flex;justify-content:space-between;flex-direction:row;margin-top:0.3rem;}/*!sc*/
+.cKdNUD .info-wrapper .icon-wrapper svg{width:30%;cursor:pointer;}/*!sc*/
+data-styled.g9[id="SimpleProfile__Container-sc-gocmft-0"]{content:"hdwqup,cKdNUD,"}/*!sc*/
+.hdkpNF{cursor:pointer;display:flex;align-items:center;}/*!sc*/
+.hdkpNF svg{font-size:1.5rem;margin-left:0.25rem;color:#868E96;transition:0.125s all ease-in;margin-right:-0.4375rem;}/*!sc*/
+.hdkpNF:hover svg{color:#212529;}/*!sc*/
+data-styled.g10[id="HeaderLanguage__Container-sc-1tldkrv-0"]{content:"hdkpNF,"}/*!sc*/
+.faFGXe{display:flex;align-items:center;justify-content:center;font-weight:bold;}/*!sc*/
+data-styled.g11[id="HeaderLogo__Container-sc-1uvvju4-0"]{content:"faFGXe,"}/*!sc*/
+.cFBMxO{color:inherit;}/*!sc*/
+.cFBMxO .header-logo{margin-right:1rem;width:3rem;height:3rem;display:block;}/*!sc*/
+@media (max-width: 1056px){.cFBMxO .header-logo{width:2.5rem;height:2.5rem;margin-right:0.75rem;}}/*!sc*/
+data-styled.g12[id="HeaderLogo__LogoLink-sc-1uvvju4-1"]{content:"cFBMxO,"}/*!sc*/
+.bkCCux{margin-top:1rem;width:100%;}/*!sc*/
+data-styled.g15[id="Header__Container-sc-oub2xr-0"]{content:"bkCCux,"}/*!sc*/
+.hTdmpq{height:100%;display:flex;align-items:center;justify-content:space-between;}/*!sc*/
+data-styled.g16[id="Header__Inner-sc-oub2xr-1"]{content:"hTdmpq,"}/*!sc*/
+.Bjerf{display:flex;align-items:center;position:relative;}/*!sc*/
+@media (max-width: 1024px){.Bjerf .write-button{display:none;}}/*!sc*/
+data-styled.g17[id="Header__Right-sc-oub2xr-2"]{content:"Bjerf,"}/*!sc*/
+body{font-family:"Noto Sans KR";padding:0;margin:0;background:#F8F9FA;}/*!sc*/
+body div{box-sizing:border-box;}/*!sc*/
+a{text-decoration:none;color:black;}/*!sc*/
+h1,h2,h3,h4,h5,h6,p{margin:0;}/*!sc*/
+data-styled.g18[id="sc-global-pxmpY1"]{content:"sc-global-pxmpY1,"}/*!sc*/
+.bKaYjC{width:100%;display:flex;}/*!sc*/
+data-styled.g19[id="gatsby-ssr__Container-sc-ctz5yr-0"]{content:"bKaYjC,"}/*!sc*/
+.gAScvP{width:100%;}/*!sc*/
+data-styled.g20[id="gatsby-ssr__BodyContainer-sc-ctz5yr-1"]{content:"gAScvP,"}/*!sc*/
+.jyPjrp{display:flex;border-top:1px solid #ADB5BD;margin-top:5rem;width:100%;height:8rem;align-items:center;justify-content:center;flex-direction:column;}/*!sc*/
+.jyPjrp span{font-size:1.5rem;}/*!sc*/
+.jyPjrp .icon-wrapper{width:9rem;display:flex;justify-content:space-between;flex-direction:row;margin-top:1rem;}/*!sc*/
+.jyPjrp .icon-wrapper svg{width:30%;height:1.5rem;cursor:pointer;}/*!sc*/
+data-styled.g21[id="Footer__FooterWrapper-sc-1vumqmt-0"]{content:"jyPjrp,"}/*!sc*/
+.hwlzla{transition:0.125s all ease-in;width:20%;padding:0.5rem;padding-right:1rem;padding-left:0;order:1;top:10rem;margin-left:4rem;position:sticky;height:40rem;overflow-y:auto;word-break:break-all;}/*!sc*/
+@media (max-width: 1919px){.hwlzla{margin-left:2rem;}}/*!sc*/
+@media (max-width: 1440px){.hwlzla{display:none;}}/*!sc*/
+.hwlzla ul:first-child{padding-left:1rem;border-left:2px solid #748ffc;}/*!sc*/
+.hwlzla ul{list-style:none;margin:0;}/*!sc*/
+.hwlzla ul li{border:none;margin-bottom:4px;}/*!sc*/
+.hwlzla ul li p{margin:0;}/*!sc*/
+.hwlzla a{text-decoration:none;color:#CED4DA;font-size:0.9rem;}/*!sc*/
+.hwlzla a:hover,.hwlzla a:focus{color:#748ffc;}/*!sc*/
+.hwlzla a.active{color:#364fc7;font-size:1rem;}/*!sc*/
+.PostToC__Container-sc-16pz1hb-0+.PostToC__Container-sc-16pz1hb-0{margin-top:4px;}/*!sc*/
+data-styled.g25[id="PostToC__Container-sc-16pz1hb-0"]{content:"hwlzla,"}/*!sc*/
+.gMfYHD{position:relative;width:80%;background-color:#F8F9FA;margin-left:auto;margin-right:auto;padding-top:1rem;padding-bottom:1rem;border-radius:10px;word-break:break-all;}/*!sc*/
+@media (max-width: 767px){.gMfYHD{width:100%;}}/*!sc*/
+.gMfYHD h2{margin-left:1.5rem;margin-right:1.5rem;}/*!sc*/
+@media (max-width: 767px){.gMfYHD h2{font-size:1.2rem;}}/*!sc*/
+.gMfYHD a{text-decoration:none;color:#343A40;}/*!sc*/
+.gMfYHD a:hover{text-decoration:underline;}/*!sc*/
+.gMfYHD ol{padding-left:3rem;padding-right:1.5rem;font-size:1rem;}/*!sc*/
+.gMfYHD ol .now-post{color:#5c7cfa;font-weight:bold;}/*!sc*/
+.gMfYHD ol li{margin:0.5rem;color:#868E96;}/*!sc*/
+.gMfYHD .bookmark-img{position:absolute;right:1.5rem;top:-2px;width:2.8rem;height:2.8rem;color:#5c7cfa;}/*!sc*/
+@media (max-width: 767px){.gMfYHD .bookmark-img{right:1rem;width:2.2rem;height:2.2rem;}}/*!sc*/
+.gMfYHD .footer{display:flex;justify-content:space-between;margin-top:3rem;margin-right:1.5rem;margin-left:1.5rem;}/*!sc*/
+.gMfYHD .footer .visible-btn{display:flex;cursor:pointer;align-items:center;color:#495057;}/*!sc*/
+.gMfYHD .footer .visible-btn span{margin-left:0.3rem;font-size:0.9rem;}/*!sc*/
+data-styled.g26[id="PostSeriesList__Wrapper-sc-qnrl0u-0"]{content:"gMfYHD,"}/*!sc*/
+.dVkvvt{width:100%;display:flex;align-items:space-between;justify-content:space-between;margin:auto;}/*!sc*/
+@media (max-width: 767px){.dVkvvt{flex-direction:column-reverse;}}/*!sc*/
+data-styled.g30[id="PrevNextPost__Container-sc-dasvwy-0"]{content:"dVkvvt,"}/*!sc*/
+.gIkxOQ{width:300px;}/*!sc*/
+@media (max-width: 767px){.gIkxOQ{width:100%;}.PrevNextPost__ItemContainer-sc-dasvwy-1+.PrevNextPost__ItemContainer-sc-dasvwy-1{margin-bottom:1.5rem;}}/*!sc*/
+data-styled.g31[id="PrevNextPost__ItemContainer-sc-dasvwy-1"]{content:"gIkxOQ,"}/*!sc*/
+.dXNuNo{padding:0.5rem 1rem;background-color:#F1F3F5;color:#3b5bdb;border-radius:0.5rem;margin-right:1rem;margin-bottom:0.5rem;}/*!sc*/
+@media (max-width: 1056px){.dXNuNo{font-size:0.8rem;}}/*!sc*/
+data-styled.g32[id="TagList__ItemContainer-sc-17jv52i-0"]{content:"dXNuNo,"}/*!sc*/
+.epmauD{width:100%;display:flex;flex-wrap:wrap;margin-bottom:2rem;}/*!sc*/
+data-styled.g33[id="TagList__Container-sc-17jv52i-1"]{content:"epmauD,"}/*!sc*/
+.jVpTiW{margin:auto;}/*!sc*/
+@media (max-width: 1056px){.jVpTiW{width:100%;}}/*!sc*/
+data-styled.g34[id="Utterances__Container-sc-c4xdw2-0"]{content:"jVpTiW,"}/*!sc*/
+.dCcafP{width:80%;margin-left:0;max-width:972px;}/*!sc*/
+@media (max-width: 1440px){.dCcafP{width:80%;}}/*!sc*/
+@media (max-width: 1056px){.dCcafP{width:100%;}}/*!sc*/
+.dCcafP .category{text-decoration:none;font-size:1.5rem;color:gray;margin-bottom:0;}/*!sc*/
+.dCcafP .category:hover{text-decoration:underline;}/*!sc*/
+@media (max-width: 1056px){.dCcafP .category{font-size:1rem;}}/*!sc*/
+.dCcafP .title{margin-top:0.5rem;font-size:2.5rem;}/*!sc*/
+@media (max-width: 1056px){.dCcafP .title{font-size:2rem;}}/*!sc*/
+.dCcafP .date{line-height:0.8;color:gray;margin:1rem 0;}/*!sc*/
+@media (max-width: 1056px){.dCcafP .date{font-size:0.8rem;}}/*!sc*/
+.dCcafP .adsense-block{width:100%;}/*!sc*/
+data-styled.g35[id="PostViewer__Container-sc-qs391t-0"]{content:"dCcafP,"}/*!sc*/
+.bmMaAM{width:100%;margin:0 0 5rem;word-break:break-all;}/*!sc*/
+.bmMaAM a{color:#4c6ef5;text-decoration:none;}/*!sc*/
+.bmMaAM a:hover{text-decoration:underline;}/*!sc*/
+.bmMaAM h2{font-size:2em;margin:2rem 0 1rem;}/*!sc*/
+@media (max-width: 767px){.bmMaAM h2{font-size:1.8rem;}}/*!sc*/
+.bmMaAM h3{font-size:1.5rem;margin:2rem 0 1rem;}/*!sc*/
+@media (max-width: 767px){.bmMaAM h3{font-size:1.2rem;}}/*!sc*/
+.bmMaAM h4{font-size:1.2rem;margin:2rem 0 1rem;}/*!sc*/
+@media (max-width: 767px){.bmMaAM h4{font-size:1rem;margin:1rem 0 1rem;}}/*!sc*/
+.bmMaAM p{font-size:1.1em;line-height:1.8;}/*!sc*/
+@media (max-width: 767px){.bmMaAM p{font-size:1em;line-height:1.7;}}/*!sc*/
+.bmMaAM li{font-size:1.1rem;line-height:2;}/*!sc*/
+@media (max-width: 767px){.bmMaAM li{font-size:0.9rem;line-height:1.7;}}/*!sc*/
+.bmMaAM li h4,.bmMaAM li p{margin:0;font-size:1.1rem;}/*!sc*/
+@media (max-width: 767px){.bmMaAM li h4,.bmMaAM li p{font-size:0.9rem;line-height:1.7;}}/*!sc*/
+.bmMaAM li .language-text{font-family:"Noto Sans KR";font-size:1rem;background-color:#F8F9FA;width:100%;margin:0;padding-top:0.5rem;padding-bottom:0.5rem;}/*!sc*/
+.bmMaAM li .language-text p{margin-left:2rem;margin-right:2rem;}/*!sc*/
+.bmMaAM pre,.bmMaAM code{font-size:1em;margin-bottom:2rem;}/*!sc*/
+@media (max-width: 767px){.bmMaAM pre,.bmMaAM code{font-size:0.9rem;margin-bottom:1.5rem;}}/*!sc*/
+.bmMaAM pre{border-radius:3px;}/*!sc*/
+.bmMaAM img{width:100%;}/*!sc*/
+.bmMaAM table{white-space:normal;max-width:100%;border-collapse:collapse;text-align:left;line-height:1.5;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:20px 0;}/*!sc*/
+.bmMaAM table thead th{min-width:60px;max-width:150px;padding:10px;font-weight:bold;vertical-align:top;color:#fff;background:#4c6ef5;margin:20px 10px;}/*!sc*/
+.bmMaAM table tbody th{max-width:150px;padding:10px;}/*!sc*/
+.bmMaAM table td{max-width:350px;padding:10px;vertical-align:top;}/*!sc*/
+.bmMaAM table tr:nth-child(even){background:#edf2ff;}/*!sc*/
+.bmMaAM th{font-size:0.9rem;}/*!sc*/
+@media (max-width: 767px){.bmMaAM th{font-size:0.8rem;}}/*!sc*/
+.bmMaAM td{font-size:0.9rem;}/*!sc*/
+@media (max-width: 767px){.bmMaAM td{font-size:0.8rem;}}/*!sc*/
+.bmMaAM hr{margin-top:3rem;margin-bottom:3rem;}/*!sc*/
+@media (max-width: 767px){.bmMaAM hr{margin-top:2rem;margin-bottom:2rem;}}/*!sc*/
+.bmMaAM blockquote{background-color:#F8F9FA;width:100%;margin:0;padding-top:0.5rem;padding-bottom:0.5rem;border-left:4px solid #5c7cfa;}/*!sc*/
+.bmMaAM blockquote p{margin-left:2rem;margin-right:2rem;}/*!sc*/
+.bmMaAM p .language-text{font-family:"Noto Sans KR";font-size:1rem;background-color:#F8F9FA;width:100%;margin:0;padding-top:0.5rem;padding-bottom:0.5rem;}/*!sc*/
+.bmMaAM p .language-text p{margin-left:2rem;margin-right:2rem;}/*!sc*/
+data-styled.g36[id="PostViewer__ContentContainer-sc-qs391t-1"]{content:"bmMaAM,"}/*!sc*/
+body{background-color:white;}/*!sc*/
+data-styled.g37[id="sc-global-jvBbST1"]{content:"sc-global-jvBbST1,"}/*!sc*/
+.bLgotS{width:100%;display:flex;padding-top:20px;}/*!sc*/
+data-styled.g38[id="PostTemplate__Container-sc-1nk62eo-0"]{content:"bLgotS,"}/*!sc*/
+</style><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link rel="sitemap" type="application/xml" href="/sitemap-index.xml"/><link rel="icon" href="/favicon-32x32.png?v=b80cc5cfcebcbde1ec4f03e15cebebb0" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=b80cc5cfcebcbde1ec4f03e15cebebb0"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=b80cc5cfcebcbde1ec4f03e15cebebb0"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=b80cc5cfcebcbde1ec4f03e15cebebb0"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=b80cc5cfcebcbde1ec4f03e15cebebb0"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=b80cc5cfcebcbde1ec4f03e15cebebb0"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=b80cc5cfcebcbde1ec4f03e15cebebb0"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=b80cc5cfcebcbde1ec4f03e15cebebb0"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=b80cc5cfcebcbde1ec4f03e15cebebb0"/><link rel="alternate" type="application/rss+xml" title="millo&#x27;s tech blog" href="/feed.xml"/><style type="text/css">
+    .anchor-header.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 4px;
+    }
+    .anchor-header.after {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    h1 .anchor-header svg,
+    h2 .anchor-header svg,
+    h3 .anchor-header svg,
+    h4 .anchor-header svg,
+    h5 .anchor-header svg,
+    h6 .anchor-header svg {
+      visibility: hidden;
+    }
+    h1:hover .anchor-header svg,
+    h2:hover .anchor-header svg,
+    h3:hover .anchor-header svg,
+    h4:hover .anchor-header svg,
+    h5:hover .anchor-header svg,
+    h6:hover .anchor-header svg,
+    h1 .anchor-header:focus svg,
+    h2 .anchor-header:focus svg,
+    h3 .anchor-header:focus svg,
+    h4 .anchor-header:focus svg,
+    h5 .anchor-header:focus svg,
+    h6 .anchor-header:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - 0)
+          }), 0)
+        }
+      }
+    })
+  </script><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="true"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600&amp;display=swap"/><link rel="preconnect" href="https://www.googletagmanager.com"/><link rel="dns-prefetch" href="https://www.googletagmanager.com"/><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-NYJGJNG0N4"></script><script>
+      
+      
+      if(true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-NYJGJNG0N4', {"send_page_view":false});
+      }
+      </script><title data-gatsby-head="true">[React Native] Bitrise가 제공하는 기본 캐싱 지원의 현실 | millo&#x27;s tech blog</title><link rel="apple-touch-icon" href="/favicon.ico" data-gatsby-head="true"/><script type="application/ld+json" data-gatsby-head="true">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"millo","logo":null},"url":"https://millo-L.github.io/reactnative-bitrise-whats-really-supported/","headline":"[React Native] Bitrise가 제공하는 기본 캐싱 지원의 현실 | millo's tech blog","description":"Bitrise 기본 캐싱 지원의 한계점과 커스텀 캐싱 솔루션을 통해 React Native 빌드 시간을 26분에서 7-11분으로 단축한 경험","datePublished":"2025-08-18 22:00","dateModified":"2025-08-18 22:00","image":"https://millo-L.github.io/static/41ace13b6768be6622e6257e9bb0a52f/497c6/reactnative.png"}</script><script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3926462216067158" crossorigin="anonymous" data-gatsby-head="true"></script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="MainResponsive__Container-sc-5br9q8-0 gLfZPx"><div class="Header__Container-sc-oub2xr-0 bkCCux"><div class="MainResponsive__Container-sc-5br9q8-0 gLfZPx Header__Inner-sc-oub2xr-1 hTdmpq"><div class="HeaderLogo__Container-sc-1uvvju4-0 faFGXe"><a class="HeaderLogo__LogoLink-sc-1uvvju4-1 cFBMxO" href="/"><div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained header-logo"><div style="max-width:48px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg%20height=&#x27;48&#x27;%20width=&#x27;48&#x27;%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><div aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear;background-color:#4868f8;position:absolute;top:0;left:0;bottom:0;right:0"></div><picture><source type="image/webp" data-srcset="/static/b80cc5cfcebcbde1ec4f03e15cebebb0/fce4b/logo.webp 12w,/static/b80cc5cfcebcbde1ec4f03e15cebebb0/76c42/logo.webp 24w,/static/b80cc5cfcebcbde1ec4f03e15cebebb0/54fc7/logo.webp 48w,/static/b80cc5cfcebcbde1ec4f03e15cebebb0/a1864/logo.webp 96w" sizes="(min-width: 48px) 48px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 48px) 48px, 100vw" decoding="async" loading="lazy" data-src="/static/b80cc5cfcebcbde1ec4f03e15cebebb0/7c3a2/logo.png" data-srcset="/static/b80cc5cfcebcbde1ec4f03e15cebebb0/e8b38/logo.png 12w,/static/b80cc5cfcebcbde1ec4f03e15cebebb0/7e080/logo.png 24w,/static/b80cc5cfcebcbde1ec4f03e15cebebb0/7c3a2/logo.png 48w,/static/b80cc5cfcebcbde1ec4f03e15cebebb0/9ca7a/logo.png 96w" alt="logo"/></picture><noscript><picture><source type="image/webp" srcSet="/static/b80cc5cfcebcbde1ec4f03e15cebebb0/fce4b/logo.webp 12w,/static/b80cc5cfcebcbde1ec4f03e15cebebb0/76c42/logo.webp 24w,/static/b80cc5cfcebcbde1ec4f03e15cebebb0/54fc7/logo.webp 48w,/static/b80cc5cfcebcbde1ec4f03e15cebebb0/a1864/logo.webp 96w" sizes="(min-width: 48px) 48px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 48px) 48px, 100vw" decoding="async" loading="lazy" src="/static/b80cc5cfcebcbde1ec4f03e15cebebb0/7c3a2/logo.png" srcSet="/static/b80cc5cfcebcbde1ec4f03e15cebebb0/e8b38/logo.png 12w,/static/b80cc5cfcebcbde1ec4f03e15cebebb0/7e080/logo.png 24w,/static/b80cc5cfcebcbde1ec4f03e15cebebb0/7c3a2/logo.png 48w,/static/b80cc5cfcebcbde1ec4f03e15cebebb0/9ca7a/logo.png 96w" alt="logo"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div></a></div><div class="Header__Right-sc-oub2xr-2 Bjerf"><div><div class="HeaderLanguage__Container-sc-1tldkrv-0 hdkpNF"><span>한국어</span><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0z"></path><path d="M7 10l5 5 5-5z"></path></svg></div></div></div></div><div type="header" class="SimpleProfile__Container-sc-gocmft-0 hdwqup"><div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained profile-img"><div style="max-width:320px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg%20height=&#x27;320&#x27;%20width=&#x27;320&#x27;%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><div aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear;background-color:#f8f8f8;position:absolute;top:0;left:0;bottom:0;right:0"></div><picture><source type="image/webp" data-srcset="/static/3413517c564b16ebb5a6862b9c7730d0/1deab/profile.webp 80w,/static/3413517c564b16ebb5a6862b9c7730d0/c6aca/profile.webp 160w,/static/3413517c564b16ebb5a6862b9c7730d0/0a0af/profile.webp 320w" sizes="(min-width: 320px) 320px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 320px) 320px, 100vw" decoding="async" loading="lazy" data-src="/static/3413517c564b16ebb5a6862b9c7730d0/b95ad/profile.jpg" data-srcset="/static/3413517c564b16ebb5a6862b9c7730d0/de34b/profile.jpg 80w,/static/3413517c564b16ebb5a6862b9c7730d0/c904d/profile.jpg 160w,/static/3413517c564b16ebb5a6862b9c7730d0/b95ad/profile.jpg 320w" alt="profile-img"/></picture><noscript><picture><source type="image/webp" srcSet="/static/3413517c564b16ebb5a6862b9c7730d0/1deab/profile.webp 80w,/static/3413517c564b16ebb5a6862b9c7730d0/c6aca/profile.webp 160w,/static/3413517c564b16ebb5a6862b9c7730d0/0a0af/profile.webp 320w" sizes="(min-width: 320px) 320px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 320px) 320px, 100vw" decoding="async" loading="lazy" src="/static/3413517c564b16ebb5a6862b9c7730d0/b95ad/profile.jpg" srcSet="/static/3413517c564b16ebb5a6862b9c7730d0/de34b/profile.jpg 80w,/static/3413517c564b16ebb5a6862b9c7730d0/c904d/profile.jpg 160w,/static/3413517c564b16ebb5a6862b9c7730d0/b95ad/profile.jpg 320w" alt="profile-img"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><div class="info-wrapper"><span>millo</span><div class="ProfileIcons__Container-sc-zm1sih-0 bdzRcM icon-wrapper"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9a127.5 127.5 0 0 1 38.1 91v112.5c.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z"></path></svg><svg stroke="currentColor" fill="currentColor" stroke-width="0" role="img" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><title></title><path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z"></path></svg><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0z"></path><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path></svg></div></div><div class="CategoryList__Container-sc-1qwyrdp-0 dXcwHn"><p>Categories</p><a style="text-decoration:none" href="/"><div class="whole-category">전체 보기</div></a><div class="img-wrapper"><a href="/?category=nodejs"><img class="category-img" src="https://img.shields.io/badge/NodeJS-339933?style=flat-square&amp;logo=Node.js&amp;logoColor=white" alt="nodejs"/></a><a href="/?category=webrtc"><img class="category-img" src="https://img.shields.io/badge/WebRTC-333333?style=flat-square&amp;logo=WebRTC&amp;logoColor=white" alt="webrtc"/></a><a href="/?category=network"><img class="category-img" src="https://img.shields.io/badge/Network-F96702?style=flat-square" alt="network"/></a><a href="/?category=javascript"><img class="category-img" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&amp;logo=JavaScript&amp;logoColor=black" alt="javascript"/></a><a href="/?category=docker"><img class="category-img" src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&amp;logo=Docker&amp;logoColor=white" alt="docker"/></a><a href="/?category=reactnative"><img class="category-img" src="https://img.shields.io/badge/ReactNative-61DAFB?style=flat-square&amp;logo=React&amp;logoColor=white" alt="reactnative"/></a><a href="/?category=go"><img class="category-img" src="https://img.shields.io/badge/Go-00ADD8?style=flat-square&amp;logo=Go&amp;logoColor=white" alt="go"/></a><a href="/?category=opensource"><img class="category-img" src="https://img.shields.io/badge/OpenSource-3DA639?style=flat-square&amp;logo=Open-Source-Initiative&amp;logoColor=white" alt="opensource"/></a><a href="/?category=typescript"><img class="category-img" src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&amp;logo=TypeScript&amp;logoColor=white" alt="typescript"/></a><a href="/?category=nginx"><img class="category-img" src="https://img.shields.io/badge/NGINX-269539?style=flat-square&amp;logo=NGINX&amp;logoColor=white" alt="nginx"/></a><a href="/?category=gatsby"><img class="category-img" src="https://img.shields.io/badge/Gatsby-663399?style=flat-square&amp;logo=Gatsby&amp;logoColor=white" alt="gatsby"/></a><a href="/?category=raspberrypi"><img class="category-img" src="https://img.shields.io/badge/Raspberry-C51A4A?style=flat-square&amp;logo=Raspberry-Pi&amp;logoColor=white" alt="raspberrypi"/></a><a href="/?category=python"><img class="category-img" src="https://img.shields.io/badge/Python-3776AB?style=flat-square&amp;logo=Python&amp;logoColor=white" alt="python"/></a><a href="/?category=android"><img class="category-img" src="https://img.shields.io/badge/Android-3DDC84?style=flat-square&amp;logo=Android&amp;logoColor=white" alt="android"/></a><a href="/?category=startup"><img class="category-img" src="https://img.shields.io/badge/Startup-4651EB?style=flat-square" alt="startup"/></a></div></div></div></div><div style="margin-top:0;opacity:0" class="FloatingHeader__Container-sc-ynpivb-0 dcXuWi"><div class="tab-wrapper"><div class="MainResponsive__Container-sc-5br9q8-0 gLfZPx"><div class="HomeTab__Container-sc-n3tmpj-0 gkDWsS"><div class="HomeTab__UserContainer-sc-n3tmpj-1 gvPZyU"><div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained small-profile-img"><div style="max-width:48px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg%20height=&#x27;48&#x27;%20width=&#x27;48&#x27;%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><div aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear;background-color:#f8f8f8;position:absolute;top:0;left:0;bottom:0;right:0"></div><picture><source type="image/webp" data-srcset="/static/3413517c564b16ebb5a6862b9c7730d0/fce4b/profile.webp 12w,/static/3413517c564b16ebb5a6862b9c7730d0/76c42/profile.webp 24w,/static/3413517c564b16ebb5a6862b9c7730d0/54fc7/profile.webp 48w,/static/3413517c564b16ebb5a6862b9c7730d0/a1864/profile.webp 96w" sizes="(min-width: 48px) 48px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 48px) 48px, 100vw" decoding="async" loading="lazy" data-src="/static/3413517c564b16ebb5a6862b9c7730d0/edc15/profile.jpg" data-srcset="/static/3413517c564b16ebb5a6862b9c7730d0/b9218/profile.jpg 12w,/static/3413517c564b16ebb5a6862b9c7730d0/cadfa/profile.jpg 24w,/static/3413517c564b16ebb5a6862b9c7730d0/edc15/profile.jpg 48w,/static/3413517c564b16ebb5a6862b9c7730d0/ea328/profile.jpg 96w" alt="small-profile-img"/></picture><noscript><picture><source type="image/webp" srcSet="/static/3413517c564b16ebb5a6862b9c7730d0/fce4b/profile.webp 12w,/static/3413517c564b16ebb5a6862b9c7730d0/76c42/profile.webp 24w,/static/3413517c564b16ebb5a6862b9c7730d0/54fc7/profile.webp 48w,/static/3413517c564b16ebb5a6862b9c7730d0/a1864/profile.webp 96w" sizes="(min-width: 48px) 48px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 48px) 48px, 100vw" decoding="async" loading="lazy" src="/static/3413517c564b16ebb5a6862b9c7730d0/edc15/profile.jpg" srcSet="/static/3413517c564b16ebb5a6862b9c7730d0/b9218/profile.jpg 12w,/static/3413517c564b16ebb5a6862b9c7730d0/cadfa/profile.jpg 24w,/static/3413517c564b16ebb5a6862b9c7730d0/edc15/profile.jpg 48w,/static/3413517c564b16ebb5a6862b9c7730d0/ea328/profile.jpg 96w" alt="small-profile-img"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><span>millo</span></div><div class="HomeTab__InnerContainer-sc-n3tmpj-2 clcOqG"><a style="text-decoration:none" href="/"><div class="tab active"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path><path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"></path></svg>게시글</div></a><a style="text-decoration:none" href="/series/"><div class="tab "><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M149.688 85.625c-1.234.005-2.465.033-3.72.063-33.913.806-75.48 10.704-127.25 33.718V362.78c60.77-28.82 106.718-37.067 144.22-33.092 33.502 3.55 59.685 16.66 83.562 31.187v-242.97c-23.217-17.744-50.195-30.04-85.97-32-3.52-.192-7.142-.296-10.843-.28zm211.968 0c-3.7-.016-7.322.088-10.844.28-35.773 1.96-62.75 14.256-85.968 32v242.97c23.876-14.527 50.06-27.637 83.562-31.188 37.502-3.974 83.45 4.272 144.22 33.094V119.407c-51.77-23.014-93.337-32.912-127.25-33.72-1.255-.028-2.486-.056-3.72-.06zm5.72 261.78c-1.038-.002-2.074.017-3.095.033-4.808.075-9.43.37-13.905.843-33.932 3.597-59.603 17.976-85.53 34.44v.28c-6.554-1.99-13.02-2.37-19.408-.97-25.566-16.177-51.003-30.202-84.468-33.75-5.595-.592-11.44-.883-17.564-.842-32.04.213-71.833 9.778-124.687 35.937v42.53c60.77-28.823 106.714-37.067 144.218-33.092 18.545 1.965 34.837 6.845 49.75 13.28-4.682 6.064-9.308 13.268-13.875 21.688h117.156c-5.93-8.22-11.798-15.414-17.626-21.56 14.996-6.503 31.39-11.43 50.062-13.408 37.503-3.974 83.448 4.27 144.22 33.094v-42.53c-53.16-26.31-93.115-35.863-125.25-35.97z"></path></svg>시리즈</div></a><a style="text-decoration:none" href="/about/"><div class="tab "><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0z"></path><path d="M9 11.75a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5zm6 0a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8 0-.29.02-.58.05-.86 2.36-1.05 4.23-2.98 5.21-5.37a9.974 9.974 0 0010.41 3.97c.21.71.33 1.47.33 2.26 0 4.41-3.59 8-8 8z"></path></svg>me</div></a><div style="left:0%" class="HomeTab__Indicator-sc-n3tmpj-3 gwdXuN"></div></div></div></div></div></div><div style="margin-left:0.25rem" class="HomeTab__Container-sc-n3tmpj-0 gkDWsS"><div class="HomeTab__UserContainer-sc-n3tmpj-1 cmpBFu"><div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained small-profile-img"><div style="max-width:48px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg%20height=&#x27;48&#x27;%20width=&#x27;48&#x27;%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><div aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear;background-color:#f8f8f8;position:absolute;top:0;left:0;bottom:0;right:0"></div><picture><source type="image/webp" data-srcset="/static/3413517c564b16ebb5a6862b9c7730d0/fce4b/profile.webp 12w,/static/3413517c564b16ebb5a6862b9c7730d0/76c42/profile.webp 24w,/static/3413517c564b16ebb5a6862b9c7730d0/54fc7/profile.webp 48w,/static/3413517c564b16ebb5a6862b9c7730d0/a1864/profile.webp 96w" sizes="(min-width: 48px) 48px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 48px) 48px, 100vw" decoding="async" loading="lazy" data-src="/static/3413517c564b16ebb5a6862b9c7730d0/edc15/profile.jpg" data-srcset="/static/3413517c564b16ebb5a6862b9c7730d0/b9218/profile.jpg 12w,/static/3413517c564b16ebb5a6862b9c7730d0/cadfa/profile.jpg 24w,/static/3413517c564b16ebb5a6862b9c7730d0/edc15/profile.jpg 48w,/static/3413517c564b16ebb5a6862b9c7730d0/ea328/profile.jpg 96w" alt="small-profile-img"/></picture><noscript><picture><source type="image/webp" srcSet="/static/3413517c564b16ebb5a6862b9c7730d0/fce4b/profile.webp 12w,/static/3413517c564b16ebb5a6862b9c7730d0/76c42/profile.webp 24w,/static/3413517c564b16ebb5a6862b9c7730d0/54fc7/profile.webp 48w,/static/3413517c564b16ebb5a6862b9c7730d0/a1864/profile.webp 96w" sizes="(min-width: 48px) 48px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 48px) 48px, 100vw" decoding="async" loading="lazy" src="/static/3413517c564b16ebb5a6862b9c7730d0/edc15/profile.jpg" srcSet="/static/3413517c564b16ebb5a6862b9c7730d0/b9218/profile.jpg 12w,/static/3413517c564b16ebb5a6862b9c7730d0/cadfa/profile.jpg 24w,/static/3413517c564b16ebb5a6862b9c7730d0/edc15/profile.jpg 48w,/static/3413517c564b16ebb5a6862b9c7730d0/ea328/profile.jpg 96w" alt="small-profile-img"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><span>millo</span></div><div class="HomeTab__InnerContainer-sc-n3tmpj-2 clcOqG"><a style="text-decoration:none" href="/"><div class="tab active"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path><path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"></path></svg>게시글</div></a><a style="text-decoration:none" href="/series/"><div class="tab "><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M149.688 85.625c-1.234.005-2.465.033-3.72.063-33.913.806-75.48 10.704-127.25 33.718V362.78c60.77-28.82 106.718-37.067 144.22-33.092 33.502 3.55 59.685 16.66 83.562 31.187v-242.97c-23.217-17.744-50.195-30.04-85.97-32-3.52-.192-7.142-.296-10.843-.28zm211.968 0c-3.7-.016-7.322.088-10.844.28-35.773 1.96-62.75 14.256-85.968 32v242.97c23.876-14.527 50.06-27.637 83.562-31.188 37.502-3.974 83.45 4.272 144.22 33.094V119.407c-51.77-23.014-93.337-32.912-127.25-33.72-1.255-.028-2.486-.056-3.72-.06zm5.72 261.78c-1.038-.002-2.074.017-3.095.033-4.808.075-9.43.37-13.905.843-33.932 3.597-59.603 17.976-85.53 34.44v.28c-6.554-1.99-13.02-2.37-19.408-.97-25.566-16.177-51.003-30.202-84.468-33.75-5.595-.592-11.44-.883-17.564-.842-32.04.213-71.833 9.778-124.687 35.937v42.53c60.77-28.823 106.714-37.067 144.218-33.092 18.545 1.965 34.837 6.845 49.75 13.28-4.682 6.064-9.308 13.268-13.875 21.688h117.156c-5.93-8.22-11.798-15.414-17.626-21.56 14.996-6.503 31.39-11.43 50.062-13.408 37.503-3.974 83.448 4.27 144.22 33.094v-42.53c-53.16-26.31-93.115-35.863-125.25-35.97z"></path></svg>시리즈</div></a><a style="text-decoration:none" href="/about/"><div class="tab "><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0z"></path><path d="M9 11.75a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5zm6 0a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8 0-.29.02-.58.05-.86 2.36-1.05 4.23-2.98 5.21-5.37a9.974 9.974 0 0010.41 3.97c.21.71.33 1.47.33 2.26 0 4.41-3.59 8-8 8z"></path></svg>me</div></a><div style="left:0%" class="HomeTab__Indicator-sc-n3tmpj-3 gwdXuN"></div></div></div><div class="gatsby-ssr__Container-sc-ctz5yr-0 bKaYjC"><div type="body" class="SimpleProfile__Container-sc-gocmft-0 cKdNUD"><div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained profile-img"><div style="max-width:320px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg%20height=&#x27;320&#x27;%20width=&#x27;320&#x27;%20xmlns=&#x27;http://www.w3.org/2000/svg&#x27;%20version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div><div aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear;background-color:#f8f8f8;position:absolute;top:0;left:0;bottom:0;right:0"></div><picture><source type="image/webp" data-srcset="/static/3413517c564b16ebb5a6862b9c7730d0/1deab/profile.webp 80w,/static/3413517c564b16ebb5a6862b9c7730d0/c6aca/profile.webp 160w,/static/3413517c564b16ebb5a6862b9c7730d0/0a0af/profile.webp 320w" sizes="(min-width: 320px) 320px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 320px) 320px, 100vw" decoding="async" loading="lazy" data-src="/static/3413517c564b16ebb5a6862b9c7730d0/b95ad/profile.jpg" data-srcset="/static/3413517c564b16ebb5a6862b9c7730d0/de34b/profile.jpg 80w,/static/3413517c564b16ebb5a6862b9c7730d0/c904d/profile.jpg 160w,/static/3413517c564b16ebb5a6862b9c7730d0/b95ad/profile.jpg 320w" alt="profile-img"/></picture><noscript><picture><source type="image/webp" srcSet="/static/3413517c564b16ebb5a6862b9c7730d0/1deab/profile.webp 80w,/static/3413517c564b16ebb5a6862b9c7730d0/c6aca/profile.webp 160w,/static/3413517c564b16ebb5a6862b9c7730d0/0a0af/profile.webp 320w" sizes="(min-width: 320px) 320px, 100vw"/><img data-gatsby-image-ssr="" data-main-image="" style="opacity:0" sizes="(min-width: 320px) 320px, 100vw" decoding="async" loading="lazy" src="/static/3413517c564b16ebb5a6862b9c7730d0/b95ad/profile.jpg" srcSet="/static/3413517c564b16ebb5a6862b9c7730d0/de34b/profile.jpg 80w,/static/3413517c564b16ebb5a6862b9c7730d0/c904d/profile.jpg 160w,/static/3413517c564b16ebb5a6862b9c7730d0/b95ad/profile.jpg 320w" alt="profile-img"/></picture></noscript><script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1,e.parentNode.parentNode.querySelector("[data-placeholder-image]").style.opacity=0)}}</script></div><div class="info-wrapper"><span>millo</span><div class="ProfileIcons__Container-sc-zm1sih-0 bdzRcM icon-wrapper"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9a127.5 127.5 0 0 1 38.1 91v112.5c.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z"></path></svg><svg stroke="currentColor" fill="currentColor" stroke-width="0" role="img" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><title></title><path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z"></path></svg><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0z"></path><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path></svg></div></div><div class="CategoryList__Container-sc-1qwyrdp-0 eFyqaq"><p>Categories</p><a style="text-decoration:none" href="/"><div class="whole-category">전체 보기</div></a><div class="img-wrapper"><a href="/?category=nodejs"><img class="category-img" src="https://img.shields.io/badge/NodeJS-339933?style=flat-square&amp;logo=Node.js&amp;logoColor=white" alt="nodejs"/></a><a href="/?category=webrtc"><img class="category-img" src="https://img.shields.io/badge/WebRTC-333333?style=flat-square&amp;logo=WebRTC&amp;logoColor=white" alt="webrtc"/></a><a href="/?category=network"><img class="category-img" src="https://img.shields.io/badge/Network-F96702?style=flat-square" alt="network"/></a><a href="/?category=javascript"><img class="category-img" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&amp;logo=JavaScript&amp;logoColor=black" alt="javascript"/></a><a href="/?category=docker"><img class="category-img" src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&amp;logo=Docker&amp;logoColor=white" alt="docker"/></a><a href="/?category=reactnative"><img class="category-img" src="https://img.shields.io/badge/ReactNative-61DAFB?style=flat-square&amp;logo=React&amp;logoColor=white" alt="reactnative"/></a><a href="/?category=go"><img class="category-img" src="https://img.shields.io/badge/Go-00ADD8?style=flat-square&amp;logo=Go&amp;logoColor=white" alt="go"/></a><a href="/?category=opensource"><img class="category-img" src="https://img.shields.io/badge/OpenSource-3DA639?style=flat-square&amp;logo=Open-Source-Initiative&amp;logoColor=white" alt="opensource"/></a><a href="/?category=typescript"><img class="category-img" src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&amp;logo=TypeScript&amp;logoColor=white" alt="typescript"/></a><a href="/?category=nginx"><img class="category-img" src="https://img.shields.io/badge/NGINX-269539?style=flat-square&amp;logo=NGINX&amp;logoColor=white" alt="nginx"/></a><a href="/?category=gatsby"><img class="category-img" src="https://img.shields.io/badge/Gatsby-663399?style=flat-square&amp;logo=Gatsby&amp;logoColor=white" alt="gatsby"/></a><a href="/?category=raspberrypi"><img class="category-img" src="https://img.shields.io/badge/Raspberry-C51A4A?style=flat-square&amp;logo=Raspberry-Pi&amp;logoColor=white" alt="raspberrypi"/></a><a href="/?category=python"><img class="category-img" src="https://img.shields.io/badge/Python-3776AB?style=flat-square&amp;logo=Python&amp;logoColor=white" alt="python"/></a><a href="/?category=android"><img class="category-img" src="https://img.shields.io/badge/Android-3DDC84?style=flat-square&amp;logo=Android&amp;logoColor=white" alt="android"/></a><a href="/?category=startup"><img class="category-img" src="https://img.shields.io/badge/Startup-4651EB?style=flat-square" alt="startup"/></a></div></div></div><div class="gatsby-ssr__BodyContainer-sc-ctz5yr-1 gAScvP"><div class="PostTemplate__Container-sc-1nk62eo-0 bLgotS"><div class="PostViewer__Container-sc-qs391t-0 dCcafP"><a class="category" href="/?category=reactnative"><img src="https://img.shields.io/badge/ReactNative-61DAFB?style=flat-square&amp;logo=React&amp;logoColor=white" alt="reactnative"/></a><h1 class="title">[React Native] Bitrise가 제공하는 기본 캐싱 지원의 현실</h1><p class="date">게시: <!-- -->약 12시간 전</p><div class="TagList__Container-sc-17jv52i-1 epmauD"><div class="TagList__ItemContainer-sc-17jv52i-0 dXNuNo">ReactNative</div><div class="TagList__ItemContainer-sc-17jv52i-0 dXNuNo">Bitrise</div><div class="TagList__ItemContainer-sc-17jv52i-0 dXNuNo">ci/cd</div><div class="TagList__ItemContainer-sc-17jv52i-0 dXNuNo">optimization</div></div><div class="PostSeriesList__Wrapper-sc-qnrl0u-0 gMfYHD"><a href="/series/Bitrise에서-React-Native-빌드-시간-최적화하기/"><h2>Bitrise에서 React Native 빌드 시간 최적화하기</h2></a><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="bookmark-img" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M416 480L256 357.41 96 480V32h320z"></path></svg><ol><li><span class="now-post">[React Native] Bitrise가 제공하는 기본 캐싱 지원의 현실</span></li></ol><div class="footer"><div class="visible-btn" role="button" tabindex="0"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M858.9 689L530.5 308.2c-9.4-10.9-27.5-10.9-37 0L165.1 689c-12.2 14.2-1.2 35 18.5 35h656.8c19.7 0 30.7-20.8 18.5-35z"></path></svg>숨기기</div></div></div><div id="content-container" class="PostViewer__ContentContainer-sc-qs391t-1 bmMaAM"><h2 id="1-서론" style="position:relative;"><a href="#1-%EC%84%9C%EB%A1%A0" aria-label="1 서론 permalink" class="anchor-header before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. 서론</h2>
+<p><a href="/reactnative-devtools-network-debugger/">Network Debugger</a> 개발과 <a href="/reactquery-handle-suspense-error/">React Query 에러 처리</a> 개선을 마치고 나니, 이제 개발 환경 자체의 효율성에 눈이 가기 시작했다. 특히, CI/CD 파이프라인에서 빌드 시간이 너무 오래 걸리는 문제가 지속적으로 발목을 잡고 있었다.</p>
+<br />
+<p>뤼튼에서는 Bitrise를 CI/CD 툴로 사용하고 있는데, React Native 0.76.9 (Old Architecture) 기반의 프로젝트를 빌드할 때마다 <code class="language-text">Android와 iOS 각각 26분</code> 정도 소요되고 있었다. 이는 단순히 시간 낭비를 넘어서 실질적인 비용 문제로 이어졌다. Bitrise는 빌드 시간에 따라 과금이 되는 구조이기 때문에, 빌드 시간을 단축하는 것은 곧 비용 절감과 직결된다.</p>
+<p>캬라푸 외의 다른 앱 팀들도 모두 빌드 시간 및 비용에 대해 불편함을 느끼고 있었고 이에 네이티브(iOS/Android) SDK 개발자인 원탁의 주도하에 비트라이즈 성능 개선 작업을 시작했다.</p>
+<br />
+<p>결론부터 말하자면 캐싱된 상태 기준 <code class="language-text">안드로이드는 11분(약 58% 감소)</code>, <code class="language-text">iOS는 7분(약 73% 감소)</code>으로 빌드 시간을 단축시킬 수 있었다.</p>
+<h3 id="여기서-잠깐-" style="position:relative;"><a href="#%EC%97%AC%EA%B8%B0%EC%84%9C-%EC%9E%A0%EA%B9%90-" aria-label="여기서 잠깐  permalink" class="anchor-header before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[여기서 잠깐 👋]</h3>
+<p>오해하지 않도록 먼저 말하자면 Bitrise는 yaml 파일 수정 외에 가시적으로 워크플로우와 파이프라인을 구축할 수 있는 매우 강력한 CI/CD 툴이다. 다소의 문제점을 말하는 것일뿐 이 점을 부인하는 것은 아니라는 점을 분명히 해두고자 한다. 실제로 뤼튼에서는 빌드 시간 단축을 이루고 현재도 비트라이즈를 사용하고 있다.</p>
+<h2 id="2-bitrise-제공-캐싱-step들의-아쉬운-점" style="position:relative;"><a href="#2-bitrise-%EC%A0%9C%EA%B3%B5-%EC%BA%90%EC%8B%B1-step%EB%93%A4%EC%9D%98-%EC%95%84%EC%89%AC%EC%9A%B4-%EC%A0%90" aria-label="2 bitrise 제공 캐싱 step들의 아쉬운 점 permalink" class="anchor-header before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. Bitrise 제공 캐싱 Step들의 아쉬운 점</h2>
+<p>사실 문제점이라고 하기에는 대체 방안(비트라이즈에서 제공하는 기본 캐싱 스텝을 고도화)이 있으나 공식적으로 지원하는 워크플로우 스텝인데 지원되지 않는 부분에 대한 문제 현황이라고 생각하면 된다.</p>
+<h3 id="2-1-yarn-berry-캐싱-호환-문제" style="position:relative;"><a href="#2-1-yarn-berry-%EC%BA%90%EC%8B%B1-%ED%98%B8%ED%99%98-%EB%AC%B8%EC%A0%9C" aria-label="2 1 yarn berry 캐싱 호환 문제 permalink" class="anchor-header before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2-1. Yarn Berry 캐싱 호환 문제</h3>
+<blockquote>
+<p><strong>캐싱 대상</strong></p>
+<p>npm/yarn classic - <code class="language-text">{project_folder}/node_modules/</code></p>
+<p>yarn berry - <code class="language-text">{project_folder}/.yarn/cache/</code></p>
+</blockquote>
+<br />
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 984px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/dfab48b4e0a33b0958476a178a557182/0b6f4/bitrise_npm_cache.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 11.068702290076335%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAACCAYAAABYBvyLAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAaklEQVR42lWMOwqAMBBEc/+bWHgCC48hpBILKw0mu5uAIRnzsdCFxzLDY9QyTNi3HUQEJkZOGTl/KLmeHmdsegULI/jQup/3oq7zgKMuefEgx2VY2nhFWMpogjMG1joECa2rdKd/KsQ74gGLAJoa80c2nwAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="diagram"
+        title=""
+        src="/static/dfab48b4e0a33b0958476a178a557182/0b6f4/bitrise_npm_cache.png"
+        srcset="/static/dfab48b4e0a33b0958476a178a557182/8ff13/bitrise_npm_cache.png 262w,
+/static/dfab48b4e0a33b0958476a178a557182/3e286/bitrise_npm_cache.png 523w,
+/static/dfab48b4e0a33b0958476a178a557182/0b6f4/bitrise_npm_cache.png 984w"
+        sizes="(max-width: 984px) 100vw, 984px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<br />
+<p>위의 스텝은 비트라이즈에서 공식 지원하는 npm/yarn 캐싱 스텝들이다. 하지만 yarn classic(1.x.x) 버전 이상의 yarn berry에서는 제대로 동작하지 않는다. 캐싱 파일의 경로를 <code class="language-text">node_modules</code>로 제한해뒀기 때문이다.</p>
+<p>뤼튼에서는 모두 yarn berry를 사용 중이고 yarn berry와 npm/yarn classic의 캐싱해야하는 파일은 엄연히 다르기 때문에 별도의 작업이 필요했다.</p>
+<h3 id="2-2-android-빌드-캐싱의-부재" style="position:relative;"><a href="#2-2-android-%EB%B9%8C%EB%93%9C-%EC%BA%90%EC%8B%B1%EC%9D%98-%EB%B6%80%EC%9E%AC" aria-label="2 2 android 빌드 캐싱의 부재 permalink" class="anchor-header before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2-2. Android 빌드 캐싱의 부재</h3>
+<p>안드로이드의 경우 CI 환경에서도 증분 빌드가 가능하다. 하지만 공식적으로 해당 부분을 지원하는 캐싱 스텝들은 없다. 물론 gradle configuration이나 sdk를 캐싱하는 기능들은 존재했지만 이것만으로는 러닝타임의 가장 큰 부분을 차지하는 빌드 시간을 개선할 수 없었다.</p>
+<br />
+<p>비트라이즈에서는 아래와 같이 빌드 최적화를 유료로 제공한다. 하지만 사실 직접 개선이 가능한 상태라면 굳이 유료로 사용할 필요가 없다고 생각한다. 물론, 각 팀마다 상황이 다르기 때문에 여유가 없는 경우 추가 결재를 통한 빠른 최적화는 큰 도움이 된다고 생각한다.</p>
+<br />
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 999px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/8ae99ecc7d894c2beefbf24ad1d02bd5/20c85/bitrise_android_build_cache.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 54.19847328244275%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsTAAALEwEAmpwYAAACE0lEQVR42m1SS2/TQBD270Wc+QFwQRw4cEPQA6KHnrggISEBB5BQm7ak0ObRJI1Tu36t7di7fj8/ZtdNAImxPs3sruebb2ZXy9McEkVWQEQC04trLCdrTMZzzH8tcX25ws/RBJfnU6ymOi5GV5jRvjyTPksy7DgktDzN9oSpSGHdOnAMl7wNm7xrMVgbW8ExXWyWporNNXnDVjmZyBSxhFaVFcqiREGQvq5rNHWDqqzVeoemadD3/R8AKPMKfduqdUte5mpRGGM13yjoCwM6KVjOdDh3HmxSZJsexQwpVVdGyR2xGV/GOHr9Ed9GOthcoCqImD4tpZbtO1clSxLP8WFuLBR5oVQ1VFVW7roOvWQi81cMyctnOD18gg9vj2DpKdp6UKq1fQcWMDi2A9/3EYahQuAH8FwG5jF4nqdIMfDBdzi+P36O2cFTrH9codopp6JaR4RxHBNBSG2lyPNcqSuKQeHw7z1Tj/38nFuOd5sFXtgnOEsMdawIZWUhEqRpCsHFACHAOVd7cth76/EPMTrgONTxxjgetmkkWlmV4CJGkgoCV/E23CIKOLY+R8ZJadXtVWZZpkbAGEMQBOBhhIi6241EW5zYOHj4GYePvuLVg084f3+jElsi+Z/J9+rZDL5Ls/YiMDfANor2z0qLvQTLUws3YweLkQXf5OjaTr1F2a6M/0Zb01m5Q6vW/f2FyJv+DR9lP0Wo9IkNAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="diagram"
+        title=""
+        src="/static/8ae99ecc7d894c2beefbf24ad1d02bd5/20c85/bitrise_android_build_cache.png"
+        srcset="/static/8ae99ecc7d894c2beefbf24ad1d02bd5/8ff13/bitrise_android_build_cache.png 262w,
+/static/8ae99ecc7d894c2beefbf24ad1d02bd5/3e286/bitrise_android_build_cache.png 523w,
+/static/8ae99ecc7d894c2beefbf24ad1d02bd5/20c85/bitrise_android_build_cache.png 999w"
+        sizes="(max-width: 999px) 100vw, 999px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<h2 id="3-적용할-수-있는-캐싱" style="position:relative;"><a href="#3-%EC%A0%81%EC%9A%A9%ED%95%A0-%EC%88%98-%EC%9E%88%EB%8A%94-%EC%BA%90%EC%8B%B1" aria-label="3 적용할 수 있는 캐싱 permalink" class="anchor-header before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3. 적용할 수 있는 캐싱</h2>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 988px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/c0d8e287608d0412007ad167bef951ad/e4900/bitrise_cache.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 11.450381679389315%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAACCAYAAABYBvyLAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAbElEQVR42mWNwQqEMAxE+/+/pr8gCOtBBK3bNK0lbWZT2YPgYZjJzIO44ZMxbx6JCCICVUVr7XbVhmq5ZsG4ZEyrR0lsu/73t9x+RvhvAEdGpHiLAoHMe0f2qFwFR2DjCIk7xw/ecu/sFqn4ARSCmxB9YNJbAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="diagram"
+        title=""
+        src="/static/c0d8e287608d0412007ad167bef951ad/e4900/bitrise_cache.png"
+        srcset="/static/c0d8e287608d0412007ad167bef951ad/8ff13/bitrise_cache.png 262w,
+/static/c0d8e287608d0412007ad167bef951ad/3e286/bitrise_cache.png 523w,
+/static/c0d8e287608d0412007ad167bef951ad/e4900/bitrise_cache.png 988w"
+        sizes="(max-width: 988px) 100vw, 988px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span></p>
+<br />
+<p>비트라이즈에서는 <code class="language-text">cache key</code>를 기준으로 특정 <code class="language-text">paths</code>에 존재하는 파일을 아카이빙해서 캐싱하는 위와 같은 스텝을 제공하고 있다. 이를 이용해서 다양한 캐시를 적용할 수 있다.</p>
+<ol>
+<li>yarn berry 캐싱</li>
+<li>android configuration, gradle, build 캐싱</li>
+<li>ios cocoapods 캐싱</li>
+<li>fastlane에 필요한 gem bundle 캐싱</li>
+<li>ccache로 cpp 컴파일 캐싱</li>
+</ol>
+<p>크게 위와 같이 5가지의 캐싱을 처리했다. 각각의 자세한 내용은 다음 포스팅으로 이어서 하도록 하겠다.</p>
+<h2 id="결론" style="position:relative;"><a href="#%EA%B2%B0%EB%A1%A0" aria-label="결론 permalink" class="anchor-header before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>결론</h2>
+<p>개발자에게 늘 중요한 건 문제에 대한 정확한 정의인 것 같다. 사실 익숙함 때문에 개선에 대한 의지가 생기지 않거나 비효율적인 상황을 그대로 받아들이는 경우가 종종 생긴다.
+<code class="language-text">서비스 개발이 먼저니까~</code>, <code class="language-text">그건 원래 오래걸리는 작업이니까~</code> 현실의 벽에 부딪히거나 단순히 당연하게만 받아들일 수 있는 부분들이 차별점이 된다는 걸 다시 한 번 느꼈다.</p>
+<br />
+<p>비단 개발의 영역에서만 바라볼 것이 아니라 우리의 삶에서 이런 페인 포인트를 찾아 나간다면 개발자로써 또 한 팀의 일원으로써 더 나아가 개인의 사업에서도 더 좋은 성과를 거둘 수 있지 않을까 하는 생각이 들었다.</p></div><div class="PrevNextPost__Container-sc-dasvwy-0 dVkvvt"><div class="PrevNextPost__ItemContainer-sc-dasvwy-1 gIkxOQ"></div><div class="PrevNextPost__ItemContainer-sc-dasvwy-1 gIkxOQ"></div></div><div class="Utterances__Container-sc-c4xdw2-0 jVpTiW"></div><div class="Footer__FooterWrapper-sc-1vumqmt-0 jyPjrp"><span>millo&#x27;s tech blog</span><div class="ProfileIcons__Container-sc-zm1sih-0 bdzRcM icon-wrapper"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M511.6 76.3C264.3 76.2 64 276.4 64 523.5 64 718.9 189.3 885 363.8 946c23.5 5.9 19.9-10.8 19.9-22.2v-77.5c-135.7 15.9-141.2-73.9-150.3-88.9C215 726 171.5 718 184.5 703c30.9-15.9 62.4 4 98.9 57.9 26.4 39.1 77.9 32.5 104 26 5.7-23.5 17.9-44.5 34.7-60.8-140.6-25.2-199.2-111-199.2-213 0-49.5 16.3-95 48.3-131.7-20.4-60.5 1.9-112.3 4.9-120 58.1-5.2 118.5 41.6 123.2 45.3 33-8.9 70.7-13.6 112.9-13.6 42.4 0 80.2 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.3-43.9 2.9 7.7 24.7 58.3 5.5 118 32.4 36.8 48.9 82.7 48.9 132.3 0 102.2-59 188.1-200 212.9a127.5 127.5 0 0 1 38.1 91v112.5c.8 9 0 17.9 15 17.9 177.1-59.7 304.6-227 304.6-424.1 0-247.2-200.4-447.3-447.5-447.3z"></path></svg><svg stroke="currentColor" fill="currentColor" stroke-width="0" role="img" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><title></title><path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z"></path></svg><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0z"></path><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path></svg></div></div></div><div id="toc-container" class="PostToC__Container-sc-16pz1hb-0 hwlzla"><ul>
+<li>
+<p><a href="#1-%EC%84%9C%EB%A1%A0">1. 서론</a></p>
+<ul>
+<li><a href="#%EC%97%AC%EA%B8%B0%EC%84%9C-%EC%9E%A0%EA%B9%90-">[여기서 잠깐 👋]</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#2-bitrise-%EC%A0%9C%EA%B3%B5-%EC%BA%90%EC%8B%B1-step%EB%93%A4%EC%9D%98-%EC%95%84%EC%89%AC%EC%9A%B4-%EC%A0%90">2. Bitrise 제공 캐싱 Step들의 아쉬운 점</a></p>
+<ul>
+<li><a href="#2-1-yarn-berry-%EC%BA%90%EC%8B%B1-%ED%98%B8%ED%99%98-%EB%AC%B8%EC%A0%9C">2-1. Yarn Berry 캐싱 호환 문제</a></li>
+<li><a href="#2-2-android-%EB%B9%8C%EB%93%9C-%EC%BA%90%EC%8B%B1%EC%9D%98-%EB%B6%80%EC%9E%AC">2-2. Android 빌드 캐싱의 부재</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#3-%EC%A0%81%EC%9A%A9%ED%95%A0-%EC%88%98-%EC%9E%88%EB%8A%94-%EC%BA%90%EC%8B%B1">3. 적용할 수 있는 캐싱</a></p>
+</li>
+<li>
+<p><a href="#%EA%B2%B0%EB%A1%A0">결론</a></p>
+</li>
+</ul></div></div></div></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/reactnative-bitrise-whats-really-supported/";/*]]>*/</script><!-- slice-start id="_gatsby-scripts-1" -->
+          <script
+            id="gatsby-chunk-mapping"
+          >
+            window.___chunkMapping="{\"app\":[\"/app-09e66d78cd1c0c1d2b39.js\"],\"component---src-components-post-post-template-tsx\":[\"/component---src-components-post-post-template-tsx-6a3965c515dac0862f11.js\"],\"component---src-components-series-series-template-tsx\":[\"/component---src-components-series-series-template-tsx-b2097175502304f2bbcb.js\"],\"component---src-pages-about-tsx\":[\"/component---src-pages-about-tsx-2ba5efc4a19b196424e8.js\"],\"component---src-pages-en-about-tsx\":[\"/component---src-pages-en-about-tsx-4646c8af4d09a95297d5.js\"],\"component---src-pages-en-index-tsx\":[\"/component---src-pages-en-index-tsx-49c2d8286a64ae84e0d1.js\"],\"component---src-pages-en-series-tsx\":[\"/component---src-pages-en-series-tsx-8ded7107a91e3ef14a5a.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-91f1c274dc1d175aaaae.js\"],\"component---src-pages-series-tsx\":[\"/component---src-pages-series-tsx-35ff69fbfed6ec135081.js\"]}";
+          </script>
+        <script>window.___webpackCompilationHash="bf803343908bcefac968";</script><script src="/webpack-runtime-3d09b1bc041a7c8f1375.js" async></script><script src="/framework-3d4348c524a2c2939a1a.js" async></script><script src="/d0447323-0686fc48cb0e1b1d71ce.js" async></script><script src="/252f366e-7b39f24079365f3415b8.js" async></script><script src="/545f34e4-d2b567c3fa31b5c3519f.js" async></script><script src="/0c428ae2-9d2c7cdf220dd3234a10.js" async></script><script src="/d7eeaac4-8adda38c88d0e6a38809.js" async></script><script src="/app-09e66d78cd1c0c1d2b39.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
